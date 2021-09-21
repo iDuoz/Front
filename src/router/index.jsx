@@ -12,7 +12,7 @@ const AppRouter = () => {
                         <div style={{
                             margin: '100px 100px',
                             fontSize: '5rem'
-                        }}>최대가알알ㅇㄹ얄 ㅇㄹ</div>
+                        }}>당다라당다당다닫ㅇ다닫ㅇ다라당다당다닫ㅇ다 당코코~~~~</div>
                     </Route>
                 </Switch>
             </BrowserRouter>
