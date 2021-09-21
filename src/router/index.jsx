@@ -12,7 +12,7 @@ const AppRouter = () => {
                         <div style={{
                             margin: '100px 100px',
                             fontSize: '5rem'
-                        }}>김현석 대왕 스팸</div>
+                        }}>최대가알알ㅇㄹ얄 ㅇㄹ</div>
                     </Route>
                 </Switch>
             </BrowserRouter>
