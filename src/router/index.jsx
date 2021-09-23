@@ -12,7 +12,7 @@ const AppRouter = () => {
                         <div style={{
                             margin: '100px 100px',
                             fontSize: '5rem'
-                        }}>『흑렴룡』의 분노를 받아라🐉💢</div>
+                        }}>『흑열룡』의 분노를 받아라🐉💢</div>
                     </Route>
                 </Switch>
             </BrowserRouter>
