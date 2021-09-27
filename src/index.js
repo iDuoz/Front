@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import {Provider} from "react-redux"
-import store from "./store/store"
+import { Provider } from 'react-redux';
+import store from './store/store';
 import reportWebVitals from './reportWebVitals';
 import { createGlobalStyle } from 'styled-components';
 
@@ -10,6 +10,8 @@ const GlobalStyle = createGlobalStyle`
     html, body {
       padding : 0;
       margin : 0;
+      scroll-behavior: smooth;
+      font-family : 'Noto Sans KR';
       @media (max-width: 1200px) {
         font-size: 14px
       }
@@ -21,12 +23,11 @@ const GlobalStyle = createGlobalStyle`
       }
     }
     
-`
-
+`;
 
 ReactDOM.render(
   <React.StrictMode>
-  <GlobalStyle></GlobalStyle>
+    <GlobalStyle></GlobalStyle>
     <Provider store={store}>
       <App />
     </Provider>

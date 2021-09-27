@@ -1,30 +1,20 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
+import FirstSectionForm from '../SectionFrom/firstSectionForm';
+import SecondSectionForm from '../SectionFrom/secondSectionForm';
+import ThirdSectionForm from '../SectionFrom/thirdSectionForm';
+
+const HomeContent = ({ testRef, parallaxScroll, currentSlider, sectionScrollType }) => {
 
 
-
-
-const HomeContent = () => {
-
-    const testRef = useRef()
-    // console.log(testRef)
-    // console.log(testRef.current)
-    // console.log(testRef.current.childElementCount)
-    // const [pageNum, setPageNum] = useState(0)
-    // setPageNum(testRef.current.childElementCount)
-    // setPageNum(testRef)
-    console.log(testRef)
-    console.log(testRef)
     return (
         <>
             {/* SECTION Content */}
-            <div ref={testRef}>
-                <div >a</div>
-                <div>b</div>
-                <div>c</div>
+            <div ref={testRef} onWheel={parallaxScroll} >
+                <FirstSectionForm currentSlider={currentSlider} sectionScrollType={sectionScrollType[0]}></FirstSectionForm>
+                <SecondSectionForm currentSlider={currentSlider} sectionScrollType={sectionScrollType[1]}></SecondSectionForm>
+                <ThirdSectionForm currentSlider={currentSlider} sectionScrollType={sectionScrollType[2]}></ThirdSectionForm>
             </div>
-            {
-                console.log(testRef)
-            }
+
 
             {/* !SECTION Content */}
         </>
