@@ -22,6 +22,9 @@ const AppRouter = () => {
                     <Route path="/:username/profile">
                         <UserPageRouter security={["ADMIN", "GUEST", "USER"]} userInfo={userInfo}></UserPageRouter>
                     </Route>
+
+                    {/* TODO 404NotFound page 만들기 */}
+                    {/* <Route compont={NotFound}></Route> */}
                 </Switch>
             </BrowserRouter>
         </>

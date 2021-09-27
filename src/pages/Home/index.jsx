@@ -8,6 +8,8 @@ const WholeWrapper = styled.div`
   width: 100%;
 `;
 
+
+
 //TODO header
 const Home = () => {
     return (

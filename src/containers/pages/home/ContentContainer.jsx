@@ -73,14 +73,6 @@ const ContentContainer = () => {
         setTotalSLideNumber(testRef.current.childElementCount)
     }, [])
 
-    const [dragging, setDragging] = useState(
-        {
-            initialX: null,
-            initialY: null,
-            currentX: null,
-            currentY: null
-        }
-    )
 
 
 
