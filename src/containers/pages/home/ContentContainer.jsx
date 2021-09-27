@@ -73,6 +73,45 @@ const ContentContainer = () => {
         setTotalSLideNumber(testRef.current.childElementCount)
     }, [])
 
+    const [dragging, setDragging] = useState(
+        {
+            initialX: null,
+            initialY: null,
+            currentX: null,
+            currentY: null
+        }
+    )
+
+
+
+
+    // const parallaxDrag = (e) => {
+    //     console.log(e)
+    //     console.log("ji")
+    // }
+
+    const settingStartDrag = (e) => {
+        console.log(e)
+        const initialY = e.clientY;
+        if (initialY > 630) {
+            setIsTricking(true)
+            if (currentSlider !== totalSLideNumber - 1) {
+                setCurrentSlider((state) => state + 1);
+                setPageScroll((state) => ({ ...state, type: "down" }));
+            }
+            slideDurationTimeout(slideDurationSetting);
+
+        }
+        else if (initialY < 70) {
+            setIsTricking(true);
+            if (currentSlider !== 0) {
+                setCurrentSlider(state => state - 1);
+                setPageScroll((state) => ({ ...state, type: "up" }));
+            }
+            slideDurationTimeout(slideDurationSetting);
+        }
+    }
+
     return (
         <>
             <HomeContent
@@ -80,6 +119,8 @@ const ContentContainer = () => {
                 parallaxScroll={parallaxScroll}
                 currentSlider={currentSlider}
                 sectionScrollType={sectionScrollType}
+                // parallaxDrag={parallaxDrag}
+                settingStartDrag={settingStartDrag}
             ></HomeContent>
         </>
     )

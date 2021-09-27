@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-
+import { BsChevronDoubleDown } from "react-icons/bs"
 
 const Section = styled.div`
 margin : 0;
@@ -89,6 +89,37 @@ const ContentSubTitle = styled.p`
 margin : 0;
 `
 
+const DownIcon = styled.div`
+position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    bottom: 40px;
+    width: 10px;
+    font-size: 2.5vw;
+    color: white;
+    z-index: 11;
+    opacity: 1;
+    filter: alpha(opacity=100);
+    cursor: pointer;
+    -webkit-animation: glow 4s infinite;
+    animation: glow 4s infinite;
+    @keyframes glow {
+  0% {
+    opacity:1;
+    filter:alpha(opacity=100);
+  }
+  
+  50% {
+    opacity:0.3;
+    filter:alpha(opacity=30);
+    -webkit-transform:translateY(10px);
+            transform:translateY(10px);
+
+  }
+}
+`
 
 const FirstSectionForm = ({ currentSlider, sectionScrollType, }) => {
 
@@ -102,6 +133,7 @@ const FirstSectionForm = ({ currentSlider, sectionScrollType, }) => {
                 sectionScrollType={sectionScrollType}
                 backGroundColor={'#edeff2'}
                 zIndex={3}
+
             >
                 <ContentWrapper
                     index={0}
@@ -114,7 +146,14 @@ const FirstSectionForm = ({ currentSlider, sectionScrollType, }) => {
                     <ContentSubTitle>
                         Scroll down and up to see the effect!
                     </ContentSubTitle>
+                    <DownIcon>
+                        <BsChevronDoubleDown />
+                    </DownIcon>
+
+
                 </ContentWrapper>
+
+
             </Section>
 
         </>
