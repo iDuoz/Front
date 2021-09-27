@@ -102,7 +102,7 @@ const ContentContainer = () => {
             slideDurationTimeout(slideDurationSetting);
 
         }
-        else if (initialY < 70) {
+        else if (initialY < 150) {
             setIsTricking(true);
             if (currentSlider !== 0) {
                 setCurrentSlider(state => state - 1);

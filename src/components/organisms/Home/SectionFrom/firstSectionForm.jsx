@@ -27,7 +27,7 @@ margin : 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.3);
+    /* background-color: rgba(0, 0, 0, 0.3); */
 }
 ${props => (props.index === 0) ? `
 transform: translateY(-15vh);
@@ -95,10 +95,10 @@ position: absolute;
     right: 0;
     margin-left: auto;
     margin-right: auto;
-    bottom: 40px;
+    bottom: 60px;
     width: 10px;
-    font-size: 2.5vw;
-    color: white;
+    font-size: 30px;
+    color: #919191dd;
     z-index: 11;
     opacity: 1;
     filter: alpha(opacity=100);

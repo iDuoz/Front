@@ -43,14 +43,14 @@ const ColumnLayout = styled.div`
  * @param {Col} xl -screen ≥ 1200px
  * @param {Col} xxl - screen ≥ 1600px
  */
-const Col = ({ span, style, justify, align, xs, sm, md, lg, xl, xxl, children, offset }) => {
+const Col = ({ span, style, justify, align, xs, sm, md, lg, xl, xxl, children, offset, colRef }) => {
 
     return (
 
         <>
             <RowContext.Consumer>
                 {(value) => (
-                    <ColumnLayout style={style} justify={justify} align={align} span={span} gutter={value} offset={offset} xs={xs} sm={sm} md={md} lg={lg} xl={xl} xxl={xxl}>
+                    <ColumnLayout ref={colRef} style={style} justify={justify} align={align} span={span} gutter={value} offset={offset} xs={xs} sm={sm} md={md} lg={lg} xl={xl} xxl={xxl}>
                         {children}
                     </ColumnLayout>
                 )}
@@ -62,6 +62,7 @@ const Col = ({ span, style, justify, align, xs, sm, md, lg, xl, xxl, children, o
 
 Col.propTypes = {
     style: PropTypes.object,
+    ref: PropTypes.object,
     justify: PropTypes.string,
     align: PropTypes.string,
     span: PropTypes.number,
