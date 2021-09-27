@@ -4,6 +4,7 @@ import HeaderContent from "../../containers/redux/components/Header"
 const HeaderStyle = styled.header`
     width : 100%;
     display : flex;
+    top : 0;
 `
 
 const Header = () => {

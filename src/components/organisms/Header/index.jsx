@@ -28,6 +28,7 @@ const MenuItem = styled.div`
     transition: color .3s ease-out;
     margin: 5px 15px;
     ${props => (props.active) ? ` color : white` : null};
+    @media(max-width: 576px){ padding : 10px 16px; }
 `
 const Indicator = styled.div`
 
@@ -119,7 +120,7 @@ const Header = ({ logined }) => {
             <HeaderStyle>
                 <Row>
                     <Col span={12} >
-                        <Col span={5} colRef={menuWrapperRef} align={'center'} justify={'flex-start'} style={{ position: "relative" }} >
+                        <Col xs={12} sm={12} span={5} colRef={menuWrapperRef} align={'center'} justify={'flex-start'} style={{ position: "relative", padding: "10px 0" }} >
                             {
                                 setHeaderItem.map((items, index) => (
                                     <MenuItem
@@ -135,11 +136,11 @@ const Header = ({ logined }) => {
                             <Indicator ref={indicator1}></Indicator>
                             <Indicator ref={indicator2}></Indicator>
                         </Col>
-                        <Col span={2} justify={'center'} align={'center'}>
+                        <Col xs={0} sm={0} span={2} justify={'center'} align={'center'}>
 
                             <Img src={whiteIcon} width={'6.5rem'} height={'2.2rem'}></Img>
                         </Col>
-                        <Col span={5} >
+                        <Col xs={0} sm={0} span={5} >
 
                         </Col>
                     </Col>
