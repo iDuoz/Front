@@ -51,7 +51,7 @@ ${props => (props.index === props.currentSlider) ?
 const ContentWrapper = styled.div`
 margin : 0;
 height: 100vh;
-overflow: hidden;
+/* overflow: hidden; */
     display: flex;
     justify-content: center;
     text-align: center;
@@ -97,8 +97,8 @@ position: absolute;
     right: 0;
     margin-left: auto;
     margin-right: auto;
-    bottom: 60px;
-    width: 1.2em;
+    bottom: 4.5rem;
+    width: 60px;
     font-size: 30px;
     color: #919191dd;
     z-index: 11;
@@ -119,8 +119,18 @@ position: absolute;
     -webkit-transform:translateY(10px);
             transform:translateY(10px);
 
-  }
-}
+  }}
+
+   @media(max-width: 1200px) {
+        
+      }
+      @media(max-width: 1024px) {
+        
+      }
+      @media(max-width: 768px) {
+        
+      }
+
 `
 
 const FirstSectionForm = ({ currentSlider, sectionScrollType, settingMobileBtn, }) => {
