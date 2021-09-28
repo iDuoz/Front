@@ -92,7 +92,7 @@ margin : 0;
 `
 
 const DownIcon = styled.div`
-position: fixed;
+position: absolute;
     left: 0;
     right: 0;
     margin-left: auto;
