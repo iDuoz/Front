@@ -15,7 +15,7 @@ const Home = () => {
     return (
         <>
             <WholeWrapper>
-                <Header></Header>
+                <Header ></Header>
                 <ContentContainer />
             </WholeWrapper>
         </>
