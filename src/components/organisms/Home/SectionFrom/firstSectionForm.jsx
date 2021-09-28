@@ -27,7 +27,7 @@ margin : 0;
     left: 0;
     right: 0;
     bottom: 0;
-    /* background-color: rgba(0, 0, 0, 0.3); */
+    background-color: rgba(0, 0, 0, 0.3);
 }
 ${props => (props.index === 0) ? `
 transform: translateY(-15vh);
@@ -50,6 +50,7 @@ ${props => (props.index === props.currentSlider) ?
 const ContentWrapper = styled.div`
 margin : 0;
 height: 100vh;
+overflow: hidden;
     display: flex;
     justify-content: center;
     text-align: center;
@@ -90,13 +91,13 @@ margin : 0;
 `
 
 const DownIcon = styled.div`
-position: absolute;
+position: fixed;
     left: 0;
     right: 0;
     margin-left: auto;
     margin-right: auto;
     bottom: 60px;
-    width: 10px;
+    width: 1.2em;
     font-size: 30px;
     color: #919191dd;
     z-index: 11;
@@ -121,7 +122,7 @@ position: absolute;
 }
 `
 
-const FirstSectionForm = ({ currentSlider, sectionScrollType, }) => {
+const FirstSectionForm = ({ currentSlider, sectionScrollType, settingMobileBtn, }) => {
 
 
 
@@ -146,7 +147,7 @@ const FirstSectionForm = ({ currentSlider, sectionScrollType, }) => {
                     <ContentSubTitle>
                         Scroll down and up to see the effect!
                     </ContentSubTitle>
-                    <DownIcon>
+                    <DownIcon onClick={settingMobileBtn.pageDown}>
                         <BsChevronDoubleDown />
                     </DownIcon>
 

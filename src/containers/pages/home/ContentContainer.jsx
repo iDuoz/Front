@@ -82,26 +82,26 @@ const ContentContainer = () => {
     //     console.log("ji")
     // }
 
-    const settingStartDrag = (e) => {
-        console.log(e)
-        const initialY = e.clientY;
-        if (initialY > 630) {
-            setIsTricking(true)
-            if (currentSlider !== totalSLideNumber - 1) {
-                setCurrentSlider((state) => state + 1);
-                setPageScroll((state) => ({ ...state, type: "down" }));
-            }
-            slideDurationTimeout(slideDurationSetting);
-
-        }
-        else if (initialY < 150) {
+    const settingMobileBtn = {
+        pageUp: () => {
             setIsTricking(true);
             if (currentSlider !== 0) {
                 setCurrentSlider(state => state - 1);
                 setPageScroll((state) => ({ ...state, type: "up" }));
             }
             slideDurationTimeout(slideDurationSetting);
-        }
+        },
+
+        pageDown: () => {
+            setIsTricking(true)
+            if (currentSlider !== totalSLideNumber - 1) {
+                setCurrentSlider((state) => state + 1);
+                setPageScroll((state) => ({ ...state, type: "down" }));
+            }
+            slideDurationTimeout(slideDurationSetting);
+        },
+
+
     }
 
     return (
@@ -112,7 +112,7 @@ const ContentContainer = () => {
                 currentSlider={currentSlider}
                 sectionScrollType={sectionScrollType}
                 // parallaxDrag={parallaxDrag}
-                settingStartDrag={settingStartDrag}
+                settingMobileBtn={settingMobileBtn}
             ></HomeContent>
         </>
     )
