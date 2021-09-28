@@ -82,12 +82,12 @@ ${props => (props.index === props.currentSlider) ?
 
 
 
-const ConstTitle = styled.p`
+const ConstTitle = styled.div`
 margin : 0;
  font-size: 12vh;
     line-height: 1.4;
 `
-const ContentSubTitle = styled.p`
+const ContentSubTitle = styled.div`
 margin : 0;
 `
 
@@ -122,13 +122,13 @@ position: absolute;
   }}
 
    @media(max-width: 1200px) {
-        
+    bottom: 5rem;
       }
       @media(max-width: 1024px) {
-        
+        bottom: 6rem;
       }
       @media(max-width: 768px) {
-        
+        bottom: 7rem;
       }
 
 `
