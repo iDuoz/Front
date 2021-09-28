@@ -1,9 +1,9 @@
 import React from "react"
 import styled from "styled-components"
 import HeaderContent from "../../containers/redux/components/Header"
-const HeaderStyle = styled.header`
+const HeaderStyle = styled.div`
     width : 100%;
-    display : flex;
+  
     top : 0;
 `
 

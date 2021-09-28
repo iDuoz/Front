@@ -1,11 +1,12 @@
 import React, { useRef, useState, useEffect, createRef } from 'react';
 import styled from 'styled-components'
-import Row from "../../../layout/Grid/Row/index"
-import Col from "../../../layout/Grid/Column/index"
-import Img from "../../atoms/Image"
+import Row from "../../../../layout/Grid/Row/index"
+import Col from "../../../../layout/Grid/Column/index"
+import Img from "../../../atoms/Image"
+import Button from "../../../atoms/Button"
 import { useHistory } from "react-router-dom"
-import blackIcon from "../../../assets/images/meritsblack.png"
-import whiteIcon from "../../../assets/images/meritswhite.png"
+import blackIcon from "../../../../assets/images/meritsblack.png"
+import whiteIcon from "../../../../assets/images/meritswhite.png"
 import gsap from "gsap"
 
 
@@ -16,7 +17,7 @@ const HeaderStyle = styled.div`
   background-color: #edeff2;
   display : flex;
   position : absolute;
-  border-bottom: 1px solid #dfdfe5;
+  border-bottom: 1.5px solid #dfdfe5;
   align-items: center;
 `
 const MenuItem = styled.div`
@@ -120,7 +121,7 @@ const Header = ({ logined }) => {
             <HeaderStyle>
                 <Row>
                     <Col span={12} >
-                        <Col xs={12} sm={12} span={5} colRef={menuWrapperRef} align={'center'} justify={'flex-start'} style={{ position: "relative", padding: "10px 0" }} >
+                        <Col xs={12} span={5} colRef={menuWrapperRef} align={'center'} justify={'flex-start'} style={{ position: "relative", padding: "10px 0" }} >
                             {
                                 setHeaderItem.map((items, index) => (
                                     <MenuItem
@@ -136,12 +137,14 @@ const Header = ({ logined }) => {
                             <Indicator ref={indicator1}></Indicator>
                             <Indicator ref={indicator2}></Indicator>
                         </Col>
-                        <Col xs={0} sm={0} span={2} justify={'center'} align={'center'}>
+                        <Col xs={0} span={2} justify={'center'} align={'center'}>
 
                             <Img src={whiteIcon} width={'6.5rem'} height={'2.2rem'}></Img>
                         </Col>
-                        <Col xs={0} sm={0} span={5} >
-
+                        <Col xs={0} span={5} justify={'space-around'} align={'center'} >
+                            <Button size={'small'} types={"secondary"} value={'Login'}></Button>
+                            <Button size={'large'} types={"primary"} value={'Login'}></Button>
+                            <Button value={'Login'}></Button>
                         </Col>
                     </Col>
                 </Row>

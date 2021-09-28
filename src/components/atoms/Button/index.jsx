@@ -12,22 +12,21 @@ const ButtonComponent = styled.input.attrs(props => ({ type: "button" }))`
   justify-content: center;
   cursor: pointer;
   transition: 0.3s ease;
-
-
+ 
 
     ${props => {
         switch (props.size) {
             case "small":
                 return `
-                    padding : 2px 8px;
+                    padding : 12px 23px;
                 `
             case "large":
                 return `
-                    padding : 12px 20px;
+                    padding : 10px 50px;
                 `
             default:
                 return `
-                    padding : 8px 16px;
+                padding : 8px 16px;
                 `
         }
     }}
@@ -35,23 +34,40 @@ ${props => {
         switch (props.types) {
             case "primary":
                 return `
-  background: var(--primary);
-  box-shadow: inset 0.2rem 0.2rem 1rem var(--primary-light), inset -0.2rem -0.2rem 1rem var(--primary-dark), 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
-  color: var(--greyLight-1);
+                    background: #6d5dfc;
+                    border : none;
+                    box-shadow: inset 0.2rem 0.2rem 1rem #8abdff, inset -0.2rem -0.2rem 1rem #5b0eeb, 0.3rem 0.3rem 0.6rem #c8d0e7, -0.2rem -0.2rem 0.5rem #FFFFFF;
+                    color:#E4EBF5;
+                    &:hover{
+                        color: #FFFFFF;
+                    }
+                    &:active {
+                        box-shadow: inset 0.2rem 0.2rem 1rem #5b0eeb, inset -0.2rem -0.2rem 1rem #8abdff;
+                    }
             `
-            case "text":
+            case "secondary":
                 return `
-                background-color: rgba(255,255,255,0);
-                border: none;
-                outline : 0;
-                color : #000000;
+                color: #9baacf;
+                border : none;
+                &:hover{
+                    color: #6d5dfc;
+                    }
+                &:active {
+                    box-shadow: inset 0.2rem 0.2rem 0.5rem #c8d0e7, inset -0.2rem -0.2rem 0.5rem #FFFFFF;
+                }
             `
             default:
                 return `
                 background-color: #FFFFFF;
-                border: 1px solid #000000;
+                border: 1px solid #697592;
                 border-radius : 3px;
-                color : #000000;
+                color : #697592;
+                &:hover{
+                    color: #5b667e;
+                    }
+                &:active {
+                    box-shadow: inset 0.2rem 0.2rem 0.5rem #d3d7e6, inset -0.2rem -0.2rem 0.5rem #FFFFFF;
+                }
             `
         }
     }}
