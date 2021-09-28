@@ -104,6 +104,41 @@ const ContentContainer = () => {
 
     }
 
+
+
+    const [startY, SetStartY] = useState()
+
+    const handleTouchStart = (e) => {
+        console.log(e.changedTouches[0].pageY)
+        SetStartY(e.changedTouches[0].pageY)
+    }
+
+    const handleTouchEnd = (e) => {
+        console.log(e.changedTouches[0].pageY)
+        console.log(startY - e.changedTouches[0].pageY > 150)
+        console.log(startY - e.changedTouches[0].pageY < -150)
+        if (startY - e.changedTouches[0].pageY > 150) {
+            setIsTricking(true)
+            if (currentSlider !== totalSLideNumber - 1) {
+                setCurrentSlider((state) => state + 1);
+                setPageScroll((state) => ({ ...state, type: "down" }));
+            }
+            slideDurationTimeout(slideDurationSetting);
+
+        }
+        // settingMobileBtn.pageUp
+        else if (startY - e.changedTouches[0].pageY < -150) {
+            setIsTricking(true);
+            if (currentSlider !== 0) {
+                setCurrentSlider(state => state - 1);
+                setPageScroll((state) => ({ ...state, type: "up" }));
+            }
+            slideDurationTimeout(slideDurationSetting);
+        }
+    }
+
+
+
     return (
         <>
             <HomeContent
@@ -113,6 +148,8 @@ const ContentContainer = () => {
                 sectionScrollType={sectionScrollType}
                 // parallaxDrag={parallaxDrag}
                 settingMobileBtn={settingMobileBtn}
+                handleTouchStart={handleTouchStart}
+                handleTouchEnd={handleTouchEnd}
             ></HomeContent>
         </>
     )
