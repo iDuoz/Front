@@ -7,7 +7,7 @@ const HeaderStyle = styled.div`
   min-height : 5rem;
   background-color: #edeff2;
   display : flex;
-  position : absolute;
+  position : fixed;
   border-bottom: 1.5px solid #dfdfe5;
   align-items: center;
   top : 0;
