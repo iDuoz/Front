@@ -22,11 +22,11 @@ const HomeContent = ({ testRef, parallaxScroll, currentSlider, sectionScrollType
         <>
             {/* SECTION Content */}
 
-            <div ref={testRef} onWheel={parallaxScroll} onDragEnd={handelDragDrop} onDragStart={handelDragEnter} style={{
+            <div ref={testRef} onWheel={parallaxScroll} onMouseOver={handelDragDrop} onDragStart={handelDragEnter} style={{
                 position: 'relative', height: '100%', width: "100%", zIndex: '1000'
             }}>
                 {
-                    (check > 0) ?
+                    (check > 0 || checkout > 0) ?
                         <div style={{ position: 'relative', width: "20px", height: '20px', left: '30%', top: '50%', zIndex: "11" }}>
                             {check}'    '{checkout}</div> : null
                 }
