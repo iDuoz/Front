@@ -10,16 +10,7 @@ import whiteIcon from "../../../../assets/images/meritswhite.png"
 import gsap from "gsap"
 
 
-const HeaderStyle = styled.div`
-    z-index:20;
-    width : 100%;
-  min-height : 5rem;
-  background-color: #edeff2;
-  display : flex;
-  position : absolute;
-  border-bottom: 1.5px solid #dfdfe5;
-  align-items: center;
-`
+
 
 const MenuItem = styled.div`
  padding: 16px 21px;

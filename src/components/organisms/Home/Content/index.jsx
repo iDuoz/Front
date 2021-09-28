@@ -9,7 +9,7 @@ const HomeContent = ({ testRef, parallaxScroll, currentSlider, sectionScrollType
     return (
         <>
             {/* SECTION Content */}
-            <div ref={testRef} onWheel={parallaxScroll}   >
+            <div ref={testRef} onWheel={parallaxScroll} style={{ position: 'absolute' }}>
                 <FirstSectionForm currentSlider={currentSlider} sectionScrollType={sectionScrollType[0]} settingMobileBtn={settingMobileBtn} ></FirstSectionForm>
                 <SecondSectionForm currentSlider={currentSlider} sectionScrollType={sectionScrollType[1]} settingMobileBtn={settingMobileBtn}></SecondSectionForm>
                 <ThirdSectionForm currentSlider={currentSlider} sectionScrollType={sectionScrollType[2]} settingMobileBtn={settingMobileBtn}></ThirdSectionForm>
