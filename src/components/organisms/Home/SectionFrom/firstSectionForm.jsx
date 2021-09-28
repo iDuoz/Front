@@ -20,6 +20,7 @@ margin : 0;
   z-index : ${props => props.zIndex};
   &:before {
     content: '';
+    overflow: hidden;
     position: absolute;
     width: 100%;
     height: 100%;

@@ -20,6 +20,7 @@ const HeaderStyle = styled.div`
   border-bottom: 1.5px solid #dfdfe5;
   align-items: center;
 `
+
 const MenuItem = styled.div`
  padding: 16px 21px;
  display: flex;
@@ -118,37 +119,35 @@ const Header = ({ logined }) => {
         <>
             {/* SECTION Content */}
 
-            <HeaderStyle>
-                <Row>
-                    <Col span={12} >
-                        <Col xs={12} span={5} colRef={menuWrapperRef} align={'center'} justify={'flex-start'} style={{ position: "relative", padding: "10px 0" }} >
-                            {
-                                setHeaderItem.map((items, index) => (
-                                    <MenuItem
-                                        key={index}
-                                        ref={headerItems.current[index]}
-                                        onMouseEnter={() => { handleActiveIndex(index) }}
-                                        onMouseLeave={((e) => { e.stopPropagation() })}
-                                        onClick={() => { history.push(items.path) }}
-                                        active={active.index === index ? true : false}
-                                    >{items.name}</MenuItem>
-                                ))
-                            }
-                            <Indicator ref={indicator1}></Indicator>
-                            <Indicator ref={indicator2}></Indicator>
-                        </Col>
-                        <Col xs={0} span={2} justify={'center'} align={'center'}>
-
-                            <Img src={whiteIcon} width={'6.5rem'} height={'2.2rem'}></Img>
-                        </Col>
-                        <Col xs={0} span={5} justify={'space-around'} align={'center'} >
-                            <Button size={'small'} types={"secondary"} value={'Login'}></Button>
-                            <Button size={'large'} types={"primary"} value={'Login'}></Button>
-                            <Button value={'Login'}></Button>
-                        </Col>
+            <Row>
+                <Col span={12} >
+                    <Col xs={12} span={5} colRef={menuWrapperRef} align={'center'} justify={'flex-start'} style={{ position: "relative", padding: "10px 0" }} >
+                        {
+                            setHeaderItem.map((items, index) => (
+                                <MenuItem
+                                    key={index}
+                                    ref={headerItems.current[index]}
+                                    onMouseEnter={() => { handleActiveIndex(index) }}
+                                    onMouseLeave={((e) => { e.stopPropagation() })}
+                                    onClick={() => { history.push(items.path) }}
+                                    active={active.index === index ? true : false}
+                                >{items.name}</MenuItem>
+                            ))
+                        }
+                        <Indicator ref={indicator1}></Indicator>
+                        <Indicator ref={indicator2}></Indicator>
                     </Col>
-                </Row>
-            </HeaderStyle>
+                    <Col xs={0} span={2} justify={'center'} align={'center'}>
+
+                        <Img src={whiteIcon} width={'6.5rem'} height={'2.2rem'}></Img>
+                    </Col>
+                    <Col xs={0} span={5} justify={'space-around'} align={'center'} >
+                        <Button size={'small'} types={"secondary"} value={'Login'}></Button>
+                        <Button size={'large'} types={"primary"} value={'Login'}></Button>
+                        <Button value={'Login'}></Button>
+                    </Col>
+                </Col>
+            </Row>
 
 
             {/* !SECTION Content */}
