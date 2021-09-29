@@ -8,7 +8,7 @@ display : flex;
 
 ${props => (props.full) ? 'width : 100%; justify-content : inherit' : null};
 font-size : ${props => (props.size) || '1rem'};
-font-family : ${props => (props.fontFamily) || 'Noto Sans CJK KR'};
+font-family : ${props => (props.fontFamily) || 'Noto Sans KR'};
 color : ${props => (props.color)};
 background-color : ${props => (props.backColor)};
 opacity :  ${props => (props.opacity)};

@@ -4,21 +4,21 @@ import styled from "styled-components"
 const ButtonComponent = styled.input.attrs(props => ({ type: "button" }))`
  /* width: 15rem;
   height: 4rem; */
-  border-radius: 1rem;
+  border-radius: 0.8rem;
   box-shadow: 0.3rem 0.3rem 0.6rem #c8d0e7, -0.2rem -0.2rem 0.5rem #FFFFFF;
   justify-self: center;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  /* transition: 0.3s ease; */
- 
-
+  transition:  0.3s ease;
+  font-size: 1rem;
+    cursor: pointer;
     ${props => {
         switch (props.size) {
             case "small":
                 return `
-                    padding : 12px 23px;
+                    padding : 8px 16px;
                 `
             case "large":
                 return `
@@ -26,7 +26,7 @@ const ButtonComponent = styled.input.attrs(props => ({ type: "button" }))`
                 `
             default:
                 return `
-                padding : 8px 16px;
+                padding :12px 23px;
                 `
         }
     }}
@@ -47,7 +47,8 @@ ${props => {
             `
             case "secondary":
                 return `
-                color: #9baacf;
+                color: #8490b1;
+                font-weight : 400;
                 border : none;
                 &:hover{
                     color: #6d5dfc;
@@ -73,15 +74,29 @@ ${props => {
             `
         }
     }}
-    ${props => (props.block) ? `width : 100%;` : null}
-    font-size: 1rem;
-    cursor: pointer;
+    
+    
     ${props => props.bold ? `font-weight : bold` : null}
+    ${props => props.plane ? `
+    background-color: #4b70e2;
+    color: #f9f9f9;
+    box-shadow: 8px 8px 16px #d1d9e6, -8px -8px 16px #f9f9f9;
+    border: none;
+    outline: none;
+    color:#E4EBF5;
+                    &:hover{
+                        color: #FFFFFF;
+                    }
+                    &:active {
+                        box-shadow: inset 0.2rem 0.2rem 1rem #5b0eeb, inset -0.2rem -0.2rem 1rem #8abdff;
+                    }
+    `: null};
+    ${props => (props.block) ? `width : 90%;` : null}
 `
 
-const Button = ({ href, size, types, block, value, onClick, bold }) => (
+const Button = ({ href, size, types, block, value, onClick, bold, plane }) => (
     <>
-        <ButtonComponent href={href} size={size} types={types} block={block} value={value} bold={bold} onClick={onClick}>
+        <ButtonComponent href={href} size={size} types={types} plane={plane} block={block} value={value} bold={bold} onClick={onClick}>
 
         </ButtonComponent>
     </>

@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, createRef } from 'react';
+import React from 'react';
 import styled from 'styled-components'
 import Row from "../../../../layout/Grid/Row/index"
 import Col from "../../../../layout/Grid/Column/index"
@@ -63,7 +63,7 @@ const Header = ({ logined, menuWrapperRef,
 
             <Row>
                 <Col span={12} >
-                    <Col xs={12} span={5} colRef={menuWrapperRef} align={'center'} justify={'flex-start'} style={{ position: "relative", padding: "10px 0" }} >
+                    <Col xs={0} span={5} colRef={menuWrapperRef} align={'center'} justify={'flex-start'} style={{ position: "relative", padding: "10px 0" }} >
                         {
                             setHeaderItem.map((items, index) => (
                                 <MenuItem
@@ -79,11 +79,11 @@ const Header = ({ logined, menuWrapperRef,
                         <Indicator ref={indicator1}></Indicator>
                         <Indicator ref={indicator2}></Indicator>
                     </Col>
-                    <Col xs={0} span={2} justify={'center'} align={'center'}>
+                    <Col xs={6} span={2} justify={'center'} align={'center'}>
 
                         <Img src={whiteIcon} width={'6.5rem'} height={'2.2rem'}></Img>
                     </Col>
-                    <Col xs={0} span={5} justify={'space-around'} align={'center'} >
+                    <Col xs={6} span={5} justify={'space-around'} align={'center'} >
                         {/* <Button size={'small'} types={"secondary"} value={'Login'}></Button>
                         <Button size={'large'} types={"primary"} value={'Login'}></Button> */}
                         <Button value={'Login'} onClick={handleLoginModal.show} ></Button>
@@ -92,7 +92,7 @@ const Header = ({ logined, menuWrapperRef,
             </Row>
 
             <Modal headerClose visible={isHeaderLoginModal.visible} closable={false} maskClosable={true}
-                onClose={handleLoginModal.close} size={10} xs={10} sm={10} md={9} lg={9} xl={9} xxl={9}>
+                onClose={handleLoginModal.close} size={8} xs={8} sm={8} md={7} lg={7} xl={7} xxl={6}>
                 <LoginModalForm isHeaderLoginModal={isHeaderLoginModal}
                     handleLoginModal={handleLoginModal}
                     settingSingUpValueFunction={settingSingUpValueFunction}

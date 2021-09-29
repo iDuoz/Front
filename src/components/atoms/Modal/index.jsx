@@ -10,7 +10,7 @@ import { VscClose } from "react-icons/vsc";
 const ModalWrapper = styled.div`
   /* display : ${props => (props.visible) ? `flex` : `none`}; */
   visibility :hidden;
-
+  display:none;
 
   justify-content: center;
   align-items: center;
@@ -20,18 +20,20 @@ const ModalWrapper = styled.div`
   left : 0;
   bottom : 0;
   position : fixed;
-  background-color: rgba(277,277,277,0.6);
+  /* background-color: rgba(228 ,235 ,245,0.7); */
+  background-color: rgba(255 ,255 ,255,0.4);
   z-index : ${props => (props.zIndex) - 1 || 100};
-
-  
+  opacity: 0;
+ 
   ${props => (props.visible) ? `
   display : flex;
+  opacity: 1;
   visibility: visible;
   transition-delay: 0s;
   transition-duration: 0.3s, 0s;
+  transition :display 0.25s ease;
   `:
-        `display:flex;
-        transition:  visibility 0.35s linear; `
+        null
     };
  `
 
@@ -44,13 +46,15 @@ const ModalContainer = styled.div`
   width : 100%; 
   height : auto;
   max-height : 60%;
-  background-color : #e4ebf5;
-  border-radius: 3px;
+  /* background-color : #e4ebf5; */
+  background-color : #ecf0f3;
+  border-radius: 3rem;
   visibility: hidden;
-
+    transition:display 0.4s ease  0s;
  // antd
   position : relative;
   margin : auto auto;
+  box-shadow: 0.8rem 0.8rem 1.4rem #c8d0e7, -0.2rem -0.2rem 1.8rem #FFFFFF;
  z-index : ${props => (props.zIndex) || null};
  ${props => (props.visible) ? `
 display:flex;
@@ -81,29 +85,8 @@ animation: modalComeIn 0.25s ease;
     transform: scale(1, 1);
   }
 }`
-        : `
-        display:flex;
-        
-animation: modalHeadOut 0.35s ease 0.1s;
-@keyframes modalHeadOut {
-  0% {
-    visibility: visible;
-    opacity: 1;
-    -moz-transform: translateY(0) scale(1, 1);
-    -ms-transform: translateY(0) scale(1, 1);
-    -webkit-transform: translateY(0) scale(1, 1);
-    transform: translateY(0) scale(1, 1);
-  }
-  100% {
-    visibility: hidden;
-    opacity: 0;
-    -moz-transform: translateY(35px) scale(0.97, 0.97);
-    -ms-transform: translateY(35px) scale(0.97, 0.97);
-    -webkit-transform: translateY(35px) scale(0.97, 0.97);
-    transform: translateY(35px) scale(0.97, 0.97);
-  }
-}
-`}
+        :
+        null}
 
  `
 
@@ -141,20 +124,10 @@ const ModalHeader = styled.div`
 
 
 const ModalContent = styled.div`
-visibility: visible;
  padding: 24px;
  width : inherit;
  box-sizing : border-box;
- transform: translateY(0) scale(1, 1);
- ${props => (props.visible) ? null :
-        `transition-delay: 0s;
-        transition-duration: 0.3s;
-        transition-timing-function: ease;
-        transform: translateY(25px);
-        visibility: hidden;
-        `
-    };
- `
+`
 
 
 const stopBubbling = (e) => {
