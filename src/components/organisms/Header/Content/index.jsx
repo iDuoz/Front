@@ -4,12 +4,11 @@ import Row from "../../../../layout/Grid/Row/index"
 import Col from "../../../../layout/Grid/Column/index"
 import Img from "../../../atoms/Image"
 import Button from "../../../atoms/Button"
+import Modal from "../../../atoms/Modal"
 import { useHistory } from "react-router-dom"
 import blackIcon from "../../../../assets/images/meritsblack.png"
 import whiteIcon from "../../../../assets/images/meritswhite.png"
-import gsap from "gsap"
-
-
+import LoginModalForm from "../LoginModalForm"
 
 
 const MenuItem = styled.div`
@@ -39,72 +38,24 @@ const Indicator = styled.div`
  * @param {HeaderItemName} header에들어가는pathName 
  * @Detail 최대 5개  
  */
-const Header = ({ logined }) => {
+const Header = ({ logined, menuWrapperRef,
+    setHeaderItem,
+    headerItems,
+    handleActiveIndex,
+    active,
+    indicator1,
+    indicator2,
+    //modal
+    isHeaderLoginModal,
+    handleLoginModal,
+    settingSingUpValueFunction,
+    settingLogInValueFunction,
+    LoginBtnOnclick,
+    SignupBtnOnclick,
+}) => {
     const history = useHistory();
     // TODO 로그인후 조건별로 설정
-    const headerItemsName = ['FreeLance', 'Design', 'Director', 'Experience']
 
-
-
-    const matchingHeaderPath = (itemName) => {
-        const itemRoute = {
-            FreeLance: '/',
-            Design: '/',
-            Director: '/',
-            Experience: '/',
-        };
-        return itemRoute[itemName] || "/notFound"
-    }
-
-    const matchingHeaderColor = ["#f44336", "#e91e63", "#9c27b0", "#673ab7", "#3f51b5",]
-
-
-    const setHeaderItem = headerItemsName.map((items, index, source) => {
-        return {
-            name: items,
-            color: matchingHeaderColor[index],
-            path: matchingHeaderPath(items)
-        }
-    })
-
-
-    console.log(setHeaderItem)
-
-
-
-    const [active, setActive] = useState({ index: 0 });
-    const menuWrapperRef = React.createRef();
-    const headerItems = useRef(setHeaderItem.map(createRef))
-    const indicator1 = useRef();
-    const indicator2 = useRef();
-
-    useEffect(() => {
-        const menuOffset = menuWrapperRef.current.getBoundingClientRect();
-        const activeItem = headerItems.current[active.index].current;
-        const { width, height, top, left } = activeItem.getBoundingClientRect()
-        // setResizeIndicator((state) => ({ ...state, width: width, height: height }))
-        const settings = {
-            x: left - menuOffset.x,
-            y: top - menuOffset.y,
-            width: width,
-            height: height,
-            backgroundColor: setHeaderItem[active.index].color,
-            ease: 'elastic.out(.7, .7)',
-            duration: .8
-        }
-        gsap.to(indicator1.current, {
-            ...settings,
-        })
-
-        gsap.to(indicator2.current, {
-            ...settings,
-            duration: 1
-        })
-    }, [active.index, menuWrapperRef, setHeaderItem])
-
-    const handleActiveIndex = (index) => {
-        setActive((state) => ({ ...state, index: index }))
-    }
 
     return (
         <>
@@ -133,13 +84,22 @@ const Header = ({ logined }) => {
                         <Img src={whiteIcon} width={'6.5rem'} height={'2.2rem'}></Img>
                     </Col>
                     <Col xs={0} span={5} justify={'space-around'} align={'center'} >
-                        <Button size={'small'} types={"secondary"} value={'Login'}></Button>
-                        <Button size={'large'} types={"primary"} value={'Login'}></Button>
-                        <Button value={'Login'}></Button>
+                        {/* <Button size={'small'} types={"secondary"} value={'Login'}></Button>
+                        <Button size={'large'} types={"primary"} value={'Login'}></Button> */}
+                        <Button value={'Login'} onClick={handleLoginModal.show} ></Button>
                     </Col>
                 </Col>
             </Row>
 
+            <Modal headerClose visible={isHeaderLoginModal.visible} closable={false} maskClosable={true}
+                onClose={handleLoginModal.close} size={10} xs={10} sm={10} md={9} lg={9} xl={9} xxl={9}>
+                <LoginModalForm isHeaderLoginModal={isHeaderLoginModal}
+                    handleLoginModal={handleLoginModal}
+                    settingSingUpValueFunction={settingSingUpValueFunction}
+                    settingLogInValueFunction={settingLogInValueFunction}
+                    LoginBtnOnclick={LoginBtnOnclick}
+                    SignupBtnOnclick={SignupBtnOnclick} />
+            </Modal>
 
             {/* !SECTION Content */}
         </>

@@ -11,7 +11,7 @@ const ButtonComponent = styled.input.attrs(props => ({ type: "button" }))`
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: 0.3s ease;
+  /* transition: 0.3s ease; */
  
 
     ${props => {
@@ -61,9 +61,11 @@ ${props => {
                 background-color: #FFFFFF;
                 border: 1px solid #697592;
                 border-radius : 3px;
+                box-shadow : none;
                 color : #697592;
                 &:hover{
                     color: #5b667e;
+                    box-shadow: 0.3rem 0.3rem 0.6rem #c8d0e7, -0.2rem -0.2rem 0.5rem #FFFFFF;
                     }
                 &:active {
                     box-shadow: inset 0.2rem 0.2rem 0.5rem #d3d7e6, inset -0.2rem -0.2rem 0.5rem #FFFFFF;

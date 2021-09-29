@@ -1,5 +1,5 @@
-import post_signup from '../api/post/post_signup';
-import LoginProcess from './login_process';
+// import post_signup from '../api/post/post_signup';
+// import LoginProcess from './login_process';
 
 const SignupProcess = (signUpInfo) => {
   // console.log(signUpInfo)

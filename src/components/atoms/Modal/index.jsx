@@ -1,17 +1,17 @@
-/**
- * @Author : chaeeun
- * @Date : 2020-12-30 18:37:07
- * @Last Modified by: eun.🍒
- * @Last Modified time: 2021-09-28 09:18:06
- */
 
 import React from 'react'
 import styled from 'styled-components'
 import Col from '../../../layout/Grid/Column'
 import Row from '../../../layout/Grid/Row'
 import { VscClose } from "react-icons/vsc";
+
+
+
 const ModalWrapper = styled.div`
-  display : ${props => (props.visible) ? `flex` : `none`};
+  /* display : ${props => (props.visible) ? `flex` : `none`}; */
+  visibility :hidden;
+
+
   justify-content: center;
   align-items: center;
   flex-direction : column;
@@ -20,28 +20,94 @@ const ModalWrapper = styled.div`
   left : 0;
   bottom : 0;
   position : fixed;
-  
-  background-color: rgba(0, 0, 0,0.12);
+  background-color: rgba(277,277,277,0.6);
   z-index : ${props => (props.zIndex) - 1 || 100};
+
+  
+  ${props => (props.visible) ? `
+  display : flex;
+  visibility: visible;
+  transition-delay: 0s;
+  transition-duration: 0.3s, 0s;
+  `:
+        `display:flex;
+        transition:  visibility 0.35s linear; `
+    };
  `
 
 
 
 const ModalContainer = styled.div`
-  display : ${props => (props.visible) ? `flex` : `none`};
   flex-direction : column;
   justify-content: center;
   align-items: center;
   width : 100%; 
   height : auto;
   max-height : 60%;
-  background-color: white;
+  background-color : #e4ebf5;
   border-radius: 3px;
+  visibility: hidden;
+
  // antd
   position : relative;
   margin : auto auto;
  z-index : ${props => (props.zIndex) || null};
+ ${props => (props.visible) ? `
+display:flex;
+animation: modalComeIn 0.25s ease;
+  visibility: visible;
+
+  @keyframes modalComeIn {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+    -moz-transform: scale(0.8, 0.8);
+    -ms-transform: scale(0.8, 0.8);
+    -webkit-transform: scale(0.8, 0.8);
+    transform: scale(0.8, 0.8);
+  }
+  65.5% {
+    -moz-transform: scale(1.03, 1.03);
+    -ms-transform: scale(1.03, 1.03);
+    -webkit-transform: scale(1.03, 1.03);
+    transform: scale(1.03, 1.03);
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
+    -moz-transform: scale(1, 1);
+    -ms-transform: scale(1, 1);
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+}`
+        : `
+        display:flex;
+        
+animation: modalHeadOut 0.35s ease 0.1s;
+@keyframes modalHeadOut {
+  0% {
+    visibility: visible;
+    opacity: 1;
+    -moz-transform: translateY(0) scale(1, 1);
+    -ms-transform: translateY(0) scale(1, 1);
+    -webkit-transform: translateY(0) scale(1, 1);
+    transform: translateY(0) scale(1, 1);
+  }
+  100% {
+    visibility: hidden;
+    opacity: 0;
+    -moz-transform: translateY(35px) scale(0.97, 0.97);
+    -ms-transform: translateY(35px) scale(0.97, 0.97);
+    -webkit-transform: translateY(35px) scale(0.97, 0.97);
+    transform: translateY(35px) scale(0.97, 0.97);
+  }
+}
+`}
+
  `
+
+
 const CloseButton = styled.button`
  position : absolute;
  top : 0;
@@ -75,10 +141,19 @@ const ModalHeader = styled.div`
 
 
 const ModalContent = styled.div`
+visibility: visible;
  padding: 24px;
  width : inherit;
  box-sizing : border-box;
- 
+ transform: translateY(0) scale(1, 1);
+ ${props => (props.visible) ? null :
+        `transition-delay: 0s;
+        transition-duration: 0.3s;
+        transition-timing-function: ease;
+        transform: translateY(25px);
+        visibility: hidden;
+        `
+    };
  `
 
 
@@ -94,6 +169,7 @@ const stopBubbling = (e) => {
  * @param onClose - 모달 닫는 함수넣어주기 
  * @param size - 가로 크기 조절 
  * @param children 컴포넌트 테그 사이에 값을 조회
+ * @param headerClose - 헤더안보이게
  * @see antD Modal (사용법 antD 참조)
  */
 const Modal = ({ zIndex, headerClose, title, visible, closable, maskClosable,
@@ -117,11 +193,11 @@ const Modal = ({ zIndex, headerClose, title, visible, closable, maskClosable,
                         >
                             {closable && <CloseButton onClick={onClose}><VscClose></VscClose></CloseButton>}
 
-                            <ModalHeader headerClose={headerClose}>
+                            <ModalHeader headerClose={headerClose} >
                                 {title}
                             </ModalHeader>
 
-                            <ModalContent>
+                            <ModalContent visible={visible}>
                                 {children}
                             </ModalContent>
                         </ModalContainer>
