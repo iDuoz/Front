@@ -8,7 +8,7 @@ import gsap from "gsap"
 
 
 const ContentContainer = () => {
-    const headerItemsName = ['FreeLance', 'Design', 'Director', 'Experience']
+    const headerItemsName = ['FreeLance', 'Design', 'Director',]
 
 
 
