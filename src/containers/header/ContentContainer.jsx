@@ -8,14 +8,14 @@ import login_process from "../../service/transaction/login_process"
 import logout_process from "../../service/transaction/logout_process"
 import SignupProcess from "../../service/transaction/signup_process";
 const ContentContainer = () => {
-    const headerItemsName = ['FreeLance', 'Design', 'Director',]
+    const headerItemsName = ['Notice', 'Create', 'Director', 'Experience']
 
 
 
     const matchingHeaderPath = (itemName) => {
         const itemRoute = {
-            FreeLance: '/',
-            Design: '/',
+            Notice: '/',
+            Create: '/createnotice',
             Director: '/',
             Experience: '/',
         };

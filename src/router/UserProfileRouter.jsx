@@ -1,6 +1,6 @@
 import React from "react"
 import { useHistory } from "react-router"
-import UserPage from "../pages/UserProfile"
+import UserPage from "../pages/CreateNotice"
 
 const UserPageRouter = ({ security, userInfo }) => {
 

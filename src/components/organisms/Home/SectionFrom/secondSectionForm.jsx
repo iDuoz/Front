@@ -137,7 +137,7 @@ const SecondSectionForm = ({ currentSlider, sectionScrollType, }) => {
             >
                 <ContentWrapper index={1} currentSlider={currentSlider} sectionScrollType={sectionScrollType}>
                     <ConstTitle>
-                        Cras lacinia non eros nec semper.
+                        chaeeun && Mina
                     </ConstTitle>
                     <ContentSubTitle>
                         Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras ut massa mattis nibh semper pretium.

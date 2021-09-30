@@ -85,10 +85,12 @@ const Header = ({
                         <Indicator ref={indicator1}></Indicator>
                         <Indicator ref={indicator2}></Indicator>
                     </Col>
-                    <Col xs={6} span={2} justify={'center'} align={'center'}>
+                    <div onClick={() => { history.push('/') }} style={{ display: 'flex', alignItems: 'center' }}>
+                        <Col xs={6} span={2} justify={'center'} align={'center'} >
 
-                        <Img src={whiteIcon} width={'6.5rem'} height={'2.2rem'}></Img>
-                    </Col>
+                            <Img src={whiteIcon} width={'6.5rem'} height={'2.2rem'}></Img>
+                        </Col>
+                    </div>
                     <Col xs={6} span={5} justify={'space-around'} align={'center'} >
                         {/* <Button size={'small'} types={"secondary"} value={'Login'}></Button>
                         <Button size={'large'} types={"primary"} value={'Login'}></Button> */}

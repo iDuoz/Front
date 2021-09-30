@@ -152,11 +152,11 @@ const FirstSectionForm = ({ currentSlider, sectionScrollType, settingMobileBtn, 
                     currentSlider={currentSlider}
                     sectionScrollType={sectionScrollType}
                 >
-                    <ConstTitle >
-                        Full Page Parallax Effect
+                    <ConstTitle style={{ color: '#979797' }} >
+                        iDuoz : MeritShare
                     </ConstTitle>
-                    <ContentSubTitle>
-                        Scroll down and up to see the effect!
+                    <ContentSubTitle style={{ color: '#afafaf' }}>
+                        Scroll down and up please!
                     </ContentSubTitle>
                     <DownIcon onClick={settingMobileBtn.pageDown}>
                         <BsChevronDoubleDown />
