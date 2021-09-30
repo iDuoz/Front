@@ -10,16 +10,17 @@ const LoginProcess = (logInInfo) => {
   firebase_login(logInInfo)
     .then((res) => {
       console.log(res);
+      store.dispatch(
+        ACTION.SET_USER__ACTION_FUNC({
+          user: {
+            email: 'csmo2642@naver.com',
+            name: 'euncherry',
+          },
+        })
+      );
+      store.dispatch(ACTION.LOGIN_ACTION_FUNC());
     })
     .catch((e) => console.log(e));
-  // store.dispatch(
-  //   ACTION.SET_USER__ACTION_FUNC({
-  //     user: {
-  //       email: 'csmo2642@naver.com',
-  //       name: 'euncherry',
-  //     },
-  //   })
-  // );
 
   // store.dispatch(ACTION.LOGIN_ACTION_FUNC());
   // NotificationPool.api.add({

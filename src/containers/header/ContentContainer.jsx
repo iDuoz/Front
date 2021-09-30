@@ -1,12 +1,12 @@
 import React, { createRef, useEffect, useRef, useState } from "react";
 
-import HeaderContent from "../../components/organisms/Header/Content/index";
+import HeaderContent from "../redux/components/Header/index";
 import gsap from "gsap"
 
 
-import signup_password from "../../service/firebase/signup_password"
 import login_process from "../../service/transaction/login_process"
 import logout_process from "../../service/transaction/logout_process"
+import SignupProcess from "../../service/transaction/signup_process";
 const ContentContainer = () => {
     const headerItemsName = ['FreeLance', 'Design', 'Director',]
 
@@ -171,7 +171,7 @@ const ContentContainer = () => {
         handleLoginModal.close();
     };
     const SignupBtnOnclick = () => {
-        signup_password(signUpInfo);
+        SignupProcess(signUpInfo)
         handleLoginModal.close();
         setSignUpInfo({
             email: "",

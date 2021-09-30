@@ -38,7 +38,9 @@ const Indicator = styled.div`
  * @param {HeaderItemName} header에들어가는pathName 
  * @Detail 최대 5개  
  */
-const Header = ({ menuWrapperRef,
+const Header = ({
+    logined,
+    menuWrapperRef,
     setHeaderItem,
     headerItems,
     handleActiveIndex,
@@ -60,7 +62,7 @@ const Header = ({ menuWrapperRef,
 }) => {
     const history = useHistory();
     // TODO 로그인후 조건별로 설정
-
+    console.log(logined)
     return (
         <>
             {/* SECTION Content */}
@@ -90,9 +92,11 @@ const Header = ({ menuWrapperRef,
                     <Col xs={6} span={5} justify={'space-around'} align={'center'} >
                         {/* <Button size={'small'} types={"secondary"} value={'Login'}></Button>
                         <Button size={'large'} types={"primary"} value={'Login'}></Button> */}
+                        {
+                            logined ? <Button value={'LogOut'} onClick={logOutHandler} ></Button>
+                                : <Button value={'Login'} onClick={handleLoginModal.show} ></Button>
+                        }
 
-                        <Button value={'LogOut'} onClick={logOutHandler} ></Button>
-                        <Button value={'Login'} onClick={handleLoginModal.show} ></Button>
 
 
                     </Col>
