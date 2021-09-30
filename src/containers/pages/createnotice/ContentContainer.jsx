@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 import CreateNoticeContent from "../../../components/organisms/CreateNotice/Content/index";
 import postCreateFormNotice from "../../../service/api/post/post_create_form_notice";
 import postCreateFileNotice from "../../../service/api/post/post_create_file_notice";
@@ -134,4 +134,4 @@ const ContentContainer = () => {
   );
 };
 
-export default ContentContainer;
+export default memo(ContentContainer);

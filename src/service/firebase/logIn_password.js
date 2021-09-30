@@ -1,8 +1,9 @@
 // import NotificationPool from '../../containers/redux/components/NotificationPool';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { notification } from 'antd';
 
 // const auth = getAuth();
-const SignUp = ({ email, password }) => {
+const SignIn = ({ email, password }) => {
   const auth = getAuth();
   console.log(auth);
   console.log(email);
@@ -15,6 +16,10 @@ const SignUp = ({ email, password }) => {
       console.log('success');
       console.log(userCredential);
       console.log(userCredential);
+      notification['success']({
+        message: '로그인 성공🥰',
+        description: 'merit Share에서 나눔을 알려주세요',
+      });
       return userCredential;
       // ...
     })
@@ -23,12 +28,17 @@ const SignUp = ({ email, password }) => {
       //   let err = await error.then();
       const errorCode = error.code;
       const errorMessage = error.message;
-
+      console.log('"errorMessage"');
+      console.log(errorMessage);
       console.log(errorMessage + '(' + errorCode + ')');
+      notification['error']({
+        message: `로그인 실패😥 `,
+        description: errorMessage || errorCode,
+      });
       throw error;
 
       // ..
     });
 };
 
-export default SignUp;
+export default SignIn;

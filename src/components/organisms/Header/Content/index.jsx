@@ -4,6 +4,7 @@ import Row from "../../../../layout/Grid/Row/index"
 import Col from "../../../../layout/Grid/Column/index"
 import Img from "../../../atoms/Image"
 import Button from "../../../atoms/Button"
+import Logo from "../../../atoms/Logo"
 import Modal from "../../../atoms/Modal"
 import { useHistory } from "react-router-dom"
 import blackIcon from "../../../../assets/images/meritsblack.png"
@@ -85,22 +86,16 @@ const Header = ({
                         <Indicator ref={indicator1}></Indicator>
                         <Indicator ref={indicator2}></Indicator>
                     </Col>
-                    <div onClick={() => { history.push('/') }} style={{ display: 'flex', alignItems: 'center' }}>
-                        <Col xs={6} span={2} justify={'center'} align={'center'} >
-
-                            <Img src={whiteIcon} width={'6.5rem'} height={'2.2rem'}></Img>
-                        </Col>
-                    </div>
-                    <Col xs={6} span={5} justify={'space-around'} align={'center'} >
-                        {/* <Button size={'small'} types={"secondary"} value={'Login'}></Button>
-                        <Button size={'large'} types={"primary"} value={'Login'}></Button> */}
+                    <Col xs={6} span={2} justify={'center'} align={'center'} >
+                        <Logo width={'6.5rem'} height={'2.2rem'}></Logo>
+                    </Col>
+                    <Col xs={6} span={5} justify={'center'} align={'center'} >
                         {
-                            logined ? <Button value={'LogOut'} onClick={logOutHandler} ></Button>
-                                : <Button value={'Login'} onClick={handleLoginModal.show} ></Button>
+                            (logined === true) ?
+                                (<Button value={'LogOut'} onClick={logOutHandler} ></Button>)
+                                : (<Button value={'Login'} onClick={handleLoginModal.show} ></Button>)
+
                         }
-
-
-
                     </Col>
                 </Col>
             </Row>

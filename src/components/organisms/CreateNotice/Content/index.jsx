@@ -5,10 +5,12 @@ import styled from "styled-components";
 
 const CreateNoticeWrapper = styled.div`
   width: 100%;
-  height: calc(100% - 78px);
-  border-top: rgb(234 234 234) 2px solid;
+  margin-top : 90px;
+  height : calc(90%);
+  /* height: calc(100% - 78px); */
   display: flex;
   animation: 0.5s ease 0s 1 normal forwards running Tags;
+  position : absolute;
   @keyframes Tags {
     0% {
       opacity: 0.5;
@@ -32,7 +34,7 @@ const CreateArea = styled.div`
 `;
 
 const CreateTextArea = styled.textarea.attrs((props) => ({
-    placeholder: "제목을 입력하세요",
+  placeholder: "제목을 입력하세요",
 }))`
   min-height: 2.6rem;
   display: block;
@@ -98,8 +100,8 @@ const FixedTag = styled.div`
 `;
 
 const CreateTag = styled.input.attrs((props) => ({
-    type: "text",
-    placeholder: "태그를 입력하세요",
+  type: "text",
+  placeholder: "태그를 입력하세요",
 }))`
   outline: none;
   cursor: text;
@@ -122,8 +124,8 @@ const WarningTag = styled.div`
 `;
 
 const SetUrl = styled.input.attrs((props) => ({
-    type: "text",
-    placeholder: "참고 url을 올려주세요",
+  type: "text",
+  placeholder: "참고 url을 올려주세요",
 }))`
   outline: none;
   cursor: text;
@@ -161,8 +163,6 @@ const SetUrl = styled.input.attrs((props) => ({
 `;
 const SubmitBtnWrapper = styled.div`
   height: 4rem;
-  padding-left: 1rem;
-  padding-right: 2rem;
   width: 100%;
   position: absolute;
 
@@ -198,8 +198,8 @@ const SubmitBtn = styled.div`
 `;
 
 const SWBtn = styled.a.attrs((props) => ({
-    href: "https://sw7up.cbnu.ac.kr/home",
-    target: "_blank",
+  href: "https://sw7up.cbnu.ac.kr/home",
+  target: "_blank",
 }))`
   height: 2.5rem;
   font-size: 1.125rem;
@@ -251,7 +251,7 @@ const DateContent = styled.div`
 `;
 
 const DateSelector = styled.input.attrs((props) => ({
-    type: "date",
+  type: "date",
 }))`
   background-color: white;
   font-size: 1rem;
@@ -293,7 +293,7 @@ const PreviewTitle = styled.div`
 `;
 
 const PreviewSwurl = styled.iframe.attrs((props) => ({
-    src: props.src,
+  src: props.src,
 }))`
   min-height: 40rem;
   width: auto;
@@ -303,129 +303,129 @@ const PreviewSwurl = styled.iframe.attrs((props) => ({
 `;
 
 const CreateNoticeContent = ({
-    noticeData,
-    handleTags,
-    createNoticeFunction,
-    newTag,
-    formSubmitOnclick,
-    fileSubmitOnclick,
+  noticeData,
+  handleTags,
+  createNoticeFunction,
+  newTag,
+  formSubmitOnclick,
+  fileSubmitOnclick,
 }) => {
-    const { title, swurl, tags } = noticeData;
+  const { title, swurl, tags } = noticeData;
 
-    const ref = useRef(null);
-    const handleResizeHeight = useCallback(() => {
-        if (ref === null || ref.current === null) {
-            return;
-        }
-        ref.current.style.height = "2.5rem";
-        ref.current.style.height = ref.current.scrollHeight + "px";
-    }, []);
+  const ref = useRef(null);
+  const handleResizeHeight = useCallback(() => {
+    if (ref === null || ref.current === null) {
+      return;
+    }
+    ref.current.style.height = "2.5rem";
+    ref.current.style.height = ref.current.scrollHeight + "px";
+  }, []);
 
-    return (
-        <>
-            <CreateNoticeWrapper>
-                {/* CreateNotice 관련 component */}
-                {/* SECTION 게시글 작성하기 */}
-                <CreateArea>
-                    <CreateTextArea
-                        onInput={handleResizeHeight}
-                        rows={1}
-                        ref={ref}
-                        value={title}
-                        onChange={createNoticeFunction.title}
-                    ></CreateTextArea>
-                    <CreateDivider></CreateDivider>
-                    <CreateTagWrapper>
-                        {tags.map((tag, index) => {
-                            return (
-                                <FixedTag
-                                    key={index}
-                                    value={newTag}
-                                    onClick={handleTags.delete}
-                                >
-                                    {tag}
-                                </FixedTag>
-                            );
-                        })}
-                        {tags.length < 3 ? (
-                            <CreateTag
-                                onKeyPress={handleTags.add}
-                                value={newTag}
-                                onChange={handleTags.changetag}
-                            ></CreateTag>
-                        ) : (
-                            <WarningTag>태그는 3개까지 입력가능합니다.</WarningTag>
-                        )}
-                    </CreateTagWrapper>
-                    <CreateDivider></CreateDivider>
-                    <SetUrl value={swurl} onChange={createNoticeFunction.swurl}></SetUrl>
-                    <CreateDivider></CreateDivider>
-                    <DateWrapper>
-                        <DateContent> 일정 시작 날짜 </DateContent>
-                        <DateSelector
-                            max={`${noticeData.endDate}` || null}
-                            defaultValue={noticeData.startDate}
-                            onChange={createNoticeFunction.startDate}
-                        ></DateSelector>
-                    </DateWrapper>
+  return (
+    <>
+      <CreateNoticeWrapper>
+        {/* CreateNotice 관련 component */}
+        {/* SECTION 게시글 작성하기 */}
+        <CreateArea>
+          <CreateTextArea
+            onInput={handleResizeHeight}
+            rows={1}
+            ref={ref}
+            value={title}
+            onChange={createNoticeFunction.title}
+          ></CreateTextArea>
+          <CreateDivider></CreateDivider>
+          <CreateTagWrapper>
+            {tags.map((tag, index) => {
+              return (
+                <FixedTag
+                  key={index}
+                  value={newTag}
+                  onClick={handleTags.delete}
+                >
+                  {tag}
+                </FixedTag>
+              );
+            })}
+            {tags.length < 3 ? (
+              <CreateTag
+                onKeyPress={handleTags.add}
+                value={newTag}
+                onChange={handleTags.changetag}
+              ></CreateTag>
+            ) : (
+              <WarningTag>태그는 3개까지 입력가능합니다.</WarningTag>
+            )}
+          </CreateTagWrapper>
+          <CreateDivider></CreateDivider>
+          <SetUrl value={swurl} onChange={createNoticeFunction.swurl}></SetUrl>
+          <CreateDivider></CreateDivider>
+          <DateWrapper>
+            <DateContent> 일정 시작 날짜 </DateContent>
+            <DateSelector
+              max={`${noticeData.endDate}` || null}
+              defaultValue={noticeData.startDate}
+              onChange={createNoticeFunction.startDate}
+            ></DateSelector>
+          </DateWrapper>
 
-                    <DateWrapper>
-                        <DateContent> 일정 마감 날짜 </DateContent>
-                        <DateSelector
-                            min={`${noticeData.startDate}` || null}
-                            defaultValue={noticeData.endDate}
-                            onChange={createNoticeFunction.endDate}
-                        ></DateSelector>
-                    </DateWrapper>
+          <DateWrapper>
+            <DateContent> 일정 마감 날짜 </DateContent>
+            <DateSelector
+              min={`${noticeData.startDate}` || null}
+              defaultValue={noticeData.endDate}
+              onChange={createNoticeFunction.endDate}
+            ></DateSelector>
+          </DateWrapper>
 
-                    <SubmitBtnWrapper>
+          <SubmitBtnWrapper>
 
-                        <div style={{
-                            display: "flex",
+            <div style={{
+              display: "flex",
 
-                        }}>
-                            <SubmitBtn onClick={formSubmitOnclick}>Form 제출</SubmitBtn>
-                            <SubmitBtn onClick={fileSubmitOnclick}>File 제출</SubmitBtn>
-                        </div>
-                    </SubmitBtnWrapper>
-                </CreateArea>
-                {/*! SECTION  */}
+            }}>
+              <SubmitBtn onClick={formSubmitOnclick}>Form 제출</SubmitBtn>
+              <SubmitBtn onClick={fileSubmitOnclick}>File 제출</SubmitBtn>
+            </div>
+          </SubmitBtnWrapper>
+        </CreateArea>
+        {/*! SECTION  */}
 
-                {/* SECTION 게시글 미리보기 */}
-                <PreviewArea>
-                    {title ? (
-                        <PreviewTitle>{title}</PreviewTitle>
-                    ) : (
-                        <WarningTag>
-                            생성 될 게시글의 제목을 미리 확인할 수 있습니다.{" "}
-                        </WarningTag>
-                    )}
+        {/* SECTION 게시글 미리보기 */}
+        <PreviewArea>
+          {title ? (
+            <PreviewTitle>{title}</PreviewTitle>
+          ) : (
+            <WarningTag>
+              생성 될 게시글의 제목을 미리 확인할 수 있습니다.{" "}
+            </WarningTag>
+          )}
 
-                    <CreateTagWrapper>
-                        {tags.map((tag, index) => {
-                            return (
-                                <FixedTag
-                                    key={index}
-                                    value={newTag}
-                                    onClick={handleTags.delete}
-                                >
-                                    {tag}
-                                </FixedTag>
-                            );
-                        })}
-                    </CreateTagWrapper>
-                    {swurl ? (
-                        <PreviewSwurl src={swurl}></PreviewSwurl>
-                    ) : (
-                        <WarningTag>
-                            올바른 주소 입력시 게시글에 미리보기를 확인할 수 있습니다.
-                        </WarningTag>
-                    )}
-                </PreviewArea>
-                {/*! SECTION 게시글  */}
-            </CreateNoticeWrapper>
-        </>
-    );
+          <CreateTagWrapper>
+            {tags.map((tag, index) => {
+              return (
+                <FixedTag
+                  key={index}
+                  value={newTag}
+                  onClick={handleTags.delete}
+                >
+                  {tag}
+                </FixedTag>
+              );
+            })}
+          </CreateTagWrapper>
+          {swurl ? (
+            <PreviewSwurl src={swurl}></PreviewSwurl>
+          ) : (
+            <WarningTag>
+              올바른 주소 입력시 게시글에 미리보기를 확인할 수 있습니다.
+            </WarningTag>
+          )}
+        </PreviewArea>
+        {/*! SECTION 게시글  */}
+      </CreateNoticeWrapper>
+    </>
+  );
 };
 
 export default CreateNoticeContent;

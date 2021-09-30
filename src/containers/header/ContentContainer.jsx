@@ -1,4 +1,4 @@
-import React, { createRef, useEffect, useRef, useState } from "react";
+import React, { memo, createRef, useEffect, useRef, useState } from "react";
 
 import HeaderContent from "../redux/components/Header/index";
 import gsap from "gsap"
@@ -7,6 +7,7 @@ import gsap from "gsap"
 import login_process from "../../service/transaction/login_process"
 import logout_process from "../../service/transaction/logout_process"
 import SignupProcess from "../../service/transaction/signup_process";
+import LoginModalForm from "../../components/organisms/Header/LoginModalForm/index"
 const ContentContainer = () => {
     const headerItemsName = ['Notice', 'Create', 'Director', 'Experience']
 
@@ -33,8 +34,6 @@ const ContentContainer = () => {
         }
     })
 
-
-    console.log(setHeaderItem)
 
 
 
@@ -221,10 +220,11 @@ const ContentContainer = () => {
                 signUpInfo={signUpInfo}
                 logOutHandler={logOutHandler}
             ></HeaderContent>
+
         </>
     )
 
 }
 
 
-export default ContentContainer
+export default memo(ContentContainer)

@@ -2,6 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { BsChevronDoubleDown } from "react-icons/bs"
 
+import TypoHighlight from "../../../atoms/TypoHighlight"
+
+
 const Section = styled.div`
 margin : 0;
  background-size: cover;
@@ -31,10 +34,7 @@ margin : 0;
     /* background-color: rgba(0, 0, 0, 0.3); */
 }
 ${props => (props.index === 0) ? `
-transform: translateY(-15vh);
-
-` : null}
-
+transform: translateY(-15vh);`: null}
  ${props => (props.sectionScrollType === "up-scroll") ?
         `transform: translate3d(0,30vh, 0);`
         : null}
@@ -48,6 +48,8 @@ ${props => (props.index === props.currentSlider) ?
         `transform: translate3d(0, -15vh, 0);` : null
     }
 `
+
+
 const ContentWrapper = styled.div`
 margin : 0;
 height: 100vh;
@@ -58,7 +60,6 @@ height: 100vh;
     flex-flow: column nowrap;
     color: #fff;
     font-family: Montserrat;
-    text-transform: uppercase;
     transform: translateY(40vh);
     will-change: transform;
     backface-visibility: hidden;
@@ -68,25 +69,20 @@ height: 100vh;
  ${props => (props.sectionScrollType === "up-scroll") ?
         `transform: translateY(30vh);`
         : null}
-
-
 ${props => (props.sectionScrollType === "down-scroll") ?
         `transform: translateY(40vh);`
-        : `transform: translateY(30vh);`
-    }
-
+        : `transform: translateY(30vh);`}
 ${props => (props.index === props.currentSlider) ?
-        `transform: translateY(15vh);` : null
-    }
+        `transform: translateY(15vh);` : null}
 `
-
 
 
 const ConstTitle = styled.div`
 margin : 0;
- font-size: 12vh;
+ font-size: 10rem;
     line-height: 1.4;
 `
+
 const ContentSubTitle = styled.div`
 margin : 0;
 `
@@ -153,7 +149,7 @@ const FirstSectionForm = ({ currentSlider, sectionScrollType, settingMobileBtn, 
                     sectionScrollType={sectionScrollType}
                 >
                     <ConstTitle style={{ color: '#979797' }} >
-                        iDuoz : MeritShare
+                        iDuoz : <TypoHighlight highLightColor={'#8abdff84;'} fontSize={'10rem'}>MeritShare</TypoHighlight>
                     </ConstTitle>
                     <ContentSubTitle style={{ color: '#afafaf' }}>
                         Scroll down and up please!

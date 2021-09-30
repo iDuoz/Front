@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { memo, useState, useRef, useEffect } from 'react';
 import HomeContent from "../../../components/organisms/Home/Content"
 
 
@@ -156,4 +156,4 @@ const ContentContainer = () => {
 }
 
 
-export default ContentContainer
+export default memo(ContentContainer)
