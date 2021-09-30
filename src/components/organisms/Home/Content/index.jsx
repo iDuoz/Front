@@ -4,6 +4,9 @@ import FirstSectionForm from '../SectionFrom/firstSectionForm';
 import SecondSectionForm from '../SectionFrom/secondSectionForm';
 import ThirdSectionForm from '../SectionFrom/thirdSectionForm';
 
+
+
+
 const HomeContent = ({ testRef, parallaxScroll, currentSlider, sectionScrollType, settingMobileBtn,
     handleTouchStart, handleTouchEnd }) => {
     return (

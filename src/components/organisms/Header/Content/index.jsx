@@ -38,7 +38,7 @@ const Indicator = styled.div`
  * @param {HeaderItemName} header에들어가는pathName 
  * @Detail 최대 5개  
  */
-const Header = ({ logined, menuWrapperRef,
+const Header = ({ menuWrapperRef,
     setHeaderItem,
     headerItems,
     handleActiveIndex,
@@ -52,10 +52,14 @@ const Header = ({ logined, menuWrapperRef,
     settingLogInValueFunction,
     LoginBtnOnclick,
     SignupBtnOnclick,
+    LogintoSignUp,
+    SignUPtoLogin,
+    logInInfo,
+    signUpInfo,
+    logOutHandler
 }) => {
     const history = useHistory();
     // TODO 로그인후 조건별로 설정
-
 
     return (
         <>
@@ -86,7 +90,11 @@ const Header = ({ logined, menuWrapperRef,
                     <Col xs={6} span={5} justify={'space-around'} align={'center'} >
                         {/* <Button size={'small'} types={"secondary"} value={'Login'}></Button>
                         <Button size={'large'} types={"primary"} value={'Login'}></Button> */}
+
+                        <Button value={'LogOut'} onClick={logOutHandler} ></Button>
                         <Button value={'Login'} onClick={handleLoginModal.show} ></Button>
+
+
                     </Col>
                 </Col>
             </Row>
@@ -98,7 +106,12 @@ const Header = ({ logined, menuWrapperRef,
                     settingSingUpValueFunction={settingSingUpValueFunction}
                     settingLogInValueFunction={settingLogInValueFunction}
                     LoginBtnOnclick={LoginBtnOnclick}
-                    SignupBtnOnclick={SignupBtnOnclick} />
+                    SignupBtnOnclick={SignupBtnOnclick}
+                    LogintoSignUp={LogintoSignUp}
+                    SignUPtoLogin={SignUPtoLogin}
+                    logInInfo={logInInfo}
+                    signUpInfo={signUpInfo}
+                />
             </Modal>
 
             {/* !SECTION Content */}

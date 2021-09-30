@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import HeaderContent from "../../containers/redux/components/Header"
+import HeaderContent from "../../containers/header/ContentContainer"
 const HeaderStyle = styled.div`
     z-index:20;
     width : 100%;

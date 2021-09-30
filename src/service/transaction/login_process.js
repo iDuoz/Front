@@ -1,12 +1,43 @@
 import store from '../../store/store';
 import ACTION from '../../store/actions/action';
-// import post_login from "../api/post/post_login"
+import firebase_login from '../firebase/logIn_password';
 // import get_userInfo from "../api/get/get_userInfo"
+import NotificationPool from '../../containers/redux/components/NotificationPool';
 
 const LoginProcess = (logInInfo) => {
-  console.log('check');
+  console.log('loginProcess');
   console.log(logInInfo);
+  firebase_login(logInInfo)
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((e) => console.log(e));
+  // store.dispatch(
+  //   ACTION.SET_USER__ACTION_FUNC({
+  //     user: {
+  //       email: 'csmo2642@naver.com',
+  //       name: 'euncherry',
+  //     },
+  //   })
+  // );
 
+  // store.dispatch(ACTION.LOGIN_ACTION_FUNC());
+  // NotificationPool.api.add({
+  //   title: 'Error from get_my_img',
+  //   content: ')',
+  //   status: 'error',
+  // });
+  // post_login(logInInfo);
+  // await store.dispatch(
+  //   ACTION.SET_USER__ACTION_FUNC({
+  //     user: {
+  //       email: 'csmo2642@naver.com',
+  //       name: 'euncherry',
+  //     },
+  //   })
+  // );
+
+  // await store.dispatch(ACTION.LOGIN_ACTION_FUNC());
   //postlogin 코드
   // post_login(JSON.stringify(logInInfo))
   // .then(async(token)=>{
@@ -36,16 +67,6 @@ const LoginProcess = (logInInfo) => {
 
   // }).catch((err)=>console.log(err))
   // .catch((err) =>  console.log(err) )
-
-  store.dispatch(
-    ACTION.SET_USER__ACTION_FUNC({
-      user: {
-        email: 'csmo2642@naver.com',
-        name: 'euncherry',
-      },
-    })
-  );
-  store.dispatch(ACTION.LOGIN_ACTION_FUNC());
 };
 
 export default LoginProcess;

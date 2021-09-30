@@ -1,8 +1,8 @@
 import AppRouter from './router';
-// import firebaseInit from './config/firebase';
+import firebaseInit from './config/firebase';
 
 function App() {
-  // console.log(firebaseInit)
+  console.log(firebaseInit);
   return (
     <>
       <AppRouter />

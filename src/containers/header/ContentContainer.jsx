@@ -1,12 +1,12 @@
 import React, { createRef, useEffect, useRef, useState } from "react";
 
-import HeaderContent from "../../components/organisms/Header/Content";
-import LoginProcess from "../../service/transaction/login_process";
-import SignupProcess from "../../service/transaction/signup_process";
+import HeaderContent from "../../components/organisms/Header/Content/index";
 import gsap from "gsap"
 
 
-
+import signup_password from "../../service/firebase/signup_password"
+import login_process from "../../service/transaction/login_process"
+import logout_process from "../../service/transaction/logout_process"
 const ContentContainer = () => {
     const headerItemsName = ['FreeLance', 'Design', 'Director',]
 
@@ -102,7 +102,6 @@ const ContentContainer = () => {
             setSignUpInfo({
                 email: "",
                 password: "",
-                name: "",
             });
             setLoginInfo({
                 email: "",
@@ -119,10 +118,9 @@ const ContentContainer = () => {
     const [signUpInfo, setSignUpInfo] = useState({
         email: "",
         password: "",
-        name: "",
     });
     const [logInInfo, setLoginInfo] = useState({
-        userId: "",
+        email: "",
         password: "",
     });
     //TODO 코드 정리
@@ -134,17 +132,13 @@ const ContentContainer = () => {
         password: (e) => {
             const password = e.target.value;
             return setSignUpInfo((state) => ({ ...state, password: password }));
-        },
-        name: (e) => {
-            const name = e.target.value;
-            return setSignUpInfo((state) => ({ ...state, name: name }));
-        },
+        }
     };
 
     let settingLogInValueFunction = {
-        userId: (e) => {
-            const userId = e.target.value;
-            return setLoginInfo((state) => ({ ...state, userId: userId }));
+        email: (e) => {
+            const email = e.target.value;
+            return setLoginInfo((state) => ({ ...state, email: email }));
         },
 
         password: (e) => {
@@ -157,24 +151,50 @@ const ContentContainer = () => {
 
 
     // SECTION 로그인 회원가입 함수
+
+    const LogintoSignUp = () => {
+        setIsHeaderLoginModal((state) => ({ ...state, type: "SignUp" }));
+    }
+    const SignUPtoLogin = () => {
+        setIsHeaderLoginModal((state) => ({ ...state, type: "login" }));
+    }
+
+
     const LoginBtnOnclick = () => {
-        LoginProcess(logInInfo);
+        login_process(logInInfo)
         setLoginInfo({
-            userId: "",
+            email: "",
             password: "",
         });
+        console.log("왜안없어지고 지랄")
+        console.log(logInInfo)
         handleLoginModal.close();
     };
     const SignupBtnOnclick = () => {
-        SignupProcess(signUpInfo);
+        signup_password(signUpInfo);
         handleLoginModal.close();
         setSignUpInfo({
             email: "",
             password: "",
-            name: "",
         });
     };
+
+
+
+
+    const logOutHandler = () => {
+        logout_process()
+    }
     //!SECTION
+
+
+
+
+
+
+
+
+
 
     return (
         <>
@@ -195,6 +215,11 @@ const ContentContainer = () => {
                 settingLogInValueFunction={settingLogInValueFunction}
                 LoginBtnOnclick={LoginBtnOnclick}
                 SignupBtnOnclick={SignupBtnOnclick}
+                LogintoSignUp={LogintoSignUp}
+                SignUPtoLogin={SignUPtoLogin}
+                logInInfo={logInInfo}
+                signUpInfo={signUpInfo}
+                logOutHandler={logOutHandler}
             ></HeaderContent>
         </>
     )

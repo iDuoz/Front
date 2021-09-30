@@ -1,8 +1,8 @@
-import React, {useEffect, memo, useState} from "react"
+import React, { useEffect, memo, useState } from "react"
 
-import styled, {keyframes, css} from "styled-components"
+import styled, { keyframes, css } from "styled-components"
 import NotificationPool from "../../../containers/redux/components/NotificationPool/";
-import {MdClose} from "react-icons/md";
+import { MdClose } from "react-icons/md";
 
 const intro = keyframes`
   0% {
@@ -55,27 +55,27 @@ const Wrapper = styled.div`
     width : 40vw;
     padding : 1.5rem 2rem;
   }
-  ${props=>{
-      if(props.eliminate) {
-        return css`
+  ${props => {
+    if (props.eliminate) {
+      return css`
           animation: ${outro} 0.5s forwards;
         `
-      }
+    }
   }}
   border-radius: 5px;
-  ${props =>{
-      switch(props.status){
-        case "success":
-          return `border-left : solid 6px #22c55e;`
-        case "error":
-            return `border-left : solid 6px #ef4444;`
-        case "warning":
-            return `border-left : solid 6px #f97316;`
-        case "info":
-            return `border-left : solid 6px #3b82f6;`
-        default : 
-            return;
-      }
+  ${props => {
+    switch (props.status) {
+      case "success":
+        return `border-left : solid 6px #22c55e;`
+      case "error":
+        return `border-left : solid 6px #ef4444;`
+      case "warning":
+        return `border-left : solid 6px #f97316;`
+      case "info":
+        return `border-left : solid 6px #3b82f6;`
+      default:
+        return;
+    }
   }}
 
 `
@@ -109,8 +109,8 @@ const Button = styled.button`
   background-color : transparent;
   font-weight: bold;
   font-family : Montserrat;
-  ${props =>{
-    switch(props.status){
+  ${props => {
+    switch (props.status) {
       case "success":
         return `color : #22c55e;`
       case "error":
@@ -119,7 +119,7 @@ const Button = styled.button`
         return `color : #f97316;`
       case "info":
         return `color : #3b82f6;`
-      default :
+      default:
         return;
     }
   }}
@@ -133,76 +133,76 @@ const Line = styled.div`
   color : gray;
 `
 
-const Notification = ({title, content, uuid, status, duration, button, buttonOnClick}) => {
+const Notification = ({ title, content, uuid, status, duration, button, buttonOnClick }) => {
 
-    const [isDestroy, setIsDestroy] = useState(false)
-    const [instanceDuration, setInstanceDuration] = useState(duration)
-    const [isHover, setIsHover] = useState(false)
-    const [isEliminate, setIsEliminate] = useState(false)
-    const lines = content.split("\n")
+  const [isDestroy, setIsDestroy] = useState(false)
+  const [instanceDuration, setInstanceDuration] = useState(duration)
+  const [isHover, setIsHover] = useState(false)
+  const [isEliminate, setIsEliminate] = useState(false)
+  const lines = content.split("\n")
 
-    useEffect(()=>{
-        if(isHover===false && isDestroy===true){
-            setIsEliminate(true)
-            setTimeout(() => {
-                NotificationPool.api.delete(uuid)
+  useEffect(() => {
+    if (isHover === false && isDestroy === true) {
+      setIsEliminate(true)
+      setTimeout(() => {
+        NotificationPool.api.delete(uuid)
 
-            }, 500)
-        }
-    }, [uuid, isDestroy, isHover])
-
-    useEffect(()=>{
-        let time = setTimeout(()=>{
-            setIsDestroy(true)
-
-        }, instanceDuration * 1000)
-        return ()=>{
-            clearTimeout(time)
-        }
+      }, 500)
     }
+  }, [uuid, isDestroy, isHover])
+
+  useEffect(() => {
+    let time = setTimeout(() => {
+      setIsDestroy(true)
+
+    }, instanceDuration * 1000)
+    return () => {
+      clearTimeout(time)
+    }
+  }
 
     , [instanceDuration])
-    return (
+  return (
     <>
 
-        <Wrapper status={status} eliminate={isEliminate} onMouseEnter={()=>{
-            setIsHover(true)
-        }}
-         onMouseLeave={()=>{
-             setIsHover(false)
+      <Wrapper status={status} eliminate={isEliminate} onMouseEnter={() => {
+        setIsHover(true)
+      }}
+        onMouseLeave={() => {
+          setIsHover(false)
         }}>
-            <CloseBtn onClick={()=>{
-                setInstanceDuration(0)
-                setIsHover(false)
-            }
-            }>
-               <MdClose size={16}/>
-              </CloseBtn>
-            <Title>{title}</Title>
+        <CloseBtn onClick={() => {
+          setInstanceDuration(0)
+          setIsHover(false)
+        }
+        }>
+          <MdClose size={16} />
+        </CloseBtn>
+        <Title>{title}</Title>
 
-            {
-                lines.map((line, index)=>{
-                    return <Line key={index}>{line}</Line>
-                })
-            }
-            {
-                button ? <ButtonWrapper><Button status={status} value={button} onClick={()=>{
-                    buttonOnClick()
-                    setInstanceDuration(0)
-                }
-                }>{button}</Button></ButtonWrapper> : null
-            }
-        </Wrapper>
+        {
+          lines.map((line, index) => {
+            return <Line key={index}>{line}</Line>
+          })
+        }
+        {
+          button ? <ButtonWrapper><Button status={status} value={button} onClick={() => {
+            buttonOnClick()
+            setInstanceDuration(0)
+          }
+          }>{button}</Button></ButtonWrapper> : null
+        }
+      </Wrapper>
     </>
-    )
+  )
 }
 
 Notification.defaultProps = {
-    title : "",
-    content : "",
-    status : "info",
-    duration : 5,
-    buttonOnClick : ()=>{}
+  title: "",
+  content: "",
+  status: "info",
+  duration: 5,
+  buttonOnClick: () => { }
 };
 
 export default memo(Notification)
