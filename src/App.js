@@ -6,7 +6,7 @@ import { React, useEffect } from 'react';
 
 function App() {
   useEffect(() => {
-    // console.log(firebaseInit);
+    console.log(firebaseInit);
     run();
   }, []);
 
