@@ -1,16 +1,16 @@
 import React from "react"
 import { useHistory } from "react-router"
-import UserPage from "../pages/UserProfile"
+import CreateNotice from "../pages/CreateNotice"
 
-const UserPageRouter = ({ security, userInfo }) => {
+const CreateNoticeRouter = ({ security, userInfo }) => {
 
     const history = useHistory()
     if (security.includes(userInfo.role)) {
-        return <UserPage />
+        return <CreateNotice />
     }
 
     history.push('/')
     return null
 }
 
-export default UserPageRouter
+export default CreateNoticeRouter
