@@ -3,7 +3,7 @@ import React from "react"
 import HomeRouter from "./HomeRouter";
 import UserPageRouter from "./UserProfileRouter";
 import CreateNoticeRouter from "./CreateNoticeRouter";
-import NotFound from "../pages/NotFound/index"
+import NotFound from "../pages/NotFound/test"
 const AppRouter = () => {
 
 
