@@ -2,13 +2,10 @@ import React from 'react';
 import styled from 'styled-components'
 import Row from "../../../../layout/Grid/Row/index"
 import Col from "../../../../layout/Grid/Column/index"
-import Img from "../../../atoms/Image"
 import Button from "../../../atoms/Button"
 import Logo from "../../../atoms/Logo"
 import Modal from "../../../atoms/Modal"
 import { useHistory } from "react-router-dom"
-import blackIcon from "../../../../assets/images/meritsblack.png"
-import whiteIcon from "../../../../assets/images/meritswhite.png"
 import LoginModalForm from "../LoginModalForm"
 
 

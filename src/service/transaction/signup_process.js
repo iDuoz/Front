@@ -1,8 +1,8 @@
-import signup_password from '../firebase/signup_password';
+import signup_password from '../firebase/auth/signup_password';
 import store from '../../store/store';
 import ACTION from '../../store/actions/action';
 
-const SignupProcess = (signUpInfo) => {
+const SignUpProcess = (signUpInfo) => {
   console.log(signUpInfo);
 
   signup_password(signUpInfo)
@@ -24,4 +24,4 @@ const SignupProcess = (signUpInfo) => {
   return { success: 'ok' };
 };
 
-export default SignupProcess;
+export default SignUpProcess;
