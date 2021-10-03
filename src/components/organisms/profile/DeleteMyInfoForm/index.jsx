@@ -1,8 +1,8 @@
 /**
  * @author :  chaeeun
  * @date : 2021-03-14 02:40:15
- * @Last Modified by: euncherry
- * @Last Modified time: 2021-03-30 20:31:06
+ * @Last Modified by: eun.🍒
+ * @Last Modified time: 2021-10-03 08:03:38
  */
 
 import React from 'react'
@@ -26,7 +26,7 @@ const DeleteMyInfoForm = ({ username, okDeleteConfirmOnclick, cancelDeleteConfir
                     <Typo weight={'bold'} size={"1.4rem"}>{username}님 탈퇴하시겠습니까?</Typo>
                 </Col>
                 <Col span={12} justify={'center'} >
-                    <Typo weight={'bold'} color={'#ff4d4f'}>탈퇴 시 정보  및 봉사신청이 모두 삭제되며 복구되지 않습니다.</Typo>
+                    <Typo weight={'bold'} color={'#ff4d4f'}>탈퇴 시 정보가 모두 삭제되며 복구되지 않습니다.</Typo>
                 </Col>
 
                 <Col justify={'center'} span={12}>

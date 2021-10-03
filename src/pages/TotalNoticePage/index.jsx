@@ -1,9 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import Header from "../../layout/Header";
-import ContentContainer from "../../containers/pages/home/ContentContainer";
+import ContentContainer from "../../containers/pages/totalnotice/ContentContainer";
+import { Header } from "../../layout";
+
 
 const WholeWrapper = styled.div`
+
+background-color: #edeff2;
+
   height: 100%;
   width: 100%;
 `;
@@ -11,15 +15,15 @@ const WholeWrapper = styled.div`
 
 
 //TODO header
-const Home = () => {
+const UserProfile = () => {
     return (
         <>
             <WholeWrapper>
-                <Header ></Header>
+                <Header position={'sticky'}></Header>
                 <ContentContainer />
             </WholeWrapper>
         </>
     );
 };
 
-export default Home;
+export default UserProfile;

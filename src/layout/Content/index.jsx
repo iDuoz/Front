@@ -11,7 +11,7 @@ const ContentStyle = styled.div`
     padding : 5.2vh 5.2vw;
     flex-direction: column;
     box-sizing: border-box;
-
+    background-color: inherit;
   @media screen and (max-width: 1024px){
     padding : 2.6vh 2.6vw;
   }
@@ -23,13 +23,13 @@ const ContentStyle = styled.div`
 
 const Content = ({ children, style }) => {
 
-    return (
-        <>
-            <ContentStyle style={style}>
-                {children}
-            </ContentStyle>
-        </>
-    )
+  return (
+    <>
+      <ContentStyle style={style}>
+        {children}
+      </ContentStyle>
+    </>
+  )
 }
 
 export default memo(Content)

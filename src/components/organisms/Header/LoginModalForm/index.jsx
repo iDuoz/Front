@@ -51,7 +51,7 @@ const LoginModalForm = ({
                                             <TextBox onChange={settingLogInValueFunction.email} value={logInInfo.email} size={'small'} placeholder={"email"} block></TextBox>
                                         </Col>
                                         <Col span={12} justify={'center'}  >
-                                            <TextBox onChange={settingLogInValueFunction.password} value={logInInfo.password} type={"password"} size={'small'} placeholder={"password"} block></TextBox>
+                                            <TextBox onKeyPress={(e) => (e.key === 'Enter') ? LoginBtnOnclick() : null} onChange={settingLogInValueFunction.password} value={logInInfo.password} type={"password"} size={'small'} placeholder={"password"} block></TextBox>
                                         </Col>
                                         <Col span={12} justify={'center'} style={{ marinTop: '15px' }}  >
                                             <Button onClick={LoginBtnOnclick} value={'SIGN IN'} types={'primary'} size={'large'} />

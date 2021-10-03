@@ -8,15 +8,15 @@ import login_process from "../../service/transaction/login_process"
 import logout_process from "../../service/transaction/logout_process"
 import SignupProcess from "../../service/transaction/signup_process";
 const ContentContainer = () => {
-    const headerItemsName = ['Notice', 'Create', 'Director', 'Experience']
+    const headerItemsName = ['전체게시글', '게시글작성', 'Profile', 'Experience']
 
 
 
     const matchingHeaderPath = (itemName) => {
         const itemRoute = {
-            Notice: '/',
-            Create: '/createnotice',
-            Director: '/',
+            '전체게시글': '/totalnotice',
+            '게시글작성': '/createnotice',
+            Profile: '/profile',
             Experience: '/',
         };
         return itemRoute[itemName] || "/notFound"
@@ -141,7 +141,7 @@ const ContentContainer = () => {
 
         password: (e) => {
             const password = e.target.value;
-            return setLoginInfo((state) => ({ ...state, password: password }));
+            return setLoginInfo((state) => ({ ...state, password: password }))
         },
     };
 
@@ -164,7 +164,6 @@ const ContentContainer = () => {
             email: "",
             password: "",
         });
-        console.log("왜안없어지고 지랄")
         console.log(logInInfo)
         handleLoginModal.close();
     };
@@ -184,15 +183,6 @@ const ContentContainer = () => {
         logout_process()
     }
     //!SECTION
-
-
-
-
-
-
-
-
-
 
     return (
         <>

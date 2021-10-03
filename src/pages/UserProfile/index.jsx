@@ -1,21 +1,29 @@
 import React from "react";
 import styled from "styled-components";
-import ContentContainer from "../../containers/pages/userProfile/ContentContainer";
+import ContentContainer from "../../containers/redux/pages/profile/ContentContainer";
+import { Header } from "../../layout";
+
 
 const WholeWrapper = styled.div`
-  height: 100vh;
+
+background-color: #edeff2;
+
+  height: 100%;
   width: 100%;
 `;
 
+
+
 //TODO header
-const Home = () => {
+const UserProfile = () => {
     return (
         <>
             <WholeWrapper>
+                <Header position={'sticky'}></Header>
                 <ContentContainer />
             </WholeWrapper>
         </>
     );
 };
 
-export default Home;
+export default UserProfile;

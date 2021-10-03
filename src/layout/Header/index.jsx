@@ -7,7 +7,7 @@ const HeaderStyle = styled.div`
   min-height : 5rem;
   background-color: #edeff2;
   display : flex;
-  position : fixed;
+  position : ${props => (props.position) ? (props.position) : `fixed`};
   border-bottom: 1.5px solid #dfdfe5;
   align-items: center;
   top : 0;
@@ -15,10 +15,10 @@ const HeaderStyle = styled.div`
   right : 0;
 `
 
-const Header = () => {
+const Header = ({ position }) => {
     return (
         <>
-            <HeaderStyle>
+            <HeaderStyle position={position}>
                 <HeaderContent></HeaderContent>
             </HeaderStyle>
         </>

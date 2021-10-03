@@ -5,9 +5,8 @@ import styled from "styled-components";
 
 const CreateNoticeWrapper = styled.div`
   width: 100%;
-  margin-top : 90px;
-  height : calc(90%);
-  /* height: calc(100% - 78px); */
+  height : 100%;
+  height: calc(100% - 6rem);
   display: flex;
   animation: 0.5s ease 0s 1 normal forwards running Tags;
   position : absolute;

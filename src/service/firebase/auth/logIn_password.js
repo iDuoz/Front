@@ -11,16 +11,12 @@ const SignIn = ({ email, password }) => {
     .then((userCredential) => {
       // Signed in
       console.log(userCredential);
-      const user = userCredential.user;
-      console.log(user);
       console.log('success');
-      console.log(userCredential);
-      console.log(userCredential);
       notification['success']({
         message: '로그인 성공🥰',
         description: 'merit Share에서 나눔을 알려주세요',
       });
-      return userCredential;
+      return userCredential.user;
       // ...
     })
     .catch(async (error) => {

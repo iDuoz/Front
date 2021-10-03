@@ -100,7 +100,7 @@ ${props => (props.block) ? `width : 90%;` : null};
  * @param align 텍스트 정렬
  * @param plane plane style
  */
-const TextBox = ({ type, autofocus, size, block, plane, value, onChange, placeholder, disabled, align, color }) => {
+const TextBox = ({ onKeyPress, type, autofocus, size, block, plane, value, onChange, placeholder, disabled, align, color }) => {
     const textRef = useRef();
 
     useEffect(() => {
@@ -112,7 +112,7 @@ const TextBox = ({ type, autofocus, size, block, plane, value, onChange, placeho
 
     return (
         <>
-            <Text type={type} align={align} size={size} color={color} plane={plane} ref={textRef}
+            <Text type={type} align={align} size={size} color={color} plane={plane} ref={textRef} onKeyPress={onKeyPress}
                 block={block} value={value} onChange={onChange} placeholder={placeholder} disabled={disabled} >
             </Text>
         </>

@@ -9,9 +9,11 @@ const LogInProcess = (logInInfo) => {
   firebase_login(logInInfo)
     .then((res) => {
       console.log(res);
+      console.log(res.uid);
       store.dispatch(
         ACTION.SET_USER__ACTION_FUNC({
           user: {
+            uid: res.uid,
             email: 'csmo2642@naver.com',
             name: 'euncherry',
           },
