@@ -11,8 +11,8 @@ const TotalNoticeContent = () => {
                     <Col span={8} justify={'center'} align={'center'}>
                         <Row >
                             <Col span={12} style={{ marginTop: '24px' }}>
-                                <Typo size={'2rem'} >전체봉사조회</Typo>
-                                <Divider marginTop={'1rem'}></Divider>
+                                <Typo size={'2rem'} weight={'bold'} >전체봉사조회</Typo>
+                                <Divider marginTop={'1rem'} borderWidth={'1px'}></Divider>
                             </Col>
                             <Col span={12} justify={'center'} align={'center'}>
                                 <NoticeCardForm merit={'a'}></NoticeCardForm>

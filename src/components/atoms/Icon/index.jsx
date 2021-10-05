@@ -1,12 +1,61 @@
 import React from "react"
 import styled from "styled-components"
 
+
+const Label = styled.div`
+position: relative;
+color: #9baacf;
+font-size : ${props => props.size - 2 || `0.9rem`};
+  padding-left : 10px;
+  font-weight : ${props => props.weight || `600`} ;
+  text-align: center;
+  word-break: keep-all;
+  cursor: pointer;
+height: inherit;
+display : flex;
+align-items: center;
+
+${props => (props.direction === 'column') ? `
+  padding : 6px 0 0 0;
+  font-size : 1.1rem;
+`: null};
+
+::before{
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    content: " ";
+    display: block;
+    position: absolute;
+     right: 0;
+      bottom: 0; 
+      left: 0;
+    /* inset: 0 0 0 0; */
+    height : 35%;
+    margin-Top : 5px;
+    background-color: ${props => (props.highLightColor || `#6d5dfc3b`)} ;
+    color: white ;
+    transition: transform .3s ease;
+}
+`
+
+
+
 const Wrapper = styled.div`
 display: flex;
   justify-content: space-between;
   align-items: center;
+
   height:${props => props.size || `4rem`};
+  ${props => props.direction ? `
+  flex-direction : ${props.direction};
+  height : auto;
+  ` : null}
+  &:hover ${Label}::before{
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
 `
+
 const IconBtn = styled.div`
 width: ${props => props.size || `4rem`};
   height: ${props => props.size || `4rem`};
@@ -24,24 +73,9 @@ width: ${props => props.size || `4rem`};
   color: #6d5dfc;
   };
 
-  &:hover{
-    color: #6d5dfc;
-  }
+  
 `
 
-const Label = styled.div`
-color: #9baacf;
-font-size : ${props => props.size - 2 || `0.9rem`};
-  padding-left : 10px;
-  font-weight : 600;
-  text-align: center;
-  word-break: keep-all;
-  cursor: pointer;
-height: inherit;
-display : flex;
-align-items: center;
-
-`
 
 
 
@@ -51,17 +85,17 @@ align-items: center;
  * @param value 아이콘 설명 
  * @param oNClick onclick
  * @param children ICON
- * 
+ * @param direction 방향(icon,value)
  */
-const IconButton = ({ size, value, onClick, children }) => {
+const IconButton = ({ direction, size, value, onClick, children, weight }) => {
   return (
     <>
-      <Wrapper onClick={onClick} size={size}>
+      <Wrapper direction={direction} onClick={onClick} size={size}>
         <IconBtn size={size} onClick={onClick}>
           {children}
         </IconBtn>
         {value ?
-          <Label>
+          <Label direction={direction} weight={weight}>
             {value}
           </Label>
           : null}

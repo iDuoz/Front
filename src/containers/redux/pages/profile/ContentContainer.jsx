@@ -5,14 +5,13 @@ import ACTION from "../../../../store/actions/action";
 
 const mapStateToProps = (state) => {
     return {
-        name: state.user_reducer.name,
-        region: state.user_reducer.region,
-        sex: state.user_reducer.sex,
-        email: state.user_reducer.email,
-        age: state.user_reducer.age,
-        addRegion: state.user_reducer.addRegion,
+        uid: state.user_reducer.uid,
+        basic: state.user_reducer.basic,
         merit: state.user_reducer.merit,
         loveNotice: state.user_reducer.loveNotice,
+        totalLoveNotice: state.user_reducer.totalLoveNotice,
+        role: state.user_reducer.role,
+        regions: state.region_reducer.region,
     }
 }
 

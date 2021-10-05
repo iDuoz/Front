@@ -13,10 +13,11 @@ export { default as SelectBox } from './atoms/SelectBox/index';
 export { default as TextBox } from './atoms/TextBox';
 export { default as Typo } from './atoms/Typography';
 export { default as TypoHighlight } from './atoms/TypoHighlight';
-
+export { default as LoveBtn } from './atoms/LoveBtn';
 //MOLECULES
 export { default as VerifiedForm } from './molecules/VerifiedForm/VerifiedForm';
 export { default as NoticeCardForm } from './molecules/NoticeCardForm/index';
+export { default as MeritIcon } from './molecules/MeritIcon/index';
 //ORGANISM
 
 export { default as HeaderContent } from './organisms/Header/Content';

@@ -1,10 +1,10 @@
 import { doc, getDoc } from 'firebase/firestore';
 import { getFirestore } from 'firebase/firestore';
 
-const getUserData = async (userUid) => {
+const getRegionArray = async () => {
   try {
     const db = getFirestore();
-    const docRef = doc(db, 'members', userUid);
+    const docRef = doc(db, 'noticeInformations', 'information');
     const docSnap = await getDoc(docRef);
     console.log('DB data : ', docSnap.data());
     return docSnap.data();
@@ -14,4 +14,4 @@ const getUserData = async (userUid) => {
   }
 };
 
-export default getUserData;
+export default getRegionArray;

@@ -8,7 +8,7 @@ import login_process from "../../service/transaction/login_process"
 import logout_process from "../../service/transaction/logout_process"
 import SignupProcess from "../../service/transaction/signup_process";
 const ContentContainer = () => {
-    const headerItemsName = ['전체게시글', '게시글작성', 'Profile', 'Experience']
+    const headerItemsName = ['전체게시글', '게시글작성', 'Profile', '추천봉사']
 
 
 
@@ -17,7 +17,7 @@ const ContentContainer = () => {
             '전체게시글': '/totalnotice',
             '게시글작성': '/createnotice',
             Profile: '/profile',
-            Experience: '/',
+            '추천봉사': '/',
         };
         return itemRoute[itemName] || "/notFound"
     }

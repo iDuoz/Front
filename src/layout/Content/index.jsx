@@ -16,7 +16,7 @@ const ContentStyle = styled.div`
     padding : 2.6vh 2.6vw;
   }
   @media screen and (max-width: 768px){
-    padding : 0;
+    padding : 2.6vh 2vw;
   }
 
 `

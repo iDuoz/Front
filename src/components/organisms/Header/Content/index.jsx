@@ -66,8 +66,11 @@ const Header = ({
             {/* SECTION Content */}
 
             <Row>
-                <Col span={12} >
-                    <Col xs={0} span={5} colRef={menuWrapperRef} align={'center'} justify={'flex-start'} style={{ position: "relative", padding: "10px 0" }} >
+                <Col span={12} justify={'space-between'} >
+                    <Col xs={12} sm={2} md={2} lg={2} xl={2} xxl={2} span={2} justify={'center'} align={'center'} >
+                        <Logo width={'6.5rem'} height={'2.2rem'}></Logo>
+                    </Col>
+                    <Col xs={12} sm={8} md={8} lg={8} xl={8} xxl={8} span={8} colRef={menuWrapperRef} align={'center'} justify={'center'} style={{ position: "relative", padding: "10px 0" }} >
                         {
                             setHeaderItem.map((items, index) => (
                                 <MenuItem
@@ -83,10 +86,8 @@ const Header = ({
                         <Indicator ref={indicator1}></Indicator>
                         <Indicator ref={indicator2}></Indicator>
                     </Col>
-                    <Col xs={6} span={2} justify={'center'} align={'center'} >
-                        <Logo width={'6.5rem'} height={'2.2rem'}></Logo>
-                    </Col>
-                    <Col xs={6} span={5} justify={'center'} align={'center'} >
+
+                    <Col xs={12} sm={2} md={2} lg={2} xl={2} xxl={2} span={2} justify={'center'} align={'center'} >
                         {
                             (logined === true) ?
                                 (<Button value={'LogOut'} onClick={logOutHandler} ></Button>)

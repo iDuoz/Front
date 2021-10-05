@@ -12,7 +12,7 @@ const ButtonComponent = styled.input.attrs(props => ({ type: "button" }))`
   justify-content: center;
   cursor: pointer;
   transition:  0.3s ease;
-  font-size: 1rem;
+  font-size: ${props => props.fontSize || `1rem`};
     cursor: pointer;
     ${props => {
         switch (props.size) {
@@ -94,9 +94,9 @@ ${props => {
     ${props => (props.block) ? `width : 90%;` : null}
 `
 
-const Button = ({ href, size, types, block, value, onClick, bold, plane }) => (
+const Button = ({ href, size, types, fontSize, block, value, onClick, bold, plane }) => (
     <>
-        <ButtonComponent href={href} size={size} types={types} plane={plane} block={block} value={value} bold={bold} onClick={onClick}>
+        <ButtonComponent href={href} size={size} fontSize={fontSize} types={types} plane={plane} block={block} value={value} bold={bold} onClick={onClick}>
 
         </ButtonComponent>
     </>

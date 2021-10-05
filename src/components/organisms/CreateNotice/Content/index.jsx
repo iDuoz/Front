@@ -222,6 +222,7 @@ const SWBtn = styled.a.attrs((props) => ({
     text-decoration: none;
   }
 `;
+
 const DateWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -359,23 +360,7 @@ const CreateNoticeContent = ({
           <CreateDivider></CreateDivider>
           <SetUrl value={swurl} onChange={createNoticeFunction.swurl}></SetUrl>
           <CreateDivider></CreateDivider>
-          <DateWrapper>
-            <DateContent> 일정 시작 날짜 </DateContent>
-            <DateSelector
-              max={`${noticeData.endDate}` || null}
-              defaultValue={noticeData.startDate}
-              onChange={createNoticeFunction.startDate}
-            ></DateSelector>
-          </DateWrapper>
 
-          <DateWrapper>
-            <DateContent> 일정 마감 날짜 </DateContent>
-            <DateSelector
-              min={`${noticeData.startDate}` || null}
-              defaultValue={noticeData.endDate}
-              onChange={createNoticeFunction.endDate}
-            ></DateSelector>
-          </DateWrapper>
 
           <SubmitBtnWrapper>
 
