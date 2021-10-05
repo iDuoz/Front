@@ -2,7 +2,8 @@
 import React, { useCallback, useRef } from "react";
 import { MdTrackChanges } from "react-icons/md";
 import styled from "styled-components";
-
+import { MeritIcon } from "../../../../components"
+import { Row, Col } from "../../../../layout"
 const CreateNoticeWrapper = styled.div`
   width: 100%;
   height : 100%;
@@ -128,7 +129,7 @@ const SetUrl = styled.input.attrs((props) => ({
 }))`
   outline: none;
   cursor: text;
-  font-size: 1.125rem;
+  font-size: 1.2rem;
   line-height: 2rem;
   margin-bottom: 0.75rem;
   border: none;
@@ -303,6 +304,8 @@ const PreviewSwurl = styled.iframe.attrs((props) => ({
 `;
 
 const CreateNoticeContent = ({
+  userMeritProfile,
+  editMeritProfileFunction,
   noticeData,
   handleTags,
   createNoticeFunction,
@@ -335,30 +338,15 @@ const CreateNoticeContent = ({
             onChange={createNoticeFunction.title}
           ></CreateTextArea>
           <CreateDivider></CreateDivider>
-          <CreateTagWrapper>
-            {tags.map((tag, index) => {
-              return (
-                <FixedTag
-                  key={index}
-                  value={newTag}
-                  onClick={handleTags.delete}
-                >
-                  {tag}
-                </FixedTag>
-              );
-            })}
-            {tags.length < 3 ? (
-              <CreateTag
-                onKeyPress={handleTags.add}
-                value={newTag}
-                onChange={handleTags.changetag}
-              ></CreateTag>
-            ) : (
-              <WarningTag>태그는 3개까지 입력가능합니다.</WarningTag>
-            )}
-          </CreateTagWrapper>
-          <CreateDivider></CreateDivider>
           <SetUrl value={swurl} onChange={createNoticeFunction.swurl}></SetUrl>
+          <CreateDivider></CreateDivider>
+          <Row style={{ marginTop: '1rem' }}>
+            <Col span={8}>
+              <MeritIcon userMeritProfile={userMeritProfile} editMeritProfileFunction={editMeritProfileFunction} ></MeritIcon>
+            </Col>
+          </Row>
+
+
           <CreateDivider></CreateDivider>
 
 

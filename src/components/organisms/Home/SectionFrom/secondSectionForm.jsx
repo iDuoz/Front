@@ -28,7 +28,7 @@ margin : 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.03);
 }
 ${props => (props.index === 0) ? `
 transform: translateY(-15vh);
@@ -132,7 +132,7 @@ const SecondSectionForm = ({ currentSlider, sectionScrollType, }) => {
                 index={1}
                 currentSlider={currentSlider}
                 sectionScrollType={sectionScrollType}
-                backgroundImg={'https://i.postimg.cc/W14vywqg/photo-1424746219973-8fe3bd07d8e3.jpg'}
+                backGroundColor={'#fbeeca'}
                 zIndex={2}
             >
                 <ContentWrapper index={1} currentSlider={currentSlider} sectionScrollType={sectionScrollType}>

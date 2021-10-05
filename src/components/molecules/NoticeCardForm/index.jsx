@@ -1,13 +1,20 @@
 import React from 'react'
 // import { Row, Col } from '../../../layout'
 import styled from "styled-components"
+import { Row, Col } from '../../../layout'
+import { Img } from '../../index'
+import merit_active from "../../../assets/icons/merit_active.png"
+import merit_animal from "../../../assets/icons/merit_animal.png"
+import merit_disaster from "../../../assets/icons/merit_disaster.png"
+import merit_farming from "../../../assets/icons/merit_farming.png"
+import merit_online from "../../../assets/icons/merit_online.png"
 
 
 const CardWrapper = styled.div`
 margin : 10px 0;
  padding : 20px 20px 15px 20px;
 width : 100%;
-    height : 7rem;
+    height : 9rem;
     /* background-color: rgb(248, 249, 250); */
     border-radius: 11px;
     cursor: pointer;
@@ -33,6 +40,13 @@ border-top-left-radius: 11px;
 border-bottom-left-radius: 11px;
 transition: width 0.3s;
 `
+const CardIcon = styled.div`
+z-index : 5;
+position: absolute;
+
+`
+
+
 const CardDivider = styled.div`
     position  :absolute;
     left : 80px;
@@ -43,29 +57,96 @@ const CardDivider = styled.div`
 `
 const CardContent = styled.div`
     height : 100%;
+    display : flex;
+align-items: center;
     &:hover ${CardColorSide} {
         width : 80px;
+        ${props => props.small ? `
+        width : 100%;
+        border-top-right-radius: 11px;
+border-bottom-right-radius: 11px; ` : null};
     } 
 `
+const CardTitle = styled.div`
+position : absolute;
+left : 100px;
+top : 1.2rem;
+width : auto;
+color : #555A5F;
+font-size: 1.6rem;
+font-weight: 600;
+${props => props.small ? `
+left : 20px;
+top : 10px;
+` : null};
+`
 
-const NoticeCardForm = ({ merit }) => {
+const Cardlast = styled.div`
+position : absolute;
+left : 100px;
+top : 4.5rem;
+color : #555A5F;
+font-size : 1rem;
+${props => props.small ? `
+left : 20px;
+top : 6.5rem;
+` : null}
+`
+
+
+
+const NoticeCardForm = ({ merit, listTitle, listContent }) => {
 
     const meritColor = {
-        a: '#BA68C8',
-        b: '#52A43A',
-        c: '#F7AA17',
-        d: '#EF5350'
+        active: '#BA68C8',
+        eco: '#52A43A',
+        animal: '#F7AA17',
+        disaster: '#EF5350',
+        farming: '#50efc7',
+        online: '#5060ef',
+    }
 
+    const meritIcon = {
+        active: merit_active,
+        animal: merit_animal,
+        eco: merit_farming,
+        disaster: merit_disaster,
+        farming: merit_farming,
+        online: merit_online,
     }
 
     return (
         <>
-            <CardWrapper>
-                <CardContent>
-                    <CardColorSide background={meritColor[merit]} />
-                    <CardDivider />
-                </CardContent>
-            </CardWrapper>
+            <Row>
+                <Col xs={0} sm={0} md={12} lg={12} xl={12} xxl={12}>
+                    <CardWrapper>
+                        <CardContent>
+                            <CardIcon>
+                                <Img src={meritIcon[merit]} width={'3rem'}></Img>
+                            </CardIcon>
+
+                            <CardColorSide background={meritColor[merit]} />
+
+                            <CardDivider />
+                            <CardTitle>{listTitle}</CardTitle>
+                            <Cardlast>{listContent}</Cardlast>
+
+
+                        </CardContent>
+                    </CardWrapper>
+                </Col>
+
+                <Col xs={12} sm={12} md={0} lg={0} xl={0} xxl={0}>
+                    <CardWrapper>
+                        <CardContent small={true} >
+                            <CardColorSide background={meritColor[merit]} />
+                            <CardTitle small={true}>{listTitle}</CardTitle>
+                            <Cardlast small={true}>{listContent}</Cardlast>
+                        </CardContent>
+                    </CardWrapper>
+                </Col>
+            </Row>
+
         </>
     )
 }

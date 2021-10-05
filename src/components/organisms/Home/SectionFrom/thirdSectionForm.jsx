@@ -100,7 +100,7 @@ const ThirdSectionForm = ({ currentSlider, sectionScrollType, }) => {
                 index={2}
                 currentSlider={currentSlider}
                 sectionScrollType={sectionScrollType}
-                backgroundImg={'https://i.postimg.cc/TY0xQ41T/photo-1433840496881-cbd845929862.jpg'}
+                backGroundColor={'#edeff2'}
                 zIndex={1}
             >
                 <ContentWrapper index={2} currentSlider={currentSlider} sectionScrollType={sectionScrollType}>

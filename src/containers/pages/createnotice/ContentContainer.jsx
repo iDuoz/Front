@@ -1,4 +1,4 @@
-import React, { memo, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import CreateNoticeContent from "../../../components/organisms/CreateNotice/Content/index";
 import postCreateFormNotice from "../../../service/api/post/post_create_form_notice";
 import postCreateFileNotice from "../../../service/api/post/post_create_file_notice";
@@ -118,11 +118,43 @@ const ContentContainer = () => {
       })
       .catch((err) => console.log(err));
   };
-
+  const [userMeritProfile, setUserMeritProfile] = useState({})
+  useEffect(() => {
+    setUserMeritProfile({ active: false, animal: false, disaster: false, farming: false, online: false })
+  }, [])
+  let editMeritProfileFunction = {
+    active: () => {
+      (userMeritProfile.active === true) ?
+        setUserMeritProfile((state) => ({ ...state, active: false })) :
+        setUserMeritProfile((state) => ({ ...state, active: true }))
+    },
+    animal: () => {
+      (userMeritProfile.animal === true) ?
+        setUserMeritProfile((state) => ({ ...state, animal: false })) :
+        setUserMeritProfile((state) => ({ ...state, animal: true }))
+    },
+    disaster: () => {
+      (userMeritProfile.disaster === true) ?
+        setUserMeritProfile((state) => ({ ...state, disaster: false })) :
+        setUserMeritProfile((state) => ({ ...state, disaster: true }))
+    },
+    farming: () => {
+      (userMeritProfile.farming === true) ?
+        setUserMeritProfile((state) => ({ ...state, farming: false })) :
+        setUserMeritProfile((state) => ({ ...state, farming: true }))
+    },
+    online: () => {
+      (userMeritProfile.online === true) ?
+        setUserMeritProfile((state) => ({ ...state, online: false })) :
+        setUserMeritProfile((state) => ({ ...state, online: true }))
+    },
+  }
   return (
     <>
       <CreateNoticeContent
         //props로 넘겨주기
+        userMeritProfile={userMeritProfile}
+        editMeritProfileFunction={editMeritProfileFunction}
         noticeData={noticeData}
         handleTags={handleTags}
         newTag={newTag}

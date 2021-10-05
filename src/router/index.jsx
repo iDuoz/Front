@@ -4,6 +4,7 @@ import HomeRouter from "./HomeRouter";
 import UserPageRouter from "./UserProfileRouter";
 import CreateNoticeRouter from "./CreateNoticeRouter";
 import TotalNoticeRouter from "./TotalNoticeRouter";
+import ProposalRouter from "./ProposalRouter";
 import NotFound from "../pages/NotFound"
 
 const AppRouter = () => {
@@ -33,6 +34,9 @@ const AppRouter = () => {
                     </Route>
                     <Route path="/totalnotice">
                         <TotalNoticeRouter security={["ADMIN", "GUEST", "USER"]} userInfo={userInfo}></TotalNoticeRouter>
+                    </Route>
+                    <Route path="/proposal">
+                        <ProposalRouter security={["ADMIN", "GUEST", "USER"]} userInfo={userInfo}></ProposalRouter>
                     </Route>
                     {/* TODO 404NotFound page 만들기 */}
                     <Route component={NotFound}></Route>

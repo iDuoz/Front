@@ -16,8 +16,8 @@ const ContentContainer = () => {
         const itemRoute = {
             '전체게시글': '/totalnotice',
             '게시글작성': '/createnotice',
-            Profile: '/profile',
-            '추천봉사': '/',
+            'Profile': '/profile',
+            '추천봉사': '/proposal',
         };
         return itemRoute[itemName] || "/notFound"
     }
