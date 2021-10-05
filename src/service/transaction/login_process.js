@@ -2,6 +2,7 @@ import store from '../../store/store';
 import ACTION from '../../store/actions/action';
 import firebase_login from '../firebase/auth/logIn_password';
 import getUserData from '../firebase/database/getUserData';
+import getRegionArray from '../firebase/database/getRegionArray';
 // import get_userInfo from "../api/get/get_userInfo"
 
 const LogInProcess = (logInInfo) => {
@@ -34,6 +35,17 @@ const LogInProcess = (logInInfo) => {
               },
             })
           );
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    })
+    .then((uid) => {
+      getRegionArray()
+        .then((res) => {
+          console.log('region 정보 보여줌');
+          console.log(res);
+          store.dispatch(ACTION.SET_REGION__ACTION_FUNC(res));
         })
         .catch((e) => {
           console.log(e);

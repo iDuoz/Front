@@ -59,7 +59,7 @@ const ProfileContent = ({
                             </Col>
                         </Row>
                         <Divider color={'#000000'} marginTop={'15px'} marginBottom={'0px'} borderWidth={'3px'} ></Divider>
-                        <Row justify={"space-between"} style={{ height: "50px" }}>
+                        <Row justify={"space-between"} style={{ height: "60px" }}>
                             <Col span={2} justify={"center"} align={"center"} style={{ backgroundColor: "#dbdee9", height: "inherit" }}>
                                 <Typo weight={'bold'}>이름</Typo>
                             </Col>
@@ -94,7 +94,7 @@ const ProfileContent = ({
                             </Col>
                         </Row>
                         <Divider color={'#000000'} marginTop={'0px'} marginBottom={'0px'} borderWidth={'1.8px'} ></Divider>
-                        <Row justify={"space-between"} style={{ height: "50px" }}>
+                        <Row justify={"space-between"} style={{ height: "60px" }}>
                             <Col span={2} justify={"center"} align={"center"} style={{ backgroundColor: "#dbdee9", height: "inherit" }}>
                                 <Typo weight={'bold'}>이메일</Typo>
                             </Col>
@@ -129,7 +129,7 @@ const ProfileContent = ({
                             </Col>
                         </Row>
                         <Divider color={'#000000'} marginTop={'0px'} marginBottom={'0px'} borderWidth={'1.8px'} ></Divider>
-                        <Row justify={"space-between"} style={{ height: "50px" }}>
+                        <Row justify={"space-between"} style={{ height: "60px" }}>
                             <Col span={2} justify={"center"} align={"center"} style={{ backgroundColor: "#dbdee9", height: "inherit" }}>
                                 <Typo weight={'bold'}>나이</Typo>
                             </Col>
@@ -166,7 +166,7 @@ const ProfileContent = ({
                             </Col>
                         </Row>
                         <Divider color={'#000000'} marginTop={'0px'} marginBottom={'0px'} borderWidth={'1.8px'} ></Divider>
-                        <Row justify={"space-between"} style={{ height: "50px" }}>
+                        <Row justify={"space-between"} style={{ height: "60px" }}>
                             <Col span={2} justify={"center"} align={"center"} style={{ backgroundColor: "#dbdee9", height: "inherit" }}>
                                 <Typo weight={'bold'}>성별</Typo>
                             </Col>
@@ -205,7 +205,7 @@ const ProfileContent = ({
 
 
                         <Divider color={'#000000'} marginTop={'0px'} marginBottom={'0px'} borderWidth={'1.8px'} ></Divider>
-                        <Row justify={"space-between"} style={{ height: "50px" }}>
+                        <Row justify={"space-between"} style={{ height: "60px" }}>
                             <Col span={2} justify={"center"} align={"center"} style={{ backgroundColor: "#dbdee9", height: "inherit" }}>
                                 <Typo weight={'bold'}>지역</Typo>
                             </Col>
@@ -242,7 +242,7 @@ const ProfileContent = ({
                             </Col>
                         </Row>
                         <Divider color={'#000000'} marginTop={'0px'} marginBottom={'0px'} borderWidth={'1.8px'} ></Divider>
-                        <Row justify={"space-between"} style={{ height: "50px" }}>
+                        <Row justify={"space-between"} style={{ height: "60px" }}>
                             <Col span={2} justify={"center"} align={"center"} style={{ backgroundColor: "#dbdee9", height: "inherit" }}>
                                 <Typo weight={'bold'}>추가지역</Typo>
                             </Col>
