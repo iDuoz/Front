@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { NoticeCardForm } from '../../../index'
 import { Col, Row, ContentStyle } from '../../../../layout'
-import { Typo, Divider } from "../../../index"
+import { Typo, Divider, Modal } from "../../../index"
 import getTotalNotices from '../../../../service/firebase/database/getTotalNotices'
 import addNotices from '../../../../service/firebase/database/addNotices'
+
+import AlertModalForm from "../../../molecules/AlertModalForm"
+
 const TotalNoticeContent = () => {
 
     const [listTotalData, setListTotalData] = useState([])
@@ -31,6 +34,16 @@ const TotalNoticeContent = () => {
 
     console.log(listTotalData)
 
+    ///
+
+
+    const [isModalOpen, setIsModalOpen] = useState(false)
+
+    const modalhandle = () => {
+        setIsModalOpen((state) => (!state))
+    }
+
+
     const handle = () => {
         getTotalNotices()
             .then((res) => {
@@ -54,11 +67,19 @@ const TotalNoticeContent = () => {
                     <Col span={8} justify={'center'} align={'center'}>
                         <Row >
                             <Col span={12} style={{ marginTop: '24px' }}>
-                                <div onClick={handle} >정보봗아오기</div>
-                                <div onClick={addhandle}>정보추가하기</div>
+
+
+
                                 <Typo size={'2rem'} weight={'bold'} >전체봉사조회</Typo>
                                 <Divider marginTop={'1rem'} borderWidth={'1px'}></Divider>
                             </Col>
+                            <Col span={12}><div onClick={handle} >정보봗아오기</div></Col>
+                            <Col span={12}><div onClick={addhandle}>정보추가하기</div></Col>
+                            <Col span={12}><div onClick={modalhandle}>모달열기</div>
+                                <Modal visible={isModalOpen} maskClosable={false} headerClose closable
+                                    onClose={modalhandle} size={7}>
+                                    <AlertModalForm username={'채은'}></AlertModalForm>
+                                </Modal></Col>
                             <Col span={12} justify={'center'} align={'center'}>
                                 {
                                     listTotalData.map((lists, index) => {

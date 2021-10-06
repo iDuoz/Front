@@ -96,8 +96,10 @@ const CloseButton = styled.button`
  top : 0;
  right : 0;
  padding : 0;
- 
- background-color : rgba(0,0,0,0);
+ border-top-right-radius: 3rem;
+ padding-right: 1rem;
+ padding-top:1rem ;
+ background-color : #ecf0f3;
  border : 0;
  outline : 0;
  cursor : pointer;
@@ -109,11 +111,12 @@ const CloseButton = styled.button`
 
 const ModalHeader = styled.div`
  display : ${props => (props.headerClose) ? `none` : `flex`};
+ border-top-left-radius: 3rem;
+ border-top-right-radius: 3rem;
  padding: 16px 24px;
  color: rgba(0,0,0,.85);
- background: #fff;
+ background-color : #ecf0f3;
  border-bottom: 1px solid #f0f0f0;
- border-radius: 2px 2px 0 0;
  line-height: 22px;
  font-size: 16px;
  font-weight: 600;
@@ -124,6 +127,7 @@ const ModalHeader = styled.div`
 
 
 const ModalContent = styled.div`
+position: relative;
  padding: 24px;
  width : inherit;
  box-sizing : border-box;
@@ -171,6 +175,7 @@ const Modal = ({ zIndex, headerClose, title, visible, closable, maskClosable,
                             </ModalHeader>
 
                             <ModalContent visible={visible}>
+                                {headerClose && closable && <CloseButton onClick={onClose}><VscClose></VscClose></CloseButton>}
                                 {children}
                             </ModalContent>
                         </ModalContainer>

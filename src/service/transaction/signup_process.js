@@ -1,27 +1,46 @@
 import signup_password from '../firebase/auth/signup_password';
 import store from '../../store/store';
 import ACTION from '../../store/actions/action';
-
+import addUser from '../firebase/database/addUser';
+import { useHistory } from 'react-router-dom';
 const SignUpProcess = (signUpInfo) => {
+  const history = useHistory();
   console.log(signUpInfo);
 
   signup_password(signUpInfo)
     .then((res) => {
       console.log(res);
+      console.log(res.uid);
       console.log('회원가입 성공');
-      console.log('ㄹ그인 start,,,');
+      console.log('redux ㄹ그인 start,,,');
+      store.dispatch(ACTION.LOGIN_ACTION_FUNC());
       store.dispatch(
         ACTION.SET_USER__ACTION_FUNC({
           user: {
-            email: 'csmo2642@naver.com',
-            name: 'euncherry',
+            uid: res.uid,
           },
         })
       );
-      store.dispatch(ACTION.LOGIN_ACTION_FUNC());
+      return res;
+    })
+    .then((res) => {
+      console.log('addUser Start');
+      console.log(res);
+      console.log(res.uid);
+      // console.log(res.email)
+
+      addUser(res.uid, res.email)
+        .then((res) => {
+          console.log('user DB save,,, ');
+          console.log(res);
+          history.push('/profile');
+        })
+        .catch((e) => {
+          console.log(e);
+        });
     })
     .catch((err) => console.log(err));
-  return { success: 'ok' };
+  return { success: 'signup done' };
 };
 
 export default SignUpProcess;

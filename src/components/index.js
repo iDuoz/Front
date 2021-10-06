@@ -18,6 +18,7 @@ export { default as LoveBtn } from './atoms/LoveBtn';
 export { default as VerifiedForm } from './molecules/VerifiedForm/VerifiedForm';
 export { default as NoticeCardForm } from './molecules/NoticeCardForm/index';
 export { default as MeritIcon } from './molecules/MeritIcon/index';
+export { default as AlertModalForm } from './molecules/AlertModalForm/index';
 //ORGANISM
 
 export { default as HeaderContent } from './organisms/Header/Content';
