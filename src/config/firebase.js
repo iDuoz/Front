@@ -4,7 +4,7 @@ const firebaseConfig = {
   apiKey: 'AIzaSyBngd4AMRSJR19dX5-rrPQGAFP6f0Jbt_o',
   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
   databaseURL: process.env.REACT_APP_DATABASEURL,
-  projectId: process.env.REACT_APP_PROJECT_ID,
+  projectId: 'eun-cherry',
   storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
   messagingSenderId: process.env.REACT_APP_MESSAGING_ID,
   appId: process.env.REACT_APP_APP_ID,
