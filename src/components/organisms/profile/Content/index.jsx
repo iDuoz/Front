@@ -73,7 +73,7 @@ const ProfileContent = ({
                                                         (userBasicProfile.name) ?
                                                             <Typo size={'1.1rem'} weight={"bold"}>{userBasicProfile.name}</Typo>
                                                             :
-                                                            <Typo backColor={'rgb(255, 253, 126)'} weight={"bold"}>{'이름을 기입해 주새요'} </Typo>
+                                                            <Typo backColor={'rgb(255, 253, 126)'} weight={"bold"}>{'이름을 기입해 주세요'} </Typo>
                                                     }
                                                 </Col>
                                             </>
@@ -82,7 +82,7 @@ const ProfileContent = ({
                                                 <Col offset={0.4} span={12} justify={"center"} align={"center"} >
                                                     <Row align={'center'}>
                                                         <Col xs={6} sm={6} md={6} lg={6} xl={6} xxl={6} align={'center'} justify={'start'} >
-                                                            <TextBox color={"black"} block autofocus
+                                                            <TextBox color={"black"} block
                                                                 onChange={editBasicProfileFunction.name} value={userBasicProfile.name}></TextBox>
                                                         </Col>
 
@@ -108,7 +108,7 @@ const ProfileContent = ({
                                                         (userBasicProfile.email) ?
                                                             <Typo size={'1.1rem'} weight={"bold"}>{userBasicProfile.email}</Typo>
                                                             :
-                                                            <Typo backColor={'rgb(255, 253, 126)'} weight={"bold"}>{'이메일을 기입해 주새요'} </Typo>
+                                                            <Typo backColor={'rgb(255, 253, 126)'} weight={"bold"}>{'이메일을 기입해 주세요'} </Typo>
                                                     }
                                                 </Col>
                                             </>
@@ -117,7 +117,7 @@ const ProfileContent = ({
                                                 <Col offset={0.4} span={12} justify={"center"} align={"center"} >
                                                     <Row align={'center'}>
                                                         <Col xs={6} sm={6} md={6} lg={6} xl={6} xxl={6} align={'center'} justify={'start'} >
-                                                            <TextBox type={'email'} color={"black"} block autofocus
+                                                            <TextBox type={'email'} color={"black"} block
                                                                 onChange={editBasicProfileFunction.email} value={userBasicProfile.email}></TextBox>
                                                         </Col>
 
@@ -143,7 +143,7 @@ const ProfileContent = ({
                                                         (userBasicProfile.age) ?
                                                             <Typo size={'1.1rem'} weight={"bold"}>{(userBasicProfile.age === "teen") ? '미성년자' : '성인'}</Typo>
                                                             :
-                                                            <Typo backColor={'rgb(255, 253, 126)'} weight={"bold"}>{'나이를 기입해 주새요'} </Typo>
+                                                            <Typo backColor={'rgb(255, 253, 126)'} weight={"bold"}>{'나이를 기입해 주세요'} </Typo>
                                                     }
                                                 </Col>
                                             </>

@@ -7,9 +7,10 @@ import gsap from "gsap"
 import login_process from "../../service/transaction/login_process"
 import logout_process from "../../service/transaction/logout_process"
 import SignupProcess from "../../service/transaction/signup_process";
+import { useHistory } from "react-router-dom";
 const ContentContainer = () => {
     const headerItemsName = ['전체게시글', '게시글작성', 'Profile', '추천봉사']
-
+    const history = useHistory();
 
 
     const matchingHeaderPath = (itemName) => {
@@ -167,13 +168,14 @@ const ContentContainer = () => {
         console.log(logInInfo)
         handleLoginModal.close();
     };
-    const SignupBtnOnclick = () => {
+    const SignupBtnOnclick = (e) => {
         SignupProcess(signUpInfo)
         handleLoginModal.close();
         setSignUpInfo({
             email: "",
             password: "",
         });
+        history.push('/profile')
     };
 
 

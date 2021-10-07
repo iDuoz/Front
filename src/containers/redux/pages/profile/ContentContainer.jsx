@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import ContentContainer from "../../../pages/userProfile/ContentContainer";
+import ContentContainer from "../../../pages/profile/ContentContainer";
 import ACTION from "../../../../store/actions/action";
 
 

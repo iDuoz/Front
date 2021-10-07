@@ -17,6 +17,12 @@ const ContentContainer = ({
     console.log(merit);
     console.log(basic);
     console.log(regions);
+    console.log(true && true && true && true && true)
+    // console.log(merit.active && merit.animal && merit.disaster && merit.farming && merit.online
+    //     && basic.age && basic.name && basic.region)
+
+
+
     /**
      * @description  유저 정보 초기 세팅
      * @param addRegion []

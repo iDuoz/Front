@@ -2,9 +2,7 @@ import signup_password from '../firebase/auth/signup_password';
 import store from '../../store/store';
 import ACTION from '../../store/actions/action';
 import addUser from '../firebase/database/addUser';
-import { useHistory } from 'react-router-dom';
 const SignUpProcess = (signUpInfo) => {
-  const history = useHistory();
   console.log(signUpInfo);
 
   signup_password(signUpInfo)
@@ -33,7 +31,6 @@ const SignUpProcess = (signUpInfo) => {
         .then((res) => {
           console.log('user DB save,,, ');
           console.log(res);
-          history.push('/profile');
         })
         .catch((e) => {
           console.log(e);
