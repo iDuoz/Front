@@ -5,6 +5,7 @@ import { Radio, Checkbox } from "antd"
 
 
 const ProfileContent = ({
+    uid,
     closeNewbeModal,
     isNewbeModal,
     handleNewbeModal,
@@ -41,7 +42,11 @@ const ProfileContent = ({
                         <Row>
                             <Col span={12}>
                                 {/* TODO 이채은 -> username */}
-                                <Typo size={"2.3rem"} weight={'bold'}>{userBasicProfile.name || 'GUEST'} </Typo>
+                                <Typo size={"2.3rem"} weight={'bold'}>
+                                    {
+                                        (userBasicProfile.name) ? userBasicProfile.name :
+                                            (uid) ? '이름을 입력해 주세요' : 'GUEST'
+                                    }</Typo>
                             </Col>
                         </Row>
                         <Row gutter={[3, 0]}>

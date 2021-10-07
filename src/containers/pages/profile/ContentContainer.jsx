@@ -242,6 +242,7 @@ const ContentContainer = ({
     return (
         <>
             <ProfileContent
+                uid={uid}
                 closeNewbeModal={closeNewbeModal}
                 isNewbeModal={isNewbeModal}
                 handleNewbeModal={handleNewbeModal}
