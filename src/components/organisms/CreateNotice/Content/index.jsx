@@ -1,6 +1,5 @@
 //NOTE CreateNotice CONTENT
 import React, { useCallback, useRef } from "react";
-import { MdTrackChanges } from "react-icons/md";
 import styled from "styled-components";
 import { MeritIcon } from "../../../../components"
 import { Row, Col } from "../../../../layout"
@@ -99,21 +98,9 @@ const FixedTag = styled.div`
   }
 `;
 
-const CreateTag = styled.input.attrs((props) => ({
-  type: "text",
-  placeholder: "태그를 입력하세요",
-}))`
-  outline: none;
-  cursor: text;
-  font-size: 1.125rem;
-  line-height: 2rem;
-  margin-bottom: 0.75rem;
-  min-width: 8rem;
-  border: none;
-  ::placeholder {
-    color: #858585;
-  }
-`;
+
+
+
 const WarningTag = styled.div`
   color: #858585;
   font-size: ${(props) => props.size || "1rem"};
@@ -197,79 +184,8 @@ const SubmitBtn = styled.div`
   }
 `;
 
-const SWBtn = styled.a.attrs((props) => ({
-  href: "https://sw7up.cbnu.ac.kr/home",
-  target: "_blank",
-}))`
-  height: 2.5rem;
-  font-size: 1.125rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  cursor: pointer;
-  outline: none;
-  margin-right: 1rem;
-  border: none;
-  background: rgb(233, 236, 239);
-  color: rgb(73, 80, 87);
-  border-radius: 4px;
-  padding: 0px 1.25rem;
-  height: 2rem;
-  font-size: 1rem;
-  text-decoration: none;
-  &:hover {
-    background: rgb(233, 236, 239, 0.7);
-    text-decoration: none;
-  }
-`;
 
-const DateWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-  padding: 15px 0;
-  @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: start;
-  }
-`;
 
-const DateContent = styled.div`
-  box-sizing: border-box;
-  margin: 0;
-  color: #000000d9;
-  list-style: none;
-  padding: 4px 4px 4px 0px;
-  font-size: 1.125rem;
-  display: flex;
-  min-width: 9rem;
-  justify-content: flex-start;
-  align-items: center;
-  background: #fff;
-  /* border: 1px solid #d9d9d9; */
-`;
-
-const DateSelector = styled.input.attrs((props) => ({
-  type: "date",
-}))`
-  background-color: white;
-  font-size: 1rem;
-  border: 1px solid #d9d9d9;
-  border-radius: 2px;
-  transition: border 0.3s, box-shadow 0.3s;
-  padding: 4px 11px;
-  color: #707070;
-  border-radius: 5px;
-  width: 100%;
-  &:focus {
-    border-color: #40a9ff;
-    border-right-width: 1px !important;
-    outline: 0;
-    box-shadow: 0 0 0 2px #1890ff33;
-  }
-`;
 
 const PreviewArea = styled.div`
   min-width: 0px;

@@ -1,5 +1,5 @@
-import { doc, getDoc, getFirestore, query, collection, limit, startAfter, getDocs } from 'firebase/firestore';
-
+import { getFirestore, query, collection, limit, getDocs } from 'firebase/firestore';
+// import { doc, getDoc,  startAfter } from 'firebase/firestore';
 const getTotalNotices = async () => {
   const db = getFirestore();
 

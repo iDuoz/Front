@@ -1,6 +1,8 @@
+import { notification } from 'antd';
 import React, { useEffect, useState } from 'react'
 import { ProfileContent } from '../../../components'
 
+import editUser from '../../../service/firebase/database/editUser';
 
 
 
@@ -21,7 +23,22 @@ const ContentContainer = ({
     // console.log(merit.active && merit.animal && merit.disaster && merit.farming && merit.online
     //     && basic.age && basic.name && basic.region)
 
+    /**
+        * @description  초기가입자 안내 
+        * */
+    const [isNewbeModal, setIsNewbeModal] = useState(false)
 
+    const handleNewbeModal = {
+        show: () => setIsNewbeModal(true),
+        close: () => setIsNewbeModal(false)
+    }
+
+
+    const closeNewbeModal = () => {
+        handleNewbeModal.close()
+        editForm.show()
+
+    }
 
     /**
      * @description  유저 정보 초기 세팅
@@ -61,6 +78,28 @@ const ContentContainer = ({
         }
     }, [basic, merit, role, regions])
 
+    useEffect(() => {
+        if (!merit || !basic) {
+            return console.log("!merit")
+        }
+        let counts = 0;
+        for (let keys in merit) {
+            if (merit[keys] === true) {
+                if (counts >= 3) break;
+                counts = counts + 1;
+            }
+        }
+        if (counts >= 3) return console.log("already user!");
+        else if (counts < 3 && basic.region === '') {
+            console.log("newbe is here🐝")
+            setIsNewbeModal(true)
+        }
+        console.log("?")
+        console.log(basic.region === '')
+    }, [merit, basic])
+
+
+
     console.log(userBasicProfile)
     console.log(plainRegionOptions)
     console.log(plainAddRegionOptions)
@@ -73,10 +112,6 @@ const ContentContainer = ({
         age: (e) => {
             const age = e.target.value;
             return setUserBasicProfile((state) => ({ ...state, age: age }))
-        },
-        email: (e) => {
-            const email = e.target.value;
-            return setUserBasicProfile((state) => ({ ...state, email: email }))
         },
         name: (e) => {
             const name = e.target.value;
@@ -131,7 +166,7 @@ const ContentContainer = ({
     //true :  변경하는 form   false :   변경하는 form 닫기 
     const [isEditForm, setEditForm] = useState(false);
 
-    //이름 form handler
+    //edit form handler
     const editForm = {
         show: () => setEditForm(true),
         close: () => setEditForm(false)
@@ -152,7 +187,53 @@ const ContentContainer = ({
     @detail   [POST] 하기  -> form close 하기*/
     const editCloseOnclick = () => {
         // TODO 백에 수정
-        editForm.close()
+
+        let settingMeritCount = 0;
+        for (let keys in userMeritProfile) {
+            if (userMeritProfile[keys] === true) {
+                settingMeritCount = settingMeritCount + 1;
+            }
+        }
+        console.log(settingMeritCount)
+        if (settingMeritCount < 3) {
+            return (
+                notification['error']({
+                    message: `${userBasicProfile.name}님 merit를 확인해주세요😥 `,
+                    description: '3개이상의 merit를 선택해야 합니다.',
+                })
+            )
+        }
+        const settingUpdateData = {
+            basic: {
+                addRegion: userBasicProfile.addRegion,
+                age: userBasicProfile.age,
+                name: userBasicProfile.name,
+                region: userBasicProfile.region,
+                email: userBasicProfile.email,
+                sex: userBasicProfile.sex
+            },
+            merit: {
+                active: userMeritProfile.active,
+                animal: userMeritProfile.animal,
+                disaster: userMeritProfile.disaster,
+                farming: userMeritProfile.farming,
+                online: userMeritProfile.online
+            }
+        }
+        console.log('"settingUpdateData"')
+        console.log(settingUpdateData)
+        editUser(uid, settingUpdateData).then((res) => {
+            console.log('정보db저장성공');
+
+            console.log(res);
+            SET_USER({
+                user: {
+                    basic: userBasicProfile,
+                    merit: userMeritProfile
+                }
+            })
+            editForm.close();
+        }).catch((e) => { console.log(e) })
     }
     //!SECTION
 
@@ -161,6 +242,10 @@ const ContentContainer = ({
     return (
         <>
             <ProfileContent
+                closeNewbeModal={closeNewbeModal}
+                isNewbeModal={isNewbeModal}
+                handleNewbeModal={handleNewbeModal}
+
                 userBasicProfile={userBasicProfile}
                 userMeritProfile={userMeritProfile}
                 plainAddRegionOptions={plainAddRegionOptions}

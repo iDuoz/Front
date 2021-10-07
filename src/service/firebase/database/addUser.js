@@ -1,3 +1,4 @@
+import { notification } from 'antd';
 import { doc, setDoc, getFirestore } from 'firebase/firestore';
 
 const addUser = async (uid, email) => {
@@ -11,6 +12,7 @@ const addUser = async (uid, email) => {
         email: email,
         name: '',
         region: '',
+        sex: '',
       },
       loveNotice: [],
       merit: {
@@ -20,10 +22,14 @@ const addUser = async (uid, email) => {
         farming: false,
         online: false,
       },
+      totalLoveNotice: 0,
     });
     return 'uid db저장 성공';
   } catch (e) {
-    return e;
+    notification['error']({
+      message: `user db정보저장 실패😥 `,
+      description: e.message || e.code,
+    });
   }
 };
 

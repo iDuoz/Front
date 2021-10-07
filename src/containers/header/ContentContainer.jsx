@@ -183,6 +183,7 @@ const ContentContainer = () => {
 
     const logOutHandler = () => {
         logout_process()
+        history.push('/')
     }
     //!SECTION
 

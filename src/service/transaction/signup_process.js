@@ -2,6 +2,7 @@ import signup_password from '../firebase/auth/signup_password';
 import store from '../../store/store';
 import ACTION from '../../store/actions/action';
 import addUser from '../firebase/database/addUser';
+import getRegionArray from '../firebase/database/getRegionArray';
 const SignUpProcess = (signUpInfo) => {
   console.log(signUpInfo);
 
@@ -16,6 +17,24 @@ const SignUpProcess = (signUpInfo) => {
         ACTION.SET_USER__ACTION_FUNC({
           user: {
             uid: res.uid,
+            basic: {
+              addRegion: [],
+              region: null,
+              age: null,
+              email: res.email,
+              sex: null,
+              name: null,
+            },
+            loveNotice: [],
+            merit: {
+              animal: false,
+              online: false,
+              farming: false,
+              disaster: false,
+              active: false,
+            },
+            role: 'volunteer',
+            totalLoveNotice: 0,
           },
         })
       );
@@ -31,6 +50,17 @@ const SignUpProcess = (signUpInfo) => {
         .then((res) => {
           console.log('user DB save,,, ');
           console.log(res);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    })
+    .then((res) => {
+      getRegionArray()
+        .then((res) => {
+          console.log('region 정보 보여줌');
+          console.log(res);
+          store.dispatch(ACTION.SET_REGION__ACTION_FUNC(res));
         })
         .catch((e) => {
           console.log(e);

@@ -1,10 +1,15 @@
 import React from 'react'
 import { Row, Col, ContentStyle } from '../../../../layout'
-import { Typo, Divider, MeritIcon, Btn, TextBox } from "../../../../components"
+import { Typo, Divider, MeritIcon, Btn, TextBox, Modal, AlertModalForm } from "../../../../components"
 import { Radio, Checkbox } from "antd"
 
 
 const ProfileContent = ({
+    closeNewbeModal,
+    isNewbeModal,
+    handleNewbeModal,
+
+
     userBasicProfile,
     userMeritProfile,
     plainAddRegionOptions,
@@ -22,7 +27,14 @@ const ProfileContent = ({
         <>
             <ContentStyle>
                 <Row justify={'space-around'} align={'center'} style={{ backgroundColor: 'inherit' }}>
+                    <Col span={12}>
+                        <Modal visible={isNewbeModal} maskClosable={false} headerClose
+                            onClose={handleNewbeModal.close} size={7}>
+                            <AlertModalForm handleClose={closeNewbeModal}></AlertModalForm>
+                        </Modal>
+                    </Col>
                     {/* SECTION Left */}
+
                     <Col xs={12} sm={12} md={4} lg={4} xl={4} xxl={4} span={4} style={{
                         // marginRight: '4.1%'
                     }}>
@@ -41,12 +53,23 @@ const ProfileContent = ({
                             </Col>
                         </Row>
                         <Row gutter={[15, 0]} style={{ marginTop: '2rem' }}>
-                            <Col span={12}>
+                            <Col span={12} align={'center'}>
                                 <Typo size={"1.3rem"} weight={"bold"}>my Merit.</Typo>
+                                {
+                                    (isEditForm === false) ?
+                                        null
+                                        : <Typo padding={'0 0 0 5px'} size={"1.1rem"} weight={"bold"} color={'#9baacf'}>3개이상의 merit를 골라주세요</Typo>
+                                }
+
                                 <Divider marginTop={'1rem'} marginBottom={'0rem'}></Divider>
                             </Col>
                             <Col span={12}>
-                                <MeritIcon userMeritProfile={userMeritProfile} editMeritProfileFunction={editMeritProfileFunction}></MeritIcon>
+                                {
+                                    (isEditForm === false) ?
+                                        <MeritIcon userMeritProfile={userMeritProfile} blockClick editMeritProfileFunction={null}></MeritIcon>
+                                        : <MeritIcon userMeritProfile={userMeritProfile} editMeritProfileFunction={editMeritProfileFunction}></MeritIcon>
+                                }
+
                             </Col>
                         </Row>
                     </Col>
@@ -100,31 +123,19 @@ const ProfileContent = ({
                             </Col>
                             <Col span={10} align={'center'} style={{ backgroundColor: "#edeff2 ", height: "inherit" }}>
                                 <Row align={'initial'} justify={"space-between"}>
-                                    {
-                                        (isEditForm === false) ?
-                                            <>
-                                                <Col offset={0.4} span={12} justify={"start"} align={"center"} >
-                                                    {
-                                                        (userBasicProfile.email) ?
-                                                            <Typo size={'1.1rem'} weight={"bold"}>{userBasicProfile.email}</Typo>
-                                                            :
-                                                            <Typo backColor={'rgb(255, 253, 126)'} weight={"bold"}>{'이메일을 기입해 주세요'} </Typo>
-                                                    }
-                                                </Col>
-                                            </>
-                                            :
-                                            <>
-                                                <Col offset={0.4} span={12} justify={"center"} align={"center"} >
-                                                    <Row align={'center'}>
-                                                        <Col xs={6} sm={6} md={6} lg={6} xl={6} xxl={6} align={'center'} justify={'start'} >
-                                                            <TextBox type={'email'} color={"black"} block
-                                                                onChange={editBasicProfileFunction.email} value={userBasicProfile.email}></TextBox>
-                                                        </Col>
 
-                                                    </Row>
-                                                </Col>
-                                            </>
-                                    }
+
+
+                                    <Col offset={0.4} span={12} justify={"start"} align={"center"} >
+                                        {
+                                            (userBasicProfile.email) ?
+                                                <Typo size={'1.1rem'} weight={"bold"}>{userBasicProfile.email}</Typo>
+                                                :
+                                                <Typo backColor={'rgb(255, 253, 126)'} weight={"bold"}>{'이메일을 기입해 주세요'} </Typo>
+                                        }
+                                    </Col>
+
+
                                 </Row>
                             </Col>
                         </Row>

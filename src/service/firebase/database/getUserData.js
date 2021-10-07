@@ -1,3 +1,4 @@
+import { notification } from 'antd';
 import { doc, getDoc } from 'firebase/firestore';
 import { getFirestore } from 'firebase/firestore';
 
@@ -9,7 +10,10 @@ const getUserData = async (userUid) => {
     console.log('DB data : ', docSnap.data());
     return docSnap.data();
   } catch (e) {
-    console.log('error DB : ', e);
+    notification['error']({
+      message: `user 정보받아오기 실패😥 `,
+      description: e.message || e.code,
+    });
     return e;
   }
 };

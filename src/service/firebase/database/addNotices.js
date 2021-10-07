@@ -1,4 +1,5 @@
-import { doc, setDoc, getFirestore, query, collection, limit, startAfter, getDocs } from 'firebase/firestore';
+import { notification } from 'antd';
+import { doc, setDoc, getFirestore, collection } from 'firebase/firestore';
 
 const addNotice = async () => {
   try {
@@ -14,6 +15,10 @@ const addNotice = async () => {
     });
     return '200ok';
   } catch (e) {
+    notification['error']({
+      message: `notice 추가 실패😥 `,
+      description: e.message || e.code,
+    });
     return e;
   }
 };

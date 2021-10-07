@@ -35,7 +35,8 @@ ${props => (props.direction === 'column') ? `
     background-color: ${props => (props.highLightColor || `#6d5dfc3b`)} ;
     color: white ;
     transition: transform .3s ease;
-}
+};
+  ${props => props.justIcon ? `cursor: default;` : null};
 `
 
 
@@ -50,10 +51,12 @@ display: flex;
   flex-direction : ${props.direction};
   height : auto;
   ` : null}
+
+  ${props => props.justIcon ? null : `
   &:hover ${Label}::before{
     transform: scaleX(1);
     transform-origin: bottom left;
-  }
+  };` }
 `
 
 const IconBtn = styled.div`
@@ -66,12 +69,15 @@ width: ${props => props.size || `4rem`};
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  color: #9baacf;;
+  color: #9baacf;
   transition: all 0.5s ease;
-  &:active {
+  ${props => props.justIcon ? `cursor: default;` : `
+   &:active {
     box-shadow: inset 0.2rem 0.2rem 0.5rem #c8d0e7, inset -0.2rem -0.2rem 0.5rem #FFFFFF;
   color: #6d5dfc;
+  }`
   };
+
 
   
 `
@@ -87,15 +93,15 @@ width: ${props => props.size || `4rem`};
  * @param children ICON
  * @param direction 방향(icon,value)
  */
-const IconButton = ({ direction, size, value, onClick, children, weight }) => {
+const IconButton = ({ direction, size, value, onClick, children, weight, justIcon }) => {
   return (
     <>
-      <Wrapper direction={direction} onClick={onClick} size={size}>
-        <IconBtn size={size} onClick={onClick}>
+      <Wrapper direction={direction} onClick={onClick} size={size} justIcon={justIcon}>
+        <IconBtn size={size} onClick={onClick} justIcon={justIcon}>
           {children}
         </IconBtn>
         {value ?
-          <Label direction={direction} weight={weight}>
+          <Label direction={direction} weight={weight} justIcon={justIcon}>
             {value}
           </Label>
           : null}

@@ -3,7 +3,7 @@ import { Row, Col } from "../../../layout"
 import { Typo, Btn, Img } from "../.."
 import writeHand from "../../../assets/icons/writeHand.png"
 
-const AlertModalForm = ({ username }) => {
+const AlertModalForm = ({ handleClose }) => {
 
 
     return (
@@ -32,7 +32,7 @@ const AlertModalForm = ({ username }) => {
                     <Btn size={'large'} block types={"secondary"} value={'취소'} />
                 </Col> */}
                 <Col span={2} justify={'center'}>
-                    <Btn size={'large'} block types={"primary"} value={'확인'} />
+                    <Btn onClick={handleClose} size={'large'} block types={"primary"} value={'확인'} />
                 </Col>
             </Row>
         </>

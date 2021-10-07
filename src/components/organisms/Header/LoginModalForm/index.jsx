@@ -2,7 +2,6 @@ import React from "react";
 import Row from "../../../../layout/Grid/Row";
 import Col from "../../../../layout/Grid/Column"
 import Typo from "../../../atoms/Typography/index"
-import { MdErrorOutline } from "react-icons/md";
 import Button from "../../../atoms/Button"
 import Icon from "../../../atoms/Icon"
 import TextBox from "../../../atoms/TextBox"
@@ -145,7 +144,7 @@ const LoginModalForm = ({
                                             <TextBox onChange={settingSingUpValueFunction.password} type={"password"} size={'small'} placeholder={"password"} block></TextBox>
                                         </Col>
                                         <Col span={12} justify={'center'} style={{ marinTop: '15px' }}  >
-                                            <Button value={signUpInfo.password} onClick={SignupBtnOnclick} value={'SIGN UP'} types={'primary'} size={'large'} />
+                                            <Button onClick={SignupBtnOnclick} value={'SIGN UP'} types={'primary'} size={'large'} />
                                         </Col>
                                     </Row>
                                 </Col>
