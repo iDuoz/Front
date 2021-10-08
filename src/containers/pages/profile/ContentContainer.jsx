@@ -95,6 +95,7 @@ const ContentContainer = ({
             setIsNewbeModal(true)
         }
         console.log("?")
+        console.log(basic.region)
         console.log(basic.region === '')
     }, [merit, basic])
 

@@ -19,11 +19,11 @@ const SignUpProcess = (signUpInfo) => {
             uid: res.uid,
             basic: {
               addRegion: [],
-              region: null,
-              age: null,
+              region: '',
+              age: '',
               email: res.email,
-              sex: null,
-              name: null,
+              sex: '',
+              name: '',
             },
             loveNotice: [],
             merit: {
