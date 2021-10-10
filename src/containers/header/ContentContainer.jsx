@@ -15,7 +15,7 @@ const ContentContainer = () => {
 
     const matchingHeaderPath = (itemName) => {
         const itemRoute = {
-            '전체게시글': '/totalnotice',
+            '전체게시글': '/notice',
             '게시글작성': '/createnotice',
             'Profile': '/profile',
             '추천봉사': '/proposal',

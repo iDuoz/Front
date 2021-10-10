@@ -20,6 +20,7 @@ export { default as VerifiedForm } from './molecules/VerifiedForm/VerifiedForm';
 export { default as NoticeCardForm } from './molecules/NoticeCardForm/index';
 export { default as MeritIcon } from './molecules/MeritIcon/index';
 export { default as AlertModalForm } from './molecules/AlertModalForm/index';
+export { default as DetailNoticeForm } from './molecules/DetailNoticeForm';
 //ORGANISM
 
 export { default as HeaderContent } from './organisms/Header/Content';

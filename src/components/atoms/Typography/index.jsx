@@ -6,7 +6,7 @@ import styled from 'styled-components'
 const Typo = styled.div`
 display : flex;
 
-${props => (props.full) ? 'width : 100%; justify-content : inherit; flex-basis :70%' : null};
+${props => (props.full) ? 'width : 100%; justify-content : inherit; flex-basis :100%' : null};
 overflow : auto;
 font-size : ${props => (props.size) || '1rem'};
 font-family : ${props => (props.fontFamily) || 'Noto Sans KR'};

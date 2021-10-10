@@ -32,7 +32,13 @@ const AppRouter = () => {
                     <Route path="/profile">
                         <UserPageRouter security={["ADMIN", "GUEST", "USER"]} userInfo={userInfo}></UserPageRouter>
                     </Route>
-                    <Route path="/totalnotice">
+                    <Route path="/notice/:id/:title">
+                        <TotalNoticeRouter
+                            security={["ADMIN", "GUEST", "USER"]}
+                            userInfo={userInfo}
+                        ></TotalNoticeRouter>
+                    </Route>
+                    <Route path="/notice">
                         <TotalNoticeRouter security={["ADMIN", "GUEST", "USER"]} userInfo={userInfo}></TotalNoticeRouter>
                     </Route>
                     <Route path="/proposal">

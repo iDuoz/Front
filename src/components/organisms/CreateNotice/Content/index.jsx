@@ -1,7 +1,7 @@
 //NOTE CreateNotice CONTENT
 import React, { useCallback, useRef } from "react";
 import styled from "styled-components";
-import { MeritIcon, Divider, Typo, IframeBox } from "../../../../components"
+import { MeritIcon, Divider, Typo, IframeBox, DetailNoticeForm, Btn } from "../../../../components"
 import { Radio, Tooltip, Input, Checkbox } from 'antd';
 import { EditOutlined, CheckOutlined } from '@ant-design/icons';
 import { Row, Col } from "../../../../layout"
@@ -72,46 +72,36 @@ flex-direction: row;
 align-items: center;
 `
 
-
-
-
-const PreviewArea = styled.div`
-  min-width: 0px;
-  flex: 1 1 0%;
+const SubmitBtnWrapper = styled.div`
+height : 60px;
+width : 100%;
+box-shadow: rgb(0 0 0 / 10%) 0px 0px 8px;
+background: rgba(255, 255, 255, 0.85);
   display: flex;
-  flex-direction: column;
-  position: relative;
-  overflow-y: auto;
-  word-break: break-word;
-  padding: 2rem 3rem 0 3rem;
-  background-color: rgb(251, 253, 252);
-`;
-const PreviewTitle = styled.div`
-  display: flex;
+  z-index : 2;
   align-items: center;
-  padding: 0px;
-  margin-bottom: 1rem;
-  font-size: 2.3rem;
-  width: 100%;
-  font-weight: bold;
-  color: rgb(33, 37, 41);
-`;
-
-
-
-
+  justify-content: flex-end;
+`
+const BtnJustity = styled.div`
+width : 50%;
+display : flex;
+justify-content: space-around;
+@media(max-width: 768px)
+{ width : 100%; }
+`
 
 
 const CreateNoticeContent = ({
   userMeritProfile,
   editMeritProfileFunction,
   noticeData,
-  handleTags,
+
   createNoticeFunction,
-  newTag,
+
   plainRegionsOptions,
   isNewRegionForm,
-  handleNewRegion
+  handleNewRegion,
+  noticeSubmit
 }) => {
 
   const { title, url, merit, online, region, age } = noticeData;
@@ -129,7 +119,7 @@ const CreateNoticeContent = ({
     <>
       <Row style={{ minHeight: 'calc(100% - 6rem)' }}>
         {/* SECTION  left 글쓰기 */}
-        <Col span={6} align={'start'} style={{
+        <Col xs={12} sm={12} md={6} lg={6} xl={6} xxl={6} span={6} align={'start'} style={{
           backgroundColor: 'white', minHeight: '100%',
           position: 'relative', boxShadow: 'rgb(0 0 0 / 2%) 0px 0px 8px',
           padding: '2.5rem 3rem 3rem', flex: ' 1 1 0%'
@@ -219,17 +209,20 @@ const CreateNoticeContent = ({
         {/* !SECTION  left 글쓰기 */}
 
         {/* SECTION  right 미리보기 */}
-        <Col span={6} style={{
+        <Col xs={0} sm={0} md={6} lg={6} xl={6} xxl={6} span={6} style={{
           flex: '1 1 0%', overflowY: 'auto', wordBreak: 'break-word',
           padding: '2rem 3rem 0 3rem'
         }}>
           <Row>
             <Col span={12}>
               {title ? (
-                <PreviewTitle>{title}</PreviewTitle>
+                <Typo weight={'bold'} full size={'2.3rem'} > {title}</Typo>
               ) : (
                 <Typo color={'#858585'}>생성 될 게시글의 제목을 미리 확인할 수 있습니다.</Typo>
               )}
+            </Col>
+            <Col span={12} style={{ marginTop: '1rem' }}>
+              <DetailNoticeForm merit={merit} online={online} region={region} age={age} />
             </Col>
             <Col span={12} style={{ marginTop: '1rem' }}>
               {
@@ -242,8 +235,18 @@ const CreateNoticeContent = ({
             </Col>
           </Row>
         </Col>
-
         {/* !SECTION  right 미리보기 */}
+        <Col span={12}>
+          <SubmitBtnWrapper>
+            <BtnJustity>
+              <Btn types={'secondary'} value={'1365링크'}></Btn>
+
+              <Btn types={'primary'} value={'게시글 작성'} onClick={noticeSubmit}></Btn>
+            </BtnJustity>
+
+          </SubmitBtnWrapper>
+        </Col>
+
       </Row >
     </>
   );

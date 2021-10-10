@@ -27,6 +27,7 @@ const getTotalNotices = async () => {
   });
   console.log('check');
   console.log(lists);
+  return lists;
 };
 
 export default getTotalNotices;

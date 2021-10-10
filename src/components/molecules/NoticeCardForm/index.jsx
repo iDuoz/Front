@@ -70,12 +70,14 @@ border-bottom-right-radius: 11px; ` : null};
 const CardTitle = styled.div`
 position : absolute;
 left : 100px;
+padding-right: 20px;
 top : 1.2rem;
 width : auto;
 color : #555A5F;
-font-size: 1.6rem;
+font-size: 1.5rem;
 font-weight: 600;
 ${props => props.small ? `
+font-size : 0.6rem;
 left : 20px;
 top : 10px;
 ` : null};
@@ -83,13 +85,14 @@ top : 10px;
 
 const Cardlast = styled.div`
 position : absolute;
+padding-right: 20px;
 left : 100px;
-top : 4.5rem;
+bottom : 1.5rem;
 color : #555A5F;
 font-size : 1rem;
 ${props => props.small ? `
 left : 20px;
-top : 6.5rem;
+bottom : 0.7rem;
 ` : null}
 `
 

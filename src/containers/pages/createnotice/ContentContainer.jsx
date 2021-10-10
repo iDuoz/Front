@@ -1,7 +1,10 @@
 import React, { memo, useEffect, useState } from "react";
 import CreateNoticeContent from "../../../components/organisms/CreateNotice/Content/index";
 import addRegion from "../../../service/firebase/database/addRegion";
+import addNotices from "../../../service/firebase/database/addNotices"
 import { notification } from 'antd';
+import { useHistory } from "react-router-dom"
+
 const ContentContainer = ({
   uid,
   role,
@@ -9,7 +12,7 @@ const ContentContainer = ({
   SET_REGION,
 }) => {
   //createnotice에서 관리할 모든 state / 함수
-
+  const history = useHistory()
   /**
    * @description notice 만들떄 필요한 data */
   const [noticeData, setNoticeData] = useState({
@@ -147,6 +150,34 @@ const ContentContainer = ({
       }
     },
   }
+
+  const noticeSubmit = () => {
+    // console.log(setNoticeData)
+    // console.log(setNoticeData.age && setNoticeData.merit && setNoticeData.title && setNoticeData.region && true)
+    (noticeData.age && noticeData.merit && noticeData.title && noticeData.region && true) ?
+      addNotices({
+        age: noticeData.age,
+        merit: noticeData.merit,
+        online: noticeData.online,
+        title: noticeData.title,
+        region: noticeData.region,
+        url: noticeData.url
+      })
+        .then((res) => {
+          console.log(res)
+          console.log('notice update 성공')
+          history.push('/')
+          // home으로 이동
+        })
+        .catch((e) => { console.log(e) })
+      : notification['error']({
+        message: `notice 추가 실패😥 `,
+        description: '모든값을 입력해 주세요',
+      });
+
+  }
+
+
   return (
     <>
       <CreateNoticeContent
@@ -159,6 +190,7 @@ const ContentContainer = ({
 
         createNoticeFunction={createNoticeFunction}
         plainRegionsOptions={plainRegionsOptions}
+        noticeSubmit={noticeSubmit}
       ></CreateNoticeContent>
     </>
   );
