@@ -4,6 +4,7 @@ import { Col, Row, ContentStyle } from '../../../../layout'
 import { Typo, Divider, Modal } from "../../../index"
 import getTotalNotices from '../../../../service/firebase/database/getTotalNotices'
 import addNotices from '../../../../service/firebase/database/addNotices'
+import addRegion from "../../../../service/firebase/database/addRegion"
 
 import AlertModalForm from "../../../molecules/AlertModalForm"
 
@@ -59,6 +60,11 @@ const TotalNoticeContent = () => {
             .catch((e) => console.log(e))
     }
 
+    const addregionhandle = () => {
+        addRegion("인천")
+            .then((res) => console.log(res))
+            .catch((e) => console.log(e))
+    }
 
     return (
         <>
@@ -73,8 +79,9 @@ const TotalNoticeContent = () => {
                                 <Typo size={'2rem'} weight={'bold'} >전체봉사조회</Typo>
                                 <Divider marginTop={'1rem'} borderWidth={'1px'}></Divider>
                             </Col>
-                            <Col span={12}><div onClick={handle} >정보봗아오기</div></Col>
-                            <Col span={12}><div onClick={addhandle}>정보추가하기</div></Col>
+                            <Col span={12}><div onClick={handle} >notice정보봗아오기</div></Col>
+                            <Col span={12}><div onClick={addhandle}>notice정보추가하기</div></Col>
+                            <Col span={12}><div onClick={addregionhandle}>region 정보추가하기</div></Col>
                             <Col span={12}><div onClick={modalhandle}>모달열기</div>
                                 <Modal visible={isModalOpen} maskClosable={false} headerClose closable
                                     onClose={modalhandle} size={7}>

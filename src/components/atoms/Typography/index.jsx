@@ -14,7 +14,7 @@ background-color : ${props => (props.backColor)};
 opacity :  ${props => (props.opacity)};
 font-weight : ${props => (props.weight)};
 ${props => (props.radius) ? `border-radius: 5px;` : null};
-border : ${props => (props.border) || null};
+border-bottom : ${props => (props.border) || null};
 cursor : ${props => (props.cursor) || 'default'};
 padding : ${props => (props.padding)};
 

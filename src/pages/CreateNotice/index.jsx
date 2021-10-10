@@ -1,11 +1,12 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import styled from "styled-components";
 import Header from "../../layout/Header";
-import ContentContainer from "../../containers/pages/createnotice/ContentContainer";
+import ContentContainer from "../../containers/redux/pages/createnotice/ContentContainer";
 
 const WholeWrapper = styled.div`
   height: 100%;
   width: 100%;
+  background-color: rgb(251, 253, 252);
 `;
 
 
@@ -13,10 +14,7 @@ const WholeWrapper = styled.div`
 //TODO header
 const CreateNotice = () => {
 
-    const headerRef = useRef(null);
-    useEffect(() => {
-        console.log(headerRef.current)
-    }, [])
+
 
     return (
         <>
