@@ -123,7 +123,7 @@ const NoticeCardForm = ({ onClick, merit, listTitle, noticeId, listContent, noti
             <Row>
                 <Col xs={0} sm={0} md={12} lg={12} xl={12} xxl={12}>
                     <CardWrapper onClick={onClick}>
-                        <CardContent>
+                        <CardContent >
                             <CardIcon>
                                 <Img src={meritIcon[merit]} width={'3rem'}></Img>
                             </CardIcon>
@@ -140,8 +140,8 @@ const NoticeCardForm = ({ onClick, merit, listTitle, noticeId, listContent, noti
                 </Col>
 
                 <Col xs={12} sm={12} md={0} lg={0} xl={0} xxl={0}>
-                    <CardWrapper>
-                        <CardContent small={true} >
+                    <CardWrapper onClick={onClick}>
+                        <CardContent small={true}  >
                             <CardColorSide background={meritColor[merit]} />
                             <CardTitle small={true}>{listTitle}</CardTitle>
                             <Cardlast small={true}>{listContent}</Cardlast>
