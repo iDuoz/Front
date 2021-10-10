@@ -1,5 +1,5 @@
 //NOTE CreateNotice CONTENT
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useRef } from "react";
 import styled from "styled-components";
 import { MeritIcon, Divider, Typo, IframeBox } from "../../../../components"
 import { Radio, Tooltip, Input, Checkbox } from 'antd';
@@ -9,7 +9,7 @@ import { Row, Col } from "../../../../layout"
 const CreateTextArea = styled.textarea.attrs((props) => ({
   placeholder: "제목을 입력하세요",
 }))`
-  min-height: 2.6rem;
+   min-height: 2.6rem;
   display: block;
   padding: 0px;
   font-size: 2.3rem;
@@ -74,6 +74,34 @@ align-items: center;
 
 
 
+
+const PreviewArea = styled.div`
+  min-width: 0px;
+  flex: 1 1 0%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-y: auto;
+  word-break: break-word;
+  padding: 2rem 3rem 0 3rem;
+  background-color: rgb(251, 253, 252);
+`;
+const PreviewTitle = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 0px;
+  margin-bottom: 1rem;
+  font-size: 2.3rem;
+  width: 100%;
+  font-weight: bold;
+  color: rgb(33, 37, 41);
+`;
+
+
+
+
+
+
 const CreateNoticeContent = ({
   userMeritProfile,
   editMeritProfileFunction,
@@ -104,7 +132,7 @@ const CreateNoticeContent = ({
         <Col span={6} align={'start'} style={{
           backgroundColor: 'white', minHeight: '100%',
           position: 'relative', boxShadow: 'rgb(0 0 0 / 2%) 0px 0px 8px',
-          padding: '2.5rem 3rem 3rem'
+          padding: '2.5rem 3rem 3rem', flex: ' 1 1 0%'
         }}>
           <Row>
             <Col span={12}>
@@ -191,21 +219,22 @@ const CreateNoticeContent = ({
         {/* !SECTION  left 글쓰기 */}
 
         {/* SECTION  right 미리보기 */}
-        <Col span={6} align={'start'} style={{ minHeight: '100%', padding: '2.5rem 3rem 3rem' }}>
+        <Col span={6} style={{
+          flex: '1 1 0%', overflowY: 'auto', wordBreak: 'break-word',
+          padding: '2rem 3rem 0 3rem'
+        }}>
           <Row>
             <Col span={12}>
-              {
-                title ? (
-                  <Typo size={'2.3rem'} color={'rgb(33, 37, 41)'} weight={'bold'}>{title}</Typo>
-                ) : (
-                  <Typo color={'#858585'}>생성 될 게시글의 제목을 미리 확인할 수 있습니다.</Typo>
-                )
-              }
+              {title ? (
+                <PreviewTitle>{title}</PreviewTitle>
+              ) : (
+                <Typo color={'#858585'}>생성 될 게시글의 제목을 미리 확인할 수 있습니다.</Typo>
+              )}
             </Col>
             <Col span={12} style={{ marginTop: '1rem' }}>
               {
                 url ? (
-                  <IframeBox src={url}></IframeBox>
+                  <IframeBox src={url} height={'50rem'}></IframeBox>
                 ) : (
                   <Typo color={'#858585'}>올바른 주소 입력시 게시글에 미리보기를 확인할 수 있습니다.</Typo>
                 )
@@ -213,8 +242,9 @@ const CreateNoticeContent = ({
             </Col>
           </Row>
         </Col>
+
         {/* !SECTION  right 미리보기 */}
-      </Row>
+      </Row >
     </>
   );
 };

@@ -4,8 +4,8 @@ import styled from "styled-components"
 const IframeWrapper = styled.iframe.attrs((props) => ({
     src: props.src,
 }))`
-    min-height: 40rem;
-    width: auto;
+    height: ${props => props.height || `40rem`};
+    width: 100%;
     border: none;
     margin-top: 2rem;
     margin-bottom: 3rem;
@@ -14,10 +14,10 @@ const IframeWrapper = styled.iframe.attrs((props) => ({
 
 
 
-const IframeBox = ({ src }) => {
+const IframeBox = ({ src, height }) => {
     return (
         <>
-            <IframeWrapper src={src}></IframeWrapper>
+            <IframeWrapper height={height} src={src}></IframeWrapper>
         </>
     )
 }
