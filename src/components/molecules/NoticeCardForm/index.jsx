@@ -98,7 +98,7 @@ bottom : 0.7rem;
 
 
 
-const NoticeCardForm = ({ merit, listTitle, listContent }) => {
+const NoticeCardForm = ({ onClick, merit, listTitle, noticeId, listContent, noticeDetailOnClick }) => {
 
     const meritColor = {
         active: '#BA68C8',
@@ -122,7 +122,7 @@ const NoticeCardForm = ({ merit, listTitle, listContent }) => {
         <>
             <Row>
                 <Col xs={0} sm={0} md={12} lg={12} xl={12} xxl={12}>
-                    <CardWrapper>
+                    <CardWrapper onClick={onClick}>
                         <CardContent>
                             <CardIcon>
                                 <Img src={meritIcon[merit]} width={'3rem'}></Img>

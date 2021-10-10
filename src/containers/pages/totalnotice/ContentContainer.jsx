@@ -27,17 +27,33 @@ const ContentContainer = () => {
     const history = useHistory();
 
     const noticeDetailOnClick = (id) => {
+        console.log("onclick")
         console.log(id);
         setDetailNoticeData((state) => ({ ...state, id: id }));
-        // listTotalData.includes((list))
-        // TODO noticeId 찾아서 setting
+        listTotalData.forEach((lists) => {
+            if (lists.noticeId === id) {
+                setDetailNoticeData((state) => ({
+                    ...state,
+                    title: lists.title,
+                    url: lists.url,
+                    merit: lists.merit,
+                    noticeId: lists.noticeId,
+                    region: lists.region,
+                    online: lists.online,
+                    age: lists.age,
+                }))
+                history.push("/notice/" + lists.noticeId + "/" + lists.title.replace(/ /g, "-"));
+            }
+        })
+
     }
 
     return (
         <>
             <TotalNoticeContent
                 listTotalData={listTotalData}
-
+                detailNoticeData={detailNoticeData}
+                noticeDetailOnClick={noticeDetailOnClick}
             ></TotalNoticeContent>
         </>
     )

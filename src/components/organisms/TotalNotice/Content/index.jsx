@@ -8,40 +8,27 @@ import addRegion from "../../../../service/firebase/database/addRegion"
 
 import AlertModalForm from "../../../molecules/AlertModalForm"
 
-const TotalNoticeContent = ({ listTotalData }) => {
+import NoticeIdDetailForm from '../NoticeIdDetailForm'
+
+import { useParams, useHistory } from 'react-router-dom';
+
+
+const TotalNoticeContent = ({ listTotalData,
+    detailNoticeData,
+    noticeDetailOnClick, }) => {
 
     console.log("listTotalData , content")
     console.log(listTotalData)
 
+    const history = useHistory();
 
-    const [isModalOpen, setIsModalOpen] = useState(false)
+    const { id } = useParams();
+    console.log(useParams())
+    console.log(detailNoticeData.id)
+    console.log(detailNoticeData.id === id)
 
-    const modalhandle = () => {
-        setIsModalOpen((state) => (!state))
-    }
-
-
-    const handle = () => {
-        getTotalNotices()
-            .then((res) => {
-                console.log(res)
-            })
-            .catch((e) => console.log(e))
-    }
-
-
-    const addhandle = () => {
-        addNotices()
-            .then((res) => console.log(res))
-            .catch((e) => console.log(e))
-    }
-
-    const addregionhandle = () => {
-        addRegion("인천")
-            .then((res) => console.log(res))
-            .catch((e) => console.log(e))
-    }
-
+    console.log("noticeDetail")
+    console.log(detailNoticeData)
     return (
         <>
             <ContentStyle>
@@ -49,25 +36,22 @@ const TotalNoticeContent = ({ listTotalData }) => {
                     <Col span={9} justify={'center'} align={'center'}>
                         <Row >
                             <Col span={12} style={{ marginTop: '24px' }}>
-
-
-
-                                <Typo size={'2rem'} weight={'bold'} >전체봉사조회</Typo>
+                                <Typo size={'2rem'} weight={'bold'} cursor={'pointer'} onClick={() => { history.push("/notice") }}>전체봉사조회</Typo>
                                 <Divider marginTop={'1rem'} borderWidth={'1px'}></Divider>
                             </Col>
+                            {/* //TODO 여기  */}
                             <Col span={12} justify={'center'} align={'center'}>
                                 {
-                                    listTotalData.map((lists, index) => {
-                                        return <NoticeCardForm key={index} listTitle={lists.title}
-                                            listContent={`지역 : ${lists.region}`}
-                                            merit={lists.merit}></NoticeCardForm>
-                                    })
+                                    (detailNoticeData.id === (id)) ? (
+                                        <NoticeIdDetailForm detailData={detailNoticeData}></NoticeIdDetailForm>
+                                    ) : (
+                                        listTotalData.map((lists, index) => {
+                                            return <NoticeCardForm key={index} listTitle={lists.title} onClick={() => { noticeDetailOnClick(lists.noticeId) }} noticeId={lists.noticeId}
+                                                listContent={`지역 : ${lists.region}`}
+                                                merit={lists.merit}></NoticeCardForm>
+                                        })
+                                    )
                                 }
-                                {/* <NoticeCardForm merit={'active'}></NoticeCardForm>
-                                <NoticeCardForm merit={'eco'}></NoticeCardForm>
-                                <NoticeCardForm merit={'animal'}></NoticeCardForm>
-                                <NoticeCardForm merit={'disaster'}></NoticeCardForm>
-                                <NoticeCardForm merit={'farming'}></NoticeCardForm> */}
                             </Col>
                         </Row>
 

@@ -16,9 +16,9 @@ const DetailNoticeForm = ({ merit, online, region, age }) => {
         <>
             <Row align={'center'} justify={'center'}>
                 {
-                    (online) ?
+                    (online === true) ?
                         <>
-                            <Col span={3} align={'center'} justify={'center'} >
+                            <Col span={3} align={'center'} justify={'center'} style={{ marginTop: "1rem" }}>
                                 <Icon direction={'column'} size={'7rem'} justIcon value={'온라인'}>
                                     <Img src={merit_online_color} width={'5rem'}></Img>
                                 </Icon>
@@ -59,9 +59,9 @@ const DetailNoticeForm = ({ merit, online, region, age }) => {
                                                     <Col key={index} span={12} align={'center'} justify={'center'}>
                                                         {
                                                             lists === "teen" ?
-                                                                <Typo size={'1.5rem'}>미성년자</Typo>
+                                                                <Typo key={index} size={'1.5rem'}>미성년자</Typo>
                                                                 :
-                                                                <Typo size={'1.5rem'}>성인</Typo>
+                                                                <Typo key={index} size={'1.5rem'}>성인</Typo>
                                                         }
 
                                                     </Col>
@@ -73,7 +73,7 @@ const DetailNoticeForm = ({ merit, online, region, age }) => {
                             </Col></>
                         :
                         <>
-                            <Col span={4} align={'center'} justify={'center'}>
+                            <Col span={4} align={'center'} justify={'center'} style={{ marginTop: "1rem" }}>
                                 {
                                     (merit === 'active') ?
                                         (<Icon direction={'column'} size={'7rem'} justIcon value={'활동적인'} >
@@ -114,9 +114,9 @@ const DetailNoticeForm = ({ merit, online, region, age }) => {
                                                     <Col key={index} span={12} align={'center'} justify={'center'} style={{ margin: '5px 0' }}>
                                                         {
                                                             lists === "teen" ?
-                                                                <Typo size={'1.7rem'}>미성년자</Typo>
+                                                                <Typo key={index} size={'1.7rem'}>미성년자</Typo>
                                                                 :
-                                                                <Typo size={'1.7rem'}>성인</Typo>
+                                                                <Typo key={index} size={'1.7rem'}>성인</Typo>
                                                         }
 
                                                     </Col>
