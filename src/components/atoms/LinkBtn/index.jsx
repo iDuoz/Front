@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 
 const WordWrapper = styled.p`
-    font-size: 18px;
+    font-size: 1.1rem;
   margin: 0;
   color: #2B3044;
 `

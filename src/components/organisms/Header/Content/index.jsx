@@ -8,6 +8,7 @@ import Modal from "../../../atoms/Modal"
 import { useHistory } from "react-router-dom"
 import LoginModalForm from "../LoginModalForm"
 
+import SideNav from '../../SideNav';
 
 const MenuItem = styled.div`
  padding: 16px 21px;
@@ -67,10 +68,13 @@ const Header = ({
 
             <Row>
                 <Col span={12} justify={'space-between'} >
-                    <Col xs={12} sm={2} md={2} lg={2} xl={2} xxl={2} span={2} justify={'center'} align={'center'} >
+                    <Col xs={2} sm={2} md={0} lg={0} xl={0} xxl={0} align={'center'}>
+                        <SideNav></SideNav>
+                    </Col>
+                    <Col xs={2} sm={2} md={2} lg={2} xl={2} xxl={2} span={2} justify={'center'} align={'center'} >
                         <Logo width={'6.5rem'} height={'2.2rem'}></Logo>
                     </Col>
-                    <Col xs={12} sm={8} md={8} lg={8} xl={8} xxl={8} span={8} colRef={menuWrapperRef} align={'center'} justify={'center'} style={{ position: "relative", padding: "10px 0" }} >
+                    <Col xs={0} sm={0} md={8} lg={8} xl={8} xxl={8} span={8} colRef={menuWrapperRef} align={'center'} justify={'center'} style={{ position: "relative", padding: "10px 0" }} >
                         {
                             setHeaderItem.map((items, index) => (
                                 <MenuItem
@@ -87,7 +91,7 @@ const Header = ({
                         <Indicator ref={indicator2}></Indicator>
                     </Col>
 
-                    <Col xs={12} sm={2} md={2} lg={2} xl={2} xxl={2} span={2} justify={'center'} align={'center'} >
+                    <Col xs={2} sm={2} md={2} lg={2} xl={2} xxl={2} span={2} justify={'center'} align={'center'} >
                         {
                             (logined === true) ?
                                 (<Button value={'LogOut'} onClick={logOutHandler} ></Button>)
