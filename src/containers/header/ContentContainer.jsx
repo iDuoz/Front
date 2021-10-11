@@ -7,10 +7,12 @@ import gsap from "gsap"
 import login_process from "../../service/transaction/login_process"
 import logout_process from "../../service/transaction/logout_process"
 import SignupProcess from "../../service/transaction/signup_process";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 const ContentContainer = () => {
     const headerItemsName = ['전체게시글', '게시글작성', 'Profile', '추천봉사']
     const history = useHistory();
+    const location = useLocation()
+    const path = location.pathname
 
 
     const matchingHeaderPath = (itemName) => {
@@ -43,6 +45,20 @@ const ContentContainer = () => {
     const indicator1 = useRef();
     const indicator2 = useRef();
 
+    useEffect(() => {
+        if (path === '/notice') {
+            setActive((state) => ({ ...state, index: 0 }))
+        }
+        if (path === '/createnotice') {
+            setActive((state) => ({ ...state, index: 1 }))
+        }
+        if (path === '/profile') {
+            setActive((state) => ({ ...state, index: 2 }))
+        }
+        if (path === '/proposal') {
+            setActive((state) => ({ ...state, index: 3 }))
+        }
+    }, [path])
 
 
     const animate = () => {

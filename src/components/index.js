@@ -15,6 +15,7 @@ export { default as Typo } from './atoms/Typography';
 export { default as TypoHighlight } from './atoms/TypoHighlight';
 export { default as LoveBtn } from './atoms/LoveBtn';
 export { default as IframeBox } from './atoms/IframeBox';
+export { default as LinkBtn } from './atoms/LinkBtn';
 //MOLECULES
 export { default as VerifiedForm } from './molecules/VerifiedForm/VerifiedForm';
 export { default as NoticeCardForm } from './molecules/NoticeCardForm/index';

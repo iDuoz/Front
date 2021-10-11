@@ -1,7 +1,7 @@
 //NOTE CreateNotice CONTENT
 import React, { useCallback, useRef } from "react";
 import styled from "styled-components";
-import { MeritIcon, Divider, Typo, IframeBox, DetailNoticeForm, Btn } from "../../../../components"
+import { MeritIcon, LinkBtn, Divider, Typo, IframeBox, DetailNoticeForm, Btn } from "../../../../components"
 import { Radio, Tooltip, Input, Checkbox } from 'antd';
 import { EditOutlined, CheckOutlined } from '@ant-design/icons';
 import { Row, Col } from "../../../../layout"
@@ -85,6 +85,7 @@ background: rgba(255, 255, 255, 0.85);
 const BtnJustity = styled.div`
 width : 50%;
 display : flex;
+align-items : center;
 justify-content: space-around;
 @media(max-width: 768px)
 { width : 100%; }
@@ -239,7 +240,7 @@ const CreateNoticeContent = ({
         <Col span={12}>
           <SubmitBtnWrapper>
             <BtnJustity>
-              <Btn types={'secondary'} value={'1365링크'}></Btn>
+              <LinkBtn linkName={"1365"} linkHref={'https://www.1365.go.kr/vols/main.do'} ></LinkBtn>
 
               <Btn types={'primary'} value={'게시글 작성'} onClick={noticeSubmit}></Btn>
             </BtnJustity>
