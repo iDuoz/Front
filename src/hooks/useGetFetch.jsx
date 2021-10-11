@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import _ from "../config/env"
-import NotificationPool from '../containers/redux/components/NotificationPool'
+import { notification } from 'antd';
 
 const useGetFetch = ({ url, bodyReq }) => {
     const [state, setState] = useState({
@@ -29,11 +29,10 @@ const useGetFetch = ({ url, bodyReq }) => {
             })
             .catch(async (error) => {
                 let err = await error.then()
-                NotificationPool.api.add({
-                    title: "Error",
-                    content: err.errorName + "(" + err.errorCode + ")",
-                    status: "error"
-                })
+                notification['error']({
+                    message: `실패😥 `,
+                    description: error.message || error.code,
+                });
                 console.log(
                     "Error " +
                     err.message +

@@ -21,7 +21,7 @@ const getTotalNotices = async () => {
   const lists = [];
 
   querySnapshot.forEach((doc) => {
-    console.log(doc.data());
+    // console.log(doc.data());
     lists.push(doc.data());
     console.log(doc.id, '=>', doc.data());
   });

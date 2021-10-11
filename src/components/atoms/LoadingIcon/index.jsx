@@ -6,9 +6,8 @@ const Container = styled.div`
 display:block;
 width: 100%; height:100%;
 position: absolute;
-top:0px; left:0px;
 z-index: 100;
-/* background: rgba(60,74,92,0.08); */
+background: rgba(60,74,92,0.08);
 opacity: 1;
 display: flex;
 justify-content:center;

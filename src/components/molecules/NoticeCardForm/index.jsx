@@ -120,7 +120,7 @@ const NoticeCardForm = ({ onClick, merit, listTitle, noticeId, listContent, noti
 
     return (
         <>
-            <Row>
+            <Row >
                 <Col xs={0} sm={0} md={12} lg={12} xl={12} xxl={12}>
                     <CardWrapper onClick={onClick}>
                         <CardContent >
