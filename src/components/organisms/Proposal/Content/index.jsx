@@ -2,6 +2,8 @@ import React from "react"
 import { Col, Row, ContentStyle } from "../../../../layout"
 import { NoticeCardForm, Typo, Divider } from "../../../index"
 
+import LinkBtn from "../../../atoms/LinkBtn"
+
 const ProposalContent = () => {
 
 
@@ -16,6 +18,7 @@ const ProposalContent = () => {
                                 <Divider marginTop={'1rem'} borderWidth={'1px'}></Divider>
                             </Col>
                             <Col span={12} justify={'center'} align={'center'}>
+                                <LinkBtn linkName={'1336'} linkHref={'#'}></LinkBtn>
                                 <NoticeCardForm merit={'active'}></NoticeCardForm>
                                 <NoticeCardForm merit={'eco'}></NoticeCardForm>
                                 <NoticeCardForm merit={'animal'}></NoticeCardForm>
