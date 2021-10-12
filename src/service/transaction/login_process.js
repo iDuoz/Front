@@ -12,13 +12,13 @@ const LogInProcess = (logInInfo) => {
   console.log(logInInfo);
   firebase_login(logInInfo)
     .then((res) => {
+      store.dispatch(ACTION.LOGIN_ACTION_FUNC());
+      console.log(res);
+      console.log(res.uid);
       notification['success']({
         message: '아이폰 로그인 리덕스 ㅈ저ㅏㅇ',
         description: '자꾸안대면 열받쥬?',
       });
-      store.dispatch(ACTION.LOGIN_ACTION_FUNC());
-      console.log(res);
-      console.log(res.uid);
       return res.uid;
     })
     .then((uid) => {
@@ -49,8 +49,17 @@ const LogInProcess = (logInInfo) => {
           });
         })
         .catch((e) => {
-          console.log(e);
+          notification['error']({
+            message: `get userData 실패😥 `,
+            description: e.message || e.code,
+          });
         });
+    })
+    .catch((e) => {
+      notification['error']({
+        message: `로그인 .catch 실패😥 `,
+        description: e.message || e.code,
+      });
     });
 
   getRegionArray()
@@ -60,7 +69,10 @@ const LogInProcess = (logInInfo) => {
       store.dispatch(ACTION.SET_REGION__ACTION_FUNC(res));
     })
     .catch((e) => {
-      console.log(e);
+      notification['error']({
+        message: `getRegionArray 실패😥 `,
+        description: e.message || e.code,
+      });
     });
 };
 
