@@ -12,6 +12,10 @@ const LogInProcess = (logInInfo) => {
   console.log(logInInfo);
   firebase_login(logInInfo)
     .then((res) => {
+      notification['success']({
+        message: '아이폰 로그인 리덕스 ㅈ저ㅏㅇ',
+        description: '자꾸안대면 열받쥬?',
+      });
       store.dispatch(ACTION.LOGIN_ACTION_FUNC());
       console.log(res);
       console.log(res.uid);

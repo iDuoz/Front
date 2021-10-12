@@ -8,6 +8,10 @@ const getRegionArray = async () => {
     const docRef = doc(db, 'noticeInformations', 'information');
     const docSnap = await getDoc(docRef);
     console.log('DB data : ', docSnap.data());
+    notification['success']({
+      message: `지역 받아오기 성공✨ `,
+      description: '지역을 받아왔습니다!',
+    });
     return docSnap.data();
   } catch (e) {
     notification['error']({
