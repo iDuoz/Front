@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback } from "react"
 import { Col, Row, ContentStyle } from "../../../../layout"
 import { NoticeCardForm, Typo, Divider } from "../../../index"
 import { useInView } from "react-intersection-observer"
-import LinkBtn from "../../../atoms/LinkBtn"
 import getTotalNotices from "../../../../service/firebase/database/getTotalNotices"
 import { Spin } from 'antd';
 
@@ -25,7 +24,20 @@ const ProposalContent = () => {
         // await axios.get(`${Your Server Url}/page=${page}`).then((res) => {
         //   setItems(prevState => [...prevState, res])
         // })
-        if (page < 3) {
+        if (page === 1) {
+
+            await getTotalNotices()
+                .then((res) => {
+                    console.log("서버에서 아이템 가져옴")
+                    // console.log(res)
+
+                    setItems((state) => (state.concat(res)));
+
+                    // setItems(...state => state, res)
+                })
+                .catch((e) => console.log(e))
+        }
+        if (page === 2) {
 
             await getTotalNotices()
                 .then((res) => {

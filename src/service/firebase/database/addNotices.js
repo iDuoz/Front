@@ -3,6 +3,15 @@ import { doc, setDoc, getFirestore, collection, updateDoc, increment } from 'fir
 
 const addNotice = async (noticeData) => {
   try {
+    let today = new Date();
+    let year = today.getFullYear();
+    let month = ('0' + (today.getMonth() + 1)).slice(-2);
+    let day = ('0' + today.getDate()).slice(-2);
+
+    let hours = ('0' + today.getHours()).slice(-2);
+    let minutes = ('0' + today.getMinutes()).slice(-2);
+    let seconds = ('0' + today.getSeconds()).slice(-2);
+
     const db = getFirestore();
     const newDocRef = doc(collection(db, 'noticeBasics'));
     await setDoc(newDocRef, {
@@ -13,6 +22,7 @@ const addNotice = async (noticeData) => {
       title: noticeData.title,
       region: noticeData.region,
       url: noticeData.url,
+      uploadDate: Number(year + month + day + hours + minutes + seconds),
     })
       .then(async (res) => {
         notification['success']({

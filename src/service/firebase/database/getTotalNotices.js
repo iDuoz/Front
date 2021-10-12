@@ -1,4 +1,4 @@
-import { getFirestore, query, collection, limit, getDocs } from 'firebase/firestore';
+import { getFirestore, query, collection, limit, getDocs, orderBy } from 'firebase/firestore';
 // import { doc, getDoc,  startAfter } from 'firebase/firestore';
 const getTotalNotices = async () => {
   const db = getFirestore();
@@ -15,7 +15,7 @@ const getTotalNotices = async () => {
   // //다음 5개 도시를 구하세요
   // const next = query(collection(db,"noticeBasics"),startAfter(lastVisible),limit(5))
 
-  const setQuery = query(collection(db, 'noticeBasics'), limit(5));
+  const setQuery = query(collection(db, 'noticeBasics'), orderBy('uploadDate', 'desc'), limit(5));
   const querySnapshot = await getDocs(setQuery);
 
   const lists = [];

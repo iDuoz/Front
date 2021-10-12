@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { BsChevronDoubleDown } from "react-icons/bs"
-
+import { Btn } from "../../../"
 import TypoHighlight from "../../../atoms/TypoHighlight"
 
 
@@ -131,6 +131,20 @@ position: absolute;
 
 const FirstSectionForm = ({ currentSlider, sectionScrollType, settingMobileBtn, }) => {
 
+    const [testDate, setTestDate] = useState(12)
+
+    let today = new Date();
+    let year = today.getFullYear();
+    let month = ('0' + (today.getMonth() + 1)).slice(-2);
+    let day = ('0' + today.getDate()).slice(-2);
+
+    let hours = ('0' + today.getHours()).slice(-2);
+    let minutes = ('0' + today.getMinutes()).slice(-2);
+    let seconds = ('0' + today.getSeconds()).slice(-2);
+
+    const handleTestBtn = () => {
+        setTestDate(year + month + day + hours + minutes + seconds)
+    }
 
 
     return (
@@ -148,6 +162,8 @@ const FirstSectionForm = ({ currentSlider, sectionScrollType, settingMobileBtn, 
                     currentSlider={currentSlider}
                     sectionScrollType={sectionScrollType}
                 >
+                    <Btn types={'secondary'} value={'testBtn'} size={'large'} onClick={handleTestBtn} ></Btn>
+                    <div style={{ color: 'black', fontSize: '2rem' }}>{testDate}</div>
                     <ConstTitle style={{ color: '#979797' }} >
                         iDuoz : <TypoHighlight highLightColor={'#8abdff84;'} fontSize={'10rem'}>MeritShare</TypoHighlight>
                     </ConstTitle>

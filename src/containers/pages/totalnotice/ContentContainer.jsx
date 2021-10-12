@@ -6,7 +6,13 @@ import getTotalNotices from '../../../service/firebase/database/getTotalNotices'
 
 
 const ContentContainer = () => {
+
+    /**
+     * @description 5개씩 받아와서 + 하는 list */
     const [listTotalData, setListTotalData] = useState([])
+
+
+
     useEffect(() => {
         setListTotalData([])
         getTotalNotices()

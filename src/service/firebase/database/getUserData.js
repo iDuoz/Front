@@ -8,6 +8,10 @@ const getUserData = async (userUid) => {
     const docRef = doc(db, 'members', userUid);
     const docSnap = await getDoc(docRef);
     console.log('DB data : ', docSnap.data());
+    notification['success']({
+      message: `user 정보받아오기 성공✨ `,
+      description: 'db에서 user정보 받아옴',
+    });
     return docSnap.data();
   } catch (e) {
     notification['error']({
