@@ -24,7 +24,10 @@ const addUser = async (uid, email) => {
       },
       totalLoveNotice: 0,
     });
-    return 'uid db저장 성공';
+    notification['success']({
+      message: `user db정보저장 성공✨ `,
+      description: 'db 저장 성공',
+    });
   } catch (e) {
     notification['error']({
       message: `user db정보저장 실패😥 `,

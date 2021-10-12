@@ -31,6 +31,7 @@ const Start = async () => {
           },
         })
       );
+      console.log('dmdkdkdkdkdkdkddkdk');
     })
     .catch((e) => {
       console.log(e);

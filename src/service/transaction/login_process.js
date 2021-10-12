@@ -3,6 +3,8 @@ import ACTION from '../../store/actions/action';
 import firebase_login from '../firebase/auth/logIn_password';
 import getUserData from '../firebase/database/getUserData';
 import getRegionArray from '../firebase/database/getRegionArray';
+import { notification } from 'antd';
+
 // import get_userInfo from "../api/get/get_userInfo"
 
 const LogInProcess = (logInInfo) => {
@@ -19,6 +21,7 @@ const LogInProcess = (logInInfo) => {
       // TODO 유저정보 받아오기
       console.log('로그인하고 정보 넣어보까용');
       console.log(uid);
+
       getUserData(uid)
         .then((res) => {
           console.log('정보 받아오기완료 ,,');
@@ -35,23 +38,26 @@ const LogInProcess = (logInInfo) => {
               },
             })
           );
+          console.log('정보 받아오기완료?????????????????????????????????????????');
+          notification['success']({
+            message: '아이폰 리덕스 저장',
+            description: '자꾸안대면 열받쥬?',
+          });
         })
         .catch((e) => {
           console.log(e);
         });
+    });
+
+  getRegionArray()
+    .then((res) => {
+      console.log('region 정보 보여줌');
+      console.log(res);
+      store.dispatch(ACTION.SET_REGION__ACTION_FUNC(res));
     })
-    .then((uid) => {
-      getRegionArray()
-        .then((res) => {
-          console.log('region 정보 보여줌');
-          console.log(res);
-          store.dispatch(ACTION.SET_REGION__ACTION_FUNC(res));
-        })
-        .catch((e) => {
-          console.log(e);
-        });
-    })
-    .catch((e) => console.log(e));
+    .catch((e) => {
+      console.log(e);
+    });
 };
 
 export default LogInProcess;

@@ -2,7 +2,8 @@ import React, { useState, useEffect, useCallback } from "react"
 import { Col, Row, ContentStyle } from "../../../../layout"
 import { NoticeCardForm, Typo, Divider } from "../../../index"
 import { useInView } from "react-intersection-observer"
-import getTotalNotices from "../../../../service/firebase/database/getTotalNotices"
+import getFirstNoticePage from "../../../../service/firebase/database/getFirstNoticePage"
+import getNextNoticePage from "../../../../service/firebase/database/getNextNoticePage"
 import { Spin } from 'antd';
 
 const ProposalContent = () => {
@@ -17,49 +18,62 @@ const ProposalContent = () => {
 
     const [ref, inView] = useInView()
 
+    const [nextPageStartVisible, setNextPageStartVisible] = useState("")
+
+
     console.log(items)
+    console.log('nextPageStartVisible')
+    console.log(nextPageStartVisible)
+    console.log('page : ' + page)
+
+
     // 서버에서 아이템을 가지고 오는 함수
     const getItems = useCallback(async () => {
         setLoading(true)
-        // await axios.get(`${Your Server Url}/page=${page}`).then((res) => {
-        //   setItems(prevState => [...prevState, res])
-        // })
         if (page === 1) {
 
-            await getTotalNotices()
+            await getFirstNoticePage()
                 .then((res) => {
                     console.log("서버에서 아이템 가져옴")
-                    // console.log(res)
-
-                    setItems((state) => (state.concat(res)));
-
+                    console.log(res)
+                    console.log(res.notices)
+                    console.log(res.lastNotice)
+                    setItems((state) => (state.concat(res.notices)));
+                    setNextPageStartVisible(res.lastNotice)
+                    setLoading(false)
+                })
+                .catch((e) => console.log(e))
+        }
+        if (page > 1 && page <= 3) {
+            setLoading(true)
+            await getNextNoticePage(nextPageStartVisible)
+                .then((res) => {
+                    console.log("서버에서 다음 페이지 아이템 가져옴")
+                    console.log(res)
+                    console.log(res.notices)
+                    console.log(res.lastNotice)
+                    setItems((state) => (state.concat(res.notices)));
+                    setNextPageStartVisible(res.lastNotice)
+                    // setLoading(false)
                     // setItems(...state => state, res)
                 })
                 .catch((e) => console.log(e))
         }
-        if (page === 2) {
 
-            await getTotalNotices()
-                .then((res) => {
-                    console.log("서버에서 아이템 가져옴")
-                    // console.log(res)
+        if (page > 3) {
 
-                    setItems((state) => (state.concat(res)));
-
-                    // setItems(...state => state, res)
-                })
-                .catch((e) => console.log(e))
-        }
-        if (page >= 3) {
+            setLoading(false)
+            console.log(page)
             console.log("page 끝")
         }
 
-        setLoading(false)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [page])
 
     // `getItems` 가 바뀔 때 마다 함수 실행
     useEffect(() => {
         getItems()
+        setLoading(false)
     }, [getItems])
 
     useEffect(() => {
@@ -90,20 +104,24 @@ const ProposalContent = () => {
                                                 items.length - 1 === idx ? (
                                                     <>
                                                         <NoticeCardForm listTitle={item.title} noticeId={item.noticeId}
-                                                            listContent={`지역 : ${item.region}`}
+                                                            listContent={`지역 : ${item.region} | 업로드 시간 : ${item.uploadDate}`}
                                                             merit={item.merit}></NoticeCardForm>
-                                                        <div ref={ref} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: "50px", width: "100%", height: "50px" }}>
-                                                            {
-                                                                loading ?
-                                                                    <Spin></Spin> :
-                                                                    null
-                                                            }
-                                                        </div>
+                                                        {
+                                                            page < 3 ?
+                                                                <div ref={ref} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: "50px", width: "100%", height: "50px" }}>
+                                                                    {
+                                                                        loading ?
+                                                                            <Spin></Spin> :
+                                                                            null
+                                                                    }
+                                                                </div> : null
+                                                        }
+
                                                     </>
                                                 ) : (
                                                     <>
                                                         <NoticeCardForm listTitle={item.title} noticeId={item.noticeId}
-                                                            listContent={`지역 : ${item.region}`}
+                                                            listContent={`지역 : ${item.region} `}
                                                             merit={item.merit}></NoticeCardForm>
 
                                                     </>
@@ -113,9 +131,9 @@ const ProposalContent = () => {
                                     ))
                                 }
                             </Col>
-                            <Col span={12} justify={'center'} align={'center'}>
+                            <Col span={12} justify={'center'} align={'center'} style={{ marginTop: "50px" }}>
                                 {
-                                    (page > 3) ?
+                                    (page >= 3) ?
                                         <Typo size={"1.1rem"} color={'#9baacf'} weight={'550'}>마지막 페이지 입니다.</Typo>
                                         : null
                                 }

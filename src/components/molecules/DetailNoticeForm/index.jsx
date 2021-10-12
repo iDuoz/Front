@@ -56,15 +56,16 @@ const DetailNoticeForm = ({ merit, online, region, age }) => {
                                         age.map((lists, index) => {
                                             return (
                                                 <>
-                                                    <Col key={index} span={12} align={'center'} justify={'center'}>
-                                                        {
-                                                            lists === "teen" ?
-                                                                <Typo key={index} size={'1.5rem'}>미성년자</Typo>
-                                                                :
-                                                                <Typo key={index} size={'1.5rem'}>성인</Typo>
-                                                        }
-
-                                                    </Col>
+                                                    <React.Fragment key={index}>
+                                                        <Col key={index} span={12} align={'center'} justify={'center'}>
+                                                            {
+                                                                lists === "teen" ?
+                                                                    <Typo key={index} size={'1.5rem'}>미성년자</Typo>
+                                                                    :
+                                                                    <Typo key={index} size={'1.5rem'}>성인</Typo>
+                                                            }
+                                                        </Col>
+                                                    </React.Fragment>
                                                 </>
                                             )
                                         })
@@ -111,15 +112,17 @@ const DetailNoticeForm = ({ merit, online, region, age }) => {
                                         age.map((lists, index) => {
                                             return (
                                                 <>
-                                                    <Col key={index} span={12} align={'center'} justify={'center'} style={{ margin: '5px 0' }}>
-                                                        {
-                                                            lists === "teen" ?
-                                                                <Typo key={index} size={'1.7rem'}>미성년자</Typo>
-                                                                :
-                                                                <Typo key={index} size={'1.7rem'}>성인</Typo>
-                                                        }
+                                                    <React.Fragment key={index}>
+                                                        <Col key={index} span={12} align={'center'} justify={'center'} style={{ margin: '5px 0' }}>
+                                                            {
+                                                                lists === "teen" ?
+                                                                    <Typo key={index} size={'1.7rem'}>미성년자</Typo>
+                                                                    :
+                                                                    <Typo key={index} size={'1.7rem'}>성인</Typo>
+                                                            }
 
-                                                    </Col>
+                                                        </Col>
+                                                    </React.Fragment>
                                                 </>
                                             )
                                         })
