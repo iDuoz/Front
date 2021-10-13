@@ -96,7 +96,7 @@ const LogInProcess = async (logInInfo) => {
     const setUserInfo = await getUserData(userId);
 
     const userInfo = setUserInfo;
-    const test = userInfo.admin;
+    const test = userInfo.role;
     notification['info']({
       message: 'userInfo🧸🧸',
       description: `${test}`,
