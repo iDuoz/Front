@@ -87,7 +87,10 @@ const LogInProcess = async (logInInfo) => {
       description: `나오냐?`,
     });
     const userId = setLogin.uid;
-
+    notification['info']({
+      message: '💛💛👼👼👼🧸',
+      description: `${userId}`,
+    });
     console.log('userId' + userId);
     const setUserInfo = await getUserData(userId);
 
