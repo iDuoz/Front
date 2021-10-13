@@ -177,12 +177,15 @@ const ContentContainer = () => {
 
     const LoginBtnOnclick = () => {
         login_process(logInInfo)
-        setLoginInfo({
-            email: "",
-            password: "",
-        });
-        console.log(logInInfo)
-        handleLoginModal.close();
+            .then((res) => {
+                setLoginInfo({
+                    email: "",
+                    password: "",
+                });
+                console.log(logInInfo)
+                handleLoginModal.close();
+            }).catch((e) => { console.log(e) })
+
     };
     const SignupBtnOnclick = (e) => {
         SignupProcess(signUpInfo)

@@ -80,14 +80,14 @@ import { notification } from 'antd';
 
 const LogInProcess = async (logInInfo) => {
   console.log(logInInfo);
-  await firebase_login({ email: 'csmo2642@naver.com', password: 'hello6541!' }).then((res) => {
+  firebase_login({ email: 'csmo2642@naver.com', password: 'hello6541!' }).then((res) => {
     notification['info']({
       message: '로그인통신완료 1',
-      description: `firebase_login then?`,
+      description: `firebase_login then`,
     });
   });
 
-  await getRegionArray()
+  getRegionArray()
     .then((res) => {
       console.log('region 정보 보여줌');
       console.log(res);
