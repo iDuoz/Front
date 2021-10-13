@@ -36,11 +36,16 @@ const LogInProcess = async (logInInfo) => {
   });
 
   if (store.getState().user_reducer) {
+    notification.open({
+      message: '스마일전~',
+      description: 'ㅇㅇㄹㅇㄹ',
+      icon: <SmileOutlined style={{ color: '#108ee9' }} />,
+    });
     getTotalNoticeNum().then((res) => {
       console.log(res);
       notification.open({
         message: '이게보이면 그냥 스마일~',
-        description: `${res.count}`,
+        description: ' ㅎㅎㅎ',
         icon: <SmileOutlined style={{ color: '#108ee9' }} />,
       });
     });
