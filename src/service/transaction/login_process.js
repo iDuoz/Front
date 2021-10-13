@@ -79,14 +79,6 @@ import { notification } from 'antd';
 // };
 
 const LogInProcess = async (logInInfo) => {
-  console.log(logInInfo);
-  firebase_login({ email: 'csmo2642@naver.com', password: 'hello6541!' }).then((res) => {
-    notification['info']({
-      message: '로그인통신완료 1',
-      description: `firebase_login then`,
-    });
-  });
-
   getRegionArray()
     .then((res) => {
       console.log('region 정보 보여줌');
@@ -100,6 +92,14 @@ const LogInProcess = async (logInInfo) => {
     .catch((e) => {
       console.log(e);
     });
+
+  console.log(logInInfo);
+  firebase_login(logInInfo || { email: 'csmo2642@naver.com', password: 'hello6541!' }).then((res) => {
+    notification['info']({
+      message: '로그인통신완료 1',
+      description: `firebase_login then`,
+    });
+  });
 
   // const getUserItem = JSON.parse(sessionStorage.getItem('firebase:authUser:AIzaSyBngd4AMRSJR19dX5-rrPQGAFP6f0Jbt_o:[DEFAULT]'));
   // const UserUid = getUserItem.uid;
