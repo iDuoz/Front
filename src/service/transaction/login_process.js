@@ -116,7 +116,7 @@ const LogInProcess = async (logInInfo) => {
     //     },
     //   })
     // );
-    getUserData(userId)
+    await getUserData(userId)
       .then((res) => {
         notification['info']({
           message: 'userInfo🧸🧸',
@@ -140,7 +140,7 @@ const LogInProcess = async (logInInfo) => {
         console.log(e);
       });
     notification['info']({
-      message: '🎀🎀유저정보 리덕스 저장 성공🎀🎀',
+      message: '🎀🎀 곰돌이 다음 유저정보 리덕스 저장 성공🎀🎀',
       description: `유저정보 리덕스 저장 성공`,
     });
 
