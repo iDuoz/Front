@@ -87,7 +87,7 @@ const LogInProcess = async (logInInfo) => {
         message: '로그인통신완료 1',
         description: `firebase_login then`,
       });
-      getRegionArray()
+      return getRegionArray()
         .then((res) => {
           console.log('region 정보 보여줌');
           console.log(res);
