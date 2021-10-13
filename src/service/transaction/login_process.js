@@ -82,6 +82,10 @@ const LogInProcess = async (logInInfo) => {
   try {
     const setLogin = await firebase_login(logInInfo);
 
+    notification['info']({
+      message: '이거나올라나?',
+      description: `나오냐?`,
+    });
     const userId = setLogin.uid;
 
     console.log('userId' + userId);
@@ -106,14 +110,14 @@ const LogInProcess = async (logInInfo) => {
       description: `유저정보 리덕스 저장 성공`,
     });
 
-    const setRegion = await getRegionArray();
-    const regionInfo = setRegion;
+    // const setRegion = await getRegionArray();
+    // const regionInfo = setRegion;
 
-    store.dispatch(ACTION.SET_REGION__ACTION_FUNC(regionInfo));
-    notification['info']({
-      message: '지역정보 리덕스 저장 성공',
-      description: `지역정보 리덕스 저장 성공`,
-    });
+    // store.dispatch(ACTION.SET_REGION__ACTION_FUNC(regionInfo));
+    // notification['info']({
+    //   message: '지역정보 리덕스 저장 성공',
+    //   description: `지역정보 리덕스 저장 성공`,
+    // });
 
     store.dispatch(ACTION.LOGIN_ACTION_FUNC());
 
@@ -125,6 +129,22 @@ const LogInProcess = async (logInInfo) => {
     notification['info']({
       message: '로그인 리덕스 ㅈ저ㅏㅇ 실패',
       description: `리덕스 로그인이요 실패요`,
+    });
+  }
+
+  try {
+    const setRegion = await getRegionArray();
+    const regionInfo = setRegion;
+
+    store.dispatch(ACTION.SET_REGION__ACTION_FUNC(regionInfo));
+    notification['info']({
+      message: '지역정보 리덕스 저장 성공🎯🐉🐉🐉🤍',
+      description: `지역정보 리덕스 저장 성공`,
+    });
+  } catch (e) {
+    notification['info']({
+      message: '지역 리덕스 ㅈ저ㅏㅇ 실패',
+      description: `지역불러오기 리덕스 저장하기실패요`,
     });
   }
 };
