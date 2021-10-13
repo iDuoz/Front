@@ -4,6 +4,9 @@ import firebase_login from '../firebase/auth/logIn_password';
 import getUserData from '../firebase/database/getUserData';
 import getRegionArray from '../firebase/database/getRegionArray';
 import { notification, Alert } from 'antd';
+import getTotalNoticeNum from '../firebase/database/getTotalNoticeNum';
+
+import { SmileOutlined } from '@ant-design/icons';
 
 const LogInProcess = async (logInInfo) => {
   console.log('💘');
@@ -25,11 +28,23 @@ const LogInProcess = async (logInInfo) => {
     .catch((e) => {
       console.log(e);
     });
+
   console.log(store.getState().user_reducer);
   notification['info']({
     message: 'f리덕스에 저장된 userid 정보 보기',
     description: `${store.getState().user_reducer.uid}`,
   });
+
+  if (store.getState().user_reducer) {
+    getTotalNoticeNum().then((res) => {
+      console.log(res);
+      notification.open({
+        message: '이게보이면 그냥 스마일~',
+        description: `${res.count}`,
+        icon: <SmileOutlined style={{ color: '#108ee9' }} />,
+      });
+    });
+  }
 
   // const getUserItem = JSON.parse(sessionStorage.getItem('firebase:authUser:AIzaSyBngd4AMRSJR19dX5-rrPQGAFP6f0Jbt_o:[DEFAULT]'));
   // const UserUid = getUserItem.uid;
