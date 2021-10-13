@@ -3,7 +3,6 @@ import React, { memo, createRef, useEffect, useRef, useState } from "react";
 import HeaderContent from "../../components/organisms/Header/Content/index";
 import gsap from "gsap"
 
-import getRegionArray from '../../service/firebase/database/getRegionArray';
 import login_process from "../../service/transaction/login_process"
 import logout_process from "../../service/transaction/logout_process"
 import SignupProcess from "../../service/transaction/signup_process";
@@ -179,19 +178,7 @@ const ContentContainer = ({
         setIsHeaderLoginModal((state) => ({ ...state, type: "login" }));
     }
 
-    useEffect(() => {
-        if (logined) {
-            console.log("으앙앙")
-            getRegionArray()
-                .then((res) => {
-                    console.log('region 정보 보여줌');
-                    console.log(res);
-                })
-                .catch((e) => {
-                    console.log(e);
-                })
-        }
-    }, [logined]);
+
     const LoginBtnOnclick = () => {
         login_process(logInInfo)
             .then((res) => {
