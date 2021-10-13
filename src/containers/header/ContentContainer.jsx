@@ -3,7 +3,9 @@ import React, { memo, createRef, useEffect, useRef, useState } from "react";
 import HeaderContent from "../redux/components/Header/index";
 import gsap from "gsap"
 
+import getRegionArray from "../../service/firebase/database/getRegionArray"
 
+import reduxSetting_process from "../../service/transaction/reduxSetting_process"
 import login_process from "../../service/transaction/login_process"
 import logout_process from "../../service/transaction/logout_process"
 import SignupProcess from "../../service/transaction/signup_process";
@@ -184,6 +186,8 @@ const ContentContainer = () => {
                 });
                 console.log(logInInfo)
                 handleLoginModal.close();
+                reduxSetting_process('knhoTmhuetPKDTbmTjcdM7tbAdQ2')
+
             }).catch((e) => { console.log(e) })
 
     };
