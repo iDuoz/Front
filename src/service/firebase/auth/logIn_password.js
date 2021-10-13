@@ -19,7 +19,7 @@ const SignIn = async ({ email, password }) => {
     return login.user;
   } catch (e) {
     notification['error']({
-      message: `로그인 실패😥 `,
+      message: `로그인 통신 실패😥 `,
       description: e.message || e.code,
     });
   }

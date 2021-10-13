@@ -3,12 +3,6 @@ import { doc, getDoc } from 'firebase/firestore';
 import { getFirestore } from 'firebase/firestore';
 
 const getRegionArray = async () => {
-  notification.open({
-    message: 'getRegionArray 까지옴',
-    description: ' ㅎㅎㅎ',
-    icon: '🧡',
-  });
-
   try {
     const db = getFirestore();
     const docRef = doc(db, 'noticeInformations', 'information');

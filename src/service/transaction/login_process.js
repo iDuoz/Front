@@ -3,10 +3,7 @@ import ACTION from '../../store/actions/action';
 import firebase_login from '../firebase/auth/logIn_password';
 import getUserData from '../firebase/database/getUserData';
 import getRegionArray from '../firebase/database/getRegionArray';
-import { notification, Alert } from 'antd';
-import getTotalNoticeNum from '../firebase/database/getTotalNoticeNum';
-
-import { SmileOutlined } from '@ant-design/icons';
+import { notification } from 'antd';
 
 const LogInProcess = async (logInInfo) => {
   console.log('💘');
@@ -17,6 +14,7 @@ const LogInProcess = async (logInInfo) => {
         message: '로그인통신완료 login Process 1',
         description: `firebase_login then`,
       });
+      store.dispatch(ACTION.LOGIN_ACTION_FUNC());
       store.dispatch(
         ACTION.SET_USER__ACTION_FUNC({
           user: {
@@ -26,28 +24,33 @@ const LogInProcess = async (logInInfo) => {
       );
     })
     .catch((e) => {
-      console.log(e);
+      notification['error']({
+        message: `로그인 실패😥 `,
+        description: e.message || e.code,
+      });
     });
 
-  console.log(store.getState().user_reducer);
+  console.log(store.getState().login_reducer);
+  console.log(store.getState().login_reducer.logined);
   notification['info']({
     message: 'f리덕스에 저장된 userid 정보 보기',
     description: `${store.getState().user_reducer.uid}`,
   });
 
-  if (store.getState().user_reducer) {
+  if (store.getState().login_reducer.logined) {
     notification.open({
-      message: '스마일전~',
-      description: 'ㅇㅇㄹㅇㄹ',
-      icon: <SmileOutlined style={{ color: '#108ee9' }} />,
+      message: '로그인 리덕스 저장되서 나오는거~',
+      description: 'getREgion시작',
+      icon: '💌',
     });
     await getRegionArray()
       .then((res) => {
         console.log(res);
+        store.dispatch(ACTION.SET_REGION__ACTION_FUNC(res));
         notification.open({
-          message: '이게보이면 그냥 스마일~',
+          message: '이게보이면 지역 가져오기 완료~',
           description: ' ㅎㅎㅎ',
-          icon: <SmileOutlined style={{ color: '#104ee9' }} />,
+          icon: '🤗',
         });
       })
       .catch((e) => {
@@ -55,6 +58,39 @@ const LogInProcess = async (logInInfo) => {
           message: 'error',
           description: e.message || e.code,
         });
+      });
+  }
+  console.log('store.getState().user_reducer.uid' + store.getState().user_reducer.uid);
+  if (store.getState().user_reducer.uid) {
+    notification.open({
+      message: 'redux uid 저장~',
+      description: 'getUserData 시작',
+      icon: '💌',
+    });
+
+    await getUserData(store.getState().user_reducer.uid)
+      .then((res) => {
+        console.log(res);
+        store.dispatch(
+          ACTION.SET_USER__ACTION_FUNC({
+            user: {
+              basic: res.basic,
+              loveNotice: res.loveNotice,
+              merit: res.merit,
+              role: res.role,
+              totalLoveNotice: res.totalLoveNotice,
+            },
+          })
+        );
+
+        notification.open({
+          message: '이게보이면 유저정보 가져오기 완료~',
+          description: ' user',
+          icon: '🤗',
+        });
+      })
+      .catch((e) => {
+        console.log(e);
       });
   }
 
@@ -163,13 +199,6 @@ const LogInProcess = async (logInInfo) => {
   //   message: '지역정보 리덕스 저장 성공',
   //   description: `지역정보 리덕스 저장 성공`,
   // });
-
-  store.dispatch(ACTION.LOGIN_ACTION_FUNC());
-
-  notification['info']({
-    message: '아이폰 로그인 리덕스 ㅈ저ㅏㅇ1.33333',
-    description: `리덕스 로그인이요`,
-  });
 };
 
 // try {
