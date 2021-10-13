@@ -92,13 +92,15 @@ const LogInProcess = async (logInInfo) => {
 
     const setUserInfo = await getUserData(userId);
     notification['info']({
-      message: '💛💛👼👼👼🧸',
+      message: 'userId💛',
       description: `${userId}`,
     });
     const userInfo = setUserInfo;
+    console.log('userInfo');
+    console.log(userInfo);
     notification['info']({
       message: 'userInfo🧸🧸',
-      description: `${userInfo}`,
+      description: `${userInfo.role}`,
     });
     store.dispatch(
       ACTION.SET_USER__ACTION_FUNC({
@@ -113,7 +115,7 @@ const LogInProcess = async (logInInfo) => {
       })
     );
     notification['info']({
-      message: '유저정보 리덕스 저장 성공',
+      message: '🎀🎀유저정보 리덕스 저장 성공🎀🎀',
       description: `유저정보 리덕스 저장 성공`,
     });
 
