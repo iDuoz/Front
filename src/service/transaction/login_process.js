@@ -87,6 +87,13 @@ const LogInProcess = async (logInInfo) => {
         message: '로그인통신완료 1',
         description: `firebase_login then`,
       });
+      store.dispatch(
+        ACTION.SET_USER__ACTION_FUNC({
+          user: {
+            uid: res.uid,
+          },
+        })
+      );
     })
     .catch((e) => {
       console.log(e);
