@@ -61,7 +61,7 @@ const Header = ({
 }) => {
     const history = useHistory();
     // TODO 로그인후 조건별로 설정
-    console.log(logined)
+    // console.log(logined)
     return (
         <>
             {/* SECTION Content */}
