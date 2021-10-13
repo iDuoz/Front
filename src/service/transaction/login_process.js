@@ -93,29 +93,52 @@ const LogInProcess = async (logInInfo) => {
       message: 'userId💛',
       description: `${userId}`,
     });
-    const setUserInfo = await getUserData(userId);
+    // const setUserInfo = await getUserData(userId);
 
-    const userInfo = setUserInfo;
-    const test = userInfo.role;
-    notification['info']({
-      message: 'userInfo🧸🧸',
-      description: `${test}`,
-    });
-    console.log('userInfo');
-    console.log(userInfo);
+    // const userInfo = setUserInfo;
+    // const test = userInfo.role;
+    // notification['info']({
+    //   message: 'userInfo🧸🧸',
+    //   description: `${test}`,
+    // });
+    // console.log('userInfo');
+    // console.log(userInfo);
 
-    store.dispatch(
-      ACTION.SET_USER__ACTION_FUNC({
-        user: {
-          uid: userId,
-          basic: userInfo.basic,
-          loveNotice: userInfo.loveNotice,
-          merit: userInfo.merit,
-          role: userInfo.role,
-          totalLoveNotice: userInfo.totalLoveNotice,
-        },
+    // store.dispatch(
+    //   ACTION.SET_USER__ACTION_FUNC({
+    //     user: {
+    //       uid: userId,
+    //       basic: userInfo.basic,
+    //       loveNotice: userInfo.loveNotice,
+    //       merit: userInfo.merit,
+    //       role: userInfo.role,
+    //       totalLoveNotice: userInfo.totalLoveNotice,
+    //     },
+    //   })
+    // );
+    getUserData(userId)
+      .then((res) => {
+        notification['info']({
+          message: 'userInfo🧸🧸',
+          description: `유저정보받아와받아와`,
+        });
+        console.log(res);
+        store.dispatch(
+          ACTION.SET_USER__ACTION_FUNC({
+            user: {
+              uid: userId,
+              basic: res.basic,
+              loveNotice: res.loveNotice,
+              merit: res.merit,
+              role: res.role,
+              totalLoveNotice: res.totalLoveNotice,
+            },
+          })
+        );
       })
-    );
+      .catch((e) => {
+        console.log(e);
+      });
     notification['info']({
       message: '🎀🎀유저정보 리덕스 저장 성공🎀🎀',
       description: `유저정보 리덕스 저장 성공`,
