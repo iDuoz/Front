@@ -41,14 +41,21 @@ const LogInProcess = async (logInInfo) => {
       description: 'ㅇㅇㄹㅇㄹ',
       icon: <SmileOutlined style={{ color: '#108ee9' }} />,
     });
-    getTotalNoticeNum().then((res) => {
-      console.log(res);
-      notification.open({
-        message: '이게보이면 그냥 스마일~',
-        description: ' ㅎㅎㅎ',
-        icon: <SmileOutlined style={{ color: '#108ee9' }} />,
+    await getRegionArray()
+      .then((res) => {
+        console.log(res);
+        notification.open({
+          message: '이게보이면 그냥 스마일~',
+          description: ' ㅎㅎㅎ',
+          icon: <SmileOutlined style={{ color: '#104ee9' }} />,
+        });
+      })
+      .catch((e) => {
+        notification['error']({
+          message: 'error',
+          description: e.message || e.code,
+        });
       });
-    });
   }
 
   // const getUserItem = JSON.parse(sessionStorage.getItem('firebase:authUser:AIzaSyBngd4AMRSJR19dX5-rrPQGAFP6f0Jbt_o:[DEFAULT]'));
