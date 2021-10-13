@@ -167,19 +167,19 @@ const LogInProcess = async (logInInfo) => {
   });
 };
 
-try {
-  const setRegion = await getRegionArray();
-  const regionInfo = setRegion;
+// try {
+//   const setRegion = await getRegionArray();
+//   const regionInfo = setRegion;
 
-  store.dispatch(ACTION.SET_REGION__ACTION_FUNC(regionInfo));
-  notification['info']({
-    message: '지역정보 리덕스 저장 성공💜💜💜💜💜',
-    description: `지역정보 리덕스 저장 성공`,
-  });
-} catch (e) {
-  notification['info']({
-    message: '지역 리덕스 ㅈ저ㅏㅇ 실패',
-    description: `지역불러오기 리덕스 저장하기실패요`,
-  });
-}
+//   store.dispatch(ACTION.SET_REGION__ACTION_FUNC(regionInfo));
+//   notification['info']({
+//     message: '지역정보 리덕스 저장 성공💜💜💜💜💜',
+//     description: `지역정보 리덕스 저장 성공`,
+//   });
+// } catch (e) {
+//   notification['info']({
+//     message: '지역 리덕스 ㅈ저ㅏㅇ 실패',
+//     description: `지역불러오기 리덕스 저장하기실패요`,
+//   });
+// }
 export default LogInProcess;
