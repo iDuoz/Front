@@ -81,10 +81,43 @@ import { notification } from 'antd';
 const LogInProcess = async (logInInfo) => {
   firebase_login(logInInfo).then((res) => {
     notification['info']({
-      message: '이거나올라나?❤❤❤🍒',
+      message: '로그인통신완료❤❤❤🍒',
       description: `나오냐?`,
     });
   });
+
+  const getUserItem = JSON.parse(sessionStorage.getItem('firebase:authUser:AIzaSyBngd4AMRSJR19dX5-rrPQGAFP6f0Jbt_o:[DEFAULT]'));
+  const UserUid = getUserItem.uid;
+
+  notification['info']({
+        message: 'userId🧡🧡🧡🧡',
+        description: `${UserUid}`,
+      });
+            
+      getUserData(UserUid)
+      .then((res) => {
+        console.log('');
+        console.log(res);
+        notification['info']({
+        message: '이게뜨면 getUser 완료 .theb',
+        description: `${UserUid}`,
+      });
+        store.dispatch(
+          ACTION.SET_USER__ACTION_FUNC({
+            user: {
+              uid: UserUid,
+              basic: res.basic,
+              loveNotice: res.loveNotice,
+              merit: res.merit,
+              role: res.role,
+              totalLoveNotice: res.totalLoveNotice,
+            },
+          })
+        );
+      })
+      .catch((e) => {
+        console.log(e);
+      });
 
   // try {
   //   const setLogin = await firebase_login(logInInfo);
