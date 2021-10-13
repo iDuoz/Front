@@ -79,29 +79,29 @@ import { notification } from 'antd';
 // };
 
 const LogInProcess = async (logInInfo) => {
-  getRegionArray()
-    .then((res) => {
-      console.log('region 정보 보여줌');
-      console.log(res);
-      notification['info']({
-        message: '지역정보 리덕스 저장 성공 ',
-        description: `지역정보 리덕스 저장 성공`,
-      });
-      store.dispatch(ACTION.SET_REGION__ACTION_FUNC(res));
-    })
-    .catch((e) => {
-      console.log(e);
-    });
   console.log('💘');
 
-  // firebase_login(logInInfo.email && logInInfo.password ? logInInfo : { email: 'csmo2642@naver.com', password: 'hello6541!' }).then(
-  //   (res) => {
-  //     notification['info']({
-  //       message: '로그인통신완료 1',
-  //       description: `firebase_login then`,
-  //     });
-  //   }
-  // );
+  firebase_login(logInInfo.email && logInInfo.password ? logInInfo : { email: 'csmo2642@naver.com', password: 'hello6541!' }).then(
+    (res) => {
+      notification['info']({
+        message: '로그인통신완료 1',
+        description: `firebase_login then`,
+      });
+      getRegionArray()
+        .then((res) => {
+          console.log('region 정보 보여줌');
+          console.log(res);
+          notification['info']({
+            message: '지역정보 리덕스 저장 성공 ',
+            description: `지역정보 리덕스 저장 성공`,
+          });
+          store.dispatch(ACTION.SET_REGION__ACTION_FUNC(res));
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    }
+  );
 
   // const getUserItem = JSON.parse(sessionStorage.getItem('firebase:authUser:AIzaSyBngd4AMRSJR19dX5-rrPQGAFP6f0Jbt_o:[DEFAULT]'));
   // const UserUid = getUserItem.uid;
