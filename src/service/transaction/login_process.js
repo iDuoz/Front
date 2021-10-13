@@ -89,19 +89,21 @@ const LogInProcess = async (logInInfo) => {
     const userId = setLogin.uid;
 
     console.log('userId' + userId);
-
-    const setUserInfo = await getUserData(userId);
     notification['info']({
       message: 'userId💛',
       description: `${userId}`,
     });
+    const setUserInfo = await getUserData(userId);
+
     const userInfo = setUserInfo;
-    console.log('userInfo');
-    console.log(userInfo);
+    const test = userInfo.admin;
     notification['info']({
       message: 'userInfo🧸🧸',
-      description: `${userInfo.role}`,
+      description: `${test}`,
     });
+    console.log('userInfo');
+    console.log(userInfo);
+
     store.dispatch(
       ACTION.SET_USER__ACTION_FUNC({
         user: {
