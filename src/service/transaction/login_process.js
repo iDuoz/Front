@@ -1,5 +1,6 @@
 import store from '../../store/store';
 import ACTION from '../../store/actions/action';
+import user_reducer from '../../store/reducers/user_reducer';
 import firebase_login from '../firebase/auth/logIn_password';
 import getUserData from '../firebase/database/getUserData';
 import getRegionArray from '../firebase/database/getRegionArray';
@@ -13,11 +14,12 @@ const LogInProcess = (logInInfo) => {
   firebase_login(logInInfo)
     .then((res) => {
       store.dispatch(ACTION.LOGIN_ACTION_FUNC());
+
       console.log(res);
       console.log(res.uid);
       notification['success']({
         message: '아이폰 로그인 리덕스 ㅈ저ㅏㅇ',
-        description: '자꾸안대면 열받쥬?',
+        description: `리덕스 로그인이요`,
       });
       return res.uid;
     })
@@ -43,9 +45,10 @@ const LogInProcess = (logInInfo) => {
             })
           );
           console.log('정보 받아오기완료?????????????????????????????????????????');
+
           notification['success']({
             message: '아이폰 리덕스 저장',
-            description: '자꾸안대면 열받쥬?',
+            description: `아이폰 ㅗㅗㅗㅗ`,
           });
         })
         .catch((e) => {
