@@ -155,6 +155,11 @@ const ContentContainer = ({
                 setUserMeritProfile((state) => ({ ...state, eco: false })) :
                 setUserMeritProfile((state) => ({ ...state, eco: true }))
         },
+        government: () => {
+            (userMeritProfile.government === true) ?
+                setUserMeritProfile((state) => ({ ...state, government: false })) :
+                setUserMeritProfile((state) => ({ ...state, government: true }))
+        },
         online: () => {
             (userMeritProfile.online === true) ?
                 setUserMeritProfile((state) => ({ ...state, online: false })) :

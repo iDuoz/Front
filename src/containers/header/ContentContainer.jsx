@@ -7,6 +7,7 @@ import login_process from "../../service/transaction/login_process"
 import logout_process from "../../service/transaction/logout_process"
 import SignupProcess from "../../service/transaction/signup_process";
 import { useHistory, useLocation } from "react-router-dom";
+import { notification } from "antd";
 const ContentContainer = ({
     logined,
     uid,
@@ -183,27 +184,32 @@ const ContentContainer = ({
         login_process(logInInfo)
             .then((res) => {
                 console.log(logInInfo)
-                handleLoginModal.close();
-                setLoginInfo({
-                    email: "",
-                    password: "",
-                });
-            }).catch((e) => { console.log(e) })
-
-
+                history.push('/profile')
+            })
+            .catch((e) =>
+                notification['error']({
+                    message: 'error',
+                    description: e.message || e.code,
+                })
+            )
+        handleLoginModal.close();
+        setLoginInfo({
+            email: "",
+            password: "",
+        });
     };
     const SignupBtnOnclick = () => {
         SignupProcess(signUpInfo)
-            .then((res) => {
-                handleLoginModal.close();
-                setSignUpInfo({
-                    email: "",
-                    password: "",
-                });
-                history.push('/profile')
-            }).catch((e) => { console.log(e) })
+            (logined ? history.push('/profile') : notification['error']({
+                message: 'error',
+                description: "회원가입 실패 ",
+            }))
 
-
+        handleLoginModal.close();
+        setSignUpInfo({
+            email: "",
+            password: "",
+        });
 
     };
 

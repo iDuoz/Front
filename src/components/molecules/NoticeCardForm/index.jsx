@@ -3,12 +3,13 @@ import React from 'react'
 import styled from "styled-components"
 import { Row, Col } from '../../../layout'
 import { Img } from '../../index'
-import merit_active from "../../../assets/icons/merit_active.png"
-import merit_animal from "../../../assets/icons/merit_animal.png"
+import merit_education from "../../../assets/icons/merit_education.png"
+import merit_cooking from "../../../assets/icons/merit_cooking.png"
 import merit_disaster from "../../../assets/icons/merit_disaster.png"
 import merit_eco from "../../../assets/icons/merit_eco.png"
 import merit_online from "../../../assets/icons/merit_online.png"
-
+import merit_government from "../../../assets/icons/merit_government.png"
+import puzzle from "../../../assets/icons/puzzle.png"
 
 const CardWrapper = styled.div`
 margin : 10px 0;
@@ -25,7 +26,7 @@ width : 100%;
 
 const CardColorSide = styled.div`
 background-color: #BA68C8;
-background-color : ${props => props.background || `#31323a`};
+background-color : ${props => props.background || `#fdff89`};
 /* background-color: #52A43A;
 background-color: #F7AA17;
 background-color: #EF5350;
@@ -110,11 +111,11 @@ const NoticeCardForm = ({ onClick, merit, listTitle, noticeId, listContent, noti
     }
 
     const meritIcon = {
-        education: merit_active,
-        cooking: merit_animal,
+        education: merit_education,
+        cooking: merit_cooking,
         eco: merit_eco,
         disaster: merit_disaster,
-        government: merit_eco,
+        government: merit_government,
         online: merit_online,
     }
 
@@ -125,7 +126,7 @@ const NoticeCardForm = ({ onClick, merit, listTitle, noticeId, listContent, noti
                     <CardWrapper onClick={onClick}>
                         <CardContent >
                             <CardIcon>
-                                <Img src={meritIcon[merit]} width={'3rem'}></Img>
+                                <Img src={meritIcon[merit] || puzzle} width={'3rem'}></Img>
                             </CardIcon>
 
                             <CardColorSide background={meritColor[merit]} />

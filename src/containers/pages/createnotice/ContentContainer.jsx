@@ -95,7 +95,7 @@ const ContentContainer = ({
 
   const [userMeritProfile, setUserMeritProfile] = useState({})
   useEffect(() => {
-    setUserMeritProfile({ education: false, cooking: false, disaster: false, eco: false, online: false })
+    setUserMeritProfile({ education: false, cooking: false, disaster: false, eco: false, online: false, government: false })
   }, [])
   let editMeritProfileFunction = {
     education: () => {
@@ -104,7 +104,7 @@ const ContentContainer = ({
         setNoticeData((state) => ({ ...state, merit: "" }))
       }
       if (userMeritProfile.education === false) {
-        setUserMeritProfile((state) => ({ ...state, education: true, cooking: false, disaster: false, eco: false }))
+        setUserMeritProfile((state) => ({ ...state, education: true, cooking: false, government: false, disaster: false, eco: false }))
         setNoticeData((state) => ({ ...state, merit: "education" }))
       }
     },
@@ -114,7 +114,7 @@ const ContentContainer = ({
         setNoticeData((state) => ({ ...state, merit: "" }))
       }
       if (userMeritProfile.cooking === false) {
-        setUserMeritProfile((state) => ({ ...state, cooking: true, active: false, disaster: false, eco: false }))
+        setUserMeritProfile((state) => ({ ...state, cooking: true, education: false, government: false, disaster: false, eco: false }))
         setNoticeData((state) => ({ ...state, merit: "cooking" }))
       }
     },
@@ -124,7 +124,7 @@ const ContentContainer = ({
         setNoticeData((state) => ({ ...state, merit: "" }))
       }
       if (userMeritProfile.disaster === false) {
-        setUserMeritProfile((state) => ({ ...state, disaster: true, active: false, cooking: false, eco: false }))
+        setUserMeritProfile((state) => ({ ...state, disaster: true, education: false, government: false, cooking: false, eco: false }))
         setNoticeData((state) => ({ ...state, merit: "disaster" }))
       }
 
@@ -135,8 +135,18 @@ const ContentContainer = ({
         setNoticeData((state) => ({ ...state, merit: "" }))
       }
       if (userMeritProfile.eco === false) {
-        setUserMeritProfile((state) => ({ ...state, eco: true, active: false, cooking: false, disaster: false }))
+        setUserMeritProfile((state) => ({ ...state, eco: true, education: false, government: false, cooking: false, disaster: false }))
         setNoticeData((state) => ({ ...state, merit: "eco" }))
+      }
+    },
+    government: () => {
+      if (userMeritProfile.government === true) {
+        setUserMeritProfile((state) => ({ ...state, government: false }))
+        setNoticeData((state) => ({ ...state, merit: "" }))
+      }
+      if (userMeritProfile.government === false) {
+        setUserMeritProfile((state) => ({ ...state, government: true, education: false, eco: false, cooking: false, disaster: false }))
+        setNoticeData((state) => ({ ...state, merit: "government" }))
       }
     },
     online: () => {
