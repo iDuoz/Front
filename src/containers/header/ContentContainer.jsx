@@ -200,10 +200,15 @@ const ContentContainer = ({
     };
     const SignupBtnOnclick = () => {
         SignupProcess(signUpInfo)
-            (logined ? history.push('/profile') : notification['error']({
-                message: 'error',
-                description: "회원가입 실패 ",
-            }))
+            .then((res) => {
+                history.push('/profile')
+            })
+            .catch((e) =>
+                notification['error']({
+                    message: 'error',
+                    description: e.message || e.code,
+                })
+            )
 
         handleLoginModal.close();
         setSignUpInfo({
