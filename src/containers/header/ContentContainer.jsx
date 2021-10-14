@@ -184,25 +184,26 @@ const ContentContainer = ({
             .then((res) => {
                 console.log(logInInfo)
                 handleLoginModal.close();
-
+                setLoginInfo({
+                    email: "",
+                    password: "",
+                });
             }).catch((e) => { console.log(e) })
-        setLoginInfo({
-            email: "",
-            password: "",
-        });
+
 
     };
     const SignupBtnOnclick = () => {
         SignupProcess(signUpInfo)
             .then((res) => {
                 handleLoginModal.close();
-                // history.push('/profile')
+                setSignUpInfo({
+                    email: "",
+                    password: "",
+                });
+                history.push('/profile')
             }).catch((e) => { console.log(e) })
 
-        setSignUpInfo({
-            email: "",
-            password: "",
-        });
+
 
     };
 
