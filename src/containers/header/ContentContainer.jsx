@@ -182,7 +182,6 @@ const ContentContainer = ({
     const LoginBtnOnclick = () => {
         login_process(logInInfo)
             .then((res) => {
-
                 console.log(logInInfo)
                 handleLoginModal.close();
 
@@ -193,14 +192,18 @@ const ContentContainer = ({
         });
 
     };
-    const SignupBtnOnclick = (e) => {
+    const SignupBtnOnclick = () => {
         SignupProcess(signUpInfo)
-        handleLoginModal.close();
+            .then((res) => {
+                handleLoginModal.close();
+                // history.push('/profile')
+            }).catch((e) => { console.log(e) })
+
         setSignUpInfo({
             email: "",
             password: "",
         });
-        history.push('/profile')
+
     };
 
 

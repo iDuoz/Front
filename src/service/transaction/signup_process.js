@@ -1,18 +1,15 @@
-import signup_password from '../firebase/auth/signup_password';
+import firebase_signup from '../firebase/auth/signup_password';
 import store from '../../store/store';
 import ACTION from '../../store/actions/action';
 import addUser from '../firebase/database/addUser';
 import getRegionArray from '../firebase/database/getRegionArray';
-const SignUpProcess = (signUpInfo) => {
-  console.log(signUpInfo);
+import { notification } from 'antd';
 
-  signup_password(signUpInfo)
+const SignUpProcess = async (signUpInfo) => {
+  await firebase_signup(signUpInfo)
     .then((res) => {
-      console.log(res);
-      console.log(res.uid);
-      console.log('회원가입 성공');
-      console.log('redux ㄹ그인 start,,,');
       store.dispatch(ACTION.LOGIN_ACTION_FUNC());
+
       store.dispatch(
         ACTION.SET_USER__ACTION_FUNC({
           user: {
@@ -27,47 +24,59 @@ const SignUpProcess = (signUpInfo) => {
             },
             loveNotice: [],
             merit: {
-              animal: false,
-              online: false,
-              farming: false,
+              education: false,
+              cooking: false,
+              government: false,
               disaster: false,
-              active: false,
+              eco: false,
             },
             role: 'volunteer',
             totalLoveNotice: 0,
           },
         })
       );
-      return res;
     })
-    .then((res) => {
-      console.log('addUser Start');
-      console.log(res);
-      console.log(res.uid);
-      // console.log(res.email)
+    .catch((e) => {
+      console.log(e);
+    });
 
-      addUser(res.uid, res.email)
-        .then((res) => {
-          console.log('user DB save,,, ');
-          console.log(res);
-        })
-        .catch((e) => {
-          console.log(e);
+  console.log(store.getState().user_reducer);
+  console.log(store.getState().user_reducer.uid && store.getState().user_reducer.basic.email);
+  if (store.getState().user_reducer.uid && store.getState().user_reducer.basic.email) {
+    console.log('adduser시작');
+    await addUser(store.getState().user_reducer.uid, store.getState().user_reducer.basic.email)
+      .then((res) => {
+        console.log('user add DB save,,, ');
+        console.log(res);
+        notification.open({
+          message: 'siignup aadd user',
+          description: '통신성공',
+          icon: '🤗',
         });
-    })
-    .then((res) => {
-      getRegionArray()
-        .then((res) => {
-          console.log('region 정보 보여줌');
-          console.log(res);
-          store.dispatch(ACTION.SET_REGION__ACTION_FUNC(res));
-        })
-        .catch((e) => {
-          console.log(e);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }
+
+  console.log(store.getState().login_reducer);
+  console.log(store.getState().login_reducer.logined);
+
+  //리덕스에 로그인이 저장됬다면 -> getRegion
+  if (store.getState().login_reducer.logined) {
+    console.log('getRegionArray시작');
+    await getRegionArray()
+      .then((res) => {
+        console.log(res);
+        store.dispatch(ACTION.SET_REGION__ACTION_FUNC(res));
+      })
+      .catch((e) => {
+        notification['error']({
+          message: 'error',
+          description: e.message || e.code,
         });
-    })
-    .catch((err) => console.log(err));
-  return { success: 'signup done' };
+      });
+  }
 };
 
 export default SignUpProcess;

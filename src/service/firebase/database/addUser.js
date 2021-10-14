@@ -16,11 +16,12 @@ const addUser = async (uid, email) => {
       },
       loveNotice: [],
       merit: {
-        active: false,
-        animal: false,
+        education: false,
+        government: false,
+        cooking: false,
         disaster: false,
-        farming: false,
         online: false,
+        eco: false,
       },
       totalLoveNotice: 0,
     });
