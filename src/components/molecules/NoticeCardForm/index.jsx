@@ -6,7 +6,7 @@ import { Img } from '../../index'
 import merit_active from "../../../assets/icons/merit_active.png"
 import merit_animal from "../../../assets/icons/merit_animal.png"
 import merit_disaster from "../../../assets/icons/merit_disaster.png"
-import merit_farming from "../../../assets/icons/merit_farming.png"
+import merit_eco from "../../../assets/icons/merit_eco.png"
 import merit_online from "../../../assets/icons/merit_online.png"
 
 
@@ -25,7 +25,7 @@ width : 100%;
 
 const CardColorSide = styled.div`
 background-color: #BA68C8;
-background-color : ${props => props.background || `#BA68C8`};
+background-color : ${props => props.background || `#31323a`};
 /* background-color: #52A43A;
 background-color: #F7AA17;
 background-color: #EF5350;
@@ -83,7 +83,7 @@ top : 10px;
 ` : null};
 `
 
-const Cardlast = styled.div`
+const CardLast = styled.div`
 position : absolute;
 padding-right: 20px;
 left : 100px;
@@ -101,20 +101,20 @@ bottom : 0.7rem;
 const NoticeCardForm = ({ onClick, merit, listTitle, noticeId, listContent, noticeDetailOnClick }) => {
 
     const meritColor = {
-        active: '#BA68C8',
+        education: '#BA68C8',
         eco: '#52A43A',
-        animal: '#F7AA17',
+        cooking: '#F7AA17',
         disaster: '#EF5350',
-        farming: '#50efc7',
+        government: '#50efc7',
         online: '#5060ef',
     }
 
     const meritIcon = {
-        active: merit_active,
-        animal: merit_animal,
-        eco: merit_farming,
+        education: merit_active,
+        cooking: merit_animal,
+        eco: merit_eco,
         disaster: merit_disaster,
-        farming: merit_farming,
+        government: merit_eco,
         online: merit_online,
     }
 
@@ -132,7 +132,7 @@ const NoticeCardForm = ({ onClick, merit, listTitle, noticeId, listContent, noti
 
                             <CardDivider />
                             <CardTitle>{listTitle}</CardTitle>
-                            <Cardlast>{listContent}</Cardlast>
+                            <CardLast>{listContent}</CardLast>
 
 
                         </CardContent>
@@ -144,7 +144,7 @@ const NoticeCardForm = ({ onClick, merit, listTitle, noticeId, listContent, noti
                         <CardContent small={true}  >
                             <CardColorSide background={meritColor[merit]} />
                             <CardTitle small={true}>{listTitle}</CardTitle>
-                            <Cardlast small={true}>{listContent}</Cardlast>
+                            <CardLast small={true}>{listContent}</CardLast>
                         </CardContent>
                     </CardWrapper>
                 </Col>

@@ -7,8 +7,8 @@ import merit_animal_color from "../../../assets/icons/merit_animal_color.png"
 import merit_animal from "../../../assets/icons/merit_animal.png"
 import merit_disaster_color from "../../../assets/icons/merit_disaster_color.png"
 import merit_disaster from "../../../assets/icons/merit_disaster.png"
-import merit_farming_color from "../../../assets/icons/merit_farming_color.png"
-import merit_farming from "../../../assets/icons/merit_farming.png"
+import merit_eco_color from "../../../assets/icons/merit_eco_color.png"
+import merit_eco from "../../../assets/icons/merit_eco.png"
 // merit_online_color
 import merit_online_color from "../../../assets/icons/merit_online_color.png"
 import merit_online from "../../../assets/icons/merit_online.png"
@@ -24,23 +24,23 @@ const MeritIcon = ({ userMeritProfile, editMeritProfileFunction, blockClick }) =
                         <Col span={4} justify={'center'} align={'center'}>
                             {
                                 blockClick ?
-                                    (userMeritProfile.active) ?
-                                        <Icon direction={'column'} size={'7rem'} justIcon value={'활동적인'} >
+                                    (userMeritProfile.education) ?
+                                        <Icon direction={'column'} size={'7rem'} justIcon value={'교육관련'} >
                                             <Img src={merit_active_color} width={'5rem'}></Img>
                                         </Icon>
                                         :
-                                        <Icon direction={'column'} size={'7rem'} weight={'500'} justIcon value={'활동적인'}>
+                                        <Icon direction={'column'} size={'7rem'} weight={'500'} justIcon value={'교육관련'}>
                                             <Img src={merit_active} width={'5rem'}></Img>
                                         </Icon>
                                     :
-                                    (userMeritProfile.active) ?
+                                    (userMeritProfile.education) ?
                                         <Icon direction={'column'} size={'7rem'}
-                                            value={'활동적인'} onClick={editMeritProfileFunction.active}>
+                                            value={'교육관련'} onClick={editMeritProfileFunction.education}>
                                             <Img src={merit_active_color} width={'5rem'}></Img>
                                         </Icon>
                                         :
                                         <Icon direction={'column'} size={'7rem'} weight={'500'}
-                                            value={'활동적인'} onClick={editMeritProfileFunction.active}>
+                                            value={'교육관련'} onClick={editMeritProfileFunction.education}>
                                             <Img src={merit_active} width={'5rem'}></Img>
                                         </Icon>
                             }
@@ -48,23 +48,23 @@ const MeritIcon = ({ userMeritProfile, editMeritProfileFunction, blockClick }) =
                         <Col span={4} justify={'center'} align={'center'}>
                             {
                                 blockClick ?
-                                    (userMeritProfile.animal) ?
-                                        <Icon direction={'column'} size={'7rem'} justIcon value={'동물조아'}>
+                                    (userMeritProfile.cooking) ?
+                                        <Icon direction={'column'} size={'7rem'} justIcon value={'요리조아'}>
                                             <Img src={merit_animal_color} width={'5rem'}></Img>
                                         </Icon>
                                         :
-                                        <Icon direction={'column'} size={'7rem'} value={'동물조아'} justIcon weight={'500'}>
+                                        <Icon direction={'column'} size={'7rem'} value={'요리조아'} justIcon weight={'500'}>
                                             <Img src={merit_animal} width={'5rem'}></Img>
                                         </Icon>
                                     :
-                                    (userMeritProfile.animal) ?
-                                        <Icon direction={'column'} size={'7rem'} value={'동물조아'}
-                                            onClick={editMeritProfileFunction.animal}>
+                                    (userMeritProfile.cooking) ?
+                                        <Icon direction={'column'} size={'7rem'} value={'요리조아'}
+                                            onClick={editMeritProfileFunction.cooking}>
                                             <Img src={merit_animal_color} width={'5rem'}></Img>
                                         </Icon>
                                         :
-                                        <Icon direction={'column'} size={'7rem'} value={'동물조아'} weight={'500'}
-                                            onClick={editMeritProfileFunction.animal}>
+                                        <Icon direction={'column'} size={'7rem'} value={'요리조아'} weight={'500'}
+                                            onClick={editMeritProfileFunction.cooking}>
                                             <Img src={merit_animal} width={'5rem'}></Img>
                                         </Icon>
                             }
@@ -100,24 +100,24 @@ const MeritIcon = ({ userMeritProfile, editMeritProfileFunction, blockClick }) =
                         <Col span={4} justify={'center'} align={'center'}>
                             {
                                 blockClick ?
-                                    (userMeritProfile.farming) ?
-                                        <Icon direction={'column'} size={'7rem'} justIcon value={'농사조아'}>
-                                            <Img src={merit_farming_color} width={'5rem'}></Img>
+                                    (userMeritProfile.eco) ?
+                                        <Icon direction={'column'} size={'7rem'} justIcon value={'환경조아'}>
+                                            <Img src={merit_eco_color} width={'5rem'}></Img>
                                         </Icon>
                                         :
-                                        <Icon direction={'column'} size={'7rem'} justIcon value={'농사조아'} weight={'500'}>
-                                            <Img src={merit_farming} width={'5rem'}></Img>
+                                        <Icon direction={'column'} size={'7rem'} justIcon value={'환경조아'} weight={'500'}>
+                                            <Img src={merit_eco} width={'5rem'}></Img>
                                         </Icon>
                                     :
-                                    (userMeritProfile.farming) ?
-                                        <Icon direction={'column'} size={'7rem'} value={'농사조아'}
-                                            onClick={editMeritProfileFunction.farming}>
-                                            <Img src={merit_farming_color} width={'5rem'}></Img>
+                                    (userMeritProfile.eco) ?
+                                        <Icon direction={'column'} size={'7rem'} value={'환경조아'}
+                                            onClick={editMeritProfileFunction.eco}>
+                                            <Img src={merit_eco_color} width={'5rem'}></Img>
                                         </Icon>
                                         :
-                                        <Icon direction={'column'} size={'7rem'} value={'농사조아'} weight={'500'}
-                                            onClick={editMeritProfileFunction.farming}>
-                                            <Img src={merit_farming} width={'5rem'}></Img>
+                                        <Icon direction={'column'} size={'7rem'} value={'환경조아'} weight={'500'}
+                                            onClick={editMeritProfileFunction.eco}>
+                                            <Img src={merit_eco} width={'5rem'}></Img>
                                         </Icon>
                             }
                         </Col>

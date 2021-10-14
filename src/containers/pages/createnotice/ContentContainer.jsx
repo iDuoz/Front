@@ -95,27 +95,27 @@ const ContentContainer = ({
 
   const [userMeritProfile, setUserMeritProfile] = useState({})
   useEffect(() => {
-    setUserMeritProfile({ active: false, animal: false, disaster: false, farming: false, online: false })
+    setUserMeritProfile({ education: false, cooking: false, disaster: false, eco: false, online: false })
   }, [])
   let editMeritProfileFunction = {
-    active: () => {
-      if (userMeritProfile.active === true) {
-        setUserMeritProfile((state) => ({ ...state, active: false }))
+    education: () => {
+      if (userMeritProfile.education === true) {
+        setUserMeritProfile((state) => ({ ...state, education: false }))
         setNoticeData((state) => ({ ...state, merit: "" }))
       }
-      if (userMeritProfile.active === false) {
-        setUserMeritProfile((state) => ({ ...state, active: true, animal: false, disaster: false, farming: false }))
-        setNoticeData((state) => ({ ...state, merit: "active" }))
+      if (userMeritProfile.education === false) {
+        setUserMeritProfile((state) => ({ ...state, education: true, cooking: false, disaster: false, eco: false }))
+        setNoticeData((state) => ({ ...state, merit: "education" }))
       }
     },
-    animal: () => {
-      if (userMeritProfile.animal === true) {
-        setUserMeritProfile((state) => ({ ...state, animal: false }))
+    cooking: () => {
+      if (userMeritProfile.cooking === true) {
+        setUserMeritProfile((state) => ({ ...state, cooking: false }))
         setNoticeData((state) => ({ ...state, merit: "" }))
       }
-      if (userMeritProfile.animal === false) {
-        setUserMeritProfile((state) => ({ ...state, animal: true, active: false, disaster: false, farming: false }))
-        setNoticeData((state) => ({ ...state, merit: "animal" }))
+      if (userMeritProfile.cooking === false) {
+        setUserMeritProfile((state) => ({ ...state, cooking: true, active: false, disaster: false, eco: false }))
+        setNoticeData((state) => ({ ...state, merit: "cooking" }))
       }
     },
     disaster: () => {
@@ -124,19 +124,19 @@ const ContentContainer = ({
         setNoticeData((state) => ({ ...state, merit: "" }))
       }
       if (userMeritProfile.disaster === false) {
-        setUserMeritProfile((state) => ({ ...state, disaster: true, active: false, animal: false, farming: false }))
+        setUserMeritProfile((state) => ({ ...state, disaster: true, active: false, cooking: false, eco: false }))
         setNoticeData((state) => ({ ...state, merit: "disaster" }))
       }
 
     },
-    farming: () => {
-      if (userMeritProfile.farming === true) {
-        setUserMeritProfile((state) => ({ ...state, farming: false }))
+    eco: () => {
+      if (userMeritProfile.eco === true) {
+        setUserMeritProfile((state) => ({ ...state, eco: false }))
         setNoticeData((state) => ({ ...state, merit: "" }))
       }
-      if (userMeritProfile.farming === false) {
-        setUserMeritProfile((state) => ({ ...state, farming: true, active: false, animal: false, disaster: false }))
-        setNoticeData((state) => ({ ...state, merit: "farming" }))
+      if (userMeritProfile.eco === false) {
+        setUserMeritProfile((state) => ({ ...state, eco: true, active: false, cooking: false, disaster: false }))
+        setNoticeData((state) => ({ ...state, merit: "eco" }))
       }
     },
     online: () => {

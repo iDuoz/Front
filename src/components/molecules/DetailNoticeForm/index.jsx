@@ -5,7 +5,7 @@ import { Icon, Img, Typo } from "../../"
 import merit_active_color from "../../../assets/icons/merit_active_color.png"
 import merit_animal_color from "../../../assets/icons/merit_animal_color.png"
 import merit_disaster_color from "../../../assets/icons/merit_disaster_color.png"
-import merit_farming_color from "../../../assets/icons/merit_farming_color.png"
+import merit_eco_color from "../../../assets/icons/merit_eco_color.png"
 import merit_online_color from "../../../assets/icons/merit_online_color.png"
 
 
@@ -24,13 +24,13 @@ const DetailNoticeForm = ({ merit, online, region, age }) => {
                                 </Icon>
                             </Col>
                             <Col span={3} align={'center'} justify={'center'}>
-                                {(merit === 'active') ?
-                                    (<Icon direction={'column'} size={'7rem'} justIcon value={'활동적인'} >
+                                {(merit === 'education') ?
+                                    (<Icon direction={'column'} size={'7rem'} justIcon value={'교육관련'} >
                                         <Img src={merit_active_color} width={'5rem'}></Img>
                                     </Icon>)
-                                    : (merit === "animal") ?
+                                    : (merit === "cooking") ?
                                         (
-                                            <Icon direction={'column'} size={'7rem'} justIcon value={'동물조아'}>
+                                            <Icon direction={'column'} size={'7rem'} justIcon value={'요리조아'}>
                                                 <Img src={merit_animal_color} width={'5rem'}></Img>
                                             </Icon>
                                         ) : (merit === "disaster") ?
@@ -38,10 +38,10 @@ const DetailNoticeForm = ({ merit, online, region, age }) => {
                                                 <Icon direction={'column'} size={'7rem'} justIcon value={'재난관련'}>
                                                     <Img src={merit_disaster_color} width={'5rem'}></Img>
                                                 </Icon>
-                                            ) : (merit === "farming") ?
+                                            ) : (merit === "eco") ?
                                                 (
-                                                    <Icon direction={'column'} size={'7rem'} justIcon value={'재난관련'}>
-                                                        <Img src={merit_farming_color} width={'5rem'}></Img>
+                                                    <Icon direction={'column'} size={'7rem'} justIcon value={'환경조아'}>
+                                                        <Img src={merit_eco_color} width={'5rem'}></Img>
                                                     </Icon>
                                                 ) : null}
 
@@ -76,13 +76,13 @@ const DetailNoticeForm = ({ merit, online, region, age }) => {
                         <>
                             <Col span={4} align={'center'} justify={'center'} style={{ marginTop: "1rem" }}>
                                 {
-                                    (merit === 'active') ?
-                                        (<Icon direction={'column'} size={'7rem'} justIcon value={'활동적인'} >
+                                    (merit === 'education') ?
+                                        (<Icon direction={'column'} size={'7rem'} justIcon value={'교육관련'} >
                                             <Img src={merit_active_color} width={'5rem'}></Img>
                                         </Icon>)
-                                        : (merit === "animal") ?
+                                        : (merit === "cooking") ?
                                             (
-                                                <Icon direction={'column'} size={'7rem'} justIcon value={'동물조아'}>
+                                                <Icon direction={'column'} size={'7rem'} justIcon value={'요리조아'}>
                                                     <Img src={merit_animal_color} width={'5rem'}></Img>
                                                 </Icon>
                                             ) : (merit === "disaster") ?
@@ -90,10 +90,10 @@ const DetailNoticeForm = ({ merit, online, region, age }) => {
                                                     <Icon direction={'column'} size={'7rem'} justIcon value={'재난관련'}>
                                                         <Img src={merit_disaster_color} width={'5rem'}></Img>
                                                     </Icon>
-                                                ) : (merit === "farming") ?
+                                                ) : (merit === "eco") ?
                                                     (
-                                                        <Icon direction={'column'} size={'7rem'} justIcon value={'재난관련'}>
-                                                            <Img src={merit_farming_color} width={'5rem'}></Img>
+                                                        <Icon direction={'column'} size={'7rem'} justIcon value={'환경조아'}>
+                                                            <Img src={merit_eco_color} width={'5rem'}></Img>
                                                         </Icon>
                                                     ) : null
 

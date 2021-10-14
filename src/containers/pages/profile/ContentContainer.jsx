@@ -19,8 +19,7 @@ const ContentContainer = ({
     console.log(merit);
     console.log(basic);
     console.log(regions);
-    console.log(true && true && true && true && true)
-    // console.log(merit.active && merit.animal && merit.disaster && merit.farming && merit.online
+    // console.log(merit.education && merit.cooking && merit.disaster && merit.eco && merit.online
     //     && basic.age && basic.name && basic.region)
 
     /**
@@ -53,10 +52,10 @@ const ContentContainer = ({
 
     /**
     * @description  유저 merit 정보 넣기
-    * @param active t/f
-    * @param animal t/f
+    * @param education t/f
+    * @param cooking t/f
     * @param disaster t/f
-    * @param farming t/f
+    * @param eco t/f
     * @param online t/f
     */
     const [userMeritProfile, setUserMeritProfile] = useState({})
@@ -136,25 +135,25 @@ const ContentContainer = ({
     /**
      * @description merit 수정   FUNCTION  */
     let editMeritProfileFunction = {
-        active: () => {
-            (userMeritProfile.active === true) ?
-                setUserMeritProfile((state) => ({ ...state, active: false })) :
-                setUserMeritProfile((state) => ({ ...state, active: true }))
+        education: () => {
+            (userMeritProfile.education === true) ?
+                setUserMeritProfile((state) => ({ ...state, education: false })) :
+                setUserMeritProfile((state) => ({ ...state, education: true }))
         },
-        animal: () => {
-            (userMeritProfile.animal === true) ?
-                setUserMeritProfile((state) => ({ ...state, animal: false })) :
-                setUserMeritProfile((state) => ({ ...state, animal: true }))
+        cooking: () => {
+            (userMeritProfile.cooking === true) ?
+                setUserMeritProfile((state) => ({ ...state, cooking: false })) :
+                setUserMeritProfile((state) => ({ ...state, cooking: true }))
         },
         disaster: () => {
             (userMeritProfile.disaster === true) ?
                 setUserMeritProfile((state) => ({ ...state, disaster: false })) :
                 setUserMeritProfile((state) => ({ ...state, disaster: true }))
         },
-        farming: () => {
-            (userMeritProfile.farming === true) ?
-                setUserMeritProfile((state) => ({ ...state, farming: false })) :
-                setUserMeritProfile((state) => ({ ...state, farming: true }))
+        eco: () => {
+            (userMeritProfile.eco === true) ?
+                setUserMeritProfile((state) => ({ ...state, eco: false })) :
+                setUserMeritProfile((state) => ({ ...state, eco: true }))
         },
         online: () => {
             (userMeritProfile.online === true) ?
@@ -214,10 +213,10 @@ const ContentContainer = ({
                 sex: userBasicProfile.sex
             },
             merit: {
-                active: userMeritProfile.active,
-                animal: userMeritProfile.animal,
+                education: userMeritProfile.education,
+                cooking: userMeritProfile.cooking,
                 disaster: userMeritProfile.disaster,
-                farming: userMeritProfile.farming,
+                eco: userMeritProfile.eco,
                 online: userMeritProfile.online
             }
         }
