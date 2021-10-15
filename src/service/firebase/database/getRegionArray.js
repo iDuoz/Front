@@ -18,6 +18,7 @@ const getRegionArray = async () => {
       message: `지역 받아오기 실패😥 `,
       description: e.message || e.code,
     });
+    throw Error('지역 실패');
   }
 };
 

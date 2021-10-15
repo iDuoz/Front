@@ -47,13 +47,13 @@ const SignUpProcess = (signUpInfo) => {
       });
       return res;
     })
-    .then((res) => {
+    .then(async (res) => {
       console.log('addUser Start');
       console.log(res);
       console.log(res.uid);
       // console.log(res.email)
 
-      addUser(res.uid, res.email)
+      await addUser(res.uid, res.email)
         .then((res) => {
           console.log('user DB save,,, ');
           console.log(res);

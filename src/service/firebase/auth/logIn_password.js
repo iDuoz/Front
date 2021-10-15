@@ -22,6 +22,7 @@ const SignIn = async ({ email, password }) => {
       message: `로그인 통신 실패😥 `,
       description: e.message || e.code,
     });
+    throw Error('로그인 실패');
   }
 };
 

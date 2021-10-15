@@ -184,7 +184,6 @@ const ContentContainer = ({
         login_process(logInInfo)
             .then((res) => {
                 console.log(logInInfo)
-                history.push('/profile')
             })
             .catch((e) =>
                 notification['error']({

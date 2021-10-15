@@ -18,7 +18,7 @@ const getUserData = async (userUid) => {
       message: `user 정보받아오기 실패😥 `,
       description: e.message || e.code,
     });
-    return e;
+    throw Error('유저 실패');
   }
 };
 

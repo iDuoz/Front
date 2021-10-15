@@ -1,85 +1,6 @@
 import React from 'react';
-import { BsChevronDoubleDown } from 'react-icons/bs';
 import styled from 'styled-components';
-
-
-const Section = styled.div`
-margin : 0;
- background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  overflow: hidden;
-  will-change: transform;
-  backface-visibility: hidden;
-  height: 130vh;
-  position: fixed;
-  width: 100%;
-  transform: translateY(30vh);
-  transition : all 1.2s cubic-bezier(0.22, 0.44, 0, 1);
-  background-image: url(${props => props.backgroundImg});
-  background-color : ${props => props.backGroundColor};
-  z-index : ${props => props.zIndex};
-  &:before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.03);
-}
-${props => (props.index === 0) ? `
-transform: translateY(-15vh);
-
-` : null}
-
- ${props => (props.sectionScrollType === "up-scroll") ?
-        `transform: translate3d(0,30vh, 0);`
-        : null}
-
-
-${props => (props.sectionScrollType === "down-scroll") ?
-        `transform: translate3d(0, -130vh, 0);`
-        : `transform: translate3d(0, 30vh,0);`
-    }
-${props => (props.index === props.currentSlider) ?
-        `transform: translate3d(0, -15vh, 0);` : null
-    }
-`
-const ContentWrapper = styled.div`
-margin : 0;
-height: 100vh;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    flex-flow: column nowrap;
-    color: #fff;
-    font-family: Montserrat;
-    text-transform: uppercase;
-    transform: translateY(40vh);
-    will-change: transform;
-    backface-visibility: hidden;
-    transition : all 1.7s cubic-bezier(0.22, 0.44, 0, 1);
-    ${props => (props.index === 0) ? `
-    transform: translateY(15vh);` : null}
- ${props => (props.sectionScrollType === "up-scroll") ?
-        `transform: translateY(30vh);`
-        : null}
-
-
-${props => (props.sectionScrollType === "down-scroll") ?
-        `transform: translateY(40vh);`
-        : `transform: translateY(30vh);`
-    }
-
-${props => (props.index === props.currentSlider) ?
-        `transform: translateY(15vh);` : null
-    }
-`
-
-
+import { HomeSectionForm } from "../../../"
 
 const ConstTitle = styled.p`
 margin : 0;
@@ -89,38 +10,6 @@ margin : 0;
 const ContentSubTitle = styled.p`
 margin : 0;
 `
-const DownIcon = styled.div`
-position: absolute;
-    left: 0;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    bottom: 40px;
-    width: 10px;
-    font-size: 2.5vw;
-    color: white;
-    z-index: 11;
-    opacity: 1;
-    filter: alpha(opacity=100);
-    cursor: pointer;
-    -webkit-animation: glow 4s infinite;
-    animation: glow 4s infinite;
-    @keyframes glow {
-  0% {
-    opacity:1;
-    filter:alpha(opacity=100);
-  }
-  
-  50% {
-    opacity:0.3;
-    filter:alpha(opacity=30);
-    -webkit-transform:translateY(10px);
-            transform:translateY(10px);
-
-  }
-}
-`
-
 
 const SecondSectionForm = ({ currentSlider, sectionScrollType, }) => {
 
@@ -128,26 +17,17 @@ const SecondSectionForm = ({ currentSlider, sectionScrollType, }) => {
 
     return (
         <>
-            <Section
-                index={1}
-                currentSlider={currentSlider}
-                sectionScrollType={sectionScrollType}
-                backGroundColor={'#fbeeca'}
-                zIndex={2}
-            >
-                <ContentWrapper index={1} currentSlider={currentSlider} sectionScrollType={sectionScrollType}>
-                    <ConstTitle>
-                        chaeeun && Mina
-                    </ConstTitle>
-                    <ContentSubTitle>
-                        Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras ut massa mattis nibh semper pretium.
-                    </ContentSubTitle>
-                    <DownIcon>
-                        <BsChevronDoubleDown />
-                    </DownIcon>
-                </ContentWrapper>
-            </Section>
 
+            <HomeSectionForm backGroundColor={'#fbeeca'} pageIndex={1} currentSlider={currentSlider} sectionScrollType={sectionScrollType}>
+                <ConstTitle>
+                    chaeeun && Mina
+                </ConstTitle>
+                <ContentSubTitle>
+                    Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Cras ut massa mattis nibh semper pretium.
+                </ContentSubTitle>
+
+
+            </HomeSectionForm>
         </>
     )
 }

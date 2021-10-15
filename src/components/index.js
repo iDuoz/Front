@@ -17,6 +17,7 @@ export { default as LoveBtn } from './atoms/LoveBtn';
 export { default as IframeBox } from './atoms/IframeBox';
 export { default as LinkBtn } from './atoms/LinkBtn';
 //MOLECULES
+export { default as HomeSectionForm } from './molecules/HomeSectionForm/index';
 export { default as VerifiedForm } from './molecules/VerifiedForm/VerifiedForm';
 export { default as NoticeCardForm } from './molecules/NoticeCardForm/index';
 export { default as MeritIcon } from './molecules/MeritIcon/index';
