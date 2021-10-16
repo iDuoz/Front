@@ -75,7 +75,7 @@ const Header = ({
                         <SideNav></SideNav>
                     </Col>
                     <Col xs={2} sm={2} md={2} lg={2} xl={2} xxl={2} span={2} justify={'center'} align={'center'} >
-                        <Logo width={'6.5rem'} height={'2.2rem'}></Logo>
+                        <Logo width={'10rem'}></Logo>
                     </Col>
                     <Col xs={0} sm={0} md={8} lg={8} xl={8} xxl={8} span={8} colRef={menuWrapperRef} align={'center'} justify={'center'} style={{ position: "relative", padding: "10px 0" }} >
                         {

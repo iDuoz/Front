@@ -79,7 +79,7 @@ const NavLi = styled.li`
 
 const NavLiOne = styled(NavLi)`
   ${props => props.open ? `
-      transition-delay: 0.16s;
+  transition-delay: 0.16s;
   transform: translateX(0px);
   opacity: 1;
 `: null}
@@ -125,46 +125,46 @@ cursor: pointer;
 `
 
 const SideNav = () => {
-    const history = useHistory();
-    const [isHamburgerOpen, setIsHamburgerOpen] = useState(false)
+  const history = useHistory();
+  const [isHamburgerOpen, setIsHamburgerOpen] = useState(false)
 
 
 
-    const burgerOnclick = (e) => {
-        console.log(e);
-        isHamburgerOpen ? setIsHamburgerOpen(false) : setIsHamburgerOpen(true)
-    }
-    return (
-        <>
-            <HamburgerMenu>
-                <HamburgerBtn onClick={burgerOnclick}>
-                    <HamburgerSpan open={isHamburgerOpen}></HamburgerSpan>
-                    <HamburgerSpanTwo open={isHamburgerOpen}></HamburgerSpanTwo>
-                    <HamburgerSpanThree open={isHamburgerOpen}></HamburgerSpanThree>
-                </HamburgerBtn>
-            </HamburgerMenu>
-            <NavWrapper open={isHamburgerOpen}>
-                <ul style={{
-                    listStyleType: 'none',
-                    paddingInlineStart: '35px'
-                }}>
-                    <NavLiOne open={isHamburgerOpen}>
-                        <NavA onClick={() => { history.push('/notice') }}>전체 게시글</NavA>
-                    </NavLiOne>
-                    <NavLiTwo open={isHamburgerOpen}>
-                        <NavA onClick={() => { history.push('/createnotice') }}>게시글 작성</NavA>
-                    </NavLiTwo>
-                    <NavLiThree open={isHamburgerOpen}>
-                        <NavA onClick={() => { history.push('/profile') }}>Profile</NavA>
-                    </NavLiThree>
-                    <NavLiFour open={isHamburgerOpen}>
-                        <NavA onClick={() => { history.push('/proposal') }}>추천 봉사</NavA>
-                    </NavLiFour>
-                </ul>
-            </NavWrapper>
+  const burgerOnclick = (e) => {
+    console.log(e);
+    isHamburgerOpen ? setIsHamburgerOpen(false) : setIsHamburgerOpen(true)
+  }
+  return (
+    <>
+      <HamburgerMenu>
+        <HamburgerBtn onClick={burgerOnclick}>
+          <HamburgerSpan open={isHamburgerOpen}></HamburgerSpan>
+          <HamburgerSpanTwo open={isHamburgerOpen}></HamburgerSpanTwo>
+          <HamburgerSpanThree open={isHamburgerOpen}></HamburgerSpanThree>
+        </HamburgerBtn>
+      </HamburgerMenu>
+      <NavWrapper open={isHamburgerOpen}>
+        <ul style={{
+          listStyleType: 'none',
+          paddingInlineStart: '35px'
+        }}>
+          <NavLiOne open={isHamburgerOpen}>
+            <NavA onClick={() => { history.push('/notice') }}>전체 게시글</NavA>
+          </NavLiOne>
+          <NavLiTwo open={isHamburgerOpen}>
+            <NavA onClick={() => { history.push('/createnotice') }}>게시글 작성</NavA>
+          </NavLiTwo>
+          <NavLiThree open={isHamburgerOpen}>
+            <NavA onClick={() => { history.push('/profile') }}>Profile</NavA>
+          </NavLiThree>
+          <NavLiFour open={isHamburgerOpen}>
+            <NavA onClick={() => { history.push('/proposal') }}>추천 봉사</NavA>
+          </NavLiFour>
+        </ul>
+      </NavWrapper>
 
-        </>
-    )
+    </>
+  )
 }
 
 

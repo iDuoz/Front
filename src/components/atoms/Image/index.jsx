@@ -6,12 +6,11 @@ const ImageStyle = styled.img.attrs((props) => ({
 }))`
     // width : ${props => props.width};
     ${(props) => (props.circle) ? ` border-radius : 50%; ` : null}
-    height :  ${props => props.height || props.width} ;
+    height :  ${props => props.height || null} ;
     ${(props) => (props.cursor) ? ` cursor : ${props.cursor}` : null}
-    min-width : ${props => props.width};
+    width : ${props => props.width};
     ${(props) => (props.circle) ? ` border-radius : 100%; ` : null}
     border : ${props => (props.border) || null};
-  
 `
 
 const Image = ({ src, width, circle, height, cursor, border }) => (
@@ -22,3 +21,4 @@ const Image = ({ src, width, circle, height, cursor, border }) => (
 )
 
 export default memo(Image)
+

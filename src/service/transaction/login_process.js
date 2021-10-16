@@ -58,44 +58,6 @@ const LogInProcess = async (logInInfo) => {
     .catch((e) => {
       console.log(e);
     });
-  /////////////////////여기까지만 실행함 ㅗㅗㅗㅗ./////
-  // console.log(store.getState().login_reducer);
-  // console.log(store.getState().login_reducer.logined);
-
-  // if (store.getState().login_reducer.logined) {
-  //   await getRegionArray()
-  //     .then((res) => {
-  //       console.log(res);
-  //       store.dispatch(ACTION.SET_REGION__ACTION_FUNC(res));
-  //     })
-  //     .catch((e) => {
-  //       notification['error']({
-  //         message: 'error',
-  //         description: e.message || e.code,
-  //       });
-  //     });
-  // }
-  //console.log('store.getState().user_reducer.uid' + store.getState().user_reducer.uid);
-  // if (store.getState().user_reducer.uid) {
-  //   await getUserData(store.getState().user_reducer.uid)
-  //     .then((res) => {
-  //       console.log(res);
-  //       store.dispatch(
-  //         ACTION.SET_USER__ACTION_FUNC({
-  //           user: {
-  //             basic: res.basic,
-  //             loveNotice: res.loveNotice,
-  //             merit: res.merit,
-  //             role: res.role,
-  //             totalLoveNotice: res.totalLoveNotice,
-  //           },
-  //         })
-  //       );
-  //     })
-  //     .catch((e) => {
-  //       console.log(e);
-  //     });
-  // }
 };
 
 export default LogInProcess;

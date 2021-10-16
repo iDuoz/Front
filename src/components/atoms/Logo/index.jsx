@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { useHistory } from "react-router-dom"
-import logo from "../../../assets/images/meritswhite.png";
+import logo from "../../../assets/icons/meritShareYellow.svg";
 
 const LogoStyle = styled.div`
   width : auto;
@@ -15,7 +15,7 @@ const Index = ({ width, height }) => {
         <>
             <LogoStyle onClick={() => history.push("/")}>
                 <img src={logo} alt="" style={{
-                    height: `${height}`,
+                    // height: `${height}`,
                     width: `${width}`
                 }} />
             </LogoStyle>

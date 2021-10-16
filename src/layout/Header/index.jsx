@@ -4,7 +4,7 @@ import HeaderContent from "../../containers/redux/components/Header/index"
 const HeaderStyle = styled.div`
     z-index:20;
     width : 100%;
-  min-height : 5rem;
+  height : 6rem;
   background-color: #edeff2;
   display : flex;
   position : ${props => (props.position) ? (props.position) : `fixed`};

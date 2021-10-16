@@ -1,79 +1,83 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { BsChevronDoubleDown } from "react-icons/bs"
-import { Btn, HomeSectionForm } from "../../../"
-import TypoHighlight from "../../../atoms/TypoHighlight"
+import { Col, Row } from "../../../../layout/index"
 
-const ConstTitle = styled.div`
-margin : 0;
- font-size: 10rem;
-    line-height: 1.4;
+import { Img, Typo } from '../../..';
+import puzzleMain from "../../../../assets/icons/puzzleMain.svg"
+
+import { useInView } from "react-intersection-observer"
+
+
+const SettingTrans = styled.div`
+    transform: translateY(20px);
+    transition: 0.2s ease-in-out;
+    opacity: 0;
+    width : 100%;
 `
 
-const ContentSubTitle = styled.div`
-margin : 0;
-`
-
-const DownIcon = styled.div`
-position: absolute;
-    left: 0;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    bottom: 4.5rem;
-    width: 60px;
-    font-size: 30px;
-    color: #919191dd;
-    z-index: 11;
+const TransSection = styled(SettingTrans)`
+display : flex;
+justify-content : ${props => props.justify};
+align-items :${props => props.align};
+height : ${props => props.height};
+background-color : ${props => props.backgroundColor};
+${props => props.open ? `
+    transition-delay : ${props.Index * 0.2}s;
+    transform: translateY(0px);
     opacity: 1;
-    filter: alpha(opacity=100);
-    cursor: pointer;
-    -webkit-animation: glow 4s infinite;
-    animation: glow 4s infinite;
-    @keyframes glow {
-  0% {
-    opacity:1;
-    filter:alpha(opacity=100);
-  }
-  
-  50% {
-    opacity:0.3;
-    filter:alpha(opacity=30);
-    -webkit-transform:translateY(10px);
-            transform:translateY(10px);
-
-  }}
-
-   @media(max-width: 1200px) {
-    bottom: 5rem;
-      }
-      @media(max-width: 1024px) {
-        bottom: 6rem;
-      }
-      @media(max-width: 768px) {
-        bottom: 7rem;
-      }
-
+`: null}
 `
 
-const FirstSectionForm = ({ currentSlider, sectionScrollType, settingMobileBtn, }) => {
 
+const FirstSectionForm = () => {
+    const [ref, inView] = useInView()
+    const [isOpenFirstSection, setIsOpenFirstSection] = useState(false)
 
+    useEffect(() => {
+        if (inView) {
+            setIsOpenFirstSection(true)
+        }
 
+    }, [inView])
 
     return (
         <>
-            <HomeSectionForm backGroundColor={'#edeff2'} pageIndex={0} currentSlider={currentSlider} sectionScrollType={sectionScrollType}>
-                <ConstTitle style={{ color: '#979797' }} >
-                    iDuoz : <TypoHighlight highLightColor={'#8abdff84;'} fontSize={'10rem'}>MeritShare</TypoHighlight>
-                </ConstTitle>
-                <ContentSubTitle style={{ color: '#afafaf' }}>
-                    Scroll down and up please!
-                </ContentSubTitle>
-                <DownIcon onClick={settingMobileBtn.pageDown}>
-                    <BsChevronDoubleDown />
-                </DownIcon>
-            </HomeSectionForm>
+            <Row style={{ height: "calc(100% - 6rem)", marginTop: "6.5rem" }}>
+                <Col span={12} style={{ height: '100%', alignContent: "space-between" }}>
+                    <TransSection ref={ref} open={isOpenFirstSection} Index={1} height={"70%"} align={'center'} justify={'center'}>
+                        <Row justify={'center'} align={'center'} style={{ padding: '3rem 0' }}>
+                            <Col justify={'center'} align={'center'} span={12}>
+                                <Img src={puzzleMain} width={'13rem'} ></Img>
+                            </Col>
+                            <Col justify={'center'} align={'center'} span={12}>
+                                <Typo size={'4rem'} color={'#595959'} fontFamily={'Noto Serif KR'} weight={'bold'}>Find your Share</Typo>
+                            </Col>
+                            <Col justify={'center'} align={'center'} span={12}>
+                                <Typo size={'1rem'} color={'#595959'} fontFamily={'Noto Sans KR'} weight={'400'}>
+                                    MeritShare에서 나만의 merit를 나눌 수 있는 봉사를 알아보세요.
+                                </Typo>
+                            </Col>
+                        </Row>
+                    </TransSection>
+
+                    <Row justify={'center'} align={'center'} style={{ padding: '3rem 0', height: '30%', backgroundColor: 'rgba(254, 235, 182, 0.32)' }}>
+                        <TransSection open={isOpenFirstSection} Index={2}>
+                            <Col justify={'center'} align={'center'} span={5}>
+                                <Typo size={'3.2rem'} color={'#FD9F28'} fontFamily={'Noto Serif KR'} weight={'500'}>MeritShare</Typo>
+                            </Col>
+                            <Col justify={'center'} align={'center'} span={7}>
+                                <Typo padding={'0 0 5px 0'} size={'1.3rem'} color={'#FD9F28'} fontFamily={'Noto Sans KR'} weight={'500'} full>
+                                    나만의 장점을 선행으로 나눕니다.
+                                </Typo>
+                                <Typo size={'1.3rem'} color={'#FD9F28'} fontFamily={'Noto Sans KR'} weight={'500'} full>
+                                    능력을 따뜻함으로 표현하는 방법 'MeritShare'
+                                </Typo>
+                            </Col>
+                        </TransSection>
+                    </Row>
+
+                </Col>
+            </Row>
         </>
     )
 }

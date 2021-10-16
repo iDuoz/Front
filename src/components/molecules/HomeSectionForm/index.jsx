@@ -56,7 +56,6 @@ height: 100vh;
     justify-content: center;
     text-align: center;
     flex-flow: column nowrap;
-    color: #fff;
     font-family: Montserrat;
     transform: translateY(40vh);
     will-change: transform;
@@ -75,11 +74,12 @@ ${props => (props.index === props.currentSlider) ?
 `
 
 
-const HomeSectionForm = ({ backGroundColor, pageIndex, currentSlider, sectionScrollType, children }) => {
+const HomeSectionForm = ({ refs, backGroundColor, pageIndex, currentSlider, sectionScrollType, children }) => {
 
     return (
         <>
             <Section
+
                 backGroundColor={backGroundColor}
                 index={pageIndex}
                 currentSlider={currentSlider}
