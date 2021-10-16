@@ -10,15 +10,15 @@ jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
-      - name : Checkout Repo🐝
-       uses: actions/checkout@v2
-      - name : Install and Build 🔧 
-       run: yarn && yarn build
-       env:
-          CI: ''
-      - name : Deploy to Firebase🚀
-       uses: FirebaseExtended/action-hosting-deploy@v0
-       with:
+      - name: Checkout code🕵️‍♂️
+        uses: actions/checkout@v2
+      - name : Install and Build🔧
+        run: yarn && yarn build
+        env:
+            CI: ''
+      - name : Deploy to Firebas🚀
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_EUN_CHERRY }}'
           channelId: live
