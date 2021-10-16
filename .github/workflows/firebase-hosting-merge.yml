@@ -12,9 +12,11 @@ jobs:
     steps:
       -name : Checkout Repo🐝
        uses: actions/checkout@v2
+      -name : Install and Build 🔧 
        run: yarn && yarn build
        env:
           CI: ''
+      -name : Deploy to Firebase🚀
        uses: FirebaseExtended/action-hosting-deploy@v0
        with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
