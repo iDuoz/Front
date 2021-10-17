@@ -12,11 +12,12 @@ jobs:
     steps:
       - name: Checkout code🕵️‍♂️
         uses: actions/checkout@v2
-      - name : Install and Build🔧
+      - name: Install and Build🔧
         run: yarn && yarn build
         env:
-            CI: ''
-      - name : Deploy to Firebas🚀
+          REACT_APP_API_KEY='hihi'
+          CI: ''
+      - name: Deploy to Firebase🚀
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
