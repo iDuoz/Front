@@ -35,48 +35,41 @@ const SignUpProcess = async (signUpInfo) => {
           },
         })
       );
+      console.log(res.uid);
+      console.log(res.email);
+      return res;
     })
+    .then(async (res) => {
+      await addUser(res.uid, res.email)
+        .then((res) => {
+          console.log('user add DB save,,, ');
+          console.log(res);
+          notification.open({
+            message: 'siignup aadd user',
+            description: '통신성공',
+            icon: '🤗',
+          });
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    })
+
     .catch((e) => {
       console.log(e);
     });
 
-  console.log(store.getState().user_reducer);
-  console.log(store.getState().user_reducer.uid && store.getState().user_reducer.basic.email);
-  if (store.getState().user_reducer.uid && store.getState().user_reducer.basic.email) {
-    console.log('adduser시작');
-    await addUser(store.getState().user_reducer.uid, store.getState().user_reducer.basic.email)
-      .then((res) => {
-        console.log('user add DB save,,, ');
-        console.log(res);
-        notification.open({
-          message: 'siignup aadd user',
-          description: '통신성공',
-          icon: '🤗',
-        });
-      })
-      .catch((e) => {
-        console.log(e);
+  await getRegionArray()
+    .then((res) => {
+      console.log(res);
+      store.dispatch(ACTION.SET_REGION__ACTION_FUNC(res));
+    })
+    .catch((e) => {
+      notification['error']({
+        message: 'error',
+        description: e.message || e.code,
       });
-  }
-
-  console.log(store.getState().login_reducer);
-  console.log(store.getState().login_reducer.logined);
-
-  //리덕스에 로그인이 저장됬다면 -> getRegion
-  if (store.getState().login_reducer.logined) {
-    console.log('getRegionArray시작');
-    await getRegionArray()
-      .then((res) => {
-        console.log(res);
-        store.dispatch(ACTION.SET_REGION__ACTION_FUNC(res));
-      })
-      .catch((e) => {
-        notification['error']({
-          message: 'error',
-          description: e.message || e.code,
-        });
-      });
-  }
+    });
 };
 
 export default SignUpProcess;

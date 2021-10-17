@@ -16,7 +16,7 @@ const DetailNoticeForm = ({ merit, online, region, age }) => {
         <>
             <Row align={'center'} justify={'center'}>
                 {
-                    (online === true) ?
+                    (online && merit) ?
                         <>
                             <Col span={3} align={'center'} justify={'center'} style={{ marginTop: "1rem" }}>
                                 <Icon direction={'column'} size={'7rem'} justIcon value={'온라인'}>
@@ -107,7 +107,12 @@ const DetailNoticeForm = ({ merit, online, region, age }) => {
                                                             <Icon direction={'column'} size={'7rem'} justIcon value={'환경조아'}>
                                                                 <Img src={merit_government_color} width={'5rem'}></Img>
                                                             </Icon>
-                                                        ) : null
+                                                        ) : (online) ?
+                                                            (
+                                                                <Icon direction={'column'} size={'7rem'} justIcon value={'온라인'}>
+                                                                    <Img src={merit_online_color} width={'5rem'}></Img>
+                                                                </Icon>
+                                                            ) : null
                                 }
                             </Col>
                             <Col span={4} align={'center'} justify={'center'}>

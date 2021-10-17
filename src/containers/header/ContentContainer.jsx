@@ -42,7 +42,7 @@ const ContentContainer = ({
 
 
 
-    const [active, setActive] = useState({ index: 0 });
+    const [active, setActive] = useState({ index: null });
     const menuWrapperRef = React.createRef();
     const headerItems = useRef(setHeaderItem.map(createRef))
     const indicator1 = useRef();
@@ -92,9 +92,21 @@ const ContentContainer = ({
 
 
     useEffect(() => {
-        animate()
+        if (active.index === null) {
+            gsap.to(indicator1.current, {
+                width: 0,
+                height: 0,
+                duration: .8
+            })
+            gsap.to(indicator2.current, {
+                width: 0,
+                height: 0,
+                duration: 1
+            })
+        } else {
+            animate()
+        }
         window.addEventListener('resize', animate)
-
         return (() => {
             window.removeEventListener('resize', animate)
         })
@@ -107,6 +119,28 @@ const ContentContainer = ({
         setActive((state) => ({ ...state, index: index }))
     }
 
+    const handleWrapperOnMouseLeave = () => {
+        if (path === '/') {
+            setActive((state) => ({ ...state, index: null }))
+        }
+        if (path === '/notice') {
+            setActive((state) => ({ ...state, index: 0 }))
+        }
+        if (path === '/createnotice') {
+            setActive((state) => ({ ...state, index: 1 }))
+        }
+        if (path === '/profile') {
+            setActive((state) => ({ ...state, index: 2 }))
+        }
+        if (path === '/proposal') {
+            setActive((state) => ({ ...state, index: 3 }))
+        }
+    }
+
+
+    const handleOnMouseLeave = (e) => {
+        e.stopPropagation()
+    }
 
     //SECTION 모달 관리
     const [isHeaderLoginModal, setIsHeaderLoginModal] = useState({
@@ -237,7 +271,8 @@ const ContentContainer = ({
                 active={active}
                 indicator1={indicator1}
                 indicator2={indicator2}
-
+                handleWrapperOnMouseLeave={handleWrapperOnMouseLeave}
+                handleOnMouseLeave={handleOnMouseLeave}
 
                 // modal
                 isHeaderLoginModal={isHeaderLoginModal}

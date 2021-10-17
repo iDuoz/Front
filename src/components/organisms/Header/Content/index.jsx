@@ -10,6 +10,13 @@ import LoginModalForm from "../LoginModalForm"
 
 import SideNav from '../../SideNav';
 
+const MenuItemWrapper = styled.div`
+height : fit-content;
+width : fit-content;
+display : flex;
+`
+
+
 const MenuItem = styled.div`
  padding: 16px 21px;
  display: flex;
@@ -22,7 +29,6 @@ const MenuItem = styled.div`
     @media(max-width: 576px){ padding : 10px 16px; }
 `
 const Indicator = styled.div`
-
     position: absolute;
     top: 0;
     left: 0;
@@ -33,6 +39,7 @@ const Indicator = styled.div`
  align-items: center;
 
 `
+
 /**
  * @param {HeaderItemName} header에들어가는pathName 
  * @Detail 최대 5개  
@@ -46,6 +53,8 @@ const Header = ({
     active,
     indicator1,
     indicator2,
+    handleWrapperOnMouseLeave,
+    handleOnMouseLeave,
     //modal
     isHeaderLoginModal,
     handleLoginModal,
@@ -78,18 +87,20 @@ const Header = ({
                         <Logo width={'10rem'}></Logo>
                     </Col>
                     <Col xs={0} sm={0} md={8} lg={8} xl={8} xxl={8} span={8} colRef={menuWrapperRef} align={'center'} justify={'center'} style={{ position: "relative", padding: "10px 0" }} >
-                        {
-                            setHeaderItem.map((items, index) => (
-                                <MenuItem
-                                    key={index}
-                                    ref={headerItems.current[index]}
-                                    onMouseEnter={() => { handleActiveIndex(index) }}
-                                    onMouseLeave={((e) => { e.stopPropagation() })}
-                                    onClick={() => { history.push(items.path) }}
-                                    active={active.index === index ? true : false}
-                                >{items.name}</MenuItem>
-                            ))
-                        }
+                        <MenuItemWrapper onMouseLeave={handleWrapperOnMouseLeave} >
+                            {
+                                setHeaderItem.map((items, index) => (
+                                    <MenuItem
+                                        key={index}
+                                        ref={headerItems.current[index]}
+                                        onMouseEnter={() => { handleActiveIndex(index) }}
+                                        onMouseLeave={handleOnMouseLeave}
+                                        onClick={() => { history.push(items.path) }}
+                                        active={active.index === index ? true : false}
+                                    >{items.name}</MenuItem>
+                                ))
+                            }
+                        </MenuItemWrapper>
                         <Indicator ref={indicator1}></Indicator>
                         <Indicator ref={indicator2}></Indicator>
                     </Col>

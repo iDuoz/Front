@@ -164,7 +164,7 @@ const ContentContainer = ({
   const noticeSubmit = () => {
     // console.log(setNoticeData)
     // console.log(setNoticeData.age && setNoticeData.merit && setNoticeData.title && setNoticeData.region && true)
-    (noticeData.age && noticeData.merit && noticeData.title && noticeData.region && true) ?
+    ((noticeData.merit || noticeData.online) && noticeData.age && noticeData.title && noticeData.region && true) ?
       addNotices({
         age: noticeData.age,
         merit: noticeData.merit,

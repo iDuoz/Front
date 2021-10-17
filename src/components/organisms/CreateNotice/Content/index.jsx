@@ -118,7 +118,7 @@ const CreateNoticeContent = ({
 
   return (
     <>
-      <Row style={{ minHeight: 'calc(100% - 6rem)' }}>
+      <Row style={{ minHeight: 'calc(100% - 7.5rem)' }}>
         {/* SECTION  left 글쓰기 */}
         <Col xs={12} sm={12} md={6} lg={6} xl={6} xxl={6} span={6} align={'start'} style={{
           backgroundColor: 'white', minHeight: '100%',

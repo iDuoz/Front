@@ -54,7 +54,6 @@ const ProfileContent = ({
                                 <Typo size={"1.1rem"} opacity={'0.5'}>
                                     {userBasicProfile.email || '로그인이 필요합니다'}
                                 </Typo>
-
                             </Col>
                         </Row>
                         <Row gutter={[15, 0]} style={{ marginTop: '2rem' }}>
@@ -87,9 +86,9 @@ const ProfileContent = ({
                             </Col>
                         </Row>
                         <Divider color={'#000000'} marginTop={'15px'} marginBottom={'0px'} borderWidth={'3px'} ></Divider>
-                        <Row justify={"space-between"} style={{ height: "60px" }}>
+                        <Row justify={"space-between"} style={{ height: "5rem" }}>
                             <Col span={2} justify={"center"} align={"center"} style={{ backgroundColor: "#dbdee9", height: "inherit" }}>
-                                <Typo weight={'bold'}>이름</Typo>
+                                <Typo size={"1.1rem"} weight={'bold'}>이름</Typo>
                             </Col>
                             <Col span={10} align={'center'} style={{ backgroundColor: "#edeff2 ", height: "inherit" }}>
                                 <Row align={'initial'} justify={"space-between"}>
@@ -109,8 +108,8 @@ const ProfileContent = ({
                                             <>
                                                 <Col offset={0.4} span={12} justify={"center"} align={"center"} >
                                                     <Row align={'center'}>
-                                                        <Col xs={6} sm={6} md={6} lg={6} xl={6} xxl={6} align={'center'} justify={'start'} >
-                                                            <TextBox color={"black"} block
+                                                        <Col span={12} align={'center'} justify={'start'} >
+                                                            <TextBox color={"black"} block align={'left'}
                                                                 onChange={editBasicProfileFunction.name} value={userBasicProfile.name}></TextBox>
                                                         </Col>
 
@@ -122,9 +121,9 @@ const ProfileContent = ({
                             </Col>
                         </Row>
                         <Divider color={'#000000'} marginTop={'0px'} marginBottom={'0px'} borderWidth={'1.8px'} ></Divider>
-                        <Row justify={"space-between"} style={{ height: "60px" }}>
+                        <Row justify={"space-between"} style={{ height: "5rem" }}>
                             <Col span={2} justify={"center"} align={"center"} style={{ backgroundColor: "#dbdee9", height: "inherit" }}>
-                                <Typo weight={'bold'}>이메일</Typo>
+                                <Typo size={"1.1rem"} weight={'bold'}>이메일</Typo>
                             </Col>
                             <Col span={10} align={'center'} style={{ backgroundColor: "#edeff2 ", height: "inherit" }}>
                                 <Row align={'initial'} justify={"space-between"}>
@@ -144,10 +143,12 @@ const ProfileContent = ({
                                 </Row>
                             </Col>
                         </Row>
+
+
                         <Divider color={'#000000'} marginTop={'0px'} marginBottom={'0px'} borderWidth={'1.8px'} ></Divider>
-                        <Row justify={"space-between"} style={{ height: "60px" }}>
+                        <Row justify={"space-between"} style={{ height: "5rem" }}>
                             <Col span={2} justify={"center"} align={"center"} style={{ backgroundColor: "#dbdee9", height: "inherit" }}>
-                                <Typo weight={'bold'}>나이</Typo>
+                                <Typo size={"1.1rem"} weight={'bold'}>나이</Typo>
                             </Col>
                             <Col span={10} align={'center'} style={{ backgroundColor: "#edeff2 ", height: "inherit" }}>
                                 <Row align={'initial'} justify={"space-between"}>
@@ -167,9 +168,9 @@ const ProfileContent = ({
                                             <>
                                                 <Col offset={0.4} span={12} justify={"center"} align={"center"} >
                                                     <Row align={'center'}>
-                                                        <Col xs={6} sm={6} md={6} lg={6} xl={6} xxl={6} align={'center'} justify={'start'} >
+                                                        <Col span={12} align={'center'} justify={'start'} >
                                                             <Radio.Group onChange={editBasicProfileFunction.age} value={userBasicProfile.age}>
-                                                                <Radio value={"teen"}>미성년자</Radio>
+                                                                <Radio value={"teen"} >미성년자</Radio>
                                                                 <Radio value={"adult"}>성인</Radio>
                                                             </Radio.Group>
                                                         </Col>
@@ -181,10 +182,12 @@ const ProfileContent = ({
                                 </Row>
                             </Col>
                         </Row>
+
+
                         <Divider color={'#000000'} marginTop={'0px'} marginBottom={'0px'} borderWidth={'1.8px'} ></Divider>
-                        <Row justify={"space-between"} style={{ height: "60px" }}>
+                        <Row justify={"space-between"} style={{ height: "5rem" }}>
                             <Col span={2} justify={"center"} align={"center"} style={{ backgroundColor: "#dbdee9", height: "inherit" }}>
-                                <Typo weight={'bold'}>성별</Typo>
+                                <Typo size={"1.1rem"} weight={'bold'}>성별</Typo>
                             </Col>
                             <Col span={10} align={'center'} style={{ backgroundColor: "#edeff2 ", height: "inherit" }}>
                                 <Row align={'initial'} justify={"space-between"}>
@@ -221,11 +224,11 @@ const ProfileContent = ({
 
 
                         <Divider color={'#000000'} marginTop={'0px'} marginBottom={'0px'} borderWidth={'1.8px'} ></Divider>
-                        <Row justify={"space-between"} style={{ height: "60px" }}>
-                            <Col span={2} justify={"center"} align={"center"} style={{ backgroundColor: "#dbdee9", height: "inherit" }}>
-                                <Typo weight={'bold'}>지역</Typo>
+                        <Row align={'center'} justify={"space-between"} style={{ backgroundColor: "#dbdee9", minHeight: "5rem", height: 'max-content' }}>
+                            <Col span={2} justify={"center"} align={"center"} >
+                                <Typo size={'1.1rem'} weight={'bold'}>지역</Typo>
                             </Col>
-                            <Col span={10} align={'center'} style={{ backgroundColor: "#edeff2 ", height: "inherit" }}>
+                            <Col span={10} align={'center'} style={{ backgroundColor: "#edeff2 ", minHeight: "5rem", height: "auto", padding: "7px 0" }}>
                                 <Row align={'initial'} justify={"space-between"}>
                                     {
                                         (isEditForm === false) ?
@@ -257,12 +260,13 @@ const ProfileContent = ({
                                 </Row>
                             </Col>
                         </Row>
+
                         <Divider color={'#000000'} marginTop={'0px'} marginBottom={'0px'} borderWidth={'1.8px'} ></Divider>
-                        <Row justify={"space-between"} style={{ height: "60px" }}>
-                            <Col span={2} justify={"center"} align={"center"} style={{ backgroundColor: "#dbdee9", height: "inherit" }}>
-                                <Typo weight={'bold'}>추가지역</Typo>
+                        <Row align={'center'} justify={"space-between"} style={{ backgroundColor: "#dbdee9", minHeight: "5rem", height: 'max-content' }}>
+                            <Col span={2} justify={"center"} align={"center"} >
+                                <Typo size={'1.1rem'} weight={'bold'}>추가지역</Typo>
                             </Col>
-                            <Col span={10} align={'center'} style={{ backgroundColor: "#edeff2 ", height: "inherit" }}>
+                            <Col span={10} align={'center'} style={{ backgroundColor: "#edeff2 ", minHeight: "5rem", height: "auto", padding: "7px 0" }}>
                                 <Row align={'initial'} justify={"space-between"}>
                                     {
                                         (isEditForm === false) ?
@@ -313,7 +317,7 @@ const ProfileContent = ({
                     </Col>
                     {/* !SECTION Right */}
                 </Row>
-            </ContentStyle>
+            </ContentStyle >
         </>
     )
 }

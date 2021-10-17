@@ -147,6 +147,7 @@ const MeritIcon = ({ userMeritProfile, editMeritProfileFunction, blockClick }) =
                                         </Icon>
                             }
                         </Col>
+
                         <Col span={4} justify={'center'} align={'center'}>
                             {
                                 blockClick ?
@@ -165,10 +166,12 @@ const MeritIcon = ({ userMeritProfile, editMeritProfileFunction, blockClick }) =
                                             <Img src={merit_online_color} width={'5rem'}></Img>
                                         </Icon>
                                         :
+
                                         <Icon direction={'column'} size={'7rem'} value={'온라인'} weight={'500'}
                                             onClick={editMeritProfileFunction.online}>
                                             <Img src={merit_online} width={'5rem'}></Img>
                                         </Icon>
+
                             }
                         </Col>
                     </Row>

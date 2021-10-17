@@ -4,33 +4,22 @@ import styled from "styled-components"
 import { Row, Col } from '../../../layout'
 import { Img } from '../../index'
 import merit_education from "../../../assets/icons/merit_education.png"
+import merit_education_color from "../../../assets/icons/merit_education_color.png"
 import merit_cooking from "../../../assets/icons/merit_cooking.png"
+import merit_cooking_color from "../../../assets/icons/merit_cooking_color.png"
 import merit_disaster from "../../../assets/icons/merit_disaster.png"
+import merit_disaster_color from "../../../assets/icons/merit_disaster_color.png"
 import merit_eco from "../../../assets/icons/merit_eco.png"
+import merit_eco_color from "../../../assets/icons/merit_eco_color.png"
 import merit_online from "../../../assets/icons/merit_online.png"
+import merit_online_color from "../../../assets/icons/merit_online_color.png"
 import merit_government from "../../../assets/icons/merit_government.png"
+import merit_government_color from "../../../assets/icons/merit_government_color.png"
 import puzzle from "../../../assets/icons/puzzle.png"
 
-const CardWrapper = styled.div`
-margin : 10px 0;
- padding : 20px 20px 15px 20px;
-width : 100%;
-    height : 9rem;
-    /* background-color: rgb(248, 249, 250); */
-    border-radius: 11px;
-    cursor: pointer;
-    position : relative;  
-    box-shadow: 0.8rem 0.8rem 1.4rem #c8d0e7, -0.2rem -0.2rem 1.8rem #fff;
-
-`
 
 const CardColorSide = styled.div`
-background-color: #BA68C8;
-background-color : ${props => props.background || `#fdff89`};
-/* background-color: #52A43A;
-background-color: #F7AA17;
-background-color: #EF5350;
-background-color: #EF5350; */
+background-color : ${props => props.background || `#f3f03e`};
 
 position: absolute;
 left : 0;
@@ -41,10 +30,32 @@ border-top-left-radius: 11px;
 border-bottom-left-radius: 11px;
 transition: width 0.3s;
 `
+const CardWrapper = styled.div`
+margin : 10px 0;
+ padding : 20px 20px 15px 20px;
+width : 100%;
+    height : 9rem;
+    border-radius: 11px;
+    cursor: pointer;
+    position : relative;  
+    box-shadow: 0.8rem 0.8rem 1.4rem #c8d0e7, -0.2rem -0.2rem 1.8rem #fff;
+    &:hover ${CardColorSide} {
+        width : 80px;
+        ${props => props.small ? `
+        width : 100%;
+        border-top-right-radius: 11px;
+border-bottom-right-radius: 11px; ` : null};
+    }
+`
+
+
 const CardIcon = styled.div`
 z-index : 5;
 position: absolute;
+`
 
+const CardIconColor = styled.div`
+position: absolute;
 `
 
 
@@ -60,13 +71,6 @@ const CardContent = styled.div`
     height : 100%;
     display : flex;
 align-items: center;
-    &:hover ${CardColorSide} {
-        width : 80px;
-        ${props => props.small ? `
-        width : 100%;
-        border-top-right-radius: 11px;
-border-bottom-right-radius: 11px; ` : null};
-    } 
 `
 const CardTitle = styled.div`
 position : absolute;
@@ -118,6 +122,14 @@ const NoticeCardForm = ({ onClick, merit, listTitle, noticeId, listContent, noti
         government: merit_government,
         online: merit_online,
     }
+    const meritColorIcon = {
+        education: merit_education_color,
+        cooking: merit_cooking_color,
+        eco: merit_eco_color,
+        disaster: merit_disaster_color,
+        government: merit_government_color,
+        online: merit_online_color,
+    }
 
     return (
         <>
@@ -125,10 +137,12 @@ const NoticeCardForm = ({ onClick, merit, listTitle, noticeId, listContent, noti
                 <Col xs={0} sm={0} md={12} lg={12} xl={12} xxl={12}>
                     <CardWrapper onClick={onClick}>
                         <CardContent >
+                            <CardIconColor >
+                                <Img src={meritColorIcon[merit] || puzzle} width={'3rem'}></Img>
+                            </CardIconColor>
                             <CardIcon>
                                 <Img src={meritIcon[merit] || puzzle} width={'3rem'}></Img>
                             </CardIcon>
-
                             <CardColorSide background={meritColor[merit]} />
 
                             <CardDivider />

@@ -21,7 +21,8 @@ width: 20.4rem;
     outline: 0;
     box-shadow: 0.3rem 0.3rem 0.6rem #c8d0e7, -0.2rem -0.2rem 0.5rem #FFFFFF
 }
-@media screen and (max-width: 992px){
+/* 모바일 환경에서 center */
+@media screen and (max-width: 576px){
     text-align: center;
 }
 

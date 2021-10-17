@@ -54,13 +54,16 @@ const TotalNoticeContent = ({
                                         //         merit={lists.merit}></NoticeCardForm>
                                         // })
                                         listTotalData.map((notice, index) => {
+
+                                            const replaceUploadDate = String(notice.uploadDate).slice(0, 8).replace(/(\d{4})(\d{2})(\d{2})/, '$1.$2.$3');
+
                                             return (
                                                 <React.Fragment key={index}>
                                                     {
                                                         listTotalData.length - 1 === index ? (
                                                             <>
                                                                 <NoticeCardForm listTitle={notice.title} noticeId={notice.noticeId} onClick={() => { noticeDetailOnClick(notice.noticeId) }}
-                                                                    listContent={`지역 : ${notice.region} | 업로드 시간 : ${notice.uploadDate}`}
+                                                                    listContent={`지역 : ${notice.region} | 업로드 시간 : ${replaceUploadDate}`}
                                                                     merit={notice.merit}></NoticeCardForm>
                                                                 {
                                                                     page < noticePageNum ?
@@ -74,7 +77,7 @@ const TotalNoticeContent = ({
                                                         ) : (
                                                             <>
                                                                 <NoticeCardForm listTitle={notice.title} noticeId={notice.noticeId} onClick={() => { noticeDetailOnClick(notice.noticeId) }}
-                                                                    listContent={`지역 : ${notice.region} | 업로드 시간 : ${notice.uploadDate}`}
+                                                                    listContent={`지역 : ${notice.region} | 업로드 시간 : ${replaceUploadDate}`}
                                                                     merit={notice.merit}></NoticeCardForm>
 
                                                             </>
@@ -89,7 +92,7 @@ const TotalNoticeContent = ({
                             </Col>
                             <Col span={12} justify={'center'} align={'center'} style={{ margin: "50px  0 20px 0" }}>
                                 {
-                                    (page === noticePageNum) ?
+                                    (detailNoticeData.id !== (id) && page === noticePageNum) ?
                                         <Typo size={"1.2rem"} color={'#9baacf'} weight={'550'}>마지막 페이지 입니다.</Typo>
                                         : null
                                 }
