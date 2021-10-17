@@ -15,7 +15,7 @@ jobs:
       - name: Install and Build🔧
         run: yarn && yarn build
         env:
-          REACT_APP_API_KEY='hihi'
+          REACT_APP_API_KEY='${{secrets.REACT_APP_API_KEY}}'
           CI: ''
       - name: Deploy to Firebase🚀
         uses: FirebaseExtended/action-hosting-deploy@v0
