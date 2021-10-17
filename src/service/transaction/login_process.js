@@ -10,7 +10,9 @@ const LogInProcess = async (logInInfo) => {
 
   await firebase_login(logInInfo.email && logInInfo.password ? logInInfo : { email: 'csmo2642@naver.com', password: 'hello6541!' })
     .then((res) => {
-      //여기서 안된다고?
+      console.log('here');
+      console.log(res);
+
       store.dispatch(ACTION.LOGIN_ACTION_FUNC());
       store.dispatch(
         ACTION.SET_USER__ACTION_FUNC({
@@ -19,23 +21,12 @@ const LogInProcess = async (logInInfo) => {
           },
         })
       );
+      return res.uid;
     })
-    .then(async () => {
-      await getRegionArray()
-        .then((res) => {
-          console.log(res);
-          store.dispatch(ACTION.SET_REGION__ACTION_FUNC(res));
-        })
-        .catch((e) => {
-          notification['error']({
-            message: 'error',
-            description: e.message || e.code,
-          });
-          throw Error('지역 실패');
-        });
-    })
-    .then(async () => {
-      await getUserData(store.getState().user_reducer.uid)
+    .then(async (uid) => {
+      console.log('받아온 uid');
+      console.log(uid);
+      await getUserData(uid)
         .then((res) => {
           console.log(res);
           store.dispatch(
@@ -55,6 +46,21 @@ const LogInProcess = async (logInInfo) => {
           throw Error('유저 실패');
         });
     })
+    .then(async () => {
+      await getRegionArray()
+        .then((res) => {
+          console.log(res);
+          store.dispatch(ACTION.SET_REGION__ACTION_FUNC(res));
+        })
+        .catch((e) => {
+          notification['error']({
+            message: 'error',
+            description: e.message || e.code,
+          });
+          throw Error('지역 실패');
+        });
+    })
+
     .catch((e) => {
       console.log(e);
     });
