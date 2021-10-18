@@ -65,6 +65,8 @@ const ContentContainer = ({
 
 
     const animate = () => {
+        if (active.index === null) return null;
+        if (!headerItems.current[active.index].current) return null;
         const menuOffset = menuWrapperRef.current.getBoundingClientRect()
         const activeItem = headerItems.current[active.index].current;
         const { width, height, top, left } = activeItem.getBoundingClientRect()

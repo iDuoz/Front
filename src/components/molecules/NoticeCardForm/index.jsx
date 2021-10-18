@@ -17,61 +17,6 @@ import merit_government from "../../../assets/icons/merit_government.png"
 import merit_government_color from "../../../assets/icons/merit_government_color.png"
 import puzzle from "../../../assets/icons/puzzle.png"
 
-
-const CardColorSide = styled.div`
-background-color : ${props => props.background || `#f3f03e`};
-
-position: absolute;
-left : 0;
-top : 0;
-width : 7px;
-height: 100%;
-border-top-left-radius: 11px;
-border-bottom-left-radius: 11px;
-transition: width 0.3s;
-`
-const CardWrapper = styled.div`
-margin : 10px 0;
- padding : 20px 20px 15px 20px;
-width : 100%;
-    height : 9rem;
-    border-radius: 11px;
-    cursor: pointer;
-    position : relative;  
-    box-shadow: 0.8rem 0.8rem 1.4rem #c8d0e7, -0.2rem -0.2rem 1.8rem #fff;
-    &:hover ${CardColorSide} {
-        width : 80px;
-        ${props => props.small ? `
-        width : 100%;
-        border-top-right-radius: 11px;
-border-bottom-right-radius: 11px; ` : null};
-    }
-`
-
-
-const CardIcon = styled.div`
-z-index : 5;
-position: absolute;
-`
-
-const CardIconColor = styled.div`
-position: absolute;
-`
-
-
-const CardDivider = styled.div`
-    position  :absolute;
-    left : 80px;
-    top : 10px;
-    width : 1px;
-    height : calc(100% - 20px);
-    background-color: #c8d0e7;
-`
-const CardContent = styled.div`
-    height : 100%;
-    display : flex;
-align-items: center;
-`
 const CardTitle = styled.div`
 position : absolute;
 left : 100px;
@@ -101,9 +46,106 @@ bottom : 0.7rem;
 ` : null}
 `
 
+const CardColorSide = styled.div`
+background-color : ${props => props.background || `#23a1a1`};
+
+position: absolute;
+left : 0;
+top : 0;
+width : 7px;
+height: 100%;
+border-top-left-radius: 11px;
+border-bottom-left-radius: 11px;
+transition: width 0.3s;
+`
 
 
-const NoticeCardForm = ({ onClick, merit, listTitle, noticeId, listContent, noticeDetailOnClick }) => {
+const CardWrapper = styled.div`
+margin : 15px 0;
+ padding : 20px 20px 15px 20px;
+width : 100%;
+    height : 9rem;
+    border-radius: 11px;
+    cursor: pointer;
+    position : relative;  
+    box-shadow: 0.8rem 0.8rem 1.4rem #c8d0e7, -0.2rem -0.2rem 1.8rem #fff;
+    &:hover ${CardColorSide} {
+        width : 80px;
+        ${props => props.small ? `
+        width : 100%;
+        border-top-right-radius: 11px;
+border-bottom-right-radius: 11px; ` : null};
+    };
+
+    &:hover ${CardTitle} {
+        ${props => props.small ? `
+        color : white;
+        `: null
+    }
+    };
+    &:hover ${CardLast} {
+        ${props => props.small ? `
+        color : white;
+        `: null
+    }
+    
+
+    }
+`
+
+const IsOnlineIconWrapper = styled.div`
+height : 9rem;
+display : flex;
+align-items: center;
+`
+const IsOnlineIcon = styled.div`
+position: absolute;
+left : -4.2rem;
+${props => props.small ? `
+            left : -8px;
+            top : -10px;
+        `: null
+    }
+`
+
+const CardIconWrapper = styled.div`
+position: absolute;
+height : 9rem;
+width : 80px;
+top: 0;
+left : 0;
+display : flex;
+align-items: center;
+justify-content: center;
+`
+
+
+const CardIcon = styled.div`
+z-index : 5;
+position: absolute;
+`
+
+const CardIconColor = styled.div`
+position: absolute;
+`
+
+
+const CardDivider = styled.div`
+    position  :absolute;
+    left : 80px;
+    top : 10px;
+
+    width : 1px;
+    height : calc(100% - 20px);
+    background-color: #c8d0e7;
+`
+const CardContent = styled.div`
+    height : 100%;
+
+`
+
+
+const NoticeCardForm = ({ onClick, merit, listTitle, online, listContent }) => {
 
     const meritColor = {
         education: '#BA68C8',
@@ -133,16 +175,43 @@ const NoticeCardForm = ({ onClick, merit, listTitle, noticeId, listContent, noti
 
     return (
         <>
-            <Row >
-                <Col xs={0} sm={0} md={12} lg={12} xl={12} xxl={12}>
+            <Row  >
+                <Col justify={'center'} align={'center'} xs={0} sm={0} md={12} lg={12} xl={12} xxl={12}>
+
                     <CardWrapper onClick={onClick}>
-                        <CardContent >
+                        <CardIconWrapper>
+                            {
+                                (online) ?
+                                    <IsOnlineIconWrapper>
+                                        <IsOnlineIcon>
+                                            <Img src={meritColorIcon.online || puzzle} width={'3rem'}></Img>
+                                        </IsOnlineIcon>
+                                    </IsOnlineIconWrapper>
+                                    : null
+                            }
                             <CardIconColor >
-                                <Img src={meritColorIcon[merit] || puzzle} width={'3rem'}></Img>
+                                {
+                                    (online && !merit) ?
+
+                                        <Img src={meritColorIcon.online} width={'3rem'}></Img>
+
+                                        :
+                                        <Img src={meritColorIcon[merit] || puzzle} width={'3rem'}></Img>
+                                }
+
                             </CardIconColor>
                             <CardIcon>
-                                <Img src={meritIcon[merit] || puzzle} width={'3rem'}></Img>
+                                {
+                                    (online && !merit) ?
+                                        <Img src={meritIcon.online} width={'3rem'}></Img>
+                                        :
+                                        <Img src={meritIcon[merit] || puzzle} width={'3rem'}></Img>
+                                }
+
                             </CardIcon>
+                        </CardIconWrapper>
+                        <CardContent >
+
                             <CardColorSide background={meritColor[merit]} />
 
                             <CardDivider />
@@ -155,9 +224,18 @@ const NoticeCardForm = ({ onClick, merit, listTitle, noticeId, listContent, noti
                 </Col>
 
                 <Col xs={12} sm={12} md={0} lg={0} xl={0} xxl={0}>
-                    <CardWrapper onClick={onClick}>
-                        <CardContent small={true}  >
+                    <CardWrapper onClick={onClick} small={true} >
+                        <CardContent >
                             <CardColorSide background={meritColor[merit]} />
+                            {
+                                (online) ?
+                                    <IsOnlineIconWrapper>
+                                        <IsOnlineIcon small>
+                                            <Img src={meritColorIcon.online || puzzle} width={'3rem'}></Img>
+                                        </IsOnlineIcon>
+                                    </IsOnlineIconWrapper>
+                                    : null
+                            }
                             <CardTitle small={true}>{listTitle}</CardTitle>
                             <CardLast small={true}>{listContent}</CardLast>
                         </CardContent>

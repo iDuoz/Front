@@ -41,6 +41,12 @@ const AppRouter = () => {
                     <Route path="/notice">
                         <TotalNoticeRouter security={["ADMIN", "GUEST", "USER"]} userInfo={userInfo}></TotalNoticeRouter>
                     </Route>
+                    <Route path="/proposal/:id/:title">
+                        <ProposalRouter
+                            security={["ADMIN", "GUEST", "USER"]}
+                            userInfo={userInfo}
+                        ></ProposalRouter>
+                    </Route>
                     <Route path="/proposal">
                         <ProposalRouter security={["ADMIN", "GUEST", "USER"]} userInfo={userInfo}></ProposalRouter>
                     </Route>

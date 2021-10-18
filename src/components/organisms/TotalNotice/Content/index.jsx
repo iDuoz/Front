@@ -64,7 +64,7 @@ const TotalNoticeContent = ({
                                                             <>
                                                                 <NoticeCardForm listTitle={notice.title} noticeId={notice.noticeId} onClick={() => { noticeDetailOnClick(notice.noticeId) }}
                                                                     listContent={`지역 : ${notice.region} | 업로드 시간 : ${replaceUploadDate}`}
-                                                                    merit={notice.merit}></NoticeCardForm>
+                                                                    merit={notice.merit} online={notice.online}></NoticeCardForm>
                                                                 {
                                                                     page < noticePageNum ?
                                                                         <div ref={refs} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: "50px", width: "100%", height: "50px" }}>
@@ -78,7 +78,7 @@ const TotalNoticeContent = ({
                                                             <>
                                                                 <NoticeCardForm listTitle={notice.title} noticeId={notice.noticeId} onClick={() => { noticeDetailOnClick(notice.noticeId) }}
                                                                     listContent={`지역 : ${notice.region} | 업로드 시간 : ${replaceUploadDate}`}
-                                                                    merit={notice.merit}></NoticeCardForm>
+                                                                    merit={notice.merit} online={notice.online}></NoticeCardForm>
 
                                                             </>
                                                         )

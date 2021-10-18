@@ -9,6 +9,7 @@ const IframeWrapper = styled.iframe.attrs((props) => ({
     border: none;
     margin-top: 2rem;
     margin-bottom: 3rem;
+
   `;
 
 
