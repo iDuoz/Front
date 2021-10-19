@@ -115,9 +115,9 @@ const ContentContainer = () => {
 
     const handleTouchEnd = (e) => {
         console.log(e.changedTouches[0].pageY)
-        console.log(startY - e.changedTouches[0].pageY > 150)
-        console.log(startY - e.changedTouches[0].pageY < -150)
-        if (startY - e.changedTouches[0].pageY > 150) {
+        console.log(startY - e.changedTouches[0].pageY > 50)
+        console.log(startY - e.changedTouches[0].pageY < -50)
+        if (startY - e.changedTouches[0].pageY > 50) {
             setIsTricking(true)
             if (currentSlider !== totalSLideNumber - 1) {
                 setCurrentSlider((state) => state + 1);
@@ -127,7 +127,7 @@ const ContentContainer = () => {
 
         }
         // settingMobileBtn.pageUp
-        else if (startY - e.changedTouches[0].pageY < -150) {
+        else if (startY - e.changedTouches[0].pageY < -50) {
             setIsTricking(true);
             if (currentSlider !== 0) {
                 setCurrentSlider(state => state - 1);
