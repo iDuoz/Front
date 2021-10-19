@@ -14,7 +14,7 @@ const HomeContent = ({ testRef, parallaxScroll, currentSlider, sectionScrollType
             {/* SECTION Content */}
 
             <div ref={testRef} onWheel={parallaxScroll} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd} style={{
-                position: 'relative', height: '100%', width: "100%"
+                position: 'relative', height: '100%', width: "100%", overflow: 'hidden'
             }}>
                 <HomeSectionForm backGroundColor={'#edeff2'} pageIndex={0} currentSlider={currentSlider} sectionScrollType={sectionScrollType[0]}>
                     <FirstSectionForm  ></FirstSectionForm>
