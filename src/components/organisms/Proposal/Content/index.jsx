@@ -71,7 +71,7 @@ const TotalNoticeContent = ({
                                                             <>
 
                                                                 <NoticeCardForm listTitle={notice.title} noticeId={notice.noticeId} onClick={() => { noticeDetailOnClick(notice.noticeId) }}
-                                                                    listContent={`지역 : ${notice.region} | 업로드 시간 : ${replaceUploadDate}`}
+                                                                    listContent={`지역 : ${notice.region} | 업로드 시간 : ${replaceUploadDate} | 나이 : ${notice.age}`}
                                                                     merit={notice.merit} online={notice.online}></NoticeCardForm>
                                                                 {
                                                                     !isProposalDone ?
@@ -85,7 +85,7 @@ const TotalNoticeContent = ({
                                                         ) : (
                                                             <>
                                                                 <NoticeCardForm listTitle={notice.title} noticeId={notice.noticeId} onClick={() => { noticeDetailOnClick(notice.noticeId) }}
-                                                                    listContent={`지역 : ${notice.region} | 업로드 시간 : ${replaceUploadDate}`}
+                                                                    listContent={`지역 : ${notice.region} | 업로드 시간 : ${replaceUploadDate} | 나이 : ${notice.age}`}
                                                                     merit={notice.merit} online={notice.online}></NoticeCardForm>
                                                             </>
                                                         )

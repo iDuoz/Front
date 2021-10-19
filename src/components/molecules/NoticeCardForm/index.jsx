@@ -181,7 +181,7 @@ const NoticeCardForm = ({ onClick, merit, listTitle, online, listContent }) => {
                     <CardWrapper onClick={onClick}>
                         <CardIconWrapper>
                             {
-                                (online) ?
+                                (online === true) ?
                                     <IsOnlineIconWrapper>
                                         <IsOnlineIcon>
                                             <Img src={meritColorIcon.online || puzzle} width={'3rem'}></Img>
@@ -191,7 +191,7 @@ const NoticeCardForm = ({ onClick, merit, listTitle, online, listContent }) => {
                             }
                             <CardIconColor >
                                 {
-                                    (online && !merit) ?
+                                    (online === true && !merit) ?
 
                                         <Img src={meritColorIcon.online} width={'3rem'}></Img>
 
@@ -202,7 +202,7 @@ const NoticeCardForm = ({ onClick, merit, listTitle, online, listContent }) => {
                             </CardIconColor>
                             <CardIcon>
                                 {
-                                    (online && !merit) ?
+                                    (online === true && !merit) ?
                                         <Img src={meritIcon.online} width={'3rem'}></Img>
                                         :
                                         <Img src={meritIcon[merit] || puzzle} width={'3rem'}></Img>

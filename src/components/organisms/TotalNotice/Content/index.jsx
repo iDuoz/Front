@@ -63,7 +63,7 @@ const TotalNoticeContent = ({
                                                         listTotalData.length - 1 === index ? (
                                                             <>
                                                                 <NoticeCardForm listTitle={notice.title} noticeId={notice.noticeId} onClick={() => { noticeDetailOnClick(notice.noticeId) }}
-                                                                    listContent={`지역 : ${notice.region} | 업로드 시간 : ${replaceUploadDate}`}
+                                                                    listContent={`지역 : ${notice.region} | 업로드 시간: ${replaceUploadDate}  | 나이: ${notice.age}`}
                                                                     merit={notice.merit} online={notice.online}></NoticeCardForm>
                                                                 {
                                                                     page < noticePageNum ?
@@ -77,7 +77,7 @@ const TotalNoticeContent = ({
                                                         ) : (
                                                             <>
                                                                 <NoticeCardForm listTitle={notice.title} noticeId={notice.noticeId} onClick={() => { noticeDetailOnClick(notice.noticeId) }}
-                                                                    listContent={`지역 : ${notice.region} | 업로드 시간 : ${replaceUploadDate}`}
+                                                                    listContent={`지역 : ${notice.region} | 업로드 시간: ${replaceUploadDate}  | 나이: ${notice.age}`}
                                                                     merit={notice.merit} online={notice.online}></NoticeCardForm>
 
                                                             </>
@@ -101,7 +101,7 @@ const TotalNoticeContent = ({
 
                     </Col>
                 </Row>
-            </ContentStyle>
+            </ContentStyle >
         </>
     )
 }

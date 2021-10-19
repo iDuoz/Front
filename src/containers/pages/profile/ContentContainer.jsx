@@ -222,7 +222,8 @@ const ContentContainer = ({
                 cooking: userMeritProfile.cooking,
                 disaster: userMeritProfile.disaster,
                 eco: userMeritProfile.eco,
-                online: userMeritProfile.online
+                online: userMeritProfile.online,
+                government: userMeritProfile.government
             }
         }
         console.log('"settingUpdateData"')

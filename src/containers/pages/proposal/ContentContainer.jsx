@@ -1,9 +1,7 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import ProposalContent from "../../../components/organisms/Proposal/Content/index"
-import getFirstNoticePage from '../../../service/proposal/firebase/getFirstProposalNotice'
-import getNextNoticePage from '../../../service/firebase/database/getNextNoticePage'
-import getTotalNoticeNum from '../../../service/firebase/database/getTotalNoticeNum'
+import getProposalNotice from '../../../service/proposal/firebase/getTopFilterNotice'
 import { useInView } from "react-intersection-observer"
 
 
@@ -20,14 +18,20 @@ const ContentContainer = () => {
 
     const [ref, inView] = useInView()
 
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    //SECTION test
+    //NOTE top FIlter - age
+    const [ageList, setAgeList] = useState([])
 
+    //!SECTION test
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
      * @description `getItems` 가 바뀔 때 마다 함수 실행 */
     useEffect(() => {
         setListTotalData([])
         setIsLoading(true);
-        getFirstNoticePage()
+        getProposalNotice()
             .then((res) => {
                 console.log("첫번쨰page")
                 console.log(res)
@@ -48,7 +52,7 @@ const ContentContainer = () => {
 
 
             setIsLoading(true)
-            getFirstNoticePage(nextPageStartVisible)
+            getProposalNotice(nextPageStartVisible)
                 .then((res) => {
                     console.log("서버에서 다음 페이지 아이템 가져옴")
                     // console.log(res.notices)
@@ -59,7 +63,6 @@ const ContentContainer = () => {
                         console.log("🐱‍👤🕵️‍♀️")
                         return SetIsProposalDone(true)
                     }
-                    console.log("마지막페이지엔 안나왕댜ㅐㅁ")
                     setNextPageStartVisible(res.lastNotice || null)
                     setIsLoading(false)
                 })

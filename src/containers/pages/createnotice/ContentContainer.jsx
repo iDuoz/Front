@@ -176,7 +176,7 @@ const ContentContainer = ({
         .then((res) => {
           console.log(res)
           console.log('notice update 성공')
-          history.push('/')
+          history.push('/notice')
           // home으로 이동
         })
         .catch((e) => { console.log(e) })
