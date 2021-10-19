@@ -64,7 +64,7 @@ const CardWrapper = styled.div`
 margin : 15px 0;
  padding : 20px 20px 15px 20px;
 width : 100%;
-    height : 9rem;
+    height : 10rem;
     border-radius: 11px;
     cursor: pointer;
     position : relative;  
@@ -94,7 +94,7 @@ border-bottom-right-radius: 11px; ` : null};
 `
 
 const IsOnlineIconWrapper = styled.div`
-height : 9rem;
+height : 10rem;
 display : flex;
 align-items: center;
 `
@@ -110,7 +110,7 @@ ${props => props.small ? `
 
 const CardIconWrapper = styled.div`
 position: absolute;
-height : 9rem;
+height : 10rem;
 width : 80px;
 top: 0;
 left : 0;

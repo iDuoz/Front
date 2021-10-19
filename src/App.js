@@ -1,6 +1,6 @@
 import AppRouter from './router';
-import firebaseInit from './config/firebase';
-import fireStore from './config/firestore';
+import firebaseInit from './lib/firebase';
+import fireStore from './lib/firestore';
 import 'antd/dist/antd.css';
 import run from './init/start';
 import { createGlobalStyle } from 'styled-components';

@@ -1,8 +1,8 @@
-import firebase_signup from '../firebase/auth/signup_password';
-import store from '../../store/store';
-import ACTION from '../../store/actions/action';
-import addUser from '../firebase/database/addUser';
-import getRegionArray from '../firebase/database/getRegionArray';
+import firebase_signup from '../../firebase/auth/signup_password';
+import store from '../../../store/store';
+import ACTION from '../../../store/actions/action';
+import addUser from '../../firebase/database/addUser';
+import getRegionArray from '../../firebase/database/getRegionArray';
 import { notification } from 'antd';
 
 const SignUpProcess = async (signUpInfo) => {

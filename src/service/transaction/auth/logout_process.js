@@ -1,6 +1,6 @@
-import store from '../../store/store';
-import ACTION from '../../store/actions/action';
-import firebase_logout from '../firebase/auth/logout_password';
+import store from '../../../store/store';
+import ACTION from '../../../store/actions/action';
+import firebase_logout from '../../firebase/auth/logout_password';
 
 const LogOutProcess = () => {
   console.log('logoutProcess');

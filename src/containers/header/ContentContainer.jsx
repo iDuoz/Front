@@ -3,9 +3,9 @@ import React, { memo, createRef, useEffect, useRef, useState } from "react";
 import HeaderContent from "../../components/organisms/Header/Content/index";
 import gsap from "gsap"
 
-import login_process from "../../service/transaction/login_process"
-import logout_process from "../../service/transaction/logout_process"
-import SignupProcess from "../../service/transaction/signup_process";
+import login_process from "../../service/transaction/auth/login_process"
+import logout_process from "../../service/transaction/auth/logout_process"
+import SignupProcess from "../../service/transaction/auth/signup_process";
 import { useHistory, useLocation } from "react-router-dom";
 import { notification } from "antd";
 const ContentContainer = ({

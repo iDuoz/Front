@@ -43,13 +43,12 @@ const ContentContainer = () => {
     const getNotices = useCallback(async () => {
         setLoading(true)
         if (page === 1) {
+            // NOTE 첫번째 페이지 받아오기
             await getFirstNoticePage()
                 .then((res) => {
                     console.log("서버에서 아이템 가져옴")
-                    console.log(res)
-                    console.log(res.notices)
-                    console.log(res.lastNotice)
                     setListTotalData((state) => (state.concat(res.notices)));
+                    //NOTE 다음페이지 가져오기위해서 다음 페이지 세팅
                     setNextPageStartVisible(res.lastNotice)
                     setLoading(false)
                 })
@@ -58,13 +57,11 @@ const ContentContainer = () => {
         }
         if (page > 1 && page <= noticePageNum) {
             setLoading(true)
+            //NOTE 두번쟤 페이지가져오기
             await getNextNoticePage(nextPageStartVisible)
                 .then((res) => {
-                    console.log("서버에서 다음 페이지 아이템 가져옴")
-                    console.log(res)
-                    console.log(res.notices)
-                    console.log(res.lastNotice)
                     setListTotalData((state) => (state.concat(res.notices)));
+                    // NOTE 그다음 페이지 가져올거 세팅
                     setNextPageStartVisible(res.lastNotice)
 
                 })
@@ -76,7 +73,6 @@ const ContentContainer = () => {
             console.log("page 끝")
         }
 
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [page])
 
 

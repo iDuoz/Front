@@ -11,11 +11,13 @@ import { Spin } from 'antd';
 
 const TotalNoticeContent = ({
     refs,
-    loading,
+    isLoading,
     page,
     noticePageNum,
     listTotalData,
     detailNoticeData,
+
+    isProposalDone,
     noticeDetailOnClick, }) => {
 
     console.log("listTotalData , content")
@@ -45,14 +47,19 @@ const TotalNoticeContent = ({
                             {/* //TODO 여기  */}
                             <Col span={12} justify={'center'} align={'center'}>
                                 {
+                                    isLoading ?
+                                        <div ref={refs} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: "50px", width: "100%", height: "50px" }}>
+                                            {
+                                                <Spin></Spin>
+                                            }
+                                        </div> : null
+                                }
+                            </Col>
+                            <Col span={12} justify={'center'} align={'center'}>
+                                {
                                     (detailNoticeData.id === (id)) ? (
                                         <NoticeIdDetailForm detailData={detailNoticeData}></NoticeIdDetailForm>
                                     ) : (
-                                        // listTotalData.map((lists, index) => {
-                                        //     return <NoticeCardForm key={index} listTitle={lists.title} onClick={() => { noticeDetailOnClick(lists.noticeId) }} noticeId={lists.noticeId}
-                                        //         listContent={`지역 : ${lists.region}`}
-                                        //         merit={lists.merit}></NoticeCardForm>
-                                        // })
                                         listTotalData.map((notice, index) => {
 
                                             const replaceUploadDate = String(notice.uploadDate).slice(0, 8).replace(/(\d{4})(\d{2})(\d{2})/, '$1.$2.$3');
@@ -62,11 +69,12 @@ const TotalNoticeContent = ({
                                                     {
                                                         listTotalData.length - 1 === index ? (
                                                             <>
+
                                                                 <NoticeCardForm listTitle={notice.title} noticeId={notice.noticeId} onClick={() => { noticeDetailOnClick(notice.noticeId) }}
                                                                     listContent={`지역 : ${notice.region} | 업로드 시간 : ${replaceUploadDate}`}
                                                                     merit={notice.merit} online={notice.online}></NoticeCardForm>
                                                                 {
-                                                                    page < noticePageNum ?
+                                                                    !isProposalDone ?
                                                                         <div ref={refs} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: "50px", width: "100%", height: "50px" }}>
                                                                             {
                                                                                 <Spin></Spin>
@@ -79,7 +87,6 @@ const TotalNoticeContent = ({
                                                                 <NoticeCardForm listTitle={notice.title} noticeId={notice.noticeId} onClick={() => { noticeDetailOnClick(notice.noticeId) }}
                                                                     listContent={`지역 : ${notice.region} | 업로드 시간 : ${replaceUploadDate}`}
                                                                     merit={notice.merit} online={notice.online}></NoticeCardForm>
-
                                                             </>
                                                         )
                                                     }
@@ -92,7 +99,7 @@ const TotalNoticeContent = ({
                             </Col>
                             <Col span={12} justify={'center'} align={'center'} style={{ margin: "50px  0 20px 0" }}>
                                 {
-                                    (detailNoticeData.id !== (id) && page === noticePageNum) ?
+                                    (detailNoticeData.id !== (id) && isProposalDone) ?
                                         <Typo size={"1.2rem"} color={'#9baacf'} weight={'550'}>마지막 페이지 입니다.</Typo>
                                         : null
                                 }
