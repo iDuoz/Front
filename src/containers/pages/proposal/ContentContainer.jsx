@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import ProposalContent from "../../../components/organisms/Proposal/Content/index"
 import getProposalNotice from '../../../service/proposal/firebase/getTopFilterNotice'
 import { useInView } from "react-intersection-observer"
+import proposalLogic from "../../../service/proposal/logic/onlineTrue"
 
 
-
-const ContentContainer = () => {
+const ContentContainer = ({
+    basic,
+    merit,
+    regions,
+}) => {
 
     /**
      * @description 5개씩 받아와서 + 하는 list */
@@ -18,62 +22,45 @@ const ContentContainer = () => {
 
     const [ref, inView] = useInView()
 
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    //SECTION test
-    //NOTE top FIlter - age
-    const [ageList, setAgeList] = useState([])
+    //////////////////////////////////////////////////////////
+    const [meritIndex, setMeritIndex] = useState(0);
 
-    //!SECTION test
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    /**
-     * @description `getItems` 가 바뀔 때 마다 함수 실행 */
+
+
     useEffect(() => {
+        // if(meritIndex >2) return null;
         setListTotalData([])
-        setIsLoading(true);
-        getProposalNotice()
-            .then((res) => {
-                console.log("첫번쨰page")
-                console.log(res)
-                setListTotalData((state) => (state.concat(res.notices)));
-                setNextPageStartVisible(res.lastNotice);
-                setIsLoading(false)
-            })
+        setIsLoading(true)
+        proposalLogic(null, 1)().then((res) => {
+            setListTotalData((state) => (state.concat(res.notices)));
+            if (res.notices.length < 5) {
+                console.log("🐱‍👤🕵️‍♀️ : 첫번쨰!꺼!만!")
+                setMeritIndex((state) => state + 1)
+                return SetIsProposalDone(true)
+            }
+            return setNextPageStartVisible(res.lastNotice);
+        })
         setIsLoading(false)
     }, [])
 
 
-
-    /**
-     * @description 서버에서 아이템을 가지고 오는 함수 */
     useEffect(() => {
-        // 사용자가 마지막 요소를 보고 있고, 로딩 중이 아니라면
-        if (inView && !isLoading && nextPageStartVisible && !isProposalDone) {
-
-
+        if (inView && !isLoading && nextPageStartVisible && meritIndex < 3 && !isProposalDone) {
             setIsLoading(true)
-            getProposalNotice(nextPageStartVisible)
-                .then((res) => {
-                    console.log("서버에서 다음 페이지 아이템 가져옴")
-                    // console.log(res.notices)
-
-                    console.log(res.lastNotice || 'lastPage')
-                    setListTotalData((state) => (state.concat(res.notices)));
-                    if (!res.lastNotice) {
-                        console.log("🐱‍👤🕵️‍♀️")
-                        return SetIsProposalDone(true)
-                    }
-                    setNextPageStartVisible(res.lastNotice || null)
-                    setIsLoading(false)
-                })
-                .catch((e) => {
-                    console.log(e)
-                    setIsLoading(false)
-                })
+            proposalLogic(nextPageStartVisible, 1)().then((res) => {
+                setListTotalData((state) => (state.concat(res.notices)));
+                if (!res.lastNotice) {
+                    console.log("🐱‍👤🕵️‍♀️")
+                    setNextPageStartVisible(null)
+                    setMeritIndex((state) => state + 1)
+                    return SetIsProposalDone(true)
+                }
+                return setNextPageStartVisible(res.lastNotice);
+            })
             setIsLoading(false)
         }
     }, [inView, isLoading])
-
 
 
     //NOTE detail notice data

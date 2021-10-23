@@ -36,7 +36,7 @@ const ProfileContent = ({
                     </Col>
                     {/* SECTION Left */}
 
-                    <Col xs={12} sm={12} md={4} lg={4} xl={4} xxl={4} span={4} style={{
+                    <Col xs={12} sm={12} md={11} lg={4} xl={4} xxl={4} span={4} style={{
                         // marginRight: '4.1%'
                     }}>
                         <Row>
@@ -79,7 +79,7 @@ const ProfileContent = ({
                     </Col>
                     {/*!SECTION Left */}
                     {/* SECTION Right */}
-                    <Col xs={12} sm={12} md={6} lg={6} xl={6} xxl={6} span={6}>
+                    <Col xs={12} sm={12} md={12} lg={6} xl={6} xxl={6} span={6}>
                         <Row >
                             <Col span={12}>
                                 <Typo size={"1.3rem"} weight={"bold"} > 프로필 수정</Typo>

@@ -18,7 +18,7 @@ const addNotice = async (noticeData) => {
       noticeId: newDocRef.id,
       age: noticeData.age,
       merit: noticeData.merit,
-      online: noticeData.online,
+      online: Boolean(noticeData.online),
       title: noticeData.title,
       region: noticeData.region,
       url: noticeData.url,
@@ -32,13 +32,20 @@ const addNotice = async (noticeData) => {
       })
       .then(async (res) => {
         console.log(noticeData.url);
-        await setDoc(doc(db, 'noticeContainers', newDocRef.id), {
+        await setDoc(doc(db, 'noticeProposal', 'merit', noticeData.merit, newDocRef.id), {
+          noticeId: newDocRef.id,
+          age: noticeData.age,
+          merit: noticeData.merit,
+          online: Boolean(noticeData.online),
+          title: noticeData.title,
+          region: noticeData.region,
           url: noticeData.url,
+          uploadDate: Number(year + month + day + hours + minutes + seconds),
         })
           .then((res) => {
             notification['success']({
-              message: `notice url 저장 성공✨ `,
-              description: 'db  notice url 저장 성공',
+              message: `notice merit 별 저장 성공✨ `,
+              description: 'db  noticeProposal 저장 성공',
             });
           })
           .catch((e) => {

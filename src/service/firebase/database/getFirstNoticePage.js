@@ -8,8 +8,7 @@ const getFirstNoticePage = async () => {
 
     const setFirstQuery = query(collection(db, 'noticeBasics'), orderBy('uploadDate', 'desc'), limit(5));
     const querySnapshot = await getDocs(setFirstQuery);
-    console.log('🐱‍👤🕵️‍♀️ 길이 5?');
-    console.log(querySnapshot.docs.length);
+
     const lastVisible = querySnapshot.docs[querySnapshot.docs.length - 1];
     console.log('last', lastVisible);
 

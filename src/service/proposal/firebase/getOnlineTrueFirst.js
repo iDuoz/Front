@@ -2,29 +2,42 @@ import { notification } from 'antd';
 import { getFirestore, query, collection, where, limit, getDocs, orderBy, startAfter } from 'firebase/firestore';
 
 // Query the first page of docs
+
+/**
+ * @description online TRUE first Filter
+ * @우선순위 1
+ * @default age user {AGE}
+ * @default online TRUE
+ * @detail online merit myRegion
+ * @age user {AGE}
+ * @online {TRUE}
+ *  @merit user{[MERIT]}
+ * @myRegion user{MY-REGION}
+ * @method GET
+ * @request @user {AGE , MERIT , MY-REGION}
+ * @returns notices , lastNotice
+ */
 const getFirstNoticePage = async (next = null) => {
   try {
     const db = getFirestore();
 
     const setFirstQuery = next
       ? query(
-          //   collection(db, 'noticeProposal', 'merit', 'cooking'),
           collection(db, 'noticeBasics'),
-          //   where('age', 'array-contains', 'adult'),
-          //   where('merit', 'in', ['eco', 'education', 'government', '']),
-          //   where('region', '!=', '대구'),
-          //   where('online', '==', true),
+          where('age', 'array-contains', 'adult'),
+          where('merit', 'in', ['eco', 'education', 'government']),
+          where('online', '==', true),
+          where('region', '==', '대구'),
           orderBy('uploadDate', 'desc'),
           startAfter(next),
           limit(5)
         )
       : query(
-          //   collection(db, 'noticeProposal', 'merit', 'cooking'),
           collection(db, 'noticeBasics'),
-          //   where('age', 'array-contains', 'adult'),
-          //   where('region', 'in', ['부산', '대전']),
-          //   where('merit', '==', ''),
-          //   where('online', '==', true),
+          where('age', 'array-contains', 'adult'),
+          where('merit', 'in', ['eco', 'education', 'government']),
+          where('online', '==', true),
+          where('region', '==', '대구'),
           orderBy('uploadDate', 'desc'),
           limit(5)
         );

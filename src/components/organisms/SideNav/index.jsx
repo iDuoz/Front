@@ -27,7 +27,8 @@ cursor: pointer;
 const HamburgerSpan = styled.span`
 position: absolute;
 height: 3px;
-background: #000;
+background: #9baacf;
+border-radius: 50px;
 width: 100%;
 left: 0px;
 top: 0px;
@@ -39,6 +40,7 @@ top: 10px;
 `
 const HamburgerSpanTwo = styled(HamburgerSpan)`
   top: 9px;
+  background: #d6d8dd;
   ${props => props.open ? `
   width: 0%;
   opacity: 0;
@@ -46,7 +48,9 @@ const HamburgerSpanTwo = styled(HamburgerSpan)`
 `
 const HamburgerSpanThree = styled(HamburgerSpan)`
   top: 18px;
+  background: #9baacf;
   ${props => props.open ? `
+  background: #d6d8dd;
   transform: rotate(-45deg);
   top: 10px;
 `: null}

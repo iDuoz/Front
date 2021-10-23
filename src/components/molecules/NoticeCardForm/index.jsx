@@ -27,7 +27,7 @@ color : #555A5F;
 font-size: 1.5rem;
 font-weight: 600;
 ${props => props.small ? `
-font-size : 0.6rem;
+font-size : 1.1rem;
 left : 20px;
 top : 10px;
 ` : null};
@@ -192,9 +192,7 @@ const NoticeCardForm = ({ onClick, merit, listTitle, online, listContent }) => {
                             <CardIconColor >
                                 {
                                     (online === true && !merit) ?
-
                                         <Img src={meritColorIcon.online} width={'3rem'}></Img>
-
                                         :
                                         <Img src={meritColorIcon[merit] || puzzle} width={'3rem'}></Img>
                                 }
