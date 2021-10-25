@@ -4,7 +4,7 @@ import fireStore from './lib/firestore';
 import 'antd/dist/antd.css';
 import run from './init/start';
 import { createGlobalStyle } from 'styled-components';
-import { React, useEffect } from 'react';
+import { React, useEffect, useState } from 'react';
 import { getAuth } from 'firebase/auth';
 const GlobalStyle = createGlobalStyle`
   html, body {
@@ -14,20 +14,23 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 function App() {
+  const [isInit, setIsInit] = useState(false);
   useEffect(() => {
-    console.log(firebaseInit);
-    console.log(fireStore);
-    const auth = getAuth();
-    console.log(auth);
-    run();
+    run().then((status) => {
+      console.log(firebaseInit);
+      console.log(fireStore);
+      const auth = getAuth();
+      console.log(auth);
+      setIsInit(true);
+    });
   }, []);
 
-  return (
+  return isInit ? (
     <>
       <GlobalStyle />
       <AppRouter />
     </>
-  );
+  ) : null;
 }
 
 export default App;

@@ -15,7 +15,7 @@ const Start = async () => {
   const UserUid = getUserItem.uid;
   console.log(UserUid);
 
-  getUserData(UserUid)
+  await getUserData(UserUid)
     .then((res) => {
       console.log('세션에 로그인되있으니까 정보 새로 받아옴');
       console.log(res);
@@ -35,7 +35,7 @@ const Start = async () => {
     .catch((e) => {
       console.log(e);
     });
-  getRegionArray()
+  await getRegionArray()
     .then((res) => {
       console.log('region 정보 보여줌');
       console.log(res);

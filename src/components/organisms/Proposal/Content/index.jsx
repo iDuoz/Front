@@ -8,6 +8,8 @@ import NoticeIdDetailForm from '../NoticeIdDetailForm'
 
 import { useParams, useHistory } from 'react-router-dom';
 import { Spin } from 'antd';
+import { LoadingOutlined } from '@ant-design/icons';
+
 
 const TotalNoticeContent = ({
     refs,
@@ -20,18 +22,22 @@ const TotalNoticeContent = ({
     isProposalDone,
     noticeDetailOnClick, }) => {
 
-    console.log("listTotalData , content")
-    console.log(listTotalData)
+    // console.log("listTotalData , content")
+    // console.log(listTotalData)
 
     const history = useHistory();
 
     const { id } = useParams();
-    console.log(useParams())
-    console.log(detailNoticeData.id)
-    console.log(detailNoticeData.id === id)
+    // console.log(useParams())
+    // console.log(detailNoticeData.id)
+    // console.log(detailNoticeData.id === id)
 
-    console.log("noticeDetail")
-    console.log(detailNoticeData)
+    // console.log("noticeDetail")
+    // console.log(detailNoticeData)
+
+    const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
+
+
     return (
         <>
             <ContentStyle>
@@ -48,9 +54,9 @@ const TotalNoticeContent = ({
                             <Col span={12} justify={'center'} align={'center'}>
                                 {
                                     isLoading ?
-                                        <div ref={refs} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: "50px", width: "100%", height: "50px" }}>
+                                        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: "50px", width: "100%", height: "50px" }}>
                                             {
-                                                <Spin></Spin>
+                                                <Spin indicator={antIcon} />
                                             }
                                         </div> : null
                                 }
@@ -71,13 +77,13 @@ const TotalNoticeContent = ({
                                                             <>
 
                                                                 <NoticeCardForm listTitle={notice.title} noticeId={notice.noticeId} onClick={() => { noticeDetailOnClick(notice.noticeId) }}
-                                                                    listContent={`지역 : ${notice.region} | 업로드 시간 : ${replaceUploadDate} | 나이 : ${notice.age}`}
+                                                                    listContent={`지역 : ${notice.region} | 업로드 시간 : ${replaceUploadDate} | 나이 : ${notice.age} | last`}
                                                                     merit={notice.merit} online={notice.online}></NoticeCardForm>
                                                                 {
                                                                     !isProposalDone ?
                                                                         <div ref={refs} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: "50px", width: "100%", height: "50px" }}>
                                                                             {
-                                                                                <Spin></Spin>
+                                                                                <Spin indicator={antIcon} />
                                                                             }
                                                                         </div> : null
                                                                 }
