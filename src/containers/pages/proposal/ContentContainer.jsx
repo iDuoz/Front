@@ -12,7 +12,6 @@ const ContentContainer = ({
     regions,
 }) => {
 
-    const precedenceTotalNum = 2;
     const myMerits = []
     for (let i in merit) {
         if (merit[i] === true) {
