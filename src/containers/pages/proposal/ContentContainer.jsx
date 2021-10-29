@@ -1,9 +1,8 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import ProposalContent from "../../../components/organisms/Proposal/Content/index"
-import getProposalNotice from '../../../service/proposal/firebase/getTopFilterNotice'
 import { useInView } from "react-intersection-observer"
-import proposalLogic from "../../../service/proposal/logic/onlineTrue"
+import proposalLogic from "../../../service/proposal/logic/proposalLogic"
 
 
 const ContentContainer = ({
@@ -57,7 +56,7 @@ const ContentContainer = ({
                             setIsLoading(true)
                             setListTotalData((state) => (state.concat([{
                                 age: "",
-                                merit: "",
+                                merit: myMerits[meritIndex],
                                 noticeId: "",
                                 online: "",
                                 region: "",

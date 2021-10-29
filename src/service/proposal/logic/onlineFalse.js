@@ -1,16 +1,16 @@
-import { notification } from 'antd';
-import getProposalNotice from '../../../service/proposal/firebase/getTopFilterNotice';
-import test from '../firebase/test';
+import getOnlineFalse from '../firebase/getOnlineFalse';
 import store from '../../../store/store';
+import test from '../firebase/test';
 
 /**
- * @description online TRUE Filter
- * @우선순위1 online merit myRegion
- * @우선순위2 online merit addRegion
- * @우선순위3 online merit !myRegion !addRegion
- * @우선순위4 online !merit !mtRegion !addRegion
+ * @description online FALSE Filter
+ * @우선순위1 !online merit myRegion
+ * @우선순위2 !online merit addRegion
+ * @우선순위3 !online merit !myRegion !addRegion
+ * @우선순위4 !online !merit !mtRegion !addRegion
+ * @우선순위5 !online
  * @age user {AGE}
- * @online {TRUE}
+ * @online {FALSE}
  * @merit user{[MERIT]}
  * @myRegion user{MY-REGION}
  * @addRegion user{ADD-REGION}
@@ -18,14 +18,10 @@ import store from '../../../store/store';
  * @request @user {AGE , MERIT , MY-REGION, ADD-REGION}
  * @returns notices , lastNotice
  */
-const onlineTrue = (precedence, index) => {
+
+const onlineFalse = (precedence, index) => {
   console.log('🥨💛 | proposal logic');
 
-  const basic = {
-    addRegion: ['대구', '서울', '부산', '대전', '청주', '인천', '광주'],
-    age: 'adult',
-    region: '대구',
-  };
   const basicMerit = ['cooking', 'disaster', 'eco', 'education', 'government', 'online'];
 
   const merit = store.getState().user_reducer.merit;
@@ -42,11 +38,13 @@ const onlineTrue = (precedence, index) => {
       myMerits.push(i);
     }
   }
+
   const myRegion = region;
   const myAddRegion = addRegion;
   const myAge = age;
   const notMyRegions = defaultRegion.filter((arr) => !myAddRegion.includes(arr));
   const notMyMerits = basicMerit.filter((arr) => !myMerits.includes(arr));
+
   console.log('🥨💛 | usermerit');
   console.log(store.getState().user_reducer.merit);
   console.log(myMerits);
@@ -55,41 +53,40 @@ const onlineTrue = (precedence, index) => {
   console.log(myAddRegion);
   console.log(notMyRegions);
   console.log(notMyMerits);
-  //   console.log(defaultRef.concat(`,'${defaultMerit[index]}'`));
 
-  const precedenceOnline = {
+  const precedenceOnlineFalse = {
     /**
-     * @우선순위1 online merit myRegion  */
+     * @우선순위1 !online merit myRegion  */
     first: async () => {
-      console.log('💢onlineTrue first');
-      const firstTest = await test(myMerits[index], [myRegion], myAge);
-      await console.log(firstTest.doc);
+      console.log('💢onlineFalse first');
+      const firstTest = await getOnlineFalse(myMerits[index], [myRegion], myAge);
+      console.log(firstTest.doc);
       return await firstTest.doc;
     },
     /**
-     * @우선순위2 online merit addRegion */
+     * @우선순위2 !online merit addRegion */
     second: async () => {
-      console.log('💢onlineTrue second');
-      const secondTest = await test(myMerits[index], myAddRegion, myAge);
+      console.log('💢onlineFalse second');
+      const secondTest = await getOnlineFalse(myMerits[index], myAddRegion, myAge);
       return secondTest.doc;
     },
     /**
-     * @우선순위3 online merit !myRegion !addRegion */
+     * @우선순위3 !online merit !myRegion !addRegion */
     third: async () => {
-      console.log('💢onlineTrue third');
-      const thirdTest = await test(myMerits[index], notMyRegions, myAge);
+      console.log('💢onlineFalse third');
+      const thirdTest = await getOnlineFalse(myMerits[index], notMyRegions, myAge);
       return thirdTest.doc;
     },
     /**
-     * @우선순위4 online !merit !mtRegion !addRegion */
+     * @우선순위4 !online !merit !mtRegion !addRegion */
 
     fourth: async () => {
-      console.log('💢onlineTrue fourth');
-      const fourthTest = await test(notMyMerits[index], notMyRegions, myAge);
+      console.log('💢onlineFalse fourth');
+      const fourthTest = await getOnlineFalse(notMyMerits[index], notMyRegions, myAge);
       return fourthTest.doc;
     },
     /**
-     * @우선순위4 online*/
+     * @우선순위4 !online*/
 
     fifth: async () => {
       const fifthTest = await test('online', regionReducer, myAge);
@@ -97,11 +94,11 @@ const onlineTrue = (precedence, index) => {
     },
   };
 
-  if (precedence === 1) return precedenceOnline.first;
-  if (precedence === 2) return precedenceOnline.second;
-  if (precedence === 3) return precedenceOnline.third;
-  if (precedence === 4) return precedenceOnline.fourth;
-  if (precedence === 5) return precedenceOnline.fifth;
+  if (precedence === 1) return precedenceOnlineFalse.first;
+  if (precedence === 2) return precedenceOnlineFalse.second;
+  if (precedence === 3) return precedenceOnlineFalse.third;
+  if (precedence === 4) return precedenceOnlineFalse.fourth;
+  if (precedence === 5) return precedenceOnlineFalse.fifth;
 };
 
-export default onlineTrue;
+export default onlineFalse;
