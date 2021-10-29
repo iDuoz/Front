@@ -56,7 +56,7 @@ const ContentContainer = ({
                             setIsLoading(true)
                             setListTotalData((state) => (state.concat([{
                                 age: "",
-                                merit: myMerits[meritIndex],
+                                merit: "",
                                 noticeId: "",
                                 online: "",
                                 region: "",
