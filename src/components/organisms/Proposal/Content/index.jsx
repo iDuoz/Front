@@ -55,8 +55,8 @@ const TotalNoticeContent = ({
                         top: '7.5rem', backgroundColor: '#edeff2', zIndex: '10', padding: '2rem 0 2rem 0'
                     }}>
                         <Row justify={'center'} align={'center'} >
-                            <Col xs={12} sm={12} md={0} lg={0} xl={0} xxl={0} span={0} justify={'center'} align={'center'}>
-                                <Steps current={stepCurrent} onChange={stepCurrentOnChange} size={'small'} style={{ fontSize: '1rem' }}>
+                            <Col xs={12} sm={12} md={12} lg={0} xl={0} xxl={0} span={0} justify={'center'} align={'center'}>
+                                <Steps current={stepCurrent} onChange={stepCurrentOnChange} size={'small'} style={{ fontSize: '0.6rem' }}>
                                     <Step title="Step 1" />
                                     <Step title="Step 2" />
                                     <Step title="Step 3" />
