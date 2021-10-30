@@ -56,7 +56,12 @@ const TotalNoticeContent = ({
                     }}>
                         <Row justify={'center'} align={'center'} >
                             <Col xs={12} sm={12} md={12} lg={0} xl={0} xxl={0} span={0} justify={'center'} align={'center'}>
-                                <Steps current={stepCurrent} onChange={stepCurrentOnChange} size={'small'} style={{ fontSize: '0.6rem' }}>
+                                <Steps current={stepCurrent}
+                                    onChange={stepCurrentOnChange}
+                                    size='small'
+                                    type="navigation"
+                                    className="site-navigation-steps"
+                                    style={{ fontSize: '0.6rem' }}>
                                     <Step title="Step 1" />
                                     <Step title="Step 2" />
                                     <Step title="Step 3" />
