@@ -8,7 +8,7 @@ const WholeWrapper = styled.div`
 
 background-color: #edeff2;
 
-  height: 100%;
+  height: max-content;
   width: 100%;
 `;
 

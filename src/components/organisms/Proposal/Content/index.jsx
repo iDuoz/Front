@@ -3,12 +3,12 @@ import { NoticeCardForm } from '../../../index'
 import { Col, Row, ContentStyle } from '../../../../layout'
 import { Typo, Divider } from "../../../index"
 
-
 import NoticeIdDetailForm from '../NoticeIdDetailForm'
 
 import { useParams, useHistory } from 'react-router-dom';
-import { Spin } from 'antd';
+import { Steps, Spin } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
+
 
 
 const TotalNoticeContent = ({
@@ -20,20 +20,19 @@ const TotalNoticeContent = ({
     detailNoticeData,
 
     isProposalDone,
-    noticeDetailOnClick, }) => {
+    noticeDetailOnClick,
+    stepCurrent,
+    stepCurrentOnChange
+}) => {
 
     // console.log("listTotalData , content")
     // console.log(listTotalData)
 
+    const { Step } = Steps;
+
     const history = useHistory();
 
     const { id } = useParams();
-    // console.log(useParams())
-    // console.log(detailNoticeData.id)
-    // console.log(detailNoticeData.id === id)
-
-    // console.log("noticeDetail")
-    // console.log(detailNoticeData)
 
     const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
@@ -42,14 +41,36 @@ const TotalNoticeContent = ({
         <>
             <ContentStyle>
                 <Row justify={'center'} align={'center'} >
-                    <Col span={9} justify={'center'} align={'center'}>
-                        <Row >
-                            <Col span={12} style={{ marginTop: '24px' }}>
+                    <Col span={12}>
+                        <Row justify={'center'} align={'center'}>
+                            <Col span={10} style={{ marginTop: '24px' }}>
                                 <Typo size={'2rem'} weight={'bold'} cursor={'pointer'}
                                     onClick={() => { history.push("/proposal") }}>추천봉사조회</Typo>
-
                                 <Divider marginTop={'1rem'} borderWidth={'1px'}></Divider>
                             </Col>
+                        </Row >
+                    </Col>
+                    <Col xs={10} sm={10} md={0} lg={0} xl={0} xxl={0} span={0} justify={'center'} align={'center'} style={{
+                        margin: '0 0 24px 0', position: 'sticky',
+                        top: '7.5rem', backgroundColor: '#edeff2', zIndex: '10', padding: '2rem 0 2rem 0'
+                    }}>
+                        <Row justify={'center'} align={'center'} >
+                            <Col xs={12} sm={12} md={0} lg={0} xl={0} xxl={0} span={0} justify={'center'} align={'center'}>
+                                <Steps current={stepCurrent} onChange={stepCurrentOnChange} size={'small'} style={{ fontSize: '1rem' }}>
+                                    <Step title="Step 1" />
+                                    <Step title="Step 2" />
+                                    <Step title="Step 3" />
+                                    <Step title="Step 4" />
+                                    <Step title="Step 5" />
+                                </Steps>
+
+                            </Col>
+                        </Row>
+                    </Col>
+                    <Col span={9} justify={'center'} align={'center'}>
+                        <Row >
+
+
                             {/* //TODO 여기  */}
                             <Col span={12} justify={'center'} align={'center'}>
                                 {

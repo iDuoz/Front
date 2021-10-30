@@ -311,8 +311,14 @@ const ContentContainer = ({
                 history.push("/proposal/" + lists.noticeId + "/" + lists.title.replace(/ /g, "-"));
             }
         })
-
     }
+
+    const [stepCurrent, setStepCurrent] = useState(0)
+
+    const stepCurrentOnChange = (current) => {
+        setStepCurrent(current)
+    }
+
 
     return (
         <>
@@ -323,6 +329,8 @@ const ContentContainer = ({
                 listTotalData={listTotalData}
                 detailNoticeData={detailNoticeData}
                 noticeDetailOnClick={noticeDetailOnClick}
+                stepCurrent={stepCurrent}
+                stepCurrentOnChange={stepCurrentOnChange}
             ></ProposalContent>
         </>
     )
