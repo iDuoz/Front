@@ -42,7 +42,7 @@ const FirstSectionForm = () => {
 
     return (
         <>
-            <Row style={{ height: "calc(100% - 6rem)", marginTop: "6.5rem" }}>
+            <Row style={{ height: "calc(100% - 6rem)", marginTop: "6.5rem", transition: ' all 0.5s ease' }}>
                 <Col span={12} style={{ height: '100%', alignContent: "space-between" }}>
                     <TransSection ref={ref} open={isOpenFirstSection} Index={1} height={"70%"} align={'center'} justify={'center'}>
                         <Row justify={'center'} align={'center'} style={{ padding: '3rem 0' }}>

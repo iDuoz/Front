@@ -12,6 +12,7 @@ const ProposalTitleWrapper = styled.div`
   border-radius: 1rem;
   box-shadow: 0.3rem 0.3rem 0.6rem #c8d0e7, -0.2rem -0.2rem 0.5rem #ffffff;
   transition: all 1s ease;
+  scroll-margin: 9rem;
 `
 
 const SmallGridContainer = styled.div`

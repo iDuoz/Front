@@ -5,6 +5,7 @@ import UserPageRouter from "./UserProfileRouter";
 import CreateNoticeRouter from "./CreateNoticeRouter";
 import TotalNoticeRouter from "./TotalNoticeRouter";
 import ProposalRouter from "./ProposalRouter";
+import MainRouter from "./MainRouter"
 import NotFound from "../pages/NotFound"
 
 const AppRouter = () => {
@@ -26,6 +27,9 @@ const AppRouter = () => {
                     {/* <Route path="/:username/profile">
                         <UserPageRouter security={["ADMIN", "GUEST", "USER"]} userInfo={userInfo}></UserPageRouter>
                     </Route> */}
+                    <Route path="/main">
+                        <MainRouter security={["ADMIN", "GUEST", "USER"]} userInfo={userInfo}></MainRouter>
+                    </Route>
                     <Route path="/createnotice">
                         <CreateNoticeRouter security={["ADMIN", "GUEST", "USER"]} userInfo={userInfo}></CreateNoticeRouter>
                     </Route>
