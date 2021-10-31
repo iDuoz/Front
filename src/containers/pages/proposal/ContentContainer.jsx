@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { useHistory } from 'react-router-dom'
 import ProposalContent from "../../../components/organisms/Proposal/Content/index"
 import { useInView } from "react-intersection-observer"
 import proposalLogic from "../../../service/proposal/logic/proposalLogic"
-
+import { notification } from 'antd'
 
 const ContentContainer = ({
     basic,
@@ -54,16 +54,16 @@ const ContentContainer = ({
                         if (doc.size === 0) {
                             // console.log('size === 0')
                             setIsLoading(true)
-                            setListTotalData((state) => (state.concat([{
-                                age: "",
-                                merit: "",
-                                noticeId: "",
-                                online: "",
-                                region: "",
-                                title: "추천게시물이 없습니다.",
-                                uploadDate: "",
-                                url: ""
-                            }])))
+                            // setListTotalData((state) => (state.concat([{
+                            //     age: "",
+                            //     merit: "",
+                            //     noticeId: "",
+                            //     online: "",
+                            //     region: "",
+                            //     title: "추천게시물이 없습니다.",
+                            //     uploadDate: "",
+                            //     url: ""
+                            // }])))
                             setIsLoading(false)
                         }
                         if (doc.size > 0) {
@@ -97,16 +97,16 @@ const ContentContainer = ({
                         if (doc.size === 0) {
                             // console.log('size === 0')
                             setIsLoading(true)
-                            setListTotalData((state) => (state.concat([{
-                                age: "",
-                                merit: "",
-                                noticeId: "",
-                                online: "",
-                                region: "",
-                                title: "추천게시물이 없습니다.",
-                                uploadDate: "",
-                                url: ""
-                            }])))
+                            // setListTotalData((state) => (state.concat([{
+                            //     age: "",
+                            //     merit: "",
+                            //     noticeId: "",
+                            //     online: "",
+                            //     region: "",
+                            //     title: "추천게시물이 없습니다.",
+                            //     uploadDate: "",
+                            //     url: ""
+                            // }])))
                             setIsLoading(false)
                         }
                         if (doc.size > 0) {
@@ -140,16 +140,16 @@ const ContentContainer = ({
                         if (doc.size === 0) {
                             // console.log('size === 0')
                             setIsLoading(true)
-                            setListTotalData((state) => (state.concat([{
-                                age: "",
-                                merit: "",
-                                noticeId: "",
-                                online: "",
-                                region: "",
-                                title: "추천게시물이 없습니다.",
-                                uploadDate: "",
-                                url: ""
-                            }])))
+                            // setListTotalData((state) => (state.concat([{
+                            //     age: "",
+                            //     merit: "",
+                            //     noticeId: "",
+                            //     online: "",
+                            //     region: "",
+                            //     title: "추천게시물이 없습니다.",
+                            //     uploadDate: "",
+                            //     url: ""
+                            // }])))
                             setIsLoading(false)
                         }
                         if (doc.size > 0) {
@@ -183,16 +183,16 @@ const ContentContainer = ({
                         if (doc.size === 0) {
                             // console.log('size === 0')
                             setIsLoading(true)
-                            setListTotalData((state) => (state.concat([{
-                                age: "",
-                                merit: "",
-                                noticeId: "",
-                                online: "",
-                                region: "",
-                                title: "추천게시물이 없습니다.",
-                                uploadDate: "",
-                                url: ""
-                            }])))
+                            // setListTotalData((state) => (state.concat([{
+                            //     age: "",
+                            //     merit: "",
+                            //     noticeId: "",
+                            //     online: "",
+                            //     region: "",
+                            //     title: "추천게시물이 없습니다.",
+                            //     uploadDate: "",
+                            //     url: ""
+                            // }])))
                             setIsLoading(false)
                         }
                         if (doc.size > 0) {
@@ -225,16 +225,16 @@ const ContentContainer = ({
                         if (doc.size === 0) {
                             // console.log('size === 0')
                             setIsLoading(true)
-                            setListTotalData((state) => (state.concat([{
-                                age: "",
-                                merit: "",
-                                noticeId: "",
-                                online: "",
-                                region: "",
-                                title: "추천게시물이 없습니다.",
-                                uploadDate: "",
-                                url: ""
-                            }])))
+                            // setListTotalData((state) => (state.concat([{
+                            //     age: "",
+                            //     merit: "",
+                            //     noticeId: "",
+                            //     online: "",
+                            //     region: "",
+                            //     title: "추천게시물이 없습니다.",
+                            //     uploadDate: "",
+                            //     url: ""
+                            // }])))
                             setIsLoading(false)
                         }
                         if (doc.size > 0) {
@@ -313,10 +313,77 @@ const ContentContainer = ({
         })
     }
 
-    const [stepCurrent, setStepCurrent] = useState(0)
 
+
+    //NOTE steps onClick 
+
+    const stepRef = useRef([]);
+    const [stepCurrent, setStepCurrent] = useState(0)
     const stepCurrentOnChange = (current) => {
+        if (!stepRef.current[current]) {
+            return notification['info']({
+                message: `추천봉사를 로드해 주세요 🕵️‍♂️`,
+                description: '스크롤을 내려 추천봉사를 가져와 주세요.',
+            })
+
+        }
+        console.log(stepRef.current[current])
+        console.log(current)
+        stepRef.current[current].scrollIntoView();
         setStepCurrent(current)
+    }
+
+    useEffect(() => {
+        if (precedence > 5) return null
+        setListTotalData((state) => (state.concat([{
+            age: "",
+            merit: "",
+            noticeId: "",
+            online: "",
+            region: "",
+            title: `${precedence}번째 추천 게시물`,
+            uploadDate: "",
+            url: "",
+            precedence: precedence
+        }])))
+    }, [precedence])
+
+    const changeStep = (entires) => {
+        entires.forEach(entry => {
+            if (entry.isIntersecting) {
+                for (let i = 0; i < 5; i++) {
+                    if (stepRef.current[i] !== entry.target) continue;
+                    if (stepRef.current[i] === entry.target) return setStepCurrent(i)
+
+                }
+            }
+        })
+    }
+
+    const observerOption = { rootMargin: '-20% 0px -30% 0px ', threshold: 1 };
+
+
+    const tabObserver = new IntersectionObserver(
+        changeStep,
+        observerOption
+    );
+
+    stepRef.current.forEach(tab => tabObserver.observe(tab));
+
+
+    const [isOpenDescription, setIsOpenDescription] = useState({
+        1: false,
+        2: false,
+        3: false,
+        4: false,
+        5: false,
+    })
+
+
+
+    const openOnclick = (noticePrecedence) => {
+        const number = noticePrecedence;
+        isOpenDescription[number] === false ? setIsOpenDescription((state) => ({ ...state, [number]: true })) : setIsOpenDescription((state) => ({ ...state, [number]: false }))
     }
 
 
@@ -327,10 +394,15 @@ const ContentContainer = ({
                 isLoading={isLoading}
                 isProposalDone={isProposalDone}
                 listTotalData={listTotalData}
+
                 detailNoticeData={detailNoticeData}
                 noticeDetailOnClick={noticeDetailOnClick}
+
+                stepRef={stepRef}
                 stepCurrent={stepCurrent}
                 stepCurrentOnChange={stepCurrentOnChange}
+                isOpenDescription={isOpenDescription}
+                openOnclick={openOnclick}
             ></ProposalContent>
         </>
     )

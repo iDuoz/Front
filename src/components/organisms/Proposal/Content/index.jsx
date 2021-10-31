@@ -1,7 +1,7 @@
 import React from 'react'
 import { NoticeCardForm } from '../../../index'
 import { Col, Row, ContentStyle } from '../../../../layout'
-import { Typo, Divider } from "../../../index"
+import { Typo, Divider, ProposalTitleFrom } from "../../../index"
 
 import NoticeIdDetailForm from '../NoticeIdDetailForm'
 
@@ -14,15 +14,17 @@ import { LoadingOutlined } from '@ant-design/icons';
 const TotalNoticeContent = ({
     refs,
     isLoading,
-    page,
-    noticePageNum,
     listTotalData,
     detailNoticeData,
 
     isProposalDone,
     noticeDetailOnClick,
+
+    stepRef,
     stepCurrent,
-    stepCurrentOnChange
+    stepCurrentOnChange,
+    isOpenDescription,
+    openOnclick,
 }) => {
 
     // console.log("listTotalData , content")
@@ -40,39 +42,80 @@ const TotalNoticeContent = ({
     return (
         <>
             <ContentStyle>
-                <Row justify={'center'} align={'center'} >
+                <Row justify={'center'} align={'center'}>
                     <Col span={12}>
                         <Row justify={'center'} align={'center'}>
                             <Col span={10} style={{ marginTop: '24px' }}>
                                 <Typo size={'2rem'} weight={'bold'} cursor={'pointer'}
                                     onClick={() => { history.push("/proposal") }}>추천봉사조회</Typo>
-                                <Divider marginTop={'1rem'} borderWidth={'1px'}></Divider>
                             </Col>
                         </Row >
+                        <Divider marginTop={'1rem'} borderWidth={'1px'}></Divider>
                     </Col>
-                    <Col xs={10} sm={10} md={0} lg={0} xl={0} xxl={0} span={0} justify={'center'} align={'center'} style={{
+                </Row>
+                {/* <Row justify={'center'} align={'center'} style={{
+                    position: 'sticky', top: '7.5rem'
+                }} >
+                    <Col xs={12} sm={0} md={0} lg={0} xl={0} xxl={0} span={0} justify={'center'} align={'center'} style={{
                         margin: '0 0 24px 0', position: 'sticky',
                         top: '7.5rem', backgroundColor: '#edeff2', zIndex: '10', padding: '2rem 0 2rem 0'
+                    }} >
+                        <Steps current={stepCurrent}
+                            onChange={stepCurrentOnChange}
+                            size='small'
+                            type="navigation"
+                            className="site-navigation-steps"
+                            style={{ fontSize: '0.6rem' }}>
+                            <Step />
+                            <Step />
+                            <Step />
+                            <Step />
+                            <Step />
+                        </Steps>
+                    </Col>
+                </Row> */}
+
+
+                <Row justify={'flex-end'} align={'start'}>
+                    <Col xs={12} sm={0} md={0} lg={0} xl={0} xxl={0} span={0} justify={'center'} align={'center'} style={{
+                        margin: '0 0 24px 0', position: 'sticky',
+                        top: '7.5rem', backgroundColor: '#edeff2', zIndex: '10', padding: '2rem 0 2rem 0', right: '0', left: '0'
+                    }} >
+                        <Steps current={stepCurrent}
+                            onChange={stepCurrentOnChange}
+                            size='small'
+                            type="navigation"
+                            className="site-navigation-steps"
+                            style={{ fontSize: '0.6rem' }}>
+                            <Step />
+                            <Step />
+                            <Step />
+                            <Step />
+                            <Step />
+                        </Steps>
+                    </Col>
+                    <Col xs={0} sm={3} md={3} lg={3} xl={3} xxl={3} span={3} justify={'center'} align={'center'} style={{
+                        margin: '15px 0 24px 0', position: 'sticky',
+                        top: '12rem', zIndex: '10'
                     }}>
                         <Row justify={'center'} align={'center'} >
-                            <Col xs={12} sm={12} md={12} lg={0} xl={0} xxl={0} span={0} justify={'center'} align={'center'}>
+                            <Col xs={0} sm={12} md={12} lg={12} xl={12} xxl={12} span={12} justify={'center'} align={'center'}>
                                 <Steps current={stepCurrent}
                                     onChange={stepCurrentOnChange}
                                     size='small'
-                                    type="navigation"
-                                    className="site-navigation-steps"
-                                    style={{ fontSize: '0.6rem' }}>
-                                    <Step title="Step 1" />
-                                    <Step title="Step 2" />
-                                    <Step title="Step 3" />
-                                    <Step title="Step 4" />
-                                    <Step title="Step 5" />
+                                    direction="vertical"
+                                >
+                                    <Step title="Step 1" description={<Typo>This is a description.</Typo>} />
+                                    <Step title="Step 2" description={<Typo>This is a description.</Typo>} />
+                                    <Step title="Step 3" description={<Typo>This is a description.</Typo>} />
+                                    <Step title="Step 4" description={<Typo>This is a description.</Typo>} />
+                                    <Step title="Step 5" description={<Typo>This is a description.</Typo>} />
                                 </Steps>
 
                             </Col>
                         </Row>
                     </Col>
-                    <Col span={9} justify={'center'} align={'center'}>
+                    <Col xs={12} sm={9} span={9} justify={'center'} align={'center'}>
                         <Row >
 
 
@@ -101,10 +144,19 @@ const TotalNoticeContent = ({
                                                     {
                                                         listTotalData.length - 1 === index ? (
                                                             <>
+                                                                {
+                                                                    (notice.precedence) ?
+                                                                        <ProposalTitleFrom isOpenDescription={isOpenDescription[notice.precedence]}
+                                                                            openOnclick={() => { openOnclick(notice.precedence) }} number={notice.precedence}
+                                                                            description={notice.title}
+                                                                            stepRef={stepRef}
+                                                                        ></ProposalTitleFrom>
+                                                                        : <NoticeCardForm listTitle={notice.title} noticeId={notice.noticeId} onClick={() => { noticeDetailOnClick(notice.noticeId) }}
+                                                                            listContent={`지역 : ${notice.region} | 업로드 시간 : ${replaceUploadDate} | 나이 : ${notice.age} | last`}
+                                                                            merit={notice.merit} online={notice.online}></NoticeCardForm>
+                                                                }
 
-                                                                <NoticeCardForm listTitle={notice.title} noticeId={notice.noticeId} onClick={() => { noticeDetailOnClick(notice.noticeId) }}
-                                                                    listContent={`지역 : ${notice.region} | 업로드 시간 : ${replaceUploadDate} | 나이 : ${notice.age} | last`}
-                                                                    merit={notice.merit} online={notice.online}></NoticeCardForm>
+
                                                                 {
                                                                     !isProposalDone ?
                                                                         <div ref={refs} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: "50px", width: "100%", height: "50px" }}>
@@ -116,9 +168,17 @@ const TotalNoticeContent = ({
                                                             </>
                                                         ) : (
                                                             <>
-                                                                <NoticeCardForm listTitle={notice.title} noticeId={notice.noticeId} onClick={() => { noticeDetailOnClick(notice.noticeId) }}
-                                                                    listContent={`지역 : ${notice.region} | 업로드 시간 : ${replaceUploadDate} | 나이 : ${notice.age}`}
-                                                                    merit={notice.merit} online={notice.online}></NoticeCardForm>
+                                                                {
+                                                                    (notice.precedence) ?
+                                                                        <ProposalTitleFrom isOpenDescription={isOpenDescription[notice.precedence]}
+                                                                            openOnclick={() => { openOnclick(notice.precedence) }} number={notice.precedence}
+                                                                            description={notice.title}
+                                                                            stepRef={stepRef}
+                                                                        ></ProposalTitleFrom> :
+                                                                        <NoticeCardForm listTitle={notice.title} noticeId={notice.noticeId} onClick={() => { noticeDetailOnClick(notice.noticeId) }}
+                                                                            listContent={`지역 : ${notice.region} | 업로드 시간 : ${replaceUploadDate} | 나이 : ${notice.age}`}
+                                                                            merit={notice.merit} online={notice.online}></NoticeCardForm>
+                                                                }
                                                             </>
                                                         )
                                                     }

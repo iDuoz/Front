@@ -221,7 +221,7 @@ const NoticeCardForm = ({ onClick, merit, listTitle, online, listContent }) => {
                     </CardWrapper>
                 </Col>
 
-                <Col xs={12} sm={12} md={0} lg={0} xl={0} xxl={0}>
+                <Col xs={11} sm={12} md={0} lg={0} xl={0} xxl={0} justify={'center'} align={'center'}>
                     <CardWrapper onClick={onClick} small={true} >
                         <CardContent >
                             <CardColorSide background={meritColor[merit]} />
