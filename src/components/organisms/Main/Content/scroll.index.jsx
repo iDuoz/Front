@@ -47,7 +47,10 @@ const MainContent = () => {
                 <Row style={{ scrollBehavior: 'smooth' }}>
 
                     {/* SECTION 1 */}
-                    <Col span={12} style={{ height: 'calc(100vh - 7.5rem)' }}>
+                    <Col span={12} style={{
+                        height: 'calc(100vh - 7.5rem)',
+                        // border : "2px black solid"
+                    }}>
                         <Row justify={'flex-start'} align={'center'} style={{ alignContent: 'space-between' }}>
                             <Col span={12} justify={'center'} align={'center'}>
                                 <InfoWrapper src={mainInfo} >
@@ -56,13 +59,13 @@ const MainContent = () => {
                                             <Img src={shareIcon} width={'10rem'} />
                                         </Col>
                                         <Col xs={0} sm={5} md={5} lg={5} xl={5} xxl={4} span={4} justify={'flex-start'} align={'center'} style={{ margin: '0 40px' }}>
-                                            <Typo size={'1.3rem'} color={'#fff'}>
+                                            <Typo size={'1.3rem'} color={'#595959'}>
                                                 meritshare는 user가 편하게 원하는 봉사를<br />
                                                 찾을 수 있도록 1365의 봉사를 추천해주는 서비스입니다.
                                             </Typo>
                                         </Col>
                                         <Col xs={12} sm={0} md={0} lg={0} xl={0} xxl={0} span={0} justify={'center'} align={'center'} style={{ padding: '12px 15px' }}>
-                                            <Typo size={'1.1rem'} color={'#fff'}>
+                                            <Typo size={'1.1rem'} color={'#595959'}>
                                                 meritshare는 user가 편하게 원하는 봉사를
                                                 찾을 수 있도록 1365의 봉사를 추천해주는 서비스입니다.
                                             </Typo>
@@ -79,6 +82,9 @@ const MainContent = () => {
                                 <Row justify={'center'} align={'center'} style={{ padding: '3rem 0' }}>
                                     <Col justify={'center'} align={'center'} span={12}>
                                         <Img src={puzzleMain} width={'13rem'} ></Img>
+                                    </Col>
+                                    <Col justify={'center'} align={'center'} span={12}>
+                                        <AniTypo fontFamily={'Jalnan'} size={'4.5rem'} typo={['Find ', "your ", 'Share ', '.']}></AniTypo>
                                     </Col>
                                     <Col justify={'center'} align={'center'} span={12}>
                                         <AniTypo fontFamily={'Jalnan'} size={'4.5rem'} typo={['Find ', "your ", 'Share ', '.']}></AniTypo>
