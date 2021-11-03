@@ -3,15 +3,8 @@ import firebaseInit from './lib/firebase';
 import fireStore from './lib/firestore';
 import 'antd/dist/antd.css';
 import run from './init/start';
-import { createGlobalStyle } from 'styled-components';
 import { React, useEffect, useState } from 'react';
 import { getAuth } from 'firebase/auth';
-const GlobalStyle = createGlobalStyle`
-  html, body {
-    height : 100%;
-    width : 100%;
-  }
-`;
 
 function App() {
   const [isInit, setIsInit] = useState(false);
@@ -27,7 +20,6 @@ function App() {
 
   return isInit ? (
     <>
-      <GlobalStyle />
       <AppRouter />
     </>
   ) : null;

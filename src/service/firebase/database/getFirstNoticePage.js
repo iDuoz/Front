@@ -17,10 +17,10 @@ const getFirstNoticePage = async () => {
     querySnapshot.forEach((doc) => {
       lists.push(doc.data());
     });
-    notification['success']({
-      message: `첫번쨰 페이지 notice받아오기 성공✨`,
-      description: 'db에서 시간순으로 정렬된 5개의notice받아옴',
-    });
+    // notification['success']({
+    //   message: `첫번쨰 페이지 notice받아오기 성공✨`,
+    //   description: 'db에서 시간순으로 정렬된 5개의notice받아옴',
+    // });
     return {
       notices: lists,
       lastNotice: lastVisible,

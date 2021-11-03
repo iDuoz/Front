@@ -4,6 +4,7 @@ import styled from "styled-components"
 const ContentStyle = styled.div`
     width: 100%;
     height : auto;
+    /* height : 100%; */
     display : flex;
     justify-content : center;
     margin : 0 auto;

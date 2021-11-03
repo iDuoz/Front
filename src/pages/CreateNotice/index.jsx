@@ -4,9 +4,9 @@ import Header from "../../layout/Header";
 import ContentContainer from "../../containers/redux/pages/createnotice/ContentContainer";
 
 const WholeWrapper = styled.div`
-  height: max-content;
+  height: 100%;
   width: 100%;
-  background-color: rgb(251, 253, 252);
+  background-color: white;
 `;
 
 

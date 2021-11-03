@@ -61,6 +61,7 @@ transition: width 0.3s;
 
 
 const CardWrapper = styled.div`
+  transition: all 0.5s ease;
 margin : 15px 0;
  padding : 20px 20px 15px 20px;
 width : 100%;
@@ -89,7 +90,6 @@ border-bottom-right-radius: 11px; ` : null};
         `: null
     }
     
-
     }
 `
 

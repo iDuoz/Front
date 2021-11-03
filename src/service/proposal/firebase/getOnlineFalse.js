@@ -21,10 +21,10 @@ const getOnlineFalse = async (meritRef, myRegions, myAge) => {
     querySnapshot.forEach((doc) => {
       lists.push(doc.data());
     });
-    notification['success']({
-      message: `test 성공✨`,
-      description: `merit : ${meritRef} ,myRegions:${myRegions}, myAge=${myAge} `,
-    });
+    // notification['success']({
+    //   message: `test 성공✨`,
+    //   description: `merit : ${meritRef} ,myRegions:${myRegions}, myAge=${myAge} `,
+    // });
     return {
       //   notices: lists,
       //   lastNotice: lastVisible,

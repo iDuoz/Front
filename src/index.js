@@ -7,6 +7,9 @@ import reportWebVitals from './reportWebVitals';
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
+    html{
+      scroll-snap-type:y mandatory;
+    }
     html, body {
       padding : 0;
       margin : 0;
@@ -15,6 +18,7 @@ const GlobalStyle = createGlobalStyle`
       font-size: 14px;
       height : 100%;
       width : 100%;
+      background-color: #edeff2;
       @media (max-width: 1200px) {
         font-size: 14px
       }

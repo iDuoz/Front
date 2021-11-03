@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { MeritIcon, LinkBtn, Divider, Typo, IframeBox, DetailNoticeForm, Btn } from "../../../../components"
 import { Radio, Tooltip, Input, Checkbox } from 'antd';
 import { EditOutlined, CheckOutlined } from '@ant-design/icons';
-import { Row, Col } from "../../../../layout"
+import { Row, Col, ContentStyle } from "../../../../layout"
 
 const CreateTextArea = styled.textarea.attrs((props) => ({
   placeholder: "제목을 입력하세요",
@@ -75,8 +75,8 @@ align-items: center;
 const SubmitBtnWrapper = styled.div`
 height : 60px;
 width : 100%;
-box-shadow: rgb(0 0 0 / 10%) 0px 0px 8px;
-background: rgba(255, 255, 255, 0.85);
+box-shadow: rgb(0 0 0 / 10%) 0px -5px 5px;
+background: rgba(255, 255, 255, 0);
   display: flex;
   z-index : 2;
   align-items: center;
@@ -118,125 +118,145 @@ const CreateNoticeContent = ({
 
   return (
     <>
-      <Row style={{ minHeight: 'calc(100% - 7.5rem)' }}>
-        {/* SECTION  left 글쓰기 */}
-        <Col xs={12} sm={12} md={6} lg={6} xl={6} xxl={6} span={6} align={'start'} style={{
-          backgroundColor: 'white', minHeight: '100%',
-          position: 'relative', boxShadow: 'rgb(0 0 0 / 2%) 0px 0px 8px',
-          padding: '2.5rem 3rem 3rem', flex: ' 1 1 0%'
-        }}>
-          <Row>
-            <Col span={12}>
-              <CreateTextArea
-                onInput={handleResizeHeight}
-                rows={1}
-                ref={ref}
-                value={title}
-                onChange={createNoticeFunction.title}
-              ></CreateTextArea>
-            </Col>
-            <Col span={12}>
-              <Divider marginBottom={'1rem'} marginTop={'1.9rem'} radius={'1px'}
-                width={'4rem'} borderWidth={'6px'} color={'rgb(73, 80, 87)'}></Divider>
-            </Col>
-            <Col span={12}>
-              <SetUrl value={url} onChange={createNoticeFunction.url}></SetUrl>
-            </Col>
-            <Col span={12}>
-              <Divider marginBottom={'2.5rem'} marginTop={'1.9rem'} radius={'1px'}
-                width={'4rem'} borderWidth={'6px'} color={'rgb(73, 80, 87)'}></Divider>
-            </Col>
-            <Col span={12} justify={'center'} align={'center'}>
-              <Typo size={"1.1rem"} color={'#9baacf'} weight={'550'} >중복선택은 온라인만 가능합니다.</Typo>
-            </Col>
-            <Col span={12} style={{ marginTop: "1.3rem" }}>
-              <MeritIcon userMeritProfile={userMeritProfile} editMeritProfileFunction={editMeritProfileFunction}></MeritIcon>
-            </Col>
-            <Col span={12}>
-              <Divider marginBottom={'2rem'} marginTop={'2.5rem'} radius={'1px'}
-                width={'4rem'} borderWidth={'6px'} color={'rgb(73, 80, 87)'}></Divider>
-            </Col>
-            <Col span={12}>
-              <Typo size={"1.3rem"} weight={"bold"}>지역 입력</Typo>
-            </Col>
-            <Col span={12}>
-              <Radio.Group
-                options={plainRegionsOptions}
-                value={noticeData.region}
-                onChange={createNoticeFunction.region}
-                optionType="button"
-                style={{ marginTop: 16 }}>
-              </Radio.Group>
-            </Col>
-            <Col span={12} style={{ marginTop: '1rem' }} align={'center'}>
-              <Tooltip placement="right" title="클릭하면 지역을 입력할 수 있습니다.">
-                <SetRegion onClick={handleNewRegion.RegionFormOpenClose}>
-                  <Typo cursor={'pointer'} color={'#9baacf'}>원하는 지역이 없나요?</Typo>
-                  <EditOutlined style={{ color: '#9baacf' }} />
-                </SetRegion>
-              </Tooltip>
-            </Col>
-            {
-              (isNewRegionForm) ?
-                <Col span={12} style={{ marginTop: 5 }}>
-                  <Input.Search placeholder="원하는 지역 입력"
-                    allowClear
-                    enterButton={<CheckOutlined />}
-                    onSearch={handleNewRegion.NewRegionSubmit}
-                    style={{ width: 300 }}
-                  />
-
-                </Col>
-                : null
-            }
-
-            <Col span={12}>
-              <Divider marginBottom={'2rem'} marginTop={'2.5rem'} radius={'1px'}
-                width={'4rem'} borderWidth={'6px'} color={'rgb(73, 80, 87)'}></Divider>
-            </Col>
-            <Col span={12}>
-              <Typo size={"1.3rem"} weight={"bold"}>봉사자 유형</Typo>
-            </Col>
-
-            <Col span={12} style={{ marginTop: '1rem' }} >
-              <Checkbox.Group onChange={createNoticeFunction.age} value={noticeData.age}>
-                <Checkbox value={"teen"}>미성년자</Checkbox>
-                <Checkbox value={"adult"}>성인</Checkbox>
-              </Checkbox.Group>
-            </Col>
-
-          </Row>
-        </Col>
-        {/* !SECTION  left 글쓰기 */}
-
-        {/* SECTION  right 미리보기 */}
-        <Col xs={0} sm={0} md={6} lg={6} xl={6} xxl={6} span={6} style={{
-          flex: '1 1 0%', overflowY: 'auto', wordBreak: 'break-word',
-          padding: '2rem 3rem 0 3rem'
-        }}>
-          <Row>
-            <Col span={12}>
-              {title ? (
-                <Typo weight={'bold'} full size={'2.3rem'} > {title}</Typo>
-              ) : (
-                <Typo color={'#858585'}>생성 될 게시글의 제목을 미리 확인할 수 있습니다.</Typo>
-              )}
-            </Col>
-            <Col span={12} style={{ marginTop: '1rem' }}>
-              <DetailNoticeForm merit={merit} online={online} region={region} age={age} />
-            </Col>
-            <Col span={12} style={{ marginTop: '1rem' }}>
+      <ContentStyle style={{ height: 'max-content', padding: '0' }}>
+        <Row>
+          {/* SECTION  left 글쓰기 */}
+          <Col xs={12} sm={12} md={6} lg={6} xl={6} xxl={6} span={6} align={'start'} style={{
+            backgroundColor: 'white', minHeight: '100%',
+            padding: '2rem 2rem 60px 2rem',
+          }}>
+            <Row>
+              <Col span={12}>
+                <CreateTextArea
+                  onInput={handleResizeHeight}
+                  rows={1}
+                  ref={ref}
+                  value={title}
+                  onChange={createNoticeFunction.title}
+                ></CreateTextArea>
+              </Col>
+              <Col span={12}>
+                <Divider marginBottom={'1rem'} marginTop={'1.9rem'} radius={'1px'}
+                  width={'4rem'} borderWidth={'6px'} color={'rgb(73, 80, 87)'}></Divider>
+              </Col>
+              <Col span={12}>
+                <SetUrl value={url} onChange={createNoticeFunction.url}></SetUrl>
+              </Col>
+              <Col span={12}>
+                <Divider marginBottom={'2.5rem'} marginTop={'1.9rem'} radius={'1px'}
+                  width={'4rem'} borderWidth={'6px'} color={'rgb(73, 80, 87)'}></Divider>
+              </Col>
+              <Col span={12} justify={'center'} align={'center'}>
+                <Typo size={"1.1rem"} color={'#9baacf'} weight={'550'} >중복선택은 온라인만 가능합니다.</Typo>
+              </Col>
+              <Col span={12} style={{ marginTop: "1.3rem" }}>
+                <MeritIcon userMeritProfile={userMeritProfile} editMeritProfileFunction={editMeritProfileFunction}></MeritIcon>
+              </Col>
+              <Col span={12}>
+                <Divider marginBottom={'2rem'} marginTop={'2.5rem'} radius={'1px'}
+                  width={'4rem'} borderWidth={'6px'} color={'rgb(73, 80, 87)'}></Divider>
+              </Col>
+              <Col span={12}>
+                <Typo size={"1.3rem"} weight={"bold"}>지역 입력</Typo>
+              </Col>
+              <Col span={12}>
+                <Radio.Group
+                  options={plainRegionsOptions}
+                  value={noticeData.region}
+                  onChange={createNoticeFunction.region}
+                  optionType="button"
+                  style={{ marginTop: 16 }}>
+                </Radio.Group>
+              </Col>
+              <Col span={12} style={{ marginTop: '1rem' }} align={'center'}>
+                <Tooltip placement="right" title="클릭하면 지역을 입력할 수 있습니다.">
+                  <SetRegion onClick={handleNewRegion.RegionFormOpenClose}>
+                    <Typo cursor={'pointer'} color={'#9baacf'}>원하는 지역이 없나요?</Typo>
+                    <EditOutlined style={{ color: '#9baacf' }} />
+                  </SetRegion>
+                </Tooltip>
+              </Col>
               {
-                url ? (
-                  <IframeBox src={url} height={'50rem'}></IframeBox>
-                ) : (
-                  <Typo color={'#858585'}>올바른 주소 입력시 게시글에 미리보기를 확인할 수 있습니다.</Typo>
-                )
+                (isNewRegionForm) ?
+                  <Col span={12} style={{ marginTop: 5 }}>
+                    <Input.Search placeholder="원하는 지역 입력"
+                      allowClear
+                      enterButton={<CheckOutlined />}
+                      onSearch={handleNewRegion.NewRegionSubmit}
+                      style={{ width: 300 }}
+                    />
+
+                  </Col>
+                  : null
               }
-            </Col>
-          </Row>
-        </Col>
-        {/* !SECTION  right 미리보기 */}
+
+              <Col span={12}>
+                <Divider marginBottom={'2rem'} marginTop={'2.5rem'} radius={'1px'}
+                  width={'4rem'} borderWidth={'6px'} color={'rgb(73, 80, 87)'}></Divider>
+              </Col>
+              <Col span={12}>
+                <Typo size={"1.3rem"} weight={"bold"}>봉사자 유형</Typo>
+              </Col>
+
+              <Col span={12} style={{ marginTop: '1rem' }} >
+                <Checkbox.Group onChange={createNoticeFunction.age} value={noticeData.age}>
+                  <Checkbox value={"teen"}>미성년자</Checkbox>
+                  <Checkbox value={"adult"}>성인</Checkbox>
+                </Checkbox.Group>
+              </Col>
+
+            </Row>
+          </Col>
+          {/* !SECTION  left 글쓰기 */}
+
+
+
+          {/* SECTION  right 미리보기 */}
+          <Col xs={0} sm={0} md={6} lg={6} xl={6} xxl={6} span={6} style={{
+            overflowY: 'auto', wordBreak: 'break-word',
+            padding: '2rem 2rem 60px 2rem', backgroundColor: 'rgb(251, 253, 252)', minHeight: 'calc(100vh - 7.5rem)',
+            alignItems: 'start', boxShadow: 'rgb(0 0 0 / 15%) 0px -3px 8px'
+
+          }}>
+            <Row>
+              <Col span={12}>
+                {title ? (
+                  <Typo weight={'bold'} full size={'2.3rem'} > {title}</Typo>
+                ) : (
+                  <Typo color={'#858585'}>생성 될 게시글의 제목을 미리 확인할 수 있습니다.</Typo>
+                )}
+              </Col>
+              <Col span={12} style={{ marginTop: '1rem' }}>
+                <DetailNoticeForm merit={merit} online={online} region={region} age={age} />
+              </Col>
+              {
+                (title && url) ?
+                  <Col span={12} style={{ marginTop: '1rem' }}>
+                    {
+                      url ? (
+                        <IframeBox src={url} height={'50rem'}></IframeBox>
+                      ) : (
+                        <Typo color={'#858585'}>올바른 주소 입력시 게시글에 미리보기를 확인할 수 있습니다.</Typo>
+                      )
+                    }
+                  </Col>
+                  :
+                  <Col span={12} style={{ marginTop: '1rem', minHeight: '57rem' }}>
+                    {
+                      url ? (
+                        <IframeBox src={url} height={'50rem'}></IframeBox>
+                      ) : (
+                        <Typo color={'#858585'}>올바른 주소 입력시 게시글에 미리보기를 확인할 수 있습니다.</Typo>
+                      )
+                    }
+                  </Col>
+              }
+            </Row>
+          </Col>
+          {/* !SECTION  right 미리보기 */}
+        </Row >
+      </ContentStyle>
+      <Row style={{ height: 'auto' }}>
         <Col span={12}>
           <SubmitBtnWrapper>
             <BtnJustity>
@@ -247,8 +267,7 @@ const CreateNoticeContent = ({
 
           </SubmitBtnWrapper>
         </Col>
-
-      </Row >
+      </Row>
     </>
   );
 };

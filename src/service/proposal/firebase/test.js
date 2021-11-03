@@ -21,10 +21,7 @@ const getFirstNoticePage = async (meritRef, myRegions, myAge) => {
     querySnapshot.forEach((doc) => {
       lists.push(doc.data());
     });
-    notification['success']({
-      message: `test 성공✨`,
-      description: `meirt : ${meritRef} ,myRegions:${myRegions}, myAge=${myAge} `,
-    });
+
     return {
       //   notices: lists,
       //   lastNotice: lastVisible,

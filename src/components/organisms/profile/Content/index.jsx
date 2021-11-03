@@ -58,7 +58,7 @@ const ProfileContent = ({
                         </Row>
                         <Row gutter={[15, 0]} style={{ marginTop: '2rem' }}>
                             <Col span={12} align={'center'}>
-                                <Typo size={"1.3rem"} weight={"bold"}>my Merit.</Typo>
+                                <Typo fontFamily={'Jalnan'} size={"1.3rem"} weight={"bold"}>my Merit.</Typo>
                                 {
                                     (isEditForm === false) ?
                                         null
@@ -82,7 +82,7 @@ const ProfileContent = ({
                     <Col xs={12} sm={12} md={12} lg={6} xl={6} xxl={6} span={6}>
                         <Row >
                             <Col span={12}>
-                                <Typo size={"1.3rem"} weight={"bold"} > 프로필 수정</Typo>
+                                <Typo fontFamily={'Jalnan'} size={"1.3rem"} weight={"bold"} > 프로필 수정</Typo>
                             </Col>
                         </Row>
                         <Divider color={'#000000'} marginTop={'15px'} marginBottom={'0px'} borderWidth={'3px'} ></Divider>

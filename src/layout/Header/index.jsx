@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import HeaderContent from "../../containers/redux/components/Header/index"
 const HeaderStyle = styled.div`
+transition: position 0.5s ease;
     z-index:20;
     width : 100%;
   height : 7.5rem;

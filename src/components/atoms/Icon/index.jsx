@@ -60,6 +60,7 @@ display: flex;
 `
 
 const IconBtn = styled.div`
+  background-color: #edeff2;
 width: ${props => props.size || `4rem`};
   height: ${props => props.size || `4rem`};
   font-size:  ${props => props.size - 1 || `3rem`};;
@@ -75,7 +76,11 @@ width: ${props => props.size || `4rem`};
    &:active {
     box-shadow: inset 0.2rem 0.2rem 0.5rem #c8d0e7, inset -0.2rem -0.2rem 0.5rem #FFFFFF;
   color: #6d5dfc;
-  }`
+  }
+  &:hover {
+    color: #6d5dfc;
+  }
+  `
   };
 
 

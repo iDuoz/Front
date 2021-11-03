@@ -86,7 +86,7 @@ const onlineFalse = (precedence, index) => {
       return fourthTest.doc;
     },
     /**
-     * @우선순위4 !online*/
+     * @우선순위4 online*/
 
     fifth: async () => {
       const fifthTest = await test('online', regionReducer, myAge);

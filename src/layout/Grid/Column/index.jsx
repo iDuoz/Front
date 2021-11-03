@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import RowContext from "../Row/RowContext";
 
 const ColumnLayout = styled.div`
+  transition: all 0.5s ease;
     display :flex;
     ${props => props.span === 0 ? `display : none;` : `flex-basis :` + (100 / 12) * props.span + `%;`}
     box-sizing : border-box;

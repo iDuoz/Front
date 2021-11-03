@@ -26,7 +26,7 @@ const ButtonComponent = styled.input.attrs(props => ({ type: "button" }))`
                 `
             default:
                 return `
-                padding :12px 23px;
+                padding :0.857em 1.643em;
                 `
         }
     }}
@@ -47,11 +47,11 @@ ${props => {
             `
             case "secondary":
                 return `
-                color: #8490b1;
+                color: #6d5dfc;
                 font-weight : 400;
                 border : none;
                 &:hover{
-                    color: #6d5dfc;
+                    color: #470cb4;
                     }
                 &:active {
                     box-shadow: inset 0.2rem 0.2rem 0.5rem #c8d0e7, inset -0.2rem -0.2rem 0.5rem #FFFFFF;
@@ -92,11 +92,13 @@ ${props => {
                     }
     `: null};
     ${props => (props.block) ? `width : 90%;` : null}
+    ${props => (props.shadow) ? `box-shadow : ${props.shadow}` : null}
 `
 
-const Button = ({ href, size, types, fontSize, block, value, onClick, bold, plane }) => (
+const Button = ({ href, size, types, fontSize, block, value, onClick, bold, plane, shadow }) => (
     <>
-        <ButtonComponent href={href} size={size} fontSize={fontSize} types={types} plane={plane} block={block} value={value} bold={bold} onClick={onClick}>
+        <ButtonComponent href={href} size={size} fontSize={fontSize} types={types} shadow={shadow}
+            plane={plane} block={block} value={value} bold={bold} onClick={onClick}>
 
         </ButtonComponent>
     </>

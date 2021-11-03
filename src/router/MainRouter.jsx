@@ -1,5 +1,5 @@
 import React from "react"
-import Home from "../pages/Main"
+import Home from "../pages/Home"
 
 const HomeRouter = () => {
     return <Home />
