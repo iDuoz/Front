@@ -7,6 +7,15 @@ const AniTypoWrapper = styled.div`
 font-family : ${props => (props.fontFamily) || 'Jalnan'};
 font-size : ${props => (props.size) || '4rem'};
 cursor :default;
+@media (max-width: 500px) {
+font-size : 3.5rem;
+}
+@media (max-width: 400px) {
+font-size : 3rem;
+}
+@media (max-width: 350px) {
+font-size : 2.5rem;
+}
 `
 
 const AniTypoText = styled.span`
@@ -14,10 +23,10 @@ const AniTypoText = styled.span`
   display: inline-block;
   position: relative;
   ${props => props.inview ? `
-    ::before{
-      
-      animation:max-height 0.4s cubic-bezier(0.61, 1, 0.88, 1) 2 normal both;
-      color: #e77f67;
+    &:before{
+      animation:max-height 0.4s cubic-bezier(0.61, 1, 0.88, 1) 1 normal both;
+      color: ${(props.mainTypo === true) ? '#b867e7' : '#e77f67'};
+      // color: #e77f67;
       content: attr(data-text);
       left: 0;
       overflow: hidden;
@@ -27,18 +36,20 @@ const AniTypoText = styled.span`
         animation: none;
         content: '';
       };
-      animation-delay :${props => (props.delay) ? `${props.delay}s` : null};
+      animation-delay :${(props.delay) ? `${props.delay}s` : null};
     
       };
-    ::after{
-        animation: max-width 0.7s cubic-bezier(0.61, 1, 0.88, 1) 2 normal both;
-      color: #303952;
+
+    &:after{
+        animation: max-width 0.7s cubic-bezier(0.61, 1, 0.88, 1) 1 normal both;
+       
+      color: ${(props.mainTypo === true) ? '#ff4d4f' : '#303952'} ;
       content: attr(data-text);
       left: 0;
       overflow: hidden;
       position: absolute;
       speak: none;
-      animation-delay :${props => (props.delay) ? `${props.delay}s` : null};
+      animation-delay :${(props.delay) ? `${props.delay}s` : null};
     
       @media (prefers-reduced-motion) {
         animation: none;
@@ -47,7 +58,6 @@ const AniTypoText = styled.span`
     
     };
   `: null};
-
 
 
 @media (prefers-reduced-motion) {
@@ -93,27 +103,25 @@ const AniTypoText = styled.span`
 
 
 
-const AniTypo = ({ typo, fontFamily, size }) => {
+const AniTypo = ({ typo, fontFamily, size, mainTypos }) => {
 
 
-    const [ref, inView] = useInView();
+  const [ref, inView] = useInView();
 
-    return (
-        <>
-            <AniTypoWrapper ref={ref} typo={typo} fontFamily={fontFamily} size={size}>
-                {
-                    typo.map((typos, index) => {
-                        return (
-                            <>
-                                <AniTypoText inview={inView} key={index} data-text={typos} delay={(index + 1) * 0.5} >{typos}&nbsp;</AniTypoText>
+  return (
+    <>
+      <AniTypoWrapper ref={ref} typo={typo} fontFamily={fontFamily} size={size}>
+        {
+          typo.map((typos, index) => {
 
-                            </>
-                        )
-                    })
-                }
-            </AniTypoWrapper>
-        </>
-    )
+            return (
+              <AniTypoText key={index} mainTypo={mainTypos.includes(index)} inview={inView} data-text={typos} delay={(index + 1) * 0.2} >{typos}&nbsp;</AniTypoText>
+            )
+          })
+        }
+      </AniTypoWrapper>
+    </>
+  )
 }
 
 

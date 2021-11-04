@@ -4,8 +4,8 @@ import styled from 'styled-components'
 
 
 const Typo = styled.div`
-display : flex;
-
+display : inline-block;
+transition: all 0.5s ease  ;
 ${props => (props.full) ? 'width : 100%; justify-content : inherit; flex-basis :100%' : null};
 overflow : auto;
 font-size : ${props => (props.size) || '1rem'};

@@ -59,7 +59,7 @@ ${props => {
             `
             default:
                 return `
-                background-color: #FFFFFF;
+                background-color: rgba(255,255,255,0);
                 border: 1px solid #697592;
                 border-radius : 3px;
                 box-shadow : none;
@@ -95,7 +95,7 @@ ${props => {
     ${props => (props.shadow) ? `box-shadow : ${props.shadow}` : null}
 `
 
-const Button = ({ href, size, types, fontSize, block, value, onClick, bold, plane, shadow }) => (
+const Button = ({ href, size, types, fontSize, block, value, onClick, bold, plane, shadow, }) => (
     <>
         <ButtonComponent href={href} size={size} fontSize={fontSize} types={types} shadow={shadow}
             plane={plane} block={block} value={value} bold={bold} onClick={onClick}>

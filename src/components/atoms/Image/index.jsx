@@ -2,8 +2,10 @@ import React, { memo } from "react"
 import styled from "styled-components"
 
 const ImageStyle = styled.img.attrs((props) => ({
+    transition: `all 0.5s ease`,
     src: props.src
 }))`
+    transition: all 0.5s ease  ;
     ${(props) => (props.circle) ? ` border-radius : 50%; ` : null}
     height :  ${props => props.height || null} ;
     ${(props) => (props.cursor) ? ` cursor : ${props.cursor}` : null}

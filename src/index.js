@@ -5,12 +5,16 @@ import { Provider } from 'react-redux';
 import store from './store/store';
 import reportWebVitals from './reportWebVitals';
 import { createGlobalStyle } from 'styled-components';
+import './index.css';
 
 const GlobalStyle = createGlobalStyle`
     html{
-      scroll-snap-type:y mandatory;
+      /* scroll-snap-type:y mandatory; */
+      /* scroll-padding-top  : 27px;
+      scroll-padding-bottom : 100px; */
     }
     html, body {
+      overflow-y: visible;
       padding : 0;
       margin : 0;
       scroll-behavior: smooth;
@@ -38,12 +42,12 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 ReactDOM.render(
-  <React.StrictMode>
+  <>
     <GlobalStyle></GlobalStyle>
     <Provider store={store}>
       <App />
     </Provider>
-  </React.StrictMode>,
+  </>,
   document.getElementById('root')
 );
 

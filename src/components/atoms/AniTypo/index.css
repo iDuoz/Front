@@ -6,7 +6,7 @@
 }
 
 html {
-  background: #f3a683;
+  background: var(--background);
   display: grid;
   height: 100%;
   place-items: center;
@@ -73,7 +73,7 @@ html {
 }
 @media (prefers-reduced-motion) {
   .cool span {
-    color: #303952;
+    color: var(--base);
   }
 }
 .cool span::before {
@@ -84,7 +84,7 @@ html {
 .cool span::after {
   -webkit-animation: max-width 0.7s cubic-bezier(0.61, 1, 0.88, 1) 1 normal both;
   animation: max-width 0.7s cubic-bezier(0.61, 1, 0.88, 1) 1 normal both;
-  color: #303952;
+  color: var(--base);
 }
 .cool span::before,
 .cool span::after {

@@ -6,7 +6,7 @@ transition: position 0.5s ease;
     z-index:20;
     width : 100%;
   height : 7.5rem;
-  background-color: #edeff2;
+  background-color: ${props => props.home ? 'rgba(255,255,255,0.5)' : '#edeff2'} ;
   display : flex;
   position : ${props => (props.position) ? (props.position) : `fixed`};
   border-bottom: 1.5px solid #dfdfe5;
@@ -16,10 +16,10 @@ transition: position 0.5s ease;
   right : 0;
 `
 
-const Header = ({ position }) => {
+const Header = ({ position, home }) => {
     return (
         <>
-            <HeaderStyle position={position}>
+            <HeaderStyle position={position} home={home}>
                 <HeaderContent></HeaderContent>
             </HeaderStyle>
         </>

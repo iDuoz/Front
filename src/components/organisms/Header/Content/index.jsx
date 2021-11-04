@@ -108,7 +108,7 @@ const Header = ({
                     <Col xs={2} sm={2} md={2} lg={2} xl={2} xxl={2} span={2} justify={'center'} align={'center'} >
                         {
                             (logined === true) ?
-                                (<Button value={'LogOut'} onClick={logOutHandler} ></Button>)
+                                (<Button value={'LogOut'} onClick={logOutHandler}  ></Button>)
                                 : (<Button value={'Login'} onClick={handleLoginModal.show} ></Button>)
 
                         }
