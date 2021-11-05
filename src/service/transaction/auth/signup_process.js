@@ -30,7 +30,7 @@ const SignUpProcess = async (signUpInfo) => {
               disaster: false,
               eco: false,
             },
-            role: 'volunteer',
+            role: 'USER',
             totalLoveNotice: 0,
           },
         })
