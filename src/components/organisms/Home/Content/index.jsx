@@ -18,13 +18,13 @@ scroll-snap-type: y mandatory;
 overflow-y : scroll;
 height : calc(100vh );
 scroll-behavior: smooth;
-      /* scroll-padding-bottom : 80px; */
+      scroll-padding-bottom : 100px;
 /* scroll-padding-top  : 27px; */
 `
 
 const ScrollSnapSection = styled.div`
   scroll-snap-align: start;
-    scroll-snap-stop: always;
+    /* scroll-snap-stop: always; */
     scroll-behavior: smooth;
     width : 100%;
     min-height : 100vh;
