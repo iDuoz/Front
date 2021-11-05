@@ -52,18 +52,8 @@ const ContentContainer = ({
                     .then((doc) => {
                         console.log(doc)
                         if (doc.size === 0) {
-                            // console.log('size === 0')
                             setIsLoading(true)
-                            // setListTotalData((state) => (state.concat([{
-                            //     age: "",
-                            //     merit: "",
-                            //     noticeId: "",
-                            //     online: "",
-                            //     region: "",
-                            //     title: "추천게시물이 없습니다.",
-                            //     uploadDate: "",
-                            //     url: ""
-                            // }])))
+
                             setIsLoading(false)
                         }
                         if (doc.size > 0) {
@@ -348,10 +338,14 @@ const ContentContainer = ({
         }])))
     }, [precedence])
 
+
+
+
     const changeStep = (entires) => {
         entires.forEach(entry => {
             if (entry.isIntersecting) {
-                for (let i = 0; i < 5; i++) {
+                for (let i = 0; i < stepRef.current.length; i++) {
+                    if (!stepRef.current[i]) break;
                     if (stepRef.current[i] !== entry.target) continue;
                     if (stepRef.current[i] === entry.target) return setStepCurrent(i)
 
@@ -368,7 +362,12 @@ const ContentContainer = ({
         observerOption
     );
 
-    stepRef.current.forEach(tab => tabObserver.observe(tab));
+
+    if (stepCurrent === 5) {
+        stepRef.current.forEach(tab => tabObserver.observe(tab));
+    }
+
+
 
 
     const [isOpenDescription, setIsOpenDescription] = useState({

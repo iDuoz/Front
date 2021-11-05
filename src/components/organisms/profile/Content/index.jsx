@@ -274,7 +274,10 @@ const ProfileContent = ({
                                                 <Col offset={0.4} span={12} justify={"start"} align={"center"} >
                                                     {
                                                         (userBasicProfile.addRegion) ?
-                                                            <Typo size={'1.1rem'} weight={"bold"}>{userBasicProfile.addRegion}</Typo>
+                                                            userBasicProfile.addRegion.map((value, index) => {
+                                                                return (<Typo key={index} size={'1.1rem'} weight={"bold"}>{value}&nbsp;</Typo>)
+                                                            })
+
                                                             :
                                                             <Typo weight={"bold"}>{'추가지역을 기입해 주세요'} </Typo>
                                                     }

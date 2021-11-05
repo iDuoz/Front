@@ -4,10 +4,11 @@ import { TotalNoticeContent } from '../../../components'
 import getFirstNoticePage from '../../../service/firebase/database/getFirstNoticePage'
 import getNextNoticePage from '../../../service/firebase/database/getNextNoticePage'
 import getTotalNoticeNum from '../../../service/firebase/database/getTotalNoticeNum'
+import deleteNotice from "../../../service/firebase/database/deleteNotice"
 import { useInView } from "react-intersection-observer"
 
 
-const ContentContainer = () => {
+const ContentContainer = ({ role }) => {
 
     /**
      * @description 5개씩 받아와서 + 하는 list */
@@ -18,19 +19,18 @@ const ContentContainer = () => {
 
     const [nextPageStartVisible, setNextPageStartVisible] = useState()
 
-    const [ref, inView] = useInView()
+    const [noticeTotalNum, setNoticeTotalNum] = useState(0)
 
-    console.log(noticePageNum)
-    console.log(page)
+    const [ref, inView] = useInView()
 
     /**
      * @description listTotalData 가져와서 setPageNum 하기 */
-    console.log('listTotalData')
-    console.log(listTotalData)
     useEffect(() => {
+        setLoading(false)
         getTotalNoticeNum()
             .then((res) => {
-                console.log(res);
+                console.log(res.count)
+                setNoticeTotalNum(res.count)
                 const totalNum = res.count
                 setNoticePageNum(Math.ceil(totalNum / 5));
                 console.log("페이지수" + Math.ceil(totalNum / 5))
@@ -38,24 +38,33 @@ const ContentContainer = () => {
             .catch((e) => { console.log("페이지수 못불러옴") })
     }, [])
 
+    useEffect(() => {
+        setLoading(false)
+        setPage(1)
+        setNoticePageNum(Math.ceil(noticeTotalNum / 5));
+        console.log("페이지수" + Math.ceil(noticeTotalNum / 5))
+    }, [noticeTotalNum])
+
     /**
  * @description 서버에서 아이템을 가지고 오는 함수 */
     const getNotices = useCallback(async () => {
         setLoading(true)
+
         if (page === 1) {
             // NOTE 첫번째 페이지 받아오기
             await getFirstNoticePage()
                 .then((res) => {
                     console.log("서버에서 아이템 가져옴")
-                    setListTotalData((state) => (state.concat(res.notices)));
+                    setListTotalData(res.notices);
                     //NOTE 다음페이지 가져오기위해서 다음 페이지 세팅
                     setNextPageStartVisible(res.lastNotice)
                     setLoading(false)
                 })
                 .catch((e) => console.log(e))
             console.log('page===1')
+            setLoading(false)
         }
-        if (page > 1 && page <= noticePageNum) {
+        if (page > 1 && nextPageStartVisible) {
             setLoading(true)
             //NOTE 두번쟤 페이지가져오기
             await getNextNoticePage(nextPageStartVisible)
@@ -63,16 +72,17 @@ const ContentContainer = () => {
                     setListTotalData((state) => (state.concat(res.notices)));
                     // NOTE 그다음 페이지 가져올거 세팅
                     setNextPageStartVisible(res.lastNotice)
-
+                    setLoading(false)
                 })
                 .catch((e) => console.log(e))
             console.log('page>1 && page<=total')
+            setLoading(false)
         }
         if (page > noticePageNum) {
             setLoading(false)
             console.log("page 끝")
         }
-
+        setLoading(false)
     }, [page])
 
 
@@ -81,7 +91,7 @@ const ContentContainer = () => {
     useEffect(() => {
         getNotices()
         setLoading(false)
-    }, [getNotices])
+    }, [getNotices, page, noticeTotalNum])
 
     /**
      * @description page ++ */
@@ -91,7 +101,10 @@ const ContentContainer = () => {
             console.log("page++")
             setPage(state => state + 1)
         }
-    }, [inView, loading])
+        if (inView && !nextPageStartVisible) {
+            setPage(noticePageNum + 3)
+        }
+    }, [inView, loading, nextPageStartVisible])
 
 
 
@@ -124,9 +137,58 @@ const ContentContainer = () => {
 
     }
 
+    const [isDeleteModal, setIsDeleteModal] = useState(false)
+    const [deleteNoticeId, setDeleteNoticeId] = useState(null)
+    const [deleteNoticeMerit, setDeleteNoticeMerit] = useState(null)
+    const handleDeleteModal = {
+        show: () => setIsDeleteModal(true),
+        close: () => setIsDeleteModal(false)
+    }
+
+
+
+    const onClickToDelete = (id, merit) => {
+        console.log("ADMIN")
+        console.log(id)
+        console.log(merit)
+        setDeleteNoticeId(id)
+        setDeleteNoticeMerit(merit)
+        handleDeleteModal.show()
+
+    }
+
+    const onDeleteBtn = async () => {
+        console.log("샤ㅏㄱ제아이디 세팅 됨?")
+        console.log(deleteNoticeId, deleteNoticeMerit)
+        await deleteNotice(deleteNoticeId, deleteNoticeMerit, noticeTotalNum)
+            .then(() => {
+                console.log("삭제완료")
+                setDeleteNoticeMerit(null)
+                setDeleteNoticeId(null)
+                handleDeleteModal.close()
+                setPage(1)
+                setNoticeTotalNum(noticeTotalNum - 1)
+
+
+            })
+            .catch((e) => console.log(e))
+
+
+    }
+    const onCancelDeleteBtn = () => {
+        setDeleteNoticeId(null)
+        setDeleteNoticeMerit(null)
+        handleDeleteModal.close()
+    }
+
+    console.log("🎃🎃")
+    console.log(noticeTotalNum)
+    console.log("🎃🎃")
+    console.log(page)
     return (
         <>
             <TotalNoticeContent
+                role={role}
                 refs={ref}
                 loading={loading}
                 page={page}
@@ -134,6 +196,12 @@ const ContentContainer = () => {
                 listTotalData={listTotalData}
                 detailNoticeData={detailNoticeData}
                 noticeDetailOnClick={noticeDetailOnClick}
+                onClickToDelete={onClickToDelete}
+
+                isDeleteModal={isDeleteModal}
+                onDeleteBtn={onDeleteBtn}
+                handleDeleteModal={handleDeleteModal}
+                onCancelDeleteBtn={onCancelDeleteBtn}
             ></TotalNoticeContent>
         </>
     )

@@ -11,7 +11,7 @@ const ModalWrapper = styled.div`
   /* display : ${props => (props.visible) ? `flex` : `none`}; */
   visibility :hidden;
   display:none;
-
+ transition: all 0.5s ease;
   justify-content: center;
   align-items: center;
   flex-direction : column;

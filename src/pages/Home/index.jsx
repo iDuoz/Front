@@ -1,26 +1,30 @@
 import React from "react";
 import styled from "styled-components";
-import Header from "../../layout/Header";
-import ContentContainer from "../../containers/pages/home/ContentContainer";
+import ContentContainer from "../../containers/redux/pages/home/ContentContainer";
 
 
 const WholeWrapper = styled.div`
-  height: 100%;
-  width: 100%;
-`;
-
+  height:auto;
+  width:  100%;
+  transition: all 0.5s ease;
+  scroll-behavior: smooth;
+  /* border : 3px blue solid; */
+`
 
 
 //TODO header
-const Home = () => {
+const Main = () => {
     return (
         <>
+
             <WholeWrapper>
-                <Header ></Header>
+                {/* <ScrollSnapSection> */}
+
                 <ContentContainer />
+
             </WholeWrapper>
         </>
     );
 };
 
-export default Home;
+export default Main;

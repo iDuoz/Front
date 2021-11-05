@@ -45,6 +45,8 @@ const Indicator = styled.div`
  * @Detail 최대 5개  
  */
 const Header = ({
+    role,
+    name,
     logined,
     menuWrapperRef,
     setHeaderItem,

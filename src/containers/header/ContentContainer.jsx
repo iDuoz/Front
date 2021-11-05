@@ -11,18 +11,20 @@ import { notification } from "antd";
 const ContentContainer = ({
     logined,
     uid,
+    role,
+    basic
 }) => {
-    const headerItemsName = ['전체게시글', '게시글작성', 'Profile', '추천봉사']
+    const headerItemsName = ['전체게시글', '내 정보', '추천봉사', '게시글작성',]
+
     const history = useHistory();
     const location = useLocation()
     const path = location.pathname
-
 
     const matchingHeaderPath = (itemName) => {
         const itemRoute = {
             '전체게시글': '/notice',
             '게시글작성': '/createnotice',
-            'Profile': '/profile',
+            '내 정보': '/profile',
             '추천봉사': '/proposal',
         };
         return itemRoute[itemName] || "/notFound"
@@ -53,13 +55,13 @@ const ContentContainer = ({
             setActive((state) => ({ ...state, index: 0 }))
         }
         if (path === '/createnotice') {
-            setActive((state) => ({ ...state, index: 1 }))
+            setActive((state) => ({ ...state, index: 3 }))
         }
         if (path === '/profile') {
-            setActive((state) => ({ ...state, index: 2 }))
+            setActive((state) => ({ ...state, index: 1 }))
         }
         if (path === '/proposal') {
-            setActive((state) => ({ ...state, index: 3 }))
+            setActive((state) => ({ ...state, index: 2 }))
         }
     }, [path])
 
@@ -265,6 +267,9 @@ const ContentContainer = ({
     return (
         <>
             <HeaderContent
+                uid={uid}
+                role={role}
+                basic={basic}
                 logined={logined}
                 menuWrapperRef={menuWrapperRef}
                 setHeaderItem={setHeaderItem}

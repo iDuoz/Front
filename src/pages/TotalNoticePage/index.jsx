@@ -3,7 +3,7 @@ import React from "react";
 import { HiArrowSmUp } from "react-icons/hi";
 import styled from "styled-components";
 import { Icon } from "../../components";
-import ContentContainer from "../../containers/pages/totalnotice/ContentContainer";
+import ContentContainer from "../../containers/redux/pages/totalnotice/ContentContainer"
 import { Header } from "../../layout";
 
 

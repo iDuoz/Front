@@ -104,7 +104,7 @@ const DetailNoticeForm = ({ merit, online, region, age }) => {
                                                         </Icon>
                                                     ) : (merit === "government") ?
                                                         (
-                                                            <Icon direction={'column'} size={'7rem'} justIcon value={'환경조아'}>
+                                                            <Icon direction={'column'} size={'7rem'} justIcon value={'일반행정'}>
                                                                 <Img src={merit_government_color} width={'5rem'}></Img>
                                                             </Icon>
                                                         ) : (online) ?

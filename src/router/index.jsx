@@ -7,14 +7,14 @@ import TotalNoticeRouter from "./TotalNoticeRouter";
 import ProposalRouter from "./ProposalRouter";
 import MainRouter from "./MainRouter"
 import NotFound from "../pages/NotFound"
+import { connect } from "react-redux";
 
-const AppRouter = () => {
+
+const AppRouter = ({ role, basic, merit }) => {
 
 
     const userInfo = {
-        //TODO role 하드코딩한거 지우기
-        role: "ADMIN",
-        //받아온거 넣기
+        role, basic, merit
     };
 
     return (
@@ -24,17 +24,14 @@ const AppRouter = () => {
                     <Route exact path="/">
                         <HomeRouter />
                     </Route>
-                    {/* <Route path="/:username/profile">
-                        <UserPageRouter security={["ADMIN", "GUEST", "USER"]} userInfo={userInfo}></UserPageRouter>
-                    </Route> */}
                     <Route path="/main">
                         <MainRouter security={["ADMIN", "GUEST", "USER"]} userInfo={userInfo}></MainRouter>
                     </Route>
                     <Route path="/createnotice">
-                        <CreateNoticeRouter security={["ADMIN", "GUEST", "USER"]} userInfo={userInfo}></CreateNoticeRouter>
+                        <CreateNoticeRouter security={["ADMIN"]} userInfo={userInfo}></CreateNoticeRouter>
                     </Route>
                     <Route path="/profile">
-                        <UserPageRouter security={["ADMIN", "GUEST", "USER"]} userInfo={userInfo}></UserPageRouter>
+                        <UserPageRouter security={["ADMIN", "USER"]} userInfo={userInfo}></UserPageRouter>
                     </Route>
                     <Route path="/notice/:id/:title">
                         <TotalNoticeRouter
@@ -47,12 +44,12 @@ const AppRouter = () => {
                     </Route>
                     <Route path="/proposal/:id/:title">
                         <ProposalRouter
-                            security={["ADMIN", "GUEST", "USER"]}
+                            security={["ADMIN", "USER"]}
                             userInfo={userInfo}
                         ></ProposalRouter>
                     </Route>
                     <Route path="/proposal">
-                        <ProposalRouter security={["ADMIN", "GUEST", "USER"]} userInfo={userInfo}></ProposalRouter>
+                        <ProposalRouter security={["ADMIN", "USER"]} userInfo={userInfo}></ProposalRouter>
                     </Route>
                     {/* TODO 404NotFound page 만들기 */}
                     <Route component={NotFound}></Route>
@@ -62,4 +59,12 @@ const AppRouter = () => {
     )
 
 }
-export default AppRouter;
+const mapStateToProps = (state) => {
+    return {
+        role: state.user_reducer?.role,
+        basic: state.user_reducer?.basic,
+        merit: state.user_reducer?.merit,
+    }
+}
+
+export default connect(mapStateToProps, null)(AppRouter);

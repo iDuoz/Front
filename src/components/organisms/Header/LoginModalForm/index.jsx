@@ -37,14 +37,10 @@ const LoginModalForm = ({
                                             <Typo size={'2rem'} weight={'700'} color={'#181818'}>LogIn MeritShare</Typo>
                                         </Col>
                                         <Col span={12} justify={'center'} style={{ marginTop: "0.7rem" }} >
-                                            <Icon size={'2.5rem'} value={"google통해 로그인하기"}>
-                                                <FcGoogle></FcGoogle>
-                                            </Icon>
+
                                         </Col>
                                         <Col span={12} justify={'center'} style={{ marginTop: "0.7rem" }} >
-                                            <Typo size={'0.75rem'} color={'#bec8e4'}>
-                                                or your email account
-                                            </Typo>
+
                                         </Col>
                                         <Col span={12} justify={'center'}  >
                                             <TextBox onChange={settingLogInValueFunction.email} value={logInInfo.email} size={'small'} placeholder={"email"} block></TextBox>
@@ -128,14 +124,10 @@ const LoginModalForm = ({
                                             <Typo size={'2rem'} weight={'700'} color={'#181818'}>SignUp MeritShare</Typo>
                                         </Col>
                                         <Col span={12} justify={'center'} style={{ marginTop: "0.7rem" }} >
-                                            <Icon size={'2.5rem'} value={"google통해 회원가입하기"}>
-                                                <FcGoogle></FcGoogle>
-                                            </Icon>
+
                                         </Col>
                                         <Col span={12} justify={'center'} style={{ marginTop: "0.7rem" }} >
-                                            <Typo size={'0.75rem'} color={'#bec8e4'}>
-                                                or your email account
-                                            </Typo>
+
                                         </Col>
                                         <Col span={12} justify={'center'}  >
                                             <TextBox value={signUpInfo.email} onChange={settingSingUpValueFunction.email} size={'small'} placeholder={"email"} block></TextBox>

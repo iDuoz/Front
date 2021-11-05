@@ -11,13 +11,13 @@ const addNotice = async (noticeData) => {
     let hours = ('0' + today.getHours()).slice(-2);
     let minutes = ('0' + today.getMinutes()).slice(-2);
     let seconds = ('0' + today.getSeconds()).slice(-2);
-
+    const setDocMerit = noticeData.merit || 'online';
     const db = getFirestore();
     const newDocRef = doc(collection(db, 'noticeBasics'));
     await setDoc(newDocRef, {
       noticeId: newDocRef.id,
       age: noticeData.age,
-      merit: noticeData.merit,
+      merit: noticeData.merit || 'online',
       online: Boolean(noticeData.online),
       title: noticeData.title,
       region: noticeData.region,
@@ -32,10 +32,10 @@ const addNotice = async (noticeData) => {
       })
       .then(async (res) => {
         console.log(noticeData.url);
-        await setDoc(doc(db, 'noticeProposal', 'merit', noticeData.merit, newDocRef.id), {
+        await setDoc(doc(db, 'noticeProposal', 'merit', setDocMerit, newDocRef.id), {
           noticeId: newDocRef.id,
           age: noticeData.age,
-          merit: noticeData.merit,
+          merit: noticeData.merit || 'online',
           online: Boolean(noticeData.online),
           title: noticeData.title,
           region: noticeData.region,

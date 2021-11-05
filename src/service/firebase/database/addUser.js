@@ -5,7 +5,7 @@ const addUser = async (uid, email) => {
   try {
     const db = getFirestore();
     await setDoc(doc(db, 'members', uid), {
-      role: 'volunteer',
+      role: 'USER',
       basic: {
         addRegion: [],
         age: '',

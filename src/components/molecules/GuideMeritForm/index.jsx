@@ -182,7 +182,7 @@ flex-direction: column;
 `
 
 
-const GuideMeritForm = ({ setInView, editonclickMeritFunction,
+const GuideMeritForm = ({ setInView, editonclickMeritFunction, userSex,
     onclickMerit }) => {
 
 
@@ -203,7 +203,7 @@ const GuideMeritForm = ({ setInView, editonclickMeritFunction,
                             <Typo size={'1.3em'} color={'#595959'} fontFamily={'Gong'} weight={'100'}>
                                 meritshare에서 merit는 <br />
                                 나만의 장점과 관심분야를 뜻합니다. <br />
-
+                                meritshare는 6개의 merit를 가집니다.
                             </Typo>
                         </FlexDirTItleBox>
                     </TitleBox>
@@ -218,7 +218,7 @@ const GuideMeritForm = ({ setInView, editonclickMeritFunction,
                                         <Img src={merit_education_color} width={'7em'}></Img>
                                         <MeritBoxDescription>
                                             <Typo fontFamily={'Gong'} size={'0.9em'} color={'#000000'} weight={'100'}>
-                                                찾을 수 있도록 봉사를 추천해주는 서비스입니다.
+                                                교육과 관련된 봉사를 추천합니다.
                                             </Typo>
                                         </MeritBoxDescription>
 
@@ -229,7 +229,7 @@ const GuideMeritForm = ({ setInView, editonclickMeritFunction,
                                         <Img src={merit_education} width={'7em'}></Img>
                                         <MeritBoxDescription>
                                             <Typo fontFamily={'Gong'} size={'0.9em'} color={'#000000'} weight={'100'}>
-                                                찾을 수 있도록 봉사를 추천해주는 서비스입니다.
+                                                교육에 관심이 있나요?
                                             </Typo>
                                         </MeritBoxDescription>
                                     </>
@@ -245,7 +245,7 @@ const GuideMeritForm = ({ setInView, editonclickMeritFunction,
                                         <Img src={merit_cooking_color} width={'7em'}></Img>
                                         <MeritBoxDescription>
                                             <Typo fontFamily={'Gong'} size={'0.9em'} color={'#000000'} weight={'100'}>
-                                                찾을 수 있도록 봉사를 추천해주는 서비스입니다.
+                                                요리와 관련된 봉사를 추천합니다.
                                             </Typo>
                                         </MeritBoxDescription>
                                     </> : <>
@@ -255,7 +255,7 @@ const GuideMeritForm = ({ setInView, editonclickMeritFunction,
                                         <Img src={merit_cooking} width={'7em'}></Img>
                                         <MeritBoxDescription>
                                             <Typo fontFamily={'Gong'} size={'0.9em'} color={'#000000'} weight={'100'}>
-                                                찾을 수 있도록 봉사를 추천해주는 서비스입니다.
+                                                요리를 통해 나눔 전하기
                                             </Typo>
                                         </MeritBoxDescription>
                                     </>
@@ -271,7 +271,7 @@ const GuideMeritForm = ({ setInView, editonclickMeritFunction,
                                         <Img src={merit_disaster_color} width={'7em'}></Img>
                                         <MeritBoxDescription>
                                             <Typo fontFamily={'Gong'} size={'0.9em'} color={'#000000'} weight={'100'}>
-                                                찾을 수 있도록 봉사를 추천해주는 서비스입니다.
+                                                코로나 및 재난과 관련된 봉사를 추천합니다.
                                             </Typo>
                                         </MeritBoxDescription>
                                     </> : <>
@@ -281,7 +281,7 @@ const GuideMeritForm = ({ setInView, editonclickMeritFunction,
                                         <Img src={merit_disaster} width={'7em'}></Img>
                                         <MeritBoxDescription>
                                             <Typo fontFamily={'Gong'} size={'0.9em'} color={'#000000'} weight={'100'}>
-                                                찾을 수 있도록 봉사를 추천해주는 서비스입니다.
+                                                코로나 어려움속 필요한 나눔
                                             </Typo>
                                         </MeritBoxDescription>
                                     </>
@@ -299,7 +299,7 @@ const GuideMeritForm = ({ setInView, editonclickMeritFunction,
                                         <Img src={merit_online_color} width={'7em'}></Img>
                                         <MeritBoxDescription>
                                             <Typo fontFamily={'Gong'} size={'0.9em'} color={'#000000'} weight={'100'}>
-                                                찾을 수 있도록 봉사를 추천해주는 서비스입니다.
+                                                비대면 봉사활동을 추천합니다.
                                             </Typo>
                                         </MeritBoxDescription>
                                     </> : <>
@@ -309,7 +309,7 @@ const GuideMeritForm = ({ setInView, editonclickMeritFunction,
                                         <Img src={merit_online} width={'7em'}></Img>
                                         <MeritBoxDescription>
                                             <Typo fontFamily={'Gong'} size={'0.9em'} color={'#000000'} weight={'100'}>
-                                                찾을 수 있도록 봉사를 추천해주는 서비스입니다.
+                                                비대면으로 따뜻함을 전해볼까요?
                                             </Typo>
                                         </MeritBoxDescription>
                                     </>
@@ -325,7 +325,7 @@ const GuideMeritForm = ({ setInView, editonclickMeritFunction,
                                         <Img src={merit_government_color} width={'7em'}></Img>
                                         <MeritBoxDescription>
                                             <Typo fontFamily={'Gong'} size={'0.9em'} color={'#000000'} weight={'100'}>
-                                                찾을 수 있도록 봉사를 추천해주는 서비스입니다.
+                                                행정보조과 관련된 봉사를 추천합니다.
                                             </Typo>
                                         </MeritBoxDescription>
                                     </> : <>
@@ -335,7 +335,7 @@ const GuideMeritForm = ({ setInView, editonclickMeritFunction,
                                         <Img src={merit_government} width={'7em'}></Img>
                                         <MeritBoxDescription>
                                             <Typo fontFamily={'Gong'} size={'0.9em'} color={'#000000'} weight={'100'}>
-                                                찾을 수 있도록 봉사를 추천해주는 서비스입니다.
+                                                도서업무나 사무보조에 관심이 있나요?
                                             </Typo>
                                         </MeritBoxDescription>
                                     </>
@@ -351,7 +351,7 @@ const GuideMeritForm = ({ setInView, editonclickMeritFunction,
                                         <Img src={merit_eco_color} width={'7em'}></Img>
                                         <MeritBoxDescription>
                                             <Typo fontFamily={'Gong'} size={'0.9em'} color={'#000000'} weight={'100'}>
-                                                찾을 수 있도록 봉사를 추천해주는 서비스입니다.
+                                                환경과 관련된 봉사를 추천합니다.
                                             </Typo>
                                         </MeritBoxDescription>
                                     </> : <>
@@ -361,7 +361,7 @@ const GuideMeritForm = ({ setInView, editonclickMeritFunction,
                                         <Img src={merit_eco} width={'7em'}></Img>
                                         <MeritBoxDescription>
                                             <Typo fontFamily={'Gong'} size={'0.9em'} color={'#000000'} weight={'100'}>
-                                                찾을 수 있도록 봉사를 추천해주는 서비스입니다.
+                                                환경을 지켜볼까요?
                                             </Typo>
                                         </MeritBoxDescription>
                                     </>
@@ -372,11 +372,14 @@ const GuideMeritForm = ({ setInView, editonclickMeritFunction,
                     <PeopleMerit inview={setInView} top={'25em'} left={'60em'} index={5}>
                         <Img src={TopSpeechbubble} width={'100%'}></Img>
                         <Typo fontFamily={'Gong'} size={'1em'} color={'#000000'} weight={'100'}>
-                            merit 선택 예시 입니다.
+                            meirt클릭시 meirt 예시를 확인 할 수 있습니다.
                         </Typo>
                         <MeritIcon userMeritProfile={onclickMerit} editMeritProfileFunction={editonclickMeritFunction} ></MeritIcon>
                         <Img src={Speechbubble} width={'100%'}></Img>
-                        <Img src={girl} width={'7em'}></Img>
+                        {
+                            (userSex === "woman") ? <Img src={girl} width={'7em'}></Img> : <Img src={boy} width={'7em'}></Img>
+                        }
+
                     </PeopleMerit>
 
                 </GuideMeritPosition>

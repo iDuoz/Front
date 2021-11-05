@@ -6,7 +6,9 @@ const mapStateToProps = (state) => {
 
     return {
         logined: state.login_reducer.logined,
-        uid: state.user_reducer.uid,
+        uid: state.user_reducer.uid || null,
+        role: state.user_reducer.role,
+        basic: state.user_reducer.basic || null,
     }
 
 

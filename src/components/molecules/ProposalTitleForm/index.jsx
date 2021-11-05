@@ -86,15 +86,15 @@ const ProposalTitleForm = ({ isOpenDescription,
     const proposalMeritContent = {
         1: "내가 선택한 merit",
         2: "내가 선택한 merit",
-        3: "내가 선택하지 않은 merit",
+        3: "내가 선택한 merit",
         4: "내가 선택하지 않은 merit",
         5: "online merit"
     }
     const proposalRegionContent = {
         1: "내가 선택한 지역",
         2: "내가 선택한 추가지역",
-        3: "내가 선택한 지역",
-        4: "내가 선택한 추가지역",
+        3: "내가 선택하지 않은 지역",
+        4: "내가 선택하지 않은 지역",
         5: "online merit"
     }
 

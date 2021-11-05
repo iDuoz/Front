@@ -16,6 +16,9 @@ import merit_online_color from "../../../assets/icons/merit_online_color.png"
 import merit_government from "../../../assets/icons/merit_government.png"
 import merit_government_color from "../../../assets/icons/merit_government_color.png"
 import puzzle from "../../../assets/icons/puzzle.png"
+import { VscClose } from "react-icons/vsc";
+
+
 
 const CardTitle = styled.div`
 position : absolute;
@@ -93,6 +96,24 @@ border-bottom-right-radius: 11px; ` : null};
     }
 `
 
+const CloseButton = styled.button`
+z-index : 5;
+ position : static ;
+ top : 0;
+ right : 0;
+ padding : 0;
+ padding-top:1rem ;
+ border : 0;
+ outline : 0;
+ cursor : pointer;
+ width : 90% ;
+  height : 90%  ;
+  background-color: rgba(255,255,255,0);
+ ${props => props.small ? `padding: 0 ; margin: 0; width : 80% ;` : null};
+
+ `
+
+
 const IsOnlineIconWrapper = styled.div`
 height : 10rem;
 display : flex;
@@ -143,9 +164,11 @@ const CardContent = styled.div`
     height : 100%;
 
 `
+const stopBubbling = (e) => {
+    e.stopPropagation()
+}
 
-
-const NoticeCardForm = ({ onClick, merit, listTitle, online, listContent }) => {
+const NoticeCardForm = ({ onClick, merit, listTitle, online, listContent, role, onClickToDelete }) => {
 
     const meritColor = {
         education: '#BA68C8',
@@ -175,11 +198,13 @@ const NoticeCardForm = ({ onClick, merit, listTitle, online, listContent }) => {
 
     return (
         <>
-            <Row  >
-                <Col justify={'center'} align={'center'} xs={0} sm={0} md={12} lg={12} xl={12} xxl={12}>
+            <Row justify={'space-between'} align={'center'} >
+                <Col justify={'center'} align={'center'} xs={0} sm={0} md={11} lg={11} xl={11} xxl={11}>
 
                     <CardWrapper onClick={onClick}>
-                        <CardIconWrapper>
+
+                        <CardIconWrapper onClick={stopBubbling}>
+
                             {
                                 (online === true) ?
                                     <IsOnlineIconWrapper>
@@ -220,8 +245,13 @@ const NoticeCardForm = ({ onClick, merit, listTitle, online, listContent }) => {
                         </CardContent>
                     </CardWrapper>
                 </Col>
-
-                <Col xs={11} sm={12} md={0} lg={0} xl={0} xxl={0} justify={'center'} align={'center'}>
+                <Col xs={0} sm={0} md={1} lg={1} xl={1} xxl={1} justify={'center'} align={'center'}  >
+                    {
+                        (role === "ADMIN") ?
+                            <CloseButton onClick={onClickToDelete}><VscClose></VscClose></CloseButton> : null
+                    }
+                </Col>
+                <Col xs={10} sm={11} md={0} lg={0} xl={0} xxl={0} justify={'center'} align={'center'}>
                     <CardWrapper onClick={onClick} small={true} >
                         <CardContent >
                             <CardColorSide background={meritColor[merit]} />
@@ -236,9 +266,20 @@ const NoticeCardForm = ({ onClick, merit, listTitle, online, listContent }) => {
                             }
                             <CardTitle small={true}>{listTitle}</CardTitle>
                             <CardLast small={true}>{listContent}</CardLast>
+
                         </CardContent>
+
                     </CardWrapper>
+
                 </Col>
+
+                <Col xs={2} sm={1} md={0} lg={0} xl={0} xxl={0} justify={'center'} align={'center'}  >
+                    {
+                        (role === "ADMIN") ?
+                            <CloseButton small={true} onClick={onClickToDelete}><VscClose></VscClose></CloseButton> : null
+                    }
+                </Col>
+
             </Row>
 
         </>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { NoticeCardForm } from '../../../index'
 import { Col, Row, ContentStyle } from '../../../../layout'
-import { Typo, Divider } from "../../../index"
+import { Typo, Divider, Modal, AlertDeleteNoticeModalForm } from "../../../index"
 
 
 import NoticeIdDetailForm from '../NoticeIdDetailForm'
@@ -10,26 +10,29 @@ import { useParams, useHistory } from 'react-router-dom';
 import { Spin } from 'antd';
 
 const TotalNoticeContent = ({
+    role,
     refs,
     loading,
     page,
     noticePageNum,
     listTotalData,
     detailNoticeData,
-    noticeDetailOnClick, }) => {
+    noticeDetailOnClick,
 
-    console.log("listTotalData , content")
-    console.log(listTotalData)
+    isDeleteModal,
+    onDeleteBtn,
+    handleDeleteModal,
+    onClickToDelete,
+    onCancelDeleteBtn
+}) => {
+
 
     const history = useHistory();
 
     const { id } = useParams();
-    console.log(useParams())
-    console.log(detailNoticeData.id)
-    console.log(detailNoticeData.id === id)
 
-    console.log("noticeDetail")
-    console.log(detailNoticeData)
+
+
     return (
         <>
             <ContentStyle>
@@ -62,7 +65,7 @@ const TotalNoticeContent = ({
                                                     {
                                                         listTotalData.length - 1 === index ? (
                                                             <>
-                                                                <NoticeCardForm listTitle={notice.title} noticeId={notice.noticeId} onClick={() => { noticeDetailOnClick(notice.noticeId) }}
+                                                                <NoticeCardForm onClickToDelete={() => { onClickToDelete(notice.noticeId, notice.merit) }} role={role} listTitle={notice.title} noticeId={notice.noticeId} onClick={() => { noticeDetailOnClick(notice.noticeId) }}
                                                                     listContent={`지역 : ${notice.region} | 업로드 시간: ${replaceUploadDate}  | 나이: ${notice.age}`}
                                                                     merit={notice.merit} online={notice.online}></NoticeCardForm>
                                                                 {
@@ -76,7 +79,7 @@ const TotalNoticeContent = ({
                                                             </>
                                                         ) : (
                                                             <>
-                                                                <NoticeCardForm listTitle={notice.title} noticeId={notice.noticeId} onClick={() => { noticeDetailOnClick(notice.noticeId) }}
+                                                                <NoticeCardForm onClickToDelete={() => { onClickToDelete(notice.noticeId, notice.merit) }} role={role} listTitle={notice.title} noticeId={notice.noticeId} onClick={() => { noticeDetailOnClick(notice.noticeId) }}
                                                                     listContent={`지역 : ${notice.region} | 업로드 시간: ${replaceUploadDate}  | 나이: ${notice.age}`}
                                                                     merit={notice.merit} online={notice.online}></NoticeCardForm>
 
@@ -99,6 +102,12 @@ const TotalNoticeContent = ({
                             </Col>
                         </Row>
 
+                    </Col>
+                    <Col span={12}>
+                        <Modal visible={isDeleteModal} maskClosable={false} headerClose
+                            onClose={handleDeleteModal.close} size={7}>
+                            <AlertDeleteNoticeModalForm onCancelDeleteBtn={onCancelDeleteBtn} onDeleteBtn={onDeleteBtn}></AlertDeleteNoticeModalForm>
+                        </Modal>
                     </Col>
                 </Row>
             </ContentStyle >

@@ -27,7 +27,8 @@ export { default as AlertModalForm } from './molecules/AlertModalForm/index';
 export { default as DetailNoticeForm } from './molecules/DetailNoticeForm';
 export { default as ProposalTitleFrom } from './molecules/ProposalTitleForm';
 export { default as GuideMeritForm } from './molecules/GuideMeritForm/index.jsx';
-
+export { default as AlertLoginModalForm } from './molecules/AlertLoginModalForm/index.jsx';
+export { default as AlertDeleteNoticeModalForm } from './molecules/AlertDeleteNoticeModalForm/index.jsx';
 //ORGANISM
 
 export { default as HeaderContent } from './organisms/Header/Content';

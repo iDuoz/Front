@@ -203,8 +203,51 @@ const ContentContainer = ({
         if (settingMeritCount < 3) {
             return (
                 notification['error']({
-                    message: `${userBasicProfile.name}님 merit를 확인해주세요😥 `,
+                    message: `${userBasicProfile.name || 'user'}님 merit를 확인해주세요😥 `,
                     description: '3개이상의 merit를 선택해야 합니다.',
+                })
+            )
+        }
+
+
+        if (!userBasicProfile.addRegion) {
+            return (
+                notification['error']({
+                    message: `${userBasicProfile.name || 'user'}님 모든 정보를 입력해 주세요.😥 `,
+                    description: '추가지역을 입력 후 저장해 주세요.',
+                })
+            )
+        }
+        if (!userBasicProfile.age) {
+            return (
+                notification['error']({
+                    message: `${userBasicProfile.name || 'user'}님 모든 정보를 입력해 주세요.😥 `,
+                    description: '나이를 입력 후 저장해 주세요.',
+                })
+            )
+        }
+
+        if (!userBasicProfile.name) {
+            return (
+                notification['error']({
+                    message: `${userBasicProfile.name || 'user'}님 모든 정보를 입력해 주세요.😥 `,
+                    description: '이름을 입력 후 저장해 주세요.',
+                })
+            )
+        }
+        if (!userBasicProfile.region) {
+            return (
+                notification['error']({
+                    message: `${userBasicProfile.name || 'user'}님 모든 정보를 입력해 주세요.😥 `,
+                    description: '지역을 입력 후 저장해 주세요.',
+                })
+            )
+        }
+        if (!userBasicProfile.sex) {
+            return (
+                notification['error']({
+                    message: `${userBasicProfile.name || 'user'}님 모든 정보를 입력해 주세요.😥 `,
+                    description: '성별을 입력 후 저장해 주세요.',
                 })
             )
         }

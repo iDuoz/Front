@@ -105,11 +105,11 @@ const TotalNoticeContent = ({
                                     size='small'
                                     direction="vertical"
                                 >
-                                    <Step title="Step 1" description={<Typo>This is a description.</Typo>} />
-                                    <Step title="Step 2" description={<Typo>This is a description.</Typo>} />
-                                    <Step title="Step 3" description={<Typo>This is a description.</Typo>} />
-                                    <Step title="Step 4" description={<Typo>This is a description.</Typo>} />
-                                    <Step title="Step 5" description={<Typo>This is a description.</Typo>} />
+                                    <Step title="Step 1" />
+                                    <Step title="Step 2" />
+                                    <Step title="Step 3" />
+                                    <Step title="Step 4" />
+                                    <Step title="Step 5" />
                                 </Steps>
 
                             </Col>
