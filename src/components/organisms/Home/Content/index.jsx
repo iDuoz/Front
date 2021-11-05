@@ -18,7 +18,7 @@ scroll-snap-type: y mandatory;
 overflow-y : scroll;
 height : calc(100vh );
 scroll-behavior: smooth;
-      scroll-padding-bottom : 80px;
+      /* scroll-padding-bottom : 80px; */
 /* scroll-padding-top  : 27px; */
 `
 
@@ -355,7 +355,7 @@ const MainContent = ({
                             </Col>
                         </ScrollSnapSection>
                         {/* !SECTION 1 */}
-
+                        <Col span={12} style={{ margin: ' 5rem' }}></Col>
 
 
                         {/* SECTION 2 */}
@@ -364,7 +364,7 @@ const MainContent = ({
                                 <Row justify={'flex-start'} align={'center'} style={{ alignContent: 'space-between' }}>
                                     {/* SECTION 2 -GuideMerit-  */}
                                     {/* PIN -GuideMerit-   */}
-                                    <Col colRef={secondRef} span={12}>
+                                    <Col colRef={secondRef} span={12} >
                                         <Col span={12} justify={'center'} align={'center'}>
                                             <Row justify={'center'} align={'center'}>
 
