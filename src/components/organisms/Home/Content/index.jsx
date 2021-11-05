@@ -249,6 +249,19 @@ const MainContent = ({
                 setOnclickMerit((state) => ({ ...state, online: true }))
         },
     }
+
+
+    const onPeopleclick = () => {
+        if (!logined)
+            return (
+                notification['info']({
+                    message: `로그인이 필요해요.😥 `,
+                    description: '로그인 시 profile로 이동합니다.',
+                })
+            )
+        return history.push("/profile")
+    }
+
     // Anch
     return (
         <>
@@ -357,6 +370,7 @@ const MainContent = ({
 
                                                 <Col justify={'flex-start'} align={'center'} span={12}  >
                                                     <GuideMeritForm
+                                                        onPeopleclick={onPeopleclick}
                                                         userSex={() => { if (basic.sex) return basic.sex }}
                                                         setInView={insecondRefView}
                                                         editonclickMeritFunction={editonclickMeritFunction}
@@ -374,7 +388,7 @@ const MainContent = ({
                                     {/* !SECTION 2 -GuideMerit- */}
                                     {/* SECTION 2 -GuideMerit-- */}
                                     {/* PIN -Icon-   */}
-                                    <Col span={12} justify={'center'} align={'center'} style={{ padding: '5rem' }}>
+                                    <Col span={12} justify={'center'} align={'center'} style={{ padding: '1rem ' }}>
                                         {/* <Row justify={'center'} align={'center'} style={{ padding: '3rem 0' }}>
                                             <Col justify={'center'} align={'center'} span={12}>
                                                 <Img src={puzzleMain} width={'14rem'} ></Img>

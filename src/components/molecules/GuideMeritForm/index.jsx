@@ -182,7 +182,7 @@ flex-direction: column;
 `
 
 
-const GuideMeritForm = ({ setInView, editonclickMeritFunction, userSex,
+const GuideMeritForm = ({ setInView, editonclickMeritFunction, userSex, onPeopleclick,
     onclickMerit }) => {
 
 
@@ -377,7 +377,7 @@ const GuideMeritForm = ({ setInView, editonclickMeritFunction, userSex,
                         <MeritIcon userMeritProfile={onclickMerit} editMeritProfileFunction={editonclickMeritFunction} ></MeritIcon>
                         <Img src={Speechbubble} width={'100%'}></Img>
                         {
-                            (userSex === "woman") ? <Img src={girl} width={'7em'}></Img> : <Img src={boy} width={'7em'}></Img>
+                            (userSex === "woman") ? <Img cursor={'pointer'} onClick={onPeopleclick} src={girl} width={'7em'}></Img> : <Img cursor={'pointer'} onClick={onPeopleclick} src={boy} width={'7em'}></Img>
                         }
 
                     </PeopleMerit>

@@ -6,17 +6,17 @@ const ImageStyle = styled.img.attrs((props) => ({
     src: props.src
 }))`
     transition: all 0.5s ease  ;
-    ${(props) => (props.circle) ? ` border-radius : 50%; ` : null}
+    ${(props) => (props.circle) ? ` border-radius : 50%; ` : null};
     height :  ${props => props.height || null} ;
-    ${(props) => (props.cursor) ? ` cursor : ${props.cursor}` : null}
+    ${(props) => (props.cursor) ? ` cursor : ${props.cursor}` : null};
     width : ${props => props.width};
-    ${(props) => (props.circle) ? ` border-radius : 100%; ` : null}
+    ${(props) => (props.circle) ? ` border-radius : 100%; ` : null};
     border : ${props => (props.border) || null};
 `
 
-const Image = ({ src, width, circle, height, cursor, border }) => (
+const Image = ({ src, width, circle, height, cursor, border, onClick }) => (
     <>
-        <ImageStyle src={src} width={width} cursor={cursor} border={border}
+        <ImageStyle src={src} width={width} cursor={cursor} border={border} onClick={onClick}
             height={height} circle={circle} ></ImageStyle>
     </>
 )
