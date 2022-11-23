@@ -309,7 +309,7 @@ const MainContent = ({
                                                         </Col>
                                                         <Col xs={0} sm={5} md={5} lg={5} xl={5} xxl={4} span={4} justify={'flex-start'} align={'center'} style={{ margin: '0 40px' }}>
                                                             <Typo size={'1.3rem'} color={'#595959'} fontFamily={'Gong'} weight={'100'}>
-                                                                meritshare는  user가 편하게 원하는 봉사를<br />
+                                                                TEST meritshare는  user가 편하게 원하는 봉사를<br />
                                                                 찾을 수 있도록 1365의 봉사를 추천해주는 서비스입니다.
                                                             </Typo>
                                                         </Col>
