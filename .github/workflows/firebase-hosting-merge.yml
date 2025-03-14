@@ -19,6 +19,7 @@ jobs:
       - name: Install and Build🔧
         run: yarn && yarn build
         env:
+          NODE_OPTIONS: --openssl-legacy-provider # 오류 해결 환경 변수 추가
           REACT_APP_API_KEY: '${{secrets.REACT_APP_API_KEY}}'
           REACT_APP_AUTH_DOMAIN: '${{secrets.REACT_APP_AUTH_DOMAIN}}'
           REACT_APP_DATABASE_URL: '${{secrets.REACT_APP_DATABASE_URL}}'
